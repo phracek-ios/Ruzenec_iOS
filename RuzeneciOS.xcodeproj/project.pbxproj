@@ -1,0 +1,476 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		011E4A4920D2F2BE00ED05A1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 011E4A4820D2F2BE00ED05A1 /* Assets.xcassets */; };
+		0159D01D20D05E5C00D759D4 /* DesatekTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0159D01C20D05E5C00D759D4 /* DesatekTableViewCell.swift */; };
+		01A936A020D4447500A5D979 /* DesatekTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01A9369F20D4447500A5D979 /* DesatekTableViewController.swift */; };
+		01A936A220D4474F00A5D979 /* Desatek.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01A936A120D4474F00A5D979 /* Desatek.swift */; };
+		01FC3D8820C86E23005FABEF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01FC3D8720C86E23005FABEF /* AppDelegate.swift */; };
+		01FC3D8A20C86E23005FABEF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01FC3D8920C86E23005FABEF /* ViewController.swift */; };
+		01FC3D8D20C86E23005FABEF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 01FC3D8B20C86E23005FABEF /* Main.storyboard */; };
+		01FC3D9220C86E24005FABEF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 01FC3D9020C86E24005FABEF /* LaunchScreen.storyboard */; };
+		01FC3D9D20C86E24005FABEF /* RuzeneciOSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01FC3D9C20C86E24005FABEF /* RuzeneciOSTests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		01FC3D9920C86E24005FABEF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 01FC3D7C20C86E23005FABEF /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 01FC3D8320C86E23005FABEF;
+			remoteInfo = RuzeneciOS;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		011E4A4820D2F2BE00ED05A1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		0159D01C20D05E5C00D759D4 /* DesatekTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesatekTableViewCell.swift; sourceTree = "<group>"; };
+		01A9369F20D4447500A5D979 /* DesatekTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesatekTableViewController.swift; sourceTree = "<group>"; };
+		01A936A120D4474F00A5D979 /* Desatek.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Desatek.swift; sourceTree = "<group>"; };
+		01FC3D8420C86E23005FABEF /* RuzeneciOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RuzeneciOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		01FC3D8720C86E23005FABEF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		01FC3D8920C86E23005FABEF /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		01FC3D8C20C86E23005FABEF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		01FC3D9120C86E24005FABEF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		01FC3D9320C86E24005FABEF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		01FC3D9820C86E24005FABEF /* RuzeneciOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RuzeneciOSTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		01FC3D9C20C86E24005FABEF /* RuzeneciOSTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RuzeneciOSTests.swift; sourceTree = "<group>"; };
+		01FC3D9E20C86E24005FABEF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		01FC3D8120C86E23005FABEF /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		01FC3D9520C86E24005FABEF /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		01FC3D7B20C86E23005FABEF = {
+			isa = PBXGroup;
+			children = (
+				01FC3D8620C86E23005FABEF /* RuzeneciOS */,
+				01FC3D9B20C86E24005FABEF /* RuzeneciOSTests */,
+				01FC3D8520C86E23005FABEF /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		01FC3D8520C86E23005FABEF /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				01FC3D8420C86E23005FABEF /* RuzeneciOS.app */,
+				01FC3D9820C86E24005FABEF /* RuzeneciOSTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		01FC3D8620C86E23005FABEF /* RuzeneciOS */ = {
+			isa = PBXGroup;
+			children = (
+				011E4A4820D2F2BE00ED05A1 /* Assets.xcassets */,
+				0159D01C20D05E5C00D759D4 /* DesatekTableViewCell.swift */,
+				01FC3D8720C86E23005FABEF /* AppDelegate.swift */,
+				01FC3D8920C86E23005FABEF /* ViewController.swift */,
+				01FC3D8B20C86E23005FABEF /* Main.storyboard */,
+				01FC3D9020C86E24005FABEF /* LaunchScreen.storyboard */,
+				01FC3D9320C86E24005FABEF /* Info.plist */,
+				01A9369F20D4447500A5D979 /* DesatekTableViewController.swift */,
+				01A936A120D4474F00A5D979 /* Desatek.swift */,
+			);
+			path = RuzeneciOS;
+			sourceTree = "<group>";
+		};
+		01FC3D9B20C86E24005FABEF /* RuzeneciOSTests */ = {
+			isa = PBXGroup;
+			children = (
+				01FC3D9C20C86E24005FABEF /* RuzeneciOSTests.swift */,
+				01FC3D9E20C86E24005FABEF /* Info.plist */,
+			);
+			path = RuzeneciOSTests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		01FC3D8320C86E23005FABEF /* RuzeneciOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 01FC3DA120C86E24005FABEF /* Build configuration list for PBXNativeTarget "RuzeneciOS" */;
+			buildPhases = (
+				01FC3D8020C86E23005FABEF /* Sources */,
+				01FC3D8120C86E23005FABEF /* Frameworks */,
+				01FC3D8220C86E23005FABEF /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = RuzeneciOS;
+			productName = RuzeneciOS;
+			productReference = 01FC3D8420C86E23005FABEF /* RuzeneciOS.app */;
+			productType = "com.apple.product-type.application";
+		};
+		01FC3D9720C86E24005FABEF /* RuzeneciOSTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 01FC3DA420C86E24005FABEF /* Build configuration list for PBXNativeTarget "RuzeneciOSTests" */;
+			buildPhases = (
+				01FC3D9420C86E24005FABEF /* Sources */,
+				01FC3D9520C86E24005FABEF /* Frameworks */,
+				01FC3D9620C86E24005FABEF /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				01FC3D9A20C86E24005FABEF /* PBXTargetDependency */,
+			);
+			name = RuzeneciOSTests;
+			productName = RuzeneciOSTests;
+			productReference = 01FC3D9820C86E24005FABEF /* RuzeneciOSTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		01FC3D7C20C86E23005FABEF /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0930;
+				LastUpgradeCheck = 0930;
+				ORGANIZATIONNAME = "Petr Hracek";
+				TargetAttributes = {
+					01FC3D8320C86E23005FABEF = {
+						CreatedOnToolsVersion = 9.3.1;
+					};
+					01FC3D9720C86E24005FABEF = {
+						CreatedOnToolsVersion = 9.3.1;
+						TestTargetID = 01FC3D8320C86E23005FABEF;
+					};
+				};
+			};
+			buildConfigurationList = 01FC3D7F20C86E23005FABEF /* Build configuration list for PBXProject "RuzeneciOS" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 01FC3D7B20C86E23005FABEF;
+			productRefGroup = 01FC3D8520C86E23005FABEF /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				01FC3D8320C86E23005FABEF /* RuzeneciOS */,
+				01FC3D9720C86E24005FABEF /* RuzeneciOSTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		01FC3D8220C86E23005FABEF /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				01FC3D9220C86E24005FABEF /* LaunchScreen.storyboard in Resources */,
+				011E4A4920D2F2BE00ED05A1 /* Assets.xcassets in Resources */,
+				01FC3D8D20C86E23005FABEF /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		01FC3D9620C86E24005FABEF /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		01FC3D8020C86E23005FABEF /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				01FC3D8A20C86E23005FABEF /* ViewController.swift in Sources */,
+				01FC3D8820C86E23005FABEF /* AppDelegate.swift in Sources */,
+				01A936A220D4474F00A5D979 /* Desatek.swift in Sources */,
+				01A936A020D4447500A5D979 /* DesatekTableViewController.swift in Sources */,
+				0159D01D20D05E5C00D759D4 /* DesatekTableViewCell.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		01FC3D9420C86E24005FABEF /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				01FC3D9D20C86E24005FABEF /* RuzeneciOSTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		01FC3D9A20C86E24005FABEF /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 01FC3D8320C86E23005FABEF /* RuzeneciOS */;
+			targetProxy = 01FC3D9920C86E24005FABEF /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		01FC3D8B20C86E23005FABEF /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				01FC3D8C20C86E23005FABEF /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		01FC3D9020C86E24005FABEF /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				01FC3D9120C86E24005FABEF /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		01FC3D9F20C86E24005FABEF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		01FC3DA020C86E24005FABEF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		01FC3DA220C86E24005FABEF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = RuzeneciOS/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = org.phracek.RuzeneciOS;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		01FC3DA320C86E24005FABEF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = RuzeneciOS/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = org.phracek.RuzeneciOS;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		01FC3DA520C86E24005FABEF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = RuzeneciOSTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = org.phracek.RuzeneciOSTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/RuzeneciOS.app/RuzeneciOS";
+			};
+			name = Debug;
+		};
+		01FC3DA620C86E24005FABEF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = RuzeneciOSTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = org.phracek.RuzeneciOSTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/RuzeneciOS.app/RuzeneciOS";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		01FC3D7F20C86E23005FABEF /* Build configuration list for PBXProject "RuzeneciOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				01FC3D9F20C86E24005FABEF /* Debug */,
+				01FC3DA020C86E24005FABEF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		01FC3DA120C86E24005FABEF /* Build configuration list for PBXNativeTarget "RuzeneciOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				01FC3DA220C86E24005FABEF /* Debug */,
+				01FC3DA320C86E24005FABEF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		01FC3DA420C86E24005FABEF /* Build configuration list for PBXNativeTarget "RuzeneciOSTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				01FC3DA520C86E24005FABEF /* Debug */,
+				01FC3DA620C86E24005FABEF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 01FC3D7C20C86E23005FABEF /* Project object */;
+}
