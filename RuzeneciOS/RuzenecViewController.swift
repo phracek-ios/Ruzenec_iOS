@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  RuzenecViewController.swift
 //  RuzeneciOS
 //
 //  Created by Petr Hracek on 06/06/2018.
@@ -8,14 +8,14 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class RuzenecViewController: UIViewController, UINavigationControllerDelegate {
     
     //MARK: Properties
-    @IBOutlet weak var ruzenec_label: UILabel!
     @IBOutlet weak var ruzenec_text_contain: UITextView!
     @IBOutlet weak var ruzenec_image: UIImageView!
+    @IBOutlet weak var ruzenec_title: UILabel!
     var count: Int = 0
-    var desatek: Int = 0
+    var type_desatek: Int = 0
     var zdravas_number: Int = 0
     var name: [Int: String] = [1: "Radostny ruzenec",
                                2: "Tajemstvi svetla",
@@ -41,15 +41,18 @@ class ViewController: UIViewController {
     var slava: String = "Slava Otci i Synu i Duchu Svatemu, jako byla na pocatku i nyni i vzdycky a na veky veku amen"
     var kralovno: String = "Zdravas Kralovno, matko milosrdenstvi, zivote sladkosti a nadeje nase bud zdrava"
     
+    var desatek: Desatek?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-        zdravas_number = 1
-        desatek = 0
-        ruzenec_label.text = name[zdravas_number]
-        show_ruzenec_text(by: true)
-        
+        if let desatek = desatek {
+            ruzenec_title.text = desatek.name
+            type_desatek = desatek.desatek
+            zdravas_number = 1
+            show_ruzenec_text(by: true)
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -68,11 +71,11 @@ class ViewController: UIViewController {
         }
         else if count == 12 {
             ruzenec_text_contain.text = kralovno
-            desatek = desatek + 1
+            type_desatek = type_desatek + 1
         }
         else if count >= 1 {
             var taj = desatky[zdravas_number]
-            let tajemstvi = taj![desatek]
+            let tajemstvi = taj![type_desatek]
             
             let text_ruzenec = zdravas + tajemstvi + zdravas_konec
             ruzenec_text_contain.text = text_ruzenec
@@ -92,6 +95,12 @@ class ViewController: UIViewController {
         }
 
     }
+    //MARK: Navigation
+    
+    @IBAction func cancel(_ sender: UIButton) {
+        dismiss(animated: true, completion: nil)
+    }
+
     //MARK: Actions
     @IBAction func previous_button(_ sender: UIButton) {
         show_ruzenec_text(by: false)

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import os.log
 
 class DesatekTableViewController: UITableViewController {
 
@@ -89,49 +90,71 @@ class DesatekTableViewController: UITableViewController {
     }
     */
 
-    /*
-    // MARK: - Navigation
-
+    
+    
+    //MARK: - Navigation
+    
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-    private func loadDesatky() {
-        let photoRadostny = UIImage(named: "r1")
-        let photoBolestny = UIImage(named: "r20")
-        let photoSvetla = UIImage(named: "r50")
-        let photoSlavny = UIImage(named: "r40")
-        let photoKorunka = UIImage(named: "r3")
-        let photoNastaveni = UIImage(named: "r22")
-        let photoO_aplikaci = UIImage(named: "r33")
         
-        guard let radostny = Desatek(name: "Radostny ruzenec", photo: photoRadostny) else {
-            fatalError("Unable to instanciate rc1")
+        super.prepare(for: segue, sender: sender)
+        switch(segue.identifier ?? "") {
+            
+        case "ShowDetail":
+            guard let ruzenecDetailViewController = segue.destination as? RuzenecViewController else {
+                fatalError("Unexpected destination: \(segue.destination)")
+            }
+            guard let selectedDesatekCell = sender as? DesatekTableViewCell else {
+                fatalError("Unexpected sender: \(String(describing: sender))")
+            }
+            guard let indexPath = tableView.indexPath(for: selectedDesatekCell) else {
+                fatalError("The selected cell is not being displayed by the table")
+            }
+            let selectedDesatek = desatky[indexPath.row]
+            ruzenecDetailViewController.desatek = selectedDesatek
+            
+        default:
+            fatalError("Unexpected Segue Identifier; \(String(describing: segue.identifier))")
+            
+        }
+    }
+    
+
+
+    private func loadDesatky() {
+        let photoRadostny = UIImage(named: "icon_radostny")
+        let photoBolestny = UIImage(named: "icon_bolestny")
+        let photoSvetla = UIImage(named: "icon_svetla")
+        let photoSlavny = UIImage(named: "icon_slavny")
+        let photoKorunka = UIImage(named: "icon_korunka")
+        let photoNastaveni = UIImage(named: "icon_settings")
+        let photoO_aplikaci = UIImage(named: "icon_about")
+        
+        guard let radostny = Desatek(name: "Radostny ruzenec", photo: photoRadostny, desatek: 0) else {
+            fatalError("Unable to instanciate Radostny ruzenec")
             
         }
         
-        guard let bolestny = Desatek(name: "Bolestny ruzenec", photo: photoBolestny) else {
-            fatalError("Unable to instanciate rc20")
+        guard let bolestny = Desatek(name: "Bolestny ruzenec", photo: photoBolestny, desatek: 1) else {
+            fatalError("Unable to instanciate bolestny ruzenec")
         }
         
-        guard let svetla = Desatek(name: "Ruzenec Svetla", photo: photoSvetla) else {
-            fatalError("Unable to instanciate rc50")
+        guard let svetla = Desatek(name: "Ruzenec Svetla", photo: photoSvetla, desatek: 2) else {
+            fatalError("Unable to instanciate ruzenec svetla")
         }
         
-        guard let slavny = Desatek(name: "Slavny ruzenec", photo: photoSlavny) else {
-            fatalError("Unable to instanciate rc40")
+        guard let slavny = Desatek(name: "Slavny ruzenec", photo: photoSlavny, desatek: 3) else {
+            fatalError("Unable to instanciate slavny ruzenec")
         }
         
-        guard let korunka = Desatek(name: "Korunka k Bozimu milosrdenstvi", photo: photoKorunka) else {
+        guard let korunka = Desatek(name: "Korunka k Bozimu milosrdenstvi", photo: photoKorunka, desatek: 4) else {
             fatalError("Unable to instanciate r3")
         }
         
-        guard let nastaveni = Desatek(name: "Nastaveni", photo: photoNastaveni) else {
+        guard let nastaveni = Desatek(name: "Nastaveni", photo: photoNastaveni, desatek: 5) else {
             fatalError("Unable to instanciate nastaveni")
         }
-        guard let o_aplikaci = Desatek(name: "O aplikaci", photo: photoO_aplikaci) else {
+        guard let o_aplikaci = Desatek(name: "O aplikaci", photo: photoO_aplikaci, desatek: 6) else {
             fatalError("Unable to instanciate o aplikaci")
         }
         desatky += [radostny, bolestny, svetla, slavny, korunka, nastaveni, o_aplikaci]

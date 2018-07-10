@@ -14,11 +14,17 @@ class RuzeneciOSTests: XCTestCase {
     //MARK: Desatek Class Tests
     
     func testDesatekInitializationSucceeds() {
-        let desatek = Desatek.init(name: "test", photo: nil)
+        let desatek = Desatek.init(name: "test", photo: nil, desatek: 0)
         XCTAssertNotNil(desatek)
     }
     func testDesatekInitializationFails(){
-        let emptyStringDesatek = Desatek.init(name: "", photo: nil)
+        let emptyStringDesatek = Desatek.init(name: "", photo: nil, desatek: 0)
         XCTAssertNil(emptyStringDesatek)
+    }
+    
+    // Negative Type
+    func testNegativeType() {
+        let emptyTypeDesatek = Desatek.init(name: "test", photo: nil, desatek: -1)
+        XCTAssertNil(emptyTypeDesatek)
     }
 }

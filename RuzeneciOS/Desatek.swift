@@ -14,18 +14,24 @@ class Desatek {
     
     var name: String
     var photo: UIImage?
+    var desatek: Int
     
     //MARK: Initialization
     
-    init?(name: String, photo: UIImage?){
+    init?(name: String, photo: UIImage?, desatek: Int){
         
         // The name must not be empty
         guard !name.isEmpty else {
             return nil
         }
+        // The type must not be negative
+        guard (desatek >= 0) && (desatek <= 6) else {
+            return nil
+        }
         // Initialize stored properties
         self.name = name
         self.photo = photo
+        self.desatek = desatek
         
     }
 }

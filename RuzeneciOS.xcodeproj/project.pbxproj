@@ -7,12 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		011E4A4920D2F2BE00ED05A1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 011E4A4820D2F2BE00ED05A1 /* Assets.xcassets */; };
 		0159D01D20D05E5C00D759D4 /* DesatekTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0159D01C20D05E5C00D759D4 /* DesatekTableViewCell.swift */; };
 		01A936A020D4447500A5D979 /* DesatekTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01A9369F20D4447500A5D979 /* DesatekTableViewController.swift */; };
 		01A936A220D4474F00A5D979 /* Desatek.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01A936A120D4474F00A5D979 /* Desatek.swift */; };
+		01B3441220DD0D300028EAE0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 01B3441120DD0D300028EAE0 /* Assets.xcassets */; };
 		01FC3D8820C86E23005FABEF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01FC3D8720C86E23005FABEF /* AppDelegate.swift */; };
-		01FC3D8A20C86E23005FABEF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01FC3D8920C86E23005FABEF /* ViewController.swift */; };
+		01FC3D8A20C86E23005FABEF /* RuzenecViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01FC3D8920C86E23005FABEF /* RuzenecViewController.swift */; };
 		01FC3D8D20C86E23005FABEF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 01FC3D8B20C86E23005FABEF /* Main.storyboard */; };
 		01FC3D9220C86E24005FABEF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 01FC3D9020C86E24005FABEF /* LaunchScreen.storyboard */; };
 		01FC3D9D20C86E24005FABEF /* RuzeneciOSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01FC3D9C20C86E24005FABEF /* RuzeneciOSTests.swift */; };
@@ -29,13 +29,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		011E4A4820D2F2BE00ED05A1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0159D01C20D05E5C00D759D4 /* DesatekTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesatekTableViewCell.swift; sourceTree = "<group>"; };
 		01A9369F20D4447500A5D979 /* DesatekTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesatekTableViewController.swift; sourceTree = "<group>"; };
 		01A936A120D4474F00A5D979 /* Desatek.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Desatek.swift; sourceTree = "<group>"; };
+		01B3441120DD0D300028EAE0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		01FC3D8420C86E23005FABEF /* RuzeneciOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RuzeneciOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		01FC3D8720C86E23005FABEF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		01FC3D8920C86E23005FABEF /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		01FC3D8920C86E23005FABEF /* RuzenecViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RuzenecViewController.swift; sourceTree = "<group>"; };
 		01FC3D8C20C86E23005FABEF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		01FC3D9120C86E24005FABEF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		01FC3D9320C86E24005FABEF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -83,10 +83,10 @@
 		01FC3D8620C86E23005FABEF /* RuzeneciOS */ = {
 			isa = PBXGroup;
 			children = (
-				011E4A4820D2F2BE00ED05A1 /* Assets.xcassets */,
+				01B3441120DD0D300028EAE0 /* Assets.xcassets */,
 				0159D01C20D05E5C00D759D4 /* DesatekTableViewCell.swift */,
 				01FC3D8720C86E23005FABEF /* AppDelegate.swift */,
-				01FC3D8920C86E23005FABEF /* ViewController.swift */,
+				01FC3D8920C86E23005FABEF /* RuzenecViewController.swift */,
 				01FC3D8B20C86E23005FABEF /* Main.storyboard */,
 				01FC3D9020C86E24005FABEF /* LaunchScreen.storyboard */,
 				01FC3D9320C86E24005FABEF /* Info.plist */,
@@ -187,7 +187,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				01FC3D9220C86E24005FABEF /* LaunchScreen.storyboard in Resources */,
-				011E4A4920D2F2BE00ED05A1 /* Assets.xcassets in Resources */,
+				01B3441220DD0D300028EAE0 /* Assets.xcassets in Resources */,
 				01FC3D8D20C86E23005FABEF /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -206,7 +206,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				01FC3D8A20C86E23005FABEF /* ViewController.swift in Sources */,
+				01FC3D8A20C86E23005FABEF /* RuzenecViewController.swift in Sources */,
 				01FC3D8820C86E23005FABEF /* AppDelegate.swift in Sources */,
 				01A936A220D4474F00A5D979 /* Desatek.swift in Sources */,
 				01A936A020D4447500A5D979 /* DesatekTableViewController.swift in Sources */,
