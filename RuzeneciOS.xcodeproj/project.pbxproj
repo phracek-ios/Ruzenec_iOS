@@ -16,6 +16,9 @@
 		01FC3D8D20C86E23005FABEF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 01FC3D8B20C86E23005FABEF /* Main.storyboard */; };
 		01FC3D9220C86E24005FABEF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 01FC3D9020C86E24005FABEF /* LaunchScreen.storyboard */; };
 		01FC3D9D20C86E24005FABEF /* RuzeneciOSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01FC3D9C20C86E24005FABEF /* RuzeneciOSTests.swift */; };
+		4B01C4CD20F63D2B008D4CEA /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B01C4CC20F63D2B008D4CEA /* SettingsViewController.swift */; };
+		4B01C4CF20F63D41008D4CEA /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B01C4CE20F63D41008D4CEA /* AboutViewController.swift */; };
+		4B01C4D120F63DAF008D4CEA /* About.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4B01C4D020F63DAF008D4CEA /* About.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,6 +45,9 @@
 		01FC3D9820C86E24005FABEF /* RuzeneciOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RuzeneciOSTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		01FC3D9C20C86E24005FABEF /* RuzeneciOSTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RuzeneciOSTests.swift; sourceTree = "<group>"; };
 		01FC3D9E20C86E24005FABEF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4B01C4CC20F63D2B008D4CEA /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		4B01C4CE20F63D41008D4CEA /* AboutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
+		4B01C4D020F63DAF008D4CEA /* About.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = About.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,6 +98,7 @@
 				01FC3D9320C86E24005FABEF /* Info.plist */,
 				01A9369F20D4447500A5D979 /* DesatekTableViewController.swift */,
 				01A936A120D4474F00A5D979 /* Desatek.swift */,
+				4B01C4CB20F63D19008D4CEA /* Controllers */,
 			);
 			path = RuzeneciOS;
 			sourceTree = "<group>";
@@ -103,6 +110,16 @@
 				01FC3D9E20C86E24005FABEF /* Info.plist */,
 			);
 			path = RuzeneciOSTests;
+			sourceTree = "<group>";
+		};
+		4B01C4CB20F63D19008D4CEA /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				4B01C4CC20F63D2B008D4CEA /* SettingsViewController.swift */,
+				4B01C4D020F63DAF008D4CEA /* About.storyboard */,
+				4B01C4CE20F63D41008D4CEA /* AboutViewController.swift */,
+			);
+			path = Controllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -188,6 +205,7 @@
 			files = (
 				01FC3D9220C86E24005FABEF /* LaunchScreen.storyboard in Resources */,
 				01B3441220DD0D300028EAE0 /* Assets.xcassets in Resources */,
+				4B01C4D120F63DAF008D4CEA /* About.storyboard in Resources */,
 				01FC3D8D20C86E23005FABEF /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -209,8 +227,10 @@
 				01FC3D8A20C86E23005FABEF /* RuzenecViewController.swift in Sources */,
 				01FC3D8820C86E23005FABEF /* AppDelegate.swift in Sources */,
 				01A936A220D4474F00A5D979 /* Desatek.swift in Sources */,
+				4B01C4CF20F63D41008D4CEA /* AboutViewController.swift in Sources */,
 				01A936A020D4447500A5D979 /* DesatekTableViewController.swift in Sources */,
 				0159D01D20D05E5C00D759D4 /* DesatekTableViewCell.swift in Sources */,
+				4B01C4CD20F63D2B008D4CEA /* SettingsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

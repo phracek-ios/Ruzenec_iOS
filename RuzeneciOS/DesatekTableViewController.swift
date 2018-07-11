@@ -10,16 +10,30 @@ import UIKit
 import os.log
 
 class DesatekTableViewController: UITableViewController {
+    
+    enum RowType {
+        case desatek
+        case settings
+        case about
+    }
+    
+    struct RowData {
+        let type: RowType
+        let desatek: Desatek?
+    }
 
     //MARK: Properties
     
-    var desatky = [Desatek]()
+    fileprivate var desatky = [Desatek]()
+    fileprivate var rowData = [RowData]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // load sample data
         loadDesatky()
+        loadRowData()
+        
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -39,7 +53,7 @@ class DesatekTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return desatky.count
+        return rowData.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -48,9 +62,18 @@ class DesatekTableViewController: UITableViewController {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? DesatekTableViewCell else {
             fatalError("The dequeue cell is not an entrance of DesatekTableViewCell")
         }
-        let des = desatky[indexPath.row]
-        cell.desatekLabel.text = des.name
-        cell.photoImageView.image = des.photo
+        let data = rowData[indexPath.row]
+        switch data.type {
+        case .desatek:
+            cell.desatekLabel.text = data.desatek?.name
+            cell.photoImageView.image = data.desatek?.photo
+        case .settings:
+            cell.desatekLabel.text = "Nastavení"
+            cell.photoImageView.image = UIImage(named: "icon_settings")
+        case .about:
+            cell.desatekLabel.text = "O aplikaci"
+            cell.photoImageView.image = UIImage(named: "icon_about")
+        }
 
         return cell
     }
@@ -100,18 +123,16 @@ class DesatekTableViewController: UITableViewController {
         super.prepare(for: segue, sender: sender)
         switch(segue.identifier ?? "") {
             
-        case "ShowDetail":
+        case "ShowRuzenec":
             guard let ruzenecDetailViewController = segue.destination as? RuzenecViewController else {
                 fatalError("Unexpected destination: \(segue.destination)")
             }
-            guard let selectedDesatekCell = sender as? DesatekTableViewCell else {
-                fatalError("Unexpected sender: \(String(describing: sender))")
-            }
-            guard let indexPath = tableView.indexPath(for: selectedDesatekCell) else {
+            guard let indexPath = sender as? IndexPath else {
                 fatalError("The selected cell is not being displayed by the table")
             }
-            let selectedDesatek = desatky[indexPath.row]
-            ruzenecDetailViewController.desatek = selectedDesatek
+            if let selectedDesatek = rowData[indexPath.row].desatek {
+                ruzenecDetailViewController.desatek = selectedDesatek
+            }
             
         default:
             fatalError("Unexpected Segue Identifier; \(String(describing: segue.identifier))")
@@ -119,7 +140,21 @@ class DesatekTableViewController: UITableViewController {
         }
     }
     
-
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let data = rowData[indexPath.row]
+        
+        switch data.type {
+        case .desatek:
+            performSegue(withIdentifier: "ShowRuzenec", sender: indexPath)
+        case .settings:
+            let settingsVieController = SettingsViewController()
+            navigationController?.pushViewController(settingsVieController, animated: true)
+        case .about:
+            if let aboutVieController = UIStoryboard(name: "About", bundle: nil).instantiateInitialViewController() {
+                navigationController?.pushViewController(aboutVieController, animated: true)
+            }
+        }
+    }
 
     private func loadDesatky() {
         let photoRadostny = UIImage(named: "icon_radostny")
@@ -127,8 +162,6 @@ class DesatekTableViewController: UITableViewController {
         let photoSvetla = UIImage(named: "icon_svetla")
         let photoSlavny = UIImage(named: "icon_slavny")
         let photoKorunka = UIImage(named: "icon_korunka")
-        let photoNastaveni = UIImage(named: "icon_settings")
-        let photoO_aplikaci = UIImage(named: "icon_about")
         
         guard let radostny = Desatek(name: "Radostny ruzenec", photo: photoRadostny, desatek: 0) else {
             fatalError("Unable to instanciate Radostny ruzenec")
@@ -151,12 +184,12 @@ class DesatekTableViewController: UITableViewController {
             fatalError("Unable to instanciate r3")
         }
         
-        guard let nastaveni = Desatek(name: "Nastaveni", photo: photoNastaveni, desatek: 5) else {
-            fatalError("Unable to instanciate nastaveni")
-        }
-        guard let o_aplikaci = Desatek(name: "O aplikaci", photo: photoO_aplikaci, desatek: 6) else {
-            fatalError("Unable to instanciate o aplikaci")
-        }
-        desatky += [radostny, bolestny, svetla, slavny, korunka, nastaveni, o_aplikaci]
+        desatky += [radostny, bolestny, svetla, slavny, korunka]
+    }
+    
+    private func loadRowData() {
+        rowData = desatky.map { RowData(type: .desatek, desatek: $0) }
+        rowData.append(RowData(type: .settings, desatek: nil))
+        rowData.append(RowData(type: .about, desatek: nil))
     }
 }
