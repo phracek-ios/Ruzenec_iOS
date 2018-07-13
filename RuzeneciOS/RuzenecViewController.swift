@@ -87,34 +87,71 @@ class RuzenecViewController: UIViewController, UINavigationControllerDelegate {
         // Dispose of any resources that can be recreated.
     }
 
+    func get_colored_text(_ text: String) -> NSMutableAttributedString{
+        let style = NSMutableParagraphStyle()
+        style.alignment = .center
+        let ns_text = NSMutableAttributedString (string: text)
+        let start = text.index(text.startIndex, offsetBy: 0)
+        let end = text.index(text.startIndex, offsetBy: text.count)
+        let myRange = start..<end
+        ns_text.addAttribute(NSAttributedStringKey.foregroundColor, value: UIColor.red, range: NSRange(myRange, in: text))
+        let mutableZdravas = NSMutableAttributedString(string: zdravas)
+        let mutableZdravasKonec = NSMutableAttributedString(string: zdravas_konec)
+        mutableZdravas.append(ns_text)
+        mutableZdravas.append(mutableZdravasKonec)
+        return mutableZdravas
+    }
     func show_ruzenec_text(by direction: Bool) {
         let attrs = [NSAttributedStringKey.foregroundColor : UIColor.red]
+        if direction {
+            ruzenec_image.image = UIImage(named: String(format: "r%d", image_count + 1))
+        }
+        else {
+            ruzenec_image.image = UIImage(named: String(format: "r%d", image_count - 1))
+        }
+        if direction {
+            image_count += 1
+            if count != 8 {
+                count += 1
+            }
+        }
+        else {
+            image_count -=  1
+            if count != 8 {
+                count -= 1
+            }
+        }
         switch count {
-        case 0:
-            ruzenec_text_contain.text = pozdraveni + "\n" + vyznani_viry
         case 1:
-            ruzenec_text_contain.text = otce_nas
+            ruzenec_text_contain.text = pozdraveni + "\n" + vyznani_viry
         case 2:
-            var text: String = "v kterého věříme."
-            //let myMutableString = NSMutableAttributedString(string: text, attributes: attrs)
-
-            ruzenec_text_contain.text = zdravas + "v kterého věříme." + zdravas_konec
-        case 3:
-            ruzenec_text_contain.text = zdravas + "v kterého doufáme." + zdravas_konec
-        case 4:
-            ruzenec_text_contain.text = zdravas + "v kterého nade všechno milujeme." + zdravas_konec
-        case 5:
-            ruzenec_text_contain.text = slava
-        case 6:
             ruzenec_text_contain.text = otce_nas
+        case 3:
+            ruzenec_text_contain.attributedText = get_colored_text("v kterého věříme.")
+            ruzenec_text_contain.textAlignment = NSTextAlignment.center
+        case 4:
+            ruzenec_text_contain.attributedText = get_colored_text("v kterého doufáme.")
+            ruzenec_text_contain.textAlignment = NSTextAlignment.center
+        case 5:
+            ruzenec_text_contain.attributedText = get_colored_text("v kterého nade všechno milujeme.")
+            ruzenec_text_contain.textAlignment = NSTextAlignment.center
+        case 6:
+            ruzenec_text_contain.text = slava
         case 7:
-            zrno += 1
+            ruzenec_text_contain.text = otce_nas
+        case 8:
+            if direction {
+                zrno += 1
+            }
+            else {
+                zrno -= 1
+            }
             if zrno < 11 {
                 var taj = desatky[zdravas_number]
                 let tajemstvi = taj![type_desatek]
                 
-                let text_ruzenec = zdravas + tajemstvi + zdravas_konec
-                ruzenec_text_contain.text = text_ruzenec
+                ruzenec_text_contain.attributedText = get_colored_text(tajemstvi)
+                ruzenec_text_contain.textAlignment = NSTextAlignment.center
             }
             else if zrno == 11 {
                 ruzenec_text_contain.text = slava
@@ -125,33 +162,22 @@ class RuzenecViewController: UIViewController, UINavigationControllerDelegate {
                 image_count -= 1
                 type_desatek += 1
                 if type_desatek < 5 {
-                    count = 5
+                    count = 6
                 }
                 else {
-                    count = 8
+                    count = 9
                 }
             }
-        case 9:
+        case 10:
             image_count = 65
             ruzenec_text_contain.text = kralovno
             
-        case 10:
+        case 11:
             image_count = 65
             ruzenec_text_contain.text = konec
             next_button.isEnabled = false
         default:
             ruzenec_text_contain.text = "Error"
-        }
-        let photo_str = String(format: "r%d", image_count + 1)
-        ruzenec_image.image = UIImage(named: photo_str)
-        if direction {
-            image_count += 1
-            if count != 7 {
-                count += 1
-            }
-        }
-        else {
-            image_count -=  1
         }
     }
     
