@@ -147,11 +147,14 @@ class DesatekTableViewController: UITableViewController {
         case .desatek:
             performSegue(withIdentifier: "ShowRuzenec", sender: indexPath)
         case .settings:
-            let settingsVieController = SettingsViewController()
-            navigationController?.pushViewController(settingsVieController, animated: true)
+            //let settingsViewController = SettingsViewController()
+            //navigationController?.pushViewController(settingsViewController, animated: true)
+            if let settingsViewController = UIStoryboard(name: "Settings", bundle: nil).instantiateInitialViewController() {
+                navigationController?.pushViewController(settingsViewController, animated: true)
+            }
         case .about:
-            if let aboutVieController = UIStoryboard(name: "About", bundle: nil).instantiateInitialViewController() {
-                navigationController?.pushViewController(aboutVieController, animated: true)
+            if let aboutViewController = UIStoryboard(name: "About", bundle: nil).instantiateInitialViewController() {
+                navigationController?.pushViewController(aboutViewController, animated: true)
             }
         }
     }

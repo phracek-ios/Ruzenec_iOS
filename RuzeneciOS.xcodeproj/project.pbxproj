@@ -8,9 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		0159D01D20D05E5C00D759D4 /* DesatekTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0159D01C20D05E5C00D759D4 /* DesatekTableViewCell.swift */; };
+		015B37AA20F78EA4001E15D3 /* ruzenec.json in Resources */ = {isa = PBXBuildFile; fileRef = 01CD80A220F6890200A8BE5C /* ruzenec.json */; };
 		01A936A020D4447500A5D979 /* DesatekTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01A9369F20D4447500A5D979 /* DesatekTableViewController.swift */; };
 		01A936A220D4474F00A5D979 /* Desatek.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01A936A120D4474F00A5D979 /* Desatek.swift */; };
 		01B3441220DD0D300028EAE0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 01B3441120DD0D300028EAE0 /* Assets.xcassets */; };
+		01CD80A020F66F0500A8BE5C /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 01CD809F20F66F0500A8BE5C /* Settings.storyboard */; };
 		01FC3D8820C86E23005FABEF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01FC3D8720C86E23005FABEF /* AppDelegate.swift */; };
 		01FC3D8A20C86E23005FABEF /* RuzenecViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01FC3D8920C86E23005FABEF /* RuzenecViewController.swift */; };
 		01FC3D8D20C86E23005FABEF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 01FC3D8B20C86E23005FABEF /* Main.storyboard */; };
@@ -36,6 +38,8 @@
 		01A9369F20D4447500A5D979 /* DesatekTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesatekTableViewController.swift; sourceTree = "<group>"; };
 		01A936A120D4474F00A5D979 /* Desatek.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Desatek.swift; sourceTree = "<group>"; };
 		01B3441120DD0D300028EAE0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		01CD809F20F66F0500A8BE5C /* Settings.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Settings.storyboard; sourceTree = "<group>"; };
+		01CD80A220F6890200A8BE5C /* ruzenec.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = ruzenec.json; sourceTree = "<group>"; };
 		01FC3D8420C86E23005FABEF /* RuzeneciOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RuzeneciOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		01FC3D8720C86E23005FABEF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		01FC3D8920C86E23005FABEF /* RuzenecViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RuzenecViewController.swift; sourceTree = "<group>"; };
@@ -68,6 +72,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		01CD80A320F6990500A8BE5C /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				01CD80A220F6890200A8BE5C /* ruzenec.json */,
+			);
+			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
 		01FC3D7B20C86E23005FABEF = {
 			isa = PBXGroup;
 			children = (
@@ -89,6 +101,7 @@
 		01FC3D8620C86E23005FABEF /* RuzeneciOS */ = {
 			isa = PBXGroup;
 			children = (
+				01CD80A320F6990500A8BE5C /* Supporting Files */,
 				01B3441120DD0D300028EAE0 /* Assets.xcassets */,
 				0159D01C20D05E5C00D759D4 /* DesatekTableViewCell.swift */,
 				01FC3D8720C86E23005FABEF /* AppDelegate.swift */,
@@ -118,6 +131,7 @@
 				4B01C4CC20F63D2B008D4CEA /* SettingsViewController.swift */,
 				4B01C4D020F63DAF008D4CEA /* About.storyboard */,
 				4B01C4CE20F63D41008D4CEA /* AboutViewController.swift */,
+				01CD809F20F66F0500A8BE5C /* Settings.storyboard */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -205,8 +219,10 @@
 			files = (
 				01FC3D9220C86E24005FABEF /* LaunchScreen.storyboard in Resources */,
 				01B3441220DD0D300028EAE0 /* Assets.xcassets in Resources */,
+				015B37AA20F78EA4001E15D3 /* ruzenec.json in Resources */,
 				4B01C4D120F63DAF008D4CEA /* About.storyboard in Resources */,
 				01FC3D8D20C86E23005FABEF /* Main.storyboard in Resources */,
+				01CD80A020F66F0500A8BE5C /* Settings.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
