@@ -145,6 +145,7 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
+                        <outlet property="next_button" destination="Hqd-5l-NqO" id="Nhw-iN-LAl"/>
                         <outlet property="ruzenec_image" destination="I9D-vz-kcu" id="u0i-iz-xQq"/>
                         <outlet property="ruzenec_text_contain" destination="Fth-qd-6pt" id="Xwc-cp-T4t"/>
                         <outlet property="ruzenec_title" destination="Tbf-zD-98K" id="q0y-8z-qqu"/>
