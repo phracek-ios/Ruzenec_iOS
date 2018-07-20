@@ -25,7 +25,7 @@ class Desatek {
             return nil
         }
         // The type must not be negative
-        guard (desatek >= 0) && (desatek <= 6) else {
+        guard (desatek >= 0) && (desatek <= 7) else {
             return nil
         }
         // Initialize stored properties

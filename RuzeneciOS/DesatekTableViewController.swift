@@ -165,6 +165,9 @@ class DesatekTableViewController: UITableViewController {
         let photoSvetla = UIImage(named: "icon_svetla")
         let photoSlavny = UIImage(named: "icon_slavny")
         let photoKorunka = UIImage(named: "icon_korunka")
+        let photoSedmibolestny = UIImage(named: "icon_sorrow")
+        let photoJoseph = UIImage(named: "icon_joseph")
+        let photoSedmiradostna = UIImage(named: "icon_mary")
         
         guard let radostny = Desatek(name: "Radostny ruzenec", photo: photoRadostny, desatek: 0) else {
             fatalError("Unable to instanciate Radostny ruzenec")
@@ -183,11 +186,25 @@ class DesatekTableViewController: UITableViewController {
             fatalError("Unable to instanciate slavny ruzenec")
         }
         
+        guard let sedmibolestne =  Desatek(name: "Sedmibolestna tajemstvi", photo: photoSedmibolestny, desatek: 5) else {
+            fatalError("Unable to instanciate sedmiradostny ruzenec")
+        }
+        
+        guard let sedmiradostne = Desatek(name: "Sedmiradostne tajemstvi", photo: photoSedmiradostna, desatek: 6) else {
+            fatalError("Unable to instanciate sedmiradostny")
+        }
+        
+        guard let sv_josef = Desatek(name: "Ruzenec ke sv. Josefovi", photo: photoJoseph, desatek: 7) else {
+            fatalError("Unable to instanciate ruzenec sv josefa")
+            
+        }
+        
         guard let korunka = Desatek(name: "Korunka k Bozimu milosrdenstvi", photo: photoKorunka, desatek: 4) else {
             fatalError("Unable to instanciate r3")
         }
         
-        desatky += [radostny, bolestny, svetla, slavny, korunka]
+        desatky += [radostny, bolestny, svetla, slavny, korunka, sedmibolestne,
+        sedmiradostne, sv_josef]
     }
     
     private func loadRowData() {
