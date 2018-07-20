@@ -1,14 +1,14 @@
 {
-    "otce_nas": "Otče náš, jenž jsi na nebesích, posvěť se jméno tvé. Přijď království tvé. Buď vůle tvá jako v nebi, tak i na zemi. Chléb náš vezdejší dej nám dnes. A odpusť nám naše viny, jako i my odpouštíme našim viníkům. A neuveď nás v pokušení, ale zbav nás od zlého. Amen",
-    "zdravas": "Zdravas, Maria, milosti plna, Pan s tebou; pozehnana ty mezi zenami a pozehnany plod zivota tveho, Jezis, ",
-    "zdravas_konec": " Svata Maria, Matko Bozi pros za nas hrisne nyni i v hodinu smrti nasi. Amen.",
-    "slava": "Slava Otci i Synu i Duchu Svatemu, jako byla na pocatku i nyni i vzdycky a na veky veku amen",
-    "kralovno": "Zdrávas Královno, matko milosrdenství, živote sladkosti a naděje naše buď zdráva",
+    "lordPrayer": "Otče náš, jenž jsi na nebesích, posvěť se jméno tvé. Přijď království tvé. Buď vůle tvá jako v nebi, tak i na zemi. Chléb náš vezdejší dej nám dnes. A odpusť nám naše viny, jako i my odpouštíme našim viníkům. A neuveď nás v pokušení, ale zbav nás od zlého. Amen",
+    "aveMaria": "Zdravas, Maria, milosti plna, Pan s tebou; pozehnana ty mezi zenami a pozehnany plod zivota tveho, Jezis, ",
+    "aveMariaEnd": " Svata Maria, Matko Bozi pros za nas hrisne nyni i v hodinu smrti nasi. Amen.",
+    "gloriaPatri": "Slava Otci i Synu i Duchu Svatemu, jako byla na pocatku i nyni i vzdycky a na veky veku amen",
+    "salveRegina": "Zdrávas Královno, matko milosrdenství, živote sladkosti a naděje naše buď zdráva",
     "rosaries": [
          {
              "id": 1,
              "name": "Radostný růženec",
-             "desatky":["ktereho jsi z Ducha Svateho pocala.",
+             "decades":["ktereho jsi z Ducha Svateho pocala.",
                         "s kterym jsi Alzbetu nasvtivila",
                         "ktereho jsi v Betleme porodila",
                         "ktereho jsi v chrame obetovala",
@@ -17,7 +17,7 @@
          {
              "id": 2,
              "name": "Tajemství světla",
-             "desatky": ["ktery byl pokrten v Jordanu.",
+             "decades": ["ktery byl pokrten v Jordanu.",
                          "ktery zjevil v Kane svou bozskou moc.",
                          "ktery hlasal Bozi kralovstvi a vyzyval k pokani.",
                          "ktery na hore Promeneni zjevil svou slavu.",
@@ -26,11 +26,12 @@
          {
              "id": 3,
              "name": "Bolestný růženec",
-             "desatky": []
+             "decades": []
          },
          {
              "id": 4,
-             "name": "Slavný růženec"
+             "name": "Slavný růženec",
+             "decades": []
          }
     ]
 }

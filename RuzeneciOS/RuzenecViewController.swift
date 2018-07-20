@@ -19,9 +19,9 @@ class RuzenecViewController: UIViewController, UINavigationControllerDelegate {
     var image_count: Int = 0
     var type_desatek: Int = 0
     var zdravas_number: Int = 0
-    var otce_nas: String = "Otče náš, jenž jsi na nebesích,\nposvěť se jméno tvé.\nPřijď království tvé.\nBuď vůle tvá jako v nebi, tak i na zemi.\nChléb náš vezdejší dej nám dnes.\nA odpusť nám naše viny,\njako i my odpouštíme našim viníkům.\nA neuveď nás v pokušení,\nale zbav nás od zlého.\nAmen."
-    var slava: String = "Sláva Otci i Synu i Duchu svatému, jako byla na počátku, i nyní, i vždycky a na věky věků. Amen."
-    var kralovno: String = "Zdrávas Královno, matko milosrdenství, živote, sladkosti a naděje naše, buď zdráva! K tobě voláme, vyhnaní synové Evy, k tobě vzdycháme, lkajíce a plačíce v tomto slzavém údolí. A proto, orodovnice naše, obrať k nám své milosrdné oči a Ježíše, požehnaný plod života svého, nám po tomto putování ukaž, ó milostivá, ó přívětivá, ó přesladká, Panno Maria!"
+//    var otce_nas: String = "Otče náš, jenž jsi na nebesích,\nposvěť se jméno tvé.\nPřijď království tvé.\nBuď vůle tvá jako v nebi, tak i na zemi.\nChléb náš vezdejší dej nám dnes.\nA odpusť nám naše viny,\njako i my odpouštíme našim viníkům.\nA neuveď nás v pokušení,\nale zbav nás od zlého.\nAmen."
+//    var slava: String = "Sláva Otci i Synu i Duchu svatému, jako byla na počátku, i nyní, i vždycky a na věky věků. Amen."
+//    var kralovno: String = "Zdrávas Královno, matko milosrdenství, živote, sladkosti a naděje naše, buď zdráva! K tobě voláme, vyhnaní synové Evy, k tobě vzdycháme, lkajíce a plačíce v tomto slzavém údolí. A proto, orodovnice naše, obrať k nám své milosrdné oči a Ježíše, požehnaný plod života svého, nám po tomto putování ukaž, ó milostivá, ó přívětivá, ó přesladká, Panno Maria!"
     var pozdraveni: String = "Ve jménu Otce i Syna i Ducha svatého Amen.\n\n"
     var vyznani_viry: String = "Věřím v Boha, Otce všemohoucího, Stvořitele nebe i země. I v Ježíše Krista, Syna jeho Jediného, Pána našeho;\njenž se počal z Ducha svatého, narodil se z Marie Panny, trpěl pod Ponciem Pilátem, ukřižován umřel i pohřben jest;\nsestoupil do pekel, třetího dne vstal z mrtvých; vstoupil na nebesa, sedí po pravici Boha, Otce všemohoucího; odtud přijde soudit živé i mrtvé.\nVěřím v Ducha Svatého, svatou církev obecnou, společenství svatých, odpuštění hříchů, vzkříšení těla a život věčný.\nAmen."
 
@@ -72,10 +72,11 @@ class RuzenecViewController: UIViewController, UINavigationControllerDelegate {
     var desatek: Desatek?
     var typ_obrazku: String = "r"
     
+    fileprivate var rosaryStructure: RosaryStructure?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
-        parseJSON()
+        rosaryStructure = RosaryDataService.shared.rosaryStructure
         
         if let desatek = desatek {
             ruzenec_title.text = desatek.name
@@ -89,25 +90,6 @@ class RuzenecViewController: UIViewController, UINavigationControllerDelegate {
             }
             show_ruzenec_zacatek(by: true)
         }
-    }
-
-    private func parseJSON() {
-        if let path = Bundle.main.path(forResource: "ruzenec", ofType: "json") {
-            let data = try! Data(contentsOf: URL(fileURLWithPath: path))
-            let jsonResult = try! JSONSerialization.jsonObject(with: data, options: .allowFragments)
-            print(jsonResult)
-            
-            if let str = (jsonResult as! NSDictionary).value(forKey: "otce_nas") {
-                otce_nas = str as? String ?? ""
-            }
-        } else {
-            print("File not found")
-        }
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 
     func get_colored_text(_ text: String) -> NSMutableAttributedString{
@@ -134,13 +116,16 @@ class RuzenecViewController: UIViewController, UINavigationControllerDelegate {
         }
     }
     func show_ruzenec_zacatek(by direction: Bool) {
+        guard let rosaryStructure = rosaryStructure else { return }
+        
         zobraz_obrazek(by: direction)
         zvys_pocitadlo(by: direction)
         switch count {
         case 1:
+            
             ruzenec_text_contain.text = pozdraveni + "\n" + vyznani_viry
         case 2:
-            ruzenec_text_contain.text = otce_nas
+            ruzenec_text_contain.text = rosaryStructure.lordPrayer
         case 3:
             ruzenec_text_contain.attributedText = get_colored_text("v kterého věříme.")
             ruzenec_text_contain.textAlignment = NSTextAlignment.center
@@ -151,7 +136,7 @@ class RuzenecViewController: UIViewController, UINavigationControllerDelegate {
             ruzenec_text_contain.attributedText = get_colored_text("v kterého nade všechno milujeme.")
             ruzenec_text_contain.textAlignment = NSTextAlignment.center
         case 6:
-            ruzenec_text_contain.text = slava
+            ruzenec_text_contain.text = rosaryStructure.gloriaPatri
         default:
             ruzenec_text_contain.text = "Error"
         }
@@ -172,12 +157,15 @@ class RuzenecViewController: UIViewController, UINavigationControllerDelegate {
             }
         }
     }
+    
     func show_ruzenec_sedmi_text(by direction: Bool) {
+        guard let rosaryStructure = rosaryStructure else { return }
+        
         zobraz_obrazek(by: direction)
         zvys_pocitadlo(by: direction)
         switch count {
         case 7:
-            ruzenec_text_contain.text = otce_nas
+            ruzenec_text_contain.text = rosaryStructure.lordPrayer
         case 8:
             if direction {
                 zrno += 1
@@ -193,7 +181,7 @@ class RuzenecViewController: UIViewController, UINavigationControllerDelegate {
                 ruzenec_text_contain.textAlignment = NSTextAlignment.center
             }
             else if zrno == 8 {
-                ruzenec_text_contain.text = slava
+                ruzenec_text_contain.text = rosaryStructure.gloriaPatri
             }
             else {
                 ruzenec_text_contain.text = odpust_hrichy
@@ -208,7 +196,7 @@ class RuzenecViewController: UIViewController, UINavigationControllerDelegate {
             }
         case 10:
             image_count = 74
-            ruzenec_text_contain.text = kralovno
+            ruzenec_text_contain.text = rosaryStructure.salveRegina
             
         case 11:
             image_count = 74
@@ -220,11 +208,13 @@ class RuzenecViewController: UIViewController, UINavigationControllerDelegate {
 
     }
     func show_ruzenec_text(by direction: Bool) {
+        guard let rosaryStructure = rosaryStructure else { return }
+        
         zobraz_obrazek(by: direction)
         zvys_pocitadlo(by: direction)
         switch count {
         case 7:
-            ruzenec_text_contain.text = otce_nas
+            ruzenec_text_contain.text = rosaryStructure.lordPrayer
         case 8:
             if direction {
                 zrno += 1
@@ -233,14 +223,14 @@ class RuzenecViewController: UIViewController, UINavigationControllerDelegate {
                 zrno -= 1
             }
             if zrno < 11 {
-                var taj = desatky[zdravas_number]
-                let tajemstvi = taj![type_desatek]
+                var rosary = rosaryStructure.rosaries[zdravas_number]
+                let tajemstvi = rosary.decades[type_desatek]
                 
                 ruzenec_text_contain.attributedText = get_colored_text(tajemstvi)
                 ruzenec_text_contain.textAlignment = NSTextAlignment.center
             }
             else if zrno == 11 {
-                ruzenec_text_contain.text = slava
+                ruzenec_text_contain.text = rosaryStructure.gloriaPatri
             }
             else {
                 ruzenec_text_contain.text = odpust_hrichy
@@ -256,7 +246,7 @@ class RuzenecViewController: UIViewController, UINavigationControllerDelegate {
             }
         case 10:
             image_count = 65
-            ruzenec_text_contain.text = kralovno
+            ruzenec_text_contain.text = rosaryStructure.salveRegina
             
         case 11:
             image_count = 65
