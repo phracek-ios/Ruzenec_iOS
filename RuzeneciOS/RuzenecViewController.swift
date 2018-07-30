@@ -8,6 +8,7 @@
 
 import UIKit
 
+
 class RuzenecViewController: UIViewController, UINavigationControllerDelegate {
     
     //MARK: Properties
@@ -15,6 +16,7 @@ class RuzenecViewController: UIViewController, UINavigationControllerDelegate {
     @IBOutlet weak var ruzenec_image: UIImageView!
     @IBOutlet weak var ruzenec_title: UILabel!
     @IBOutlet weak var next_button: UIButton!
+    @IBOutlet var rosary_view_controller: UIView!
     var count: Int = 0
     var image_count: Int = 0
     var type_desatek: Int = 0
@@ -23,20 +25,29 @@ class RuzenecViewController: UIViewController, UINavigationControllerDelegate {
     var zrno: Int = 0
     var desatek: Desatek?
     var typ_obrazku: String = "r"
-    
+    var darkMode: Bool = true
     fileprivate var rosaryStructure: RosaryStructure?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        rosaryStructure = RosaryDataService.shared.rosaryStructure
+        self.view.isUserInteractionEnabled = true
         
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.viewTappedGesture))
+        self.view.addGestureRecognizer(tapGesture)
+        ruzenec_image.addGestureRecognizer(tapGesture)
+        
+        rosaryStructure = RosaryDataService.shared.rosaryStructure
+        let userDefaults = UserDefaults.standard
+        darkMode = userDefaults.bool(forKey: "NightSwitch")
+        enabledDarkMode()
+
         if let desatek = desatek {
             ruzenec_title.text = desatek.name
             zdravas_number = desatek.desatek
             if zdravas_number == 4 {
                 typ_obrazku = "m"
                 show_korunka(by: true)
-            }
+            }	
             else {
                 if zdravas_number == 5 {
                    typ_obrazku = "s"
@@ -97,7 +108,6 @@ class RuzenecViewController: UIViewController, UINavigationControllerDelegate {
         default:
             ruzenec_text_contain.text = "Error"
         }
-
     }
     
     func increase_counter (by direction: Bool) {
@@ -169,11 +179,9 @@ class RuzenecViewController: UIViewController, UINavigationControllerDelegate {
         default:
             ruzenec_text_contain.text = "Error"
         }
-
     }
     func show_ruzenec_text(by direction: Bool) {
         guard let rosaryStructure = rosaryStructure else { return }
-        
         show_image(by: direction)
         increase_counter(by: direction)
         switch count {
@@ -221,6 +229,25 @@ class RuzenecViewController: UIViewController, UINavigationControllerDelegate {
         }
     }
     
+    @IBAction func viewTappedGesture(_ sender: UITapGestureRecognizer) {
+        let view = sender.view as! UIView
+        let newView = UIView(frame: view.frame)
+        newView.frame = UIScreen.main.bounds
+        newView.contentMode = .scaleToFill
+        newView.isUserInteractionEnabled = true
+        let tap = UITapGestureRecognizer(target: self, action: #selector(dismissFullscreenView))
+        newView.addGestureRecognizer(tap)
+        self.view.addSubview(newView)
+        UIApplication.shared.isStatusBarHidden = true
+        self.tabBarController?.tabBar.isHidden = true
+    }
+    
+    @objc func dismissFullscreenView(_ sender: UITapGestureRecognizer) {
+        UIApplication.shared.isStatusBarHidden = false
+        self.tabBarController?.tabBar.isHidden = false
+        sender.view?.removeFromSuperview()
+    }
+
     func show_korunka(by direction: Bool) {
         guard let rosaryStructure = rosaryStructure else { return }
         
@@ -295,6 +322,7 @@ class RuzenecViewController: UIViewController, UINavigationControllerDelegate {
     }
 
     @IBAction func next_button(_ sender: UIButton) {
+        enabledDarkMode()
         if zdravas_number == 4 {
             show_korunka(by: true)
         }
@@ -314,6 +342,23 @@ class RuzenecViewController: UIViewController, UINavigationControllerDelegate {
                 }
             }
         }
+    }
+    func enabledDarkMode() {
+        if darkMode == true {
+            self.view.backgroundColor = UIColor.black
+            self.ruzenec_title.backgroundColor = UIColor.black
+            self.ruzenec_title.textColor = UIColor.white
+            self.ruzenec_text_contain.backgroundColor = UIColor.black
+            self.ruzenec_text_contain.textColor = UIColor.white
+        }
+        else {
+            self.view.backgroundColor = UIColor.white
+            self.ruzenec_title.backgroundColor = UIColor.white
+            self.ruzenec_title.textColor = UIColor.black
+            self.ruzenec_text_contain.backgroundColor = UIColor.white
+            self.ruzenec_text_contain.textColor = UIColor.black
+        }
+
     }
 }
 

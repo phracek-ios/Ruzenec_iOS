@@ -75,13 +75,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="I9D-vz-kcu">
-                                <rect key="frame" x="16" y="81" width="343" height="167"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="167" id="tAE-0c-fMd"/>
-                                </constraints>
-                            </imageView>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Fth-qd-6pt">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Fth-qd-6pt">
                                 <rect key="frame" x="16" y="273" width="343" height="247"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
@@ -119,8 +113,18 @@
                                     <action selector="cancel:" destination="BYZ-38-t0r" eventType="touchUpInside" id="kWu-LV-LRf"/>
                                 </connections>
                             </button>
+                            <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="I9D-vz-kcu">
+                                <rect key="frame" x="16" y="78" width="343" height="167"/>
+                                <accessibility key="accessibilityConfiguration">
+                                    <accessibilityTraits key="traits" image="YES" notEnabled="YES"/>
+                                </accessibility>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="167" id="tAE-0c-fMd"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Hqd-5l-NqO" secondAttribute="trailing" constant="20" id="4MH-iT-cb4"/>
                             <constraint firstItem="Fmz-mH-cSG" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="9YC-FL-3xT"/>
@@ -143,15 +147,20 @@
                             <constraint firstItem="pqB-we-jj5" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="wo7-YY-xeN"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="HMP-fz-rvb" appends="YES" id="FAp-pb-uWs"/>
+                        </connections>
                     </view>
                     <connections>
                         <outlet property="next_button" destination="Hqd-5l-NqO" id="Nhw-iN-LAl"/>
+                        <outlet property="rosary_view_controller" destination="8bC-Xf-vdC" id="a2t-Wc-DEF"/>
                         <outlet property="ruzenec_image" destination="I9D-vz-kcu" id="u0i-iz-xQq"/>
                         <outlet property="ruzenec_text_contain" destination="Fth-qd-6pt" id="Xwc-cp-T4t"/>
                         <outlet property="ruzenec_title" destination="Tbf-zD-98K" id="q0y-8z-qqu"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="HMP-fz-rvb"/>
             </objects>
             <point key="canvasLocation" x="1057" y="123"/>
         </scene>

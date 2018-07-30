@@ -28,39 +28,49 @@
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="48U-hP-LoI">
                                 <rect key="frame" x="310" y="68" width="49" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </switch>
-                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4UU-z6-sTe">
-                                <rect key="frame" x="310" y="130" width="49" height="31"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <connections>
-                                    <action selector="OnOffRing:" destination="rAK-OF-fYU" eventType="valueChanged" id="N42-Fq-922"/>
+                                    <action selector="NightSwitchAction:" destination="rAK-OF-fYU" eventType="valueChanged" id="6P5-Zh-TrU"/>
                                 </connections>
                             </switch>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Vypnout vyzvaneni" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aYd-fm-xHx">
-                                <rect key="frame" x="16" y="130" width="172" height="31"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Zabranit vypinani obrazovky" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FlO-f7-af9">
-                                <rect key="frame" x="16" y="196" width="216" height="31"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2at-Ua-TUN">
-                                <rect key="frame" x="308" y="196" width="49" height="31"/>
+                                <rect key="frame" x="310" y="136" width="49" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <connections>
+                                    <action selector="DimOffAction:" destination="rAK-OF-fYU" eventType="valueChanged" id="vq6-6d-aJY"/>
+                                </connections>
+                            </switch>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Zabranit vypinani obrazovky" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FlO-f7-af9">
+                                <rect key="frame" x="16" y="136" width="216" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Cela obrazovka" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ih2-iI-esw">
+                                <rect key="frame" x="16" y="201" width="216" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SSf-4x-5Z9">
+                                <rect key="frame" x="308" y="200" width="49" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <connections>
+                                    <action selector="FullScreenAction:" destination="rAK-OF-fYU" eventType="valueChanged" id="CLP-ps-pLK"/>
+                                </connections>
                             </switch>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="FDS-Ub-Km3"/>
                     </view>
                     <connections>
-                        <outlet property="night_light" destination="48U-hP-LoI" id="DlE-pE-sKf"/>
-                        <outlet property="turn_off_sound" destination="4UU-z6-sTe" id="nuT-fw-ZYq"/>
+                        <outlet property="DimOffScreenLabel" destination="FlO-f7-af9" id="2U9-5m-Ee4"/>
+                        <outlet property="DimOffSwitch" destination="2at-Ua-TUN" id="U12-lO-Asi"/>
+                        <outlet property="FullScreenLabel" destination="ih2-iI-esw" id="cPd-TG-vJd"/>
+                        <outlet property="FullScreenSwitch" destination="SSf-4x-5Z9" id="EH6-KJ-XW6"/>
+                        <outlet property="NightSwitch" destination="48U-hP-LoI" id="tZe-64-2jK"/>
+                        <outlet property="NightSwitchLabel" destination="xje-IJ-UUM" id="GXj-Dx-V5s"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gMB-nW-A4v" userLabel="First Responder" sceneMemberID="firstResponder"/>
