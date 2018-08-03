@@ -34,13 +34,14 @@ class RuzenecViewController: UIViewController, UINavigationControllerDelegate {
         
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.viewTappedGesture))
         self.view.addGestureRecognizer(tapGesture)
+        ruzenec_text_contain.addGestureRecognizer(tapGesture)
         ruzenec_image.addGestureRecognizer(tapGesture)
         
         rosaryStructure = RosaryDataService.shared.rosaryStructure
         let userDefaults = UserDefaults.standard
         darkMode = userDefaults.bool(forKey: "NightSwitch")
         enabledDarkMode()
-
+        
         if let desatek = desatek {
             ruzenec_title.text = desatek.name
             zdravas_number = desatek.desatek
@@ -60,6 +61,16 @@ class RuzenecViewController: UIViewController, UINavigationControllerDelegate {
         }
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        UIApplication.shared.isStatusBarHidden = true
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(false)
+        UIApplication.shared.isStatusBarHidden = false
+    }
+    
     func get_colored_text(_ text: String) -> NSMutableAttributedString{
         let style = NSMutableParagraphStyle()
         style.alignment = .center
@@ -229,6 +240,7 @@ class RuzenecViewController: UIViewController, UINavigationControllerDelegate {
         }
     }
     
+    
     @IBAction func viewTappedGesture(_ sender: UITapGestureRecognizer) {
         let view = sender.view as! UIView
         let newView = UIView(frame: view.frame)
@@ -238,13 +250,17 @@ class RuzenecViewController: UIViewController, UINavigationControllerDelegate {
         let tap = UITapGestureRecognizer(target: self, action: #selector(dismissFullscreenView))
         newView.addGestureRecognizer(tap)
         self.view.addSubview(newView)
-        UIApplication.shared.isStatusBarHidden = true
+        self.navigationController?.isNavigationBarHidden = true
         self.tabBarController?.tabBar.isHidden = true
+        //UIApplication.shared.isStatusBarHidden = true
+        //setNeedsStatusBarAppearanceUpdate()
     }
     
     @objc func dismissFullscreenView(_ sender: UITapGestureRecognizer) {
-        UIApplication.shared.isStatusBarHidden = false
         self.tabBarController?.tabBar.isHidden = false
+        self.navigationController?.isNavigationBarHidden = false
+        //UIApplication.shared.isStatusBarHidden = false
+        //setNeedsStatusBarAppearanceUpdate()
         sender.view?.removeFromSuperview()
     }
 
