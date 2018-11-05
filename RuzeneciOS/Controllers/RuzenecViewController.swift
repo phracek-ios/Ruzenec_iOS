@@ -43,17 +43,18 @@ class RuzenecViewController: UIViewController, UINavigationControllerDelegate {
         enabledDarkMode()
         
         if let desatek = desatek {
+            self.navigationController?.title = desatek.name
             ruzenec_title.text = desatek.name
             zdravas_number = desatek.desatek
-            if zdravas_number == 4 {
+            if zdravas_number == RosaryConstants.korunka.rawValue {
                 typ_obrazku = "m"
                 show_korunka(by: true)
             }	
             else {
-                if zdravas_number == 5 {
+                if zdravas_number == RosaryConstants.sedmibolestne.rawValue {
                    typ_obrazku = "s"
                 }
-                else if zdravas_number == 6 {
+                else if zdravas_number == RosaryConstants.sedmiradostne.rawValue {
                    typ_obrazku = "s"
                 }
                 show_ruzenec_zacatek(by: true)
@@ -124,21 +125,28 @@ class RuzenecViewController: UIViewController, UINavigationControllerDelegate {
     func increase_counter (by direction: Bool) {
         if direction {
             image_count += 1
-            if zdravas_number == 4 {
-                if count != 5 {
+        }
+        else {
+            image_count -= 1
+        }
+        if zdravas_number == RosaryConstants.korunka.rawValue {
+            if count != 5 {
+                if direction {
                     count += 1
                 }
-            }
-            else {
-                if count != 8 {
-                    count += 1
+                else{
+                    count -= 1
                 }
             }
         }
         else {
-            image_count -=  1
             if count != 8 {
-                count -= 1
+                if direction {
+                    count += 1
+                }
+                else {
+                    count -= 1
+                }
             }
         }
     }
@@ -234,7 +242,7 @@ class RuzenecViewController: UIViewController, UINavigationControllerDelegate {
         case 11:
             image_count = 65
             ruzenec_text_contain.text = rosaryStructure.pray
-            next_button.isEnabled = false
+            self.next_button.isEnabled = false
         default:
             ruzenec_text_contain.text = "Error"
         }
@@ -302,7 +310,7 @@ class RuzenecViewController: UIViewController, UINavigationControllerDelegate {
         case 7:
             image_count = 59
             ruzenec_text_contain.text = rosaryStructure.korunka_end
-            next_button.isEnabled = false
+            self.next_button.isEnabled = false
         default:
             ruzenec_text_contain.text = "Error"
         }
@@ -315,50 +323,39 @@ class RuzenecViewController: UIViewController, UINavigationControllerDelegate {
     }
 
     //MARK: Actions
-    @IBAction func previous_button(_ sender: UIButton) {
-        if zdravas_number == 4 {
-            show_korunka(by: false)
+    
+    func show_texts(by direction: Bool) {
+        if zdravas_number == RosaryConstants.korunka.rawValue{
+            show_korunka(by: direction)
         }
         else {
             if count < 6 {
-                show_ruzenec_zacatek(by: false)
+                show_ruzenec_zacatek(by: direction)
             }
             else {
-                if zdravas_number == 5 {
-                    show_ruzenec_sedmi_text(by: false)
+                if zdravas_number == RosaryConstants.sedmiradostne.rawValue {
+                    show_ruzenec_sedmi_text(by: direction)
                 }
-                else if zdravas_number == 6 {
-                    show_ruzenec_sedmi_text(by: false)
+                else if zdravas_number == RosaryConstants.sedmibolestne.rawValue {
+                    show_ruzenec_sedmi_text(by: direction)
                 }
                 else {
-                    show_ruzenec_text(by: false)
+                    show_ruzenec_text(by: direction)
                 }
             }
         }
+
+    }
+    @IBAction func previous_button(_ sender: UIButton) {
+        enabledDarkMode()
+        show_texts(by: false)
     }
 
     @IBAction func next_button(_ sender: UIButton) {
         enabledDarkMode()
-        if zdravas_number == 4 {
-            show_korunka(by: true)
-        }
-        else {
-            if count < 6 {
-                show_ruzenec_zacatek(by: true)
-            }
-            else {
-                if zdravas_number == 5 {
-                    show_ruzenec_sedmi_text(by: true)
-                }
-                else if zdravas_number == 6 {
-                    show_ruzenec_sedmi_text(by: true)
-                }
-                else {
-                    show_ruzenec_text(by: true)
-                }
-            }
-        }
+        show_texts(by: true)
     }
+        
     func enabledDarkMode() {
         if darkMode == true {
             self.view.backgroundColor = UIColor.black

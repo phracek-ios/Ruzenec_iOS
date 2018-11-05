@@ -13,7 +13,7 @@
     "korunka_end": "Svatý Bože Svatý Silný, Svatý Nesmrtelný, smiluj se nad námi a nad celým světem!\nSvatý Bože Svatý Silný, Svatý Nesmrtelný, smiluj se nad námi a nad celým světem!\nSvatý Bože Svatý Silný, Svatý Nesmrtelný, smiluj se nad námi a nad celým světem!",
     "rosaries": [
          {
-             "id": 0,
+             "id": 1,
              "name": "Radostný růženec",
              "decades":["kterého jsi z Ducha svatého počala.",
                         "s kterým jsi Alžbětu navštívila.",
@@ -22,7 +22,7 @@
                         "kterého jsi v chráme nalezla."]
          },
          {
-             "id": 1,
+             "id": 2,
                  "name": "Bolestný růženec",
                  "decades": ["který se pro nás krví potil.",
                              "který byl pro nás bičován.",
@@ -31,7 +31,7 @@
                              "který byl pro nás ukřižován."],
          },
          {
-             "id": 2,
+             "id": 3,
                  "name": "Tajemství světla",
                  "decades": ["který byl pokřtěn v Jordánu.",
                              "který zjevil v Káně svou božskou moc.",
@@ -40,7 +40,7 @@
                              "který ustanovil Eucharistii."]
          },
          {
-             "id": 3,
+             "id": 4,
              "name": "Slavný růženec",
              "decades": ["který z mrtvých vstal.",
                          "který na nebe vstoupil.",
@@ -49,7 +49,7 @@
                          "který tě v nebi korunoval."],
          },
          {
-             "id": 5,
+             "id": 6,
              "name": "Sedmibolestná tajemství",
              "decades": ["kterého utrpení ti bylo Simeonem zvěstované.",
                          "s kterým jsi utekla do Egypta.",
@@ -60,7 +60,7 @@
                          "kterého jsi s bolestí do hrobu položila"],
          },
          {
-             "id": 6,
+             "id": 7,
              "name": "Sedmiradostná tajemství",
              "decades": ["kterého jsi, Neposkvrněná Panno, s radostí z Ducha svatého počala.",
                           "s kterým jsi, Neposkvrněná Panno, s radostí Alžbětu navštívila.",
@@ -71,7 +71,7 @@
                           "který Tě, Neposkvrněná Panno, na nebe vzal a Královnou nebe i země korunoval."],
          },
          {
-             "id": 7,
+             "id": 8,
              "name": "Růženec ke sv. Josefovi",
              "decades": ["který jsi sv. Josefa za ženicha nejčistší Panně Marii vyvolil.",
                           "který jsi sv. Josefa jako živitele miloval.",
