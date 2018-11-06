@@ -17,6 +17,7 @@ class RuzenecViewController: UIViewController, UINavigationControllerDelegate {
     @IBOutlet weak var ruzenec_title: UILabel!
     @IBOutlet weak var next_button: UIButton!
     @IBOutlet var rosary_view_controller: UIView!
+    @IBOutlet weak var previous_button: UIButton!
     var count: Int = 0
     var image_count: Int = 0
     var type_desatek: Int = 0
@@ -27,6 +28,8 @@ class RuzenecViewController: UIViewController, UINavigationControllerDelegate {
     var typ_obrazku: String = "r"
     var darkMode: Bool = true
     fileprivate var rosaryStructure: RosaryStructure?
+    var rn = RosaryNumbers.init()
+    var rsn = RosarySevenNumbers.init()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,20 +44,19 @@ class RuzenecViewController: UIViewController, UINavigationControllerDelegate {
         let userDefaults = UserDefaults.standard
         darkMode = userDefaults.bool(forKey: "NightSwitch")
         enabledDarkMode()
-        
         if let desatek = desatek {
             self.navigationController?.title = desatek.name
             ruzenec_title.text = desatek.name
-            zdravas_number = desatek.desatek
-            if zdravas_number == RosaryConstants.korunka.rawValue {
+            self.zdravas_number = desatek.desatek
+            if self.zdravas_number == RosaryConstants.korunka.rawValue {
                 typ_obrazku = "m"
                 show_korunka(by: true)
             }	
             else {
-                if zdravas_number == RosaryConstants.sedmibolestne.rawValue {
+                if self.zdravas_number == RosaryConstants.sedmibolestne.rawValue {
                    typ_obrazku = "s"
                 }
-                else if zdravas_number == RosaryConstants.sedmiradostne.rawValue {
+                else if self.zdravas_number == RosaryConstants.sedmiradostne.rawValue {
                    typ_obrazku = "s"
                 }
                 show_ruzenec_zacatek(by: true)
@@ -64,12 +66,12 @@ class RuzenecViewController: UIViewController, UINavigationControllerDelegate {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
-        UIApplication.shared.isStatusBarHidden = true
+        //UIApplication.shared.isStatusBarHidden = true
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(false)
-        UIApplication.shared.isStatusBarHidden = false
+        //UIApplication.shared.isStatusBarHidden = false
     }
     
     func get_colored_text(_ text: String) -> NSMutableAttributedString{
@@ -95,17 +97,37 @@ class RuzenecViewController: UIViewController, UINavigationControllerDelegate {
             ruzenec_image.image = UIImage(named: String(format: "%@%d", typ_obrazku, image_count - 1))
         }
     }
+    
+    func handle_counter (by direction: Bool) {
+        if direction {
+            count += 1
+        }
+        else {
+            count -= 1
+        }
+    }
+    
+    func handle_image_counter(by direction: Bool) {
+        if direction {
+            image_count += 1
+        }
+        else {
+            image_count -= 1
+        }
+    }
     func show_ruzenec_zacatek(by direction: Bool) {
         guard let rosaryStructure = rosaryStructure else { return }
         
         show_image(by: direction)
-        increase_counter(by: direction)
+        handle_counter(by: direction)
+        handle_image_counter(by: direction)
         switch count {
         case 1:
-            
             ruzenec_text_contain.text = rosaryStructure.inNominePatri + "\n" + rosaryStructure.credo
+            previous_button.isEnabled = false
         case 2:
             ruzenec_text_contain.text = rosaryStructure.lordPrayer
+            previous_button.isEnabled = true
         case 3:
             ruzenec_text_contain.attributedText = get_colored_text("v kterého věříme.")
             ruzenec_text_contain.textAlignment = NSTextAlignment.center
@@ -121,77 +143,62 @@ class RuzenecViewController: UIViewController, UINavigationControllerDelegate {
             ruzenec_text_contain.text = "Error"
         }
     }
-    
-    func increase_counter (by direction: Bool) {
-        if direction {
-            image_count += 1
-        }
-        else {
-            image_count -= 1
-        }
-        if zdravas_number == RosaryConstants.korunka.rawValue {
-            if count != 5 {
-                if direction {
-                    count += 1
-                }
-                else{
-                    count -= 1
-                }
-            }
-        }
-        else {
-            if count != 8 {
-                if direction {
-                    count += 1
-                }
-                else {
-                    count -= 1
-                }
-            }
-        }
-    }
-    
+
     func show_ruzenec_sedmi_text(by direction: Bool) {
         guard let rosaryStructure = rosaryStructure else { return }
         
         show_image(by: direction)
-        increase_counter(by: direction)
+        handle_counter(by: direction)
+        handle_image_counter(by: direction)
         switch count {
-        case 7:
+        case rsn.lordOne, rsn.lordTwo, rsn.lordThree, rsn.lordFour, rsn.lordFive, rsn.lordSix, rsn.lordSeven:
             ruzenec_text_contain.text = rosaryStructure.lordPrayer
-        case 8:
+        case rsn.rosaryOne...(rsn.lordTwo-3), rsn.rosaryTwo...(rsn.lordThree-3),
+             rsn.rosaryThree...(rsn.lordFour-3), rsn.rosaryFour...(rsn.lordFive-3),
+             rsn.rosaryFive...(rsn.lordSix-3), rsn.rosarySix...(rsn.lordSeven-3),
+             rsn.rosarySeven...(rsn.meaCulpaSeven-2):
+            let rosary = rosaryStructure.rosaries[self.zdravas_number - 1]
+            let secret = rosary.decades[self.type_desatek]
+            ruzenec_text_contain.attributedText = get_colored_text(secret)
+            ruzenec_text_contain.textAlignment = NSTextAlignment.center
+        case rsn.meaCulpaOne - 1, rsn.meaCulpaTwo - 1, rsn.meaCulpaThree - 1,
+             rsn.meaCulpaFour - 1, rsn.meaCulpaFive - 1,
+             rsn.meaCulpaSix - 1, rsn.meaCulpaSeven - 1:
+            ruzenec_text_contain.text = rosaryStructure.gloriaPatri
             if direction {
-                zrno += 1
+                self.image_count -= 1
             }
             else {
-                zrno -= 1
+                self.image_count += 1
             }
-            if zrno < 8 {
-                var rosary = rosaryStructure.rosaries[zdravas_number]
-                let tajemstvi = rosary.decades[type_desatek]
-
-                ruzenec_text_contain.attributedText = get_colored_text(tajemstvi)
-                ruzenec_text_contain.textAlignment = NSTextAlignment.center
-            }
-            else if zrno == 8 {
-                ruzenec_text_contain.text = rosaryStructure.gloriaPatri
+        case rsn.meaCulpaOne, rsn.meaCulpaTwo, rsn.meaCulpaThree, rsn.meaCulpaFour, rsn.meaCulpaFive, rsn.meaCulpaSix:
+            ruzenec_text_contain.text = rosaryStructure.meaCulpa
+            self.type_desatek += 1
+            if direction {
+                self.image_count -= 1
             }
             else {
-                ruzenec_text_contain.text = rosaryStructure.meaCulpa
-                zrno = 0
-                type_desatek += 1
-                if type_desatek < 7 {
-                    count = 6
-                }
-                else {
-                    count = 9
-                }
+                self.image_count += 1
             }
-        case 10:
+        case rsn.meaCulpaSeven:
+            ruzenec_text_contain.text = rosaryStructure.meaCulpa
+            if direction {
+                self.image_count -= 1
+            }
+            else {
+                self.image_count += 1
+            }
+        case rsn.salveRegina:
             image_count = 74
             ruzenec_text_contain.text = rosaryStructure.salveRegina
-            
-        case 11:
+            next_button.isEnabled = true
+            if direction {
+                self.image_count -= 1
+            }
+            else {
+                self.image_count += 1
+            }
+        case rsn.pray:
             image_count = 74
             ruzenec_text_contain.text = rosaryStructure.pray
             next_button.isEnabled = false
@@ -199,50 +206,55 @@ class RuzenecViewController: UIViewController, UINavigationControllerDelegate {
             ruzenec_text_contain.text = "Error"
         }
     }
+    
     func show_ruzenec_text(by direction: Bool) {
         guard let rosaryStructure = rosaryStructure else { return }
         show_image(by: direction)
-        increase_counter(by: direction)
+        handle_counter(by: direction)
+        handle_image_counter(by: direction)
         switch count {
-        case 7:
+        case rn.lordFirst, rn.lordSecond, rn.lordThird, rn.lordFourth, rn.lordFifth:
             ruzenec_text_contain.text = rosaryStructure.lordPrayer
-        case 8:
+        case rn.rosaryFirst...(rn.lordSecond-3), rn.rosarySecond...(rn.lordThird-3),
+             rn.rosaryThird...(rn.lordFourth-3), rn.rosaryFourth...(rn.lordFifth-3),
+             rn.rosaryFifth...(rn.meaCulpaFifth-2):
+            let rosary = rosaryStructure.rosaries[self.zdravas_number - 1]
+            let secret = rosary.decades[self.type_desatek]
+            ruzenec_text_contain.attributedText = get_colored_text(secret)
+            ruzenec_text_contain.textAlignment = NSTextAlignment.center
+        case rn.meaCulpaFirst - 1, rn.meaCulpaSecond - 1, rn.meaCulpaThird - 1, rn.meaCulpaFourth - 1, rn.meaCulpaFifth - 1:
+            ruzenec_text_contain.text = rosaryStructure.gloriaPatri
             if direction {
-                zrno += 1
+                self.image_count -= 1
             }
             else {
-                zrno -= 1
+                self.image_count += 1
             }
-            if zrno < 11 {
-                var rosary = rosaryStructure.rosaries[zdravas_number]
-                let tajemstvi = rosary.decades[type_desatek]
-                
-                ruzenec_text_contain.attributedText = get_colored_text(tajemstvi)
-                ruzenec_text_contain.textAlignment = NSTextAlignment.center
-            }
-            else if zrno == 11 {
-                ruzenec_text_contain.text = rosaryStructure.gloriaPatri
+        case rn.meaCulpaFirst, rn.meaCulpaSecond, rn.meaCulpaThird, rn.meaCulpaFourth:
+            ruzenec_text_contain.text = rosaryStructure.meaCulpa
+            self.type_desatek += 1
+        case rn.meaCulpaFifth:
+            ruzenec_text_contain.text = rosaryStructure.meaCulpa
+            if direction {
+                self.image_count -= 1
             }
             else {
-                ruzenec_text_contain.text = rosaryStructure.meaCulpa
-                zrno = 0
-                image_count -= 1
-                type_desatek += 1
-                if type_desatek < 5 {
-                    count = 6
-                }
-                else {
-                    count = 9
-                }
+                self.image_count += 1
             }
-        case 10:
-            image_count = 65
+        case rn.salveRegina:
+            image_count = 66
             ruzenec_text_contain.text = rosaryStructure.salveRegina
-            
-        case 11:
-            image_count = 65
+            next_button.isEnabled = true
+            if direction {
+                self.image_count -= 1
+            }
+            else {
+                self.image_count += 1
+            }
+        case rn.pray:
+            image_count = 66
             ruzenec_text_contain.text = rosaryStructure.pray
-            self.next_button.isEnabled = false
+            next_button.isEnabled = false
         default:
             ruzenec_text_contain.text = "Error"
         }
@@ -276,7 +288,7 @@ class RuzenecViewController: UIViewController, UINavigationControllerDelegate {
         guard let rosaryStructure = rosaryStructure else { return }
         
         show_image(by: direction)
-        increase_counter(by: direction)
+        handle_counter(by: direction)
         switch count {
         case 1:
             ruzenec_text_contain.text = rosaryStructure.lordPrayer
@@ -310,7 +322,7 @@ class RuzenecViewController: UIViewController, UINavigationControllerDelegate {
         case 7:
             image_count = 59
             ruzenec_text_contain.text = rosaryStructure.korunka_end
-            self.next_button.isEnabled = false
+            next_button.isEnabled = false
         default:
             ruzenec_text_contain.text = "Error"
         }
@@ -325,7 +337,7 @@ class RuzenecViewController: UIViewController, UINavigationControllerDelegate {
     //MARK: Actions
     
     func show_texts(by direction: Bool) {
-        if zdravas_number == RosaryConstants.korunka.rawValue{
+        if self.zdravas_number == RosaryConstants.korunka.rawValue{
             show_korunka(by: direction)
         }
         else {
@@ -333,10 +345,10 @@ class RuzenecViewController: UIViewController, UINavigationControllerDelegate {
                 show_ruzenec_zacatek(by: direction)
             }
             else {
-                if zdravas_number == RosaryConstants.sedmiradostne.rawValue {
+                if self.zdravas_number == RosaryConstants.sedmiradostne.rawValue {
                     show_ruzenec_sedmi_text(by: direction)
                 }
-                else if zdravas_number == RosaryConstants.sedmibolestne.rawValue {
+                else if self.zdravas_number == RosaryConstants.sedmibolestne.rawValue {
                     show_ruzenec_sedmi_text(by: direction)
                 }
                 else {
