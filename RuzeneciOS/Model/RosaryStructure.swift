@@ -17,9 +17,13 @@ struct RosaryStructure: Decodable {
     var inNominePatri: String
     var credo: String
     var pray: String
+    var prayJosef: String
     var meaCulpa: String
     var korunka_main: String
     var korunka_rosary: String
     var korunka_end: String
+    var oMyLord: String
+    var painEnd: String
+    var painRedeem: String
     var rosaries: [Rosary]
 }

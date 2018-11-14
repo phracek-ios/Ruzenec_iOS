@@ -104,5 +104,38 @@ struct RosarySevenNumbers {
 }
 
 struct Crown {
-    
+    let counter: Int = 10
+    let lord: Int = 1
+    let salve: Int
+    let credo: Int
+    let saintOne: Int
+    let saintTwo: Int
+    let saintThree: Int
+    let crownOne: Int
+    let crownTwo: Int
+    let crownThree: Int
+    let crownFour: Int
+    let crownFive: Int
+    let smallCrownOne: Int
+    let smallCrownTwo: Int
+    let smallCrownThree: Int
+    let smallCrownFour: Int
+    let smallCrownFive: Int
+    init () {
+        self.salve = lord + 1
+        self.credo = salve + 1
+        self.crownOne = credo + 1
+        self.smallCrownOne = crownOne + 1
+        self.crownTwo = smallCrownOne + counter
+        self.smallCrownTwo = crownTwo + 1
+        self.crownThree = smallCrownTwo + counter
+        self.smallCrownThree = crownThree + 1
+        self.crownFour = smallCrownThree + counter
+        self.smallCrownFour = crownFour + 1
+        self.crownFive = smallCrownFour + counter
+        self.smallCrownFive = crownFive + 1
+        self.saintOne = smallCrownFive + counter
+        self.saintTwo = saintOne + 1
+        self.saintThree = saintTwo + 1
+    }
 }

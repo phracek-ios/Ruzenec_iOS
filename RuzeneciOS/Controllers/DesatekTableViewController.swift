@@ -111,11 +111,11 @@ class DesatekTableViewController: UITableViewController {
                 fatalError("The selected cell is not being displayed by the table")
             }
             if indexPath.row == RosaryConstants.dnes.rawValue {
-                print(Date().getDayOfWeek())
                 ruzenecDetailViewController.desatek = rowData[Date().getDayOfWeek()].desatek
             }
             else {
                 if let selectedDesatek = rowData[indexPath.row].desatek {
+                    print(selectedDesatek)
                     ruzenecDetailViewController.desatek = selectedDesatek
                 }
             }

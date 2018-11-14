@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0110EF4D219C15FF008EAE8A /* GeneratorText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0110EF4C219C15FF008EAE8A /* GeneratorText.swift */; };
 		0159D01D20D05E5C00D759D4 /* DesatekTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0159D01C20D05E5C00D759D4 /* DesatekTableViewCell.swift */; };
 		015B37AA20F78EA4001E15D3 /* ruzenec.json in Resources */ = {isa = PBXBuildFile; fileRef = 01CD80A220F6890200A8BE5C /* ruzenec.json */; };
 		01A936A020D4447500A5D979 /* DesatekTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01A9369F20D4447500A5D979 /* DesatekTableViewController.swift */; };
@@ -39,6 +40,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0110EF4C219C15FF008EAE8A /* GeneratorText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneratorText.swift; sourceTree = "<group>"; };
 		0159D01C20D05E5C00D759D4 /* DesatekTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesatekTableViewCell.swift; sourceTree = "<group>"; };
 		01A9369F20D4447500A5D979 /* DesatekTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesatekTableViewController.swift; sourceTree = "<group>"; };
 		01A936A120D4474F00A5D979 /* Desatek.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Desatek.swift; sourceTree = "<group>"; };
@@ -89,6 +91,7 @@
 			isa = PBXGroup;
 			children = (
 				01BD588E2190465E006A44AA /* Constants.swift */,
+				0110EF4C219C15FF008EAE8A /* GeneratorText.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -359,6 +362,7 @@
 				01A936A020D4447500A5D979 /* DesatekTableViewController.swift in Sources */,
 				0159D01D20D05E5C00D759D4 /* DesatekTableViewCell.swift in Sources */,
 				4B01C4CD20F63D2B008D4CEA /* SettingsViewController.swift in Sources */,
+				0110EF4D219C15FF008EAE8A /* GeneratorText.swift in Sources */,
 				4BF14E292101FF3A0070ECD6 /* Rosary.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -523,6 +527,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 32253C46P7;
 				INFOPLIST_FILE = RuzeneciOS/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -542,6 +547,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 32253C46P7;
 				INFOPLIST_FILE = RuzeneciOS/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
