@@ -14,13 +14,10 @@ class SettingsTableViewController: UITableViewController {
     @IBOutlet weak var NightSwitch: UISwitch!
     @IBOutlet weak var DimOffSwitch: UISwitch!
     @IBOutlet weak var DimOffScreenLabel: UILabel!
-    @IBOutlet weak var FullScreenSwitch: UISwitch!
-    @IBOutlet weak var FullSwitchLabel: UILabel!
-    
+
     @IBOutlet weak var NightSwitchCell: UITableViewCell!
     @IBOutlet weak var DimOffSwitchCell: UITableViewCell!
     
-    @IBOutlet weak var FullScreenCell: UITableViewCell!
     var DarkModeOn = Bool()
     
     override func viewDidLoad() {
@@ -34,7 +31,6 @@ class SettingsTableViewController: UITableViewController {
             disabledDark()
         }
         DimOffSwitch.isOn = userDefaults.bool(forKey: "DimmScreen")
-        FullScreenSwitch.isOn = userDefaults.bool(forKey: "FullScreen")
         self.tableView.tableFooterView = UIView()
     }
     
@@ -69,15 +65,6 @@ class SettingsTableViewController: UITableViewController {
         }
     }
 
-    @IBAction func FullScreenAction(_ sender: Any) {
-        let userDefaults = UserDefaults.standard
-        if FullScreenSwitch.isOn == true {
-            userDefaults.set(true, forKey: "FullScreen")
-        }
-        else {
-            userDefaults.set(false, forKey: "FullScreen")
-        }
-    }
     
     func enabledDark() {
         self.view.backgroundColor = KKCBackgroundNightMode
@@ -87,11 +74,6 @@ class SettingsTableViewController: UITableViewController {
         self.DimOffScreenLabel.textColor = KKCTextNightMode
         self.DimOffSwitch.backgroundColor = KKCBackgroundNightMode
         self.DimOffSwitchCell.backgroundColor = KKCBackgroundNightMode
-        self.FullScreenSwitch.backgroundColor = KKCBackgroundNightMode
-        self.FullScreenCell.backgroundColor = KKCBackgroundNightMode
-        self.FullSwitchLabel.textColor = KKCTextNightMode
-
-
     }
     
     func disabledDark() {
@@ -102,8 +84,5 @@ class SettingsTableViewController: UITableViewController {
         self.DimOffScreenLabel.textColor = KKCTextLightMode
         self.DimOffSwitch.backgroundColor = KKCBackgroundLightMode
         self.DimOffSwitchCell.backgroundColor = KKCBackgroundLightMode
-        self.FullScreenSwitch.backgroundColor = KKCBackgroundLightMode
-        self.FullScreenCell.backgroundColor = KKCBackgroundLightMode
-        self.FullSwitchLabel.textColor = KKCTextLightMode
     }
 }

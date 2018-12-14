@@ -80,37 +80,6 @@
                                             <constraint firstAttribute="bottom" secondItem="NDm-nT-JNh" secondAttribute="bottom" constant="5" id="peH-yU-sNE"/>
                                         </constraints>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="dv2-7B-QjZ">
-                                        <rect key="frame" x="0.0" y="88" width="375" height="44"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="dv2-7B-QjZ" id="XfZ-qE-wiu">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="noI-Tu-cZM">
-                                                    <rect key="frame" x="311" y="5" width="51" height="34"/>
-                                                    <connections>
-                                                        <action selector="DimOffAction:" destination="VTz-XX-lI9" eventType="valueChanged" id="vyi-wt-qfY"/>
-                                                        <action selector="FullScreenAction:" destination="VTz-XX-lI9" eventType="valueChanged" id="BTb-Mg-oxm"/>
-                                                    </connections>
-                                                </switch>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Režim celé obrazovky" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mYh-EH-5I5">
-                                                    <rect key="frame" x="15" y="5" width="166.5" height="34"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                        </tableViewCellContentView>
-                                        <constraints>
-                                            <constraint firstAttribute="trailing" secondItem="noI-Tu-cZM" secondAttribute="trailing" constant="15" id="8YK-7G-V2p"/>
-                                            <constraint firstAttribute="bottom" secondItem="noI-Tu-cZM" secondAttribute="bottom" constant="5" id="QKi-8d-eKG"/>
-                                            <constraint firstItem="mYh-EH-5I5" firstAttribute="leading" secondItem="dv2-7B-QjZ" secondAttribute="leading" constant="15" id="Vnt-DE-qcU"/>
-                                            <constraint firstItem="noI-Tu-cZM" firstAttribute="top" secondItem="dv2-7B-QjZ" secondAttribute="top" constant="5" id="c1q-Wu-qF4"/>
-                                            <constraint firstAttribute="bottom" secondItem="mYh-EH-5I5" secondAttribute="bottom" constant="5" id="dbe-Ln-KR1"/>
-                                            <constraint firstItem="mYh-EH-5I5" firstAttribute="top" secondItem="dv2-7B-QjZ" secondAttribute="top" constant="5" id="hS3-Lf-g7y"/>
-                                        </constraints>
-                                    </tableViewCell>
                                 </cells>
                             </tableViewSection>
                         </sections>
@@ -123,9 +92,6 @@
                         <outlet property="DimOffScreenLabel" destination="ejT-4E-yWc" id="W8c-gm-e4l"/>
                         <outlet property="DimOffSwitch" destination="NDm-nT-JNh" id="HpI-2F-LKR"/>
                         <outlet property="DimOffSwitchCell" destination="mPf-6i-r80" id="fab-nV-9kg"/>
-                        <outlet property="FullScreenCell" destination="dv2-7B-QjZ" id="Qts-i6-ByG"/>
-                        <outlet property="FullScreenSwitch" destination="noI-Tu-cZM" id="ZjB-MD-qGW"/>
-                        <outlet property="FullSwitchLabel" destination="mYh-EH-5I5" id="KxH-Y4-m9X"/>
                         <outlet property="NightSwitch" destination="0i4-b2-dHp" id="Veu-xs-168"/>
                         <outlet property="NightSwitchCell" destination="nIE-wT-leX" id="epA-iJ-IXU"/>
                         <outlet property="NightSwitchLabel" destination="YH5-de-J0i" id="cXy-UX-O5H"/>

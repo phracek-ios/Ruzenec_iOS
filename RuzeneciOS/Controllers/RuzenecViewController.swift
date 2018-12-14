@@ -40,8 +40,6 @@ class RuzenecViewController: UIViewController, UINavigationControllerDelegate {
         rosaryStructure = RosaryDataService.shared.rosaryStructure
         let userDefaults = UserDefaults.standard
         darkMode = userDefaults.bool(forKey: "NightSwitch")
-        statusBarIsHidden = userDefaults.bool(forKey: "FullScreen")
-        print(statusBarIsHidden)
         enabledDarkMode()
         setupUI()
         if let desatek = desatek {
@@ -72,9 +70,6 @@ class RuzenecViewController: UIViewController, UINavigationControllerDelegate {
         }
     }
 
-    override var prefersStatusBarHidden: Bool {
-        return statusBarIsHidden
-    }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         //UIApplication.shared.isStatusBarHidden = true
