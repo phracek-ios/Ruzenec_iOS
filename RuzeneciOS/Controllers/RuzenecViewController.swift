@@ -131,7 +131,7 @@ class RuzenecViewController: UIViewController, UINavigationControllerDelegate {
 
     func show_ruzenec_sedmi_text(by direction: Bool) {
         guard let rosaryStructure = rosaryStructure else { return }
-
+        print(zdravas_number)
         switch count {
         case rsn.lordOne, rsn.lordTwo, rsn.lordThree, rsn.lordFour, rsn.lordFive, rsn.lordSix, rsn.lordSeven:
             ruzenec_text_contain.attributedText = get_html_text(text: rosaryStructure.lordPrayer)
@@ -159,8 +159,7 @@ class RuzenecViewController: UIViewController, UINavigationControllerDelegate {
             next_button.isEnabled = true
         case rsn.salveRegina:
             if self.zdravas_number == 7 {
-                ruzenec_text_contain.attributedText = get_html_text(text: rosaryStructure.pray)
-                next_button.isEnabled = false
+                ruzenec_text_contain.attributedText = get_html_text(text: rosaryStructure.salveRegina)
             }
             else {
                 ruzenec_text_contain.attributedText = get_html_text(text: rosaryStructure.painRedeem)
@@ -169,7 +168,12 @@ class RuzenecViewController: UIViewController, UINavigationControllerDelegate {
                 next_button.isEnabled = true
             }
         case rsn.pray, rsn.painReedem:
-            ruzenec_text_contain.attributedText = get_html_text(text: rosaryStructure.painEnd)
+            if self.zdravas_number == 7 {
+                ruzenec_text_contain.attributedText = get_html_text(text: rosaryStructure.pray)
+            }
+            else {
+                ruzenec_text_contain.attributedText = get_html_text(text: rosaryStructure.painEnd)
+            }
             next_button.isEnabled = false
         default:
             ruzenec_text_contain.text = "Error"
@@ -211,7 +215,12 @@ class RuzenecViewController: UIViewController, UINavigationControllerDelegate {
             ruzenec_text_contain.attributedText = get_html_text(text: rosaryStructure.salveRegina)
             next_button.isEnabled = true
         case rn.pray:
-            ruzenec_text_contain.attributedText = get_html_text(text: rosaryStructure.pray)
+            if self.zdravas_number == 8 {
+                ruzenec_text_contain.attributedText = get_html_text(text: rosaryStructure.prayJosef)
+            }
+            else {
+                ruzenec_text_contain.attributedText = get_html_text(text: rosaryStructure.pray)
+            }
             next_button.isEnabled = false
         default:
             ruzenec_text_contain.text = "Error"
