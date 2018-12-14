@@ -17,7 +17,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
         RosaryDataService.shared.loadData()
-        
+        UINavigationBar.appearance().barTintColor = KKCMainColor
+        UINavigationBar.appearance().tintColor = KKCTextNightMode
+        UINavigationBar.appearance().isTranslucent = false
         return true
     }
 

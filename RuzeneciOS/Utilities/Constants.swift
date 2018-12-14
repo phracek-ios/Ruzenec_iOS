@@ -15,6 +15,12 @@ enum RosaryConstants: Int {
 
 struct RosaryNumbers {
     let counter: Int = 13
+    let credo: Int = 1
+    let lord: Int = 2
+    let salveReginaFirst = 3
+    let salveReginaSecond = 4
+    let salveReginaThird = 5
+    let meaCulpa = 6
     let lordFirst: Int = 7
     let lordSecond: Int
     let lordThird: Int
@@ -31,12 +37,14 @@ struct RosaryNumbers {
     let meaCulpaThird: Int
     let meaCulpaFourth: Int
     let meaCulpaFifth: Int
+    let lordSixth: Int
     let salveRegina: Int
     init() {
         self.lordSecond = lordFirst + counter
         self.lordThird = lordSecond + counter
         self.lordFourth = lordThird + counter
         self.lordFifth = lordFourth + counter
+        self.lordSixth = lordFifth + counter
         self.rosaryFirst = lordFirst + 1
         self.rosarySecond = lordSecond + 1
         self.rosaryThird = lordThird + 1
@@ -46,7 +54,7 @@ struct RosaryNumbers {
         self.meaCulpaSecond = lordThird - 1
         self.meaCulpaThird = lordFourth - 1
         self.meaCulpaFourth = lordFifth - 1
-        self.meaCulpaFifth = rosaryFifth + 11
+        self.meaCulpaFifth = lordSixth - 1
         self.salveRegina = meaCulpaFifth + 1
         self.pray = salveRegina + 1
     }
@@ -54,6 +62,12 @@ struct RosaryNumbers {
 
 struct RosarySevenNumbers {
     let counter: Int = 10
+    let credo: Int = 1
+    let lord: Int = 2
+    let salveReginaFirst = 3
+    let salveReginaSecond = 4
+    let salveReginaThird = 5
+    let meaCulpa = 6
     let lordOne: Int = 7
     let lordTwo: Int
     let lordThree: Int
@@ -61,6 +75,7 @@ struct RosarySevenNumbers {
     let lordFive: Int
     let lordSix: Int
     let lordSeven: Int
+    let lordEight: Int
     let rosaryOne: Int
     let rosaryTwo: Int
     let rosaryThree: Int
@@ -77,6 +92,8 @@ struct RosarySevenNumbers {
     let meaCulpaSix: Int
     let meaCulpaSeven: Int
     let salveRegina: Int
+    let painReedem: Int
+    let painEnd: Int
     init() {
         self.lordTwo = lordOne + counter
         self.lordThree = lordTwo + counter
@@ -84,6 +101,7 @@ struct RosarySevenNumbers {
         self.lordFive = lordFour + counter
         self.lordSix = lordFive + counter
         self.lordSeven = lordSix + counter
+        self.lordEight = lordSeven + counter
         self.rosaryOne = lordOne + 1
         self.rosaryTwo = lordTwo + 1
         self.rosaryThree = lordThree + 1
@@ -97,8 +115,10 @@ struct RosarySevenNumbers {
         self.meaCulpaFour = lordFive - 1
         self.meaCulpaFive = lordSix - 1
         self.meaCulpaSix = lordSeven - 1
-        self.meaCulpaSeven = rosarySeven + 11
+        self.meaCulpaSeven = lordEight - 1
         self.salveRegina = meaCulpaSeven + 1
+        self.painReedem = self.salveRegina + 1
+        self.painEnd = self.painReedem + 1
         self.pray = salveRegina + 1
     }
 }

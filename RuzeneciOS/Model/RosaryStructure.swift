@@ -22,7 +22,7 @@ struct RosaryStructure: Decodable {
     var korunka_main: String
     var korunka_rosary: String
     var korunka_end: String
-    var oMyLord: String
+    var meaCulpaOriginal: String
     var painEnd: String
     var painRedeem: String
     var rosaries: [Rosary]

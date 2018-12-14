@@ -43,19 +43,24 @@ class DesatekTableViewController: UITableViewController {
         else {
             UIApplication.shared.isIdleTimerDisabled = false
         }
-        darkMode = userDefaults.bool(forKey: "NightSwitch")
-        if darkMode == true {
-            self.view.backgroundColor = UIColor.black
+        self.darkMode = userDefaults.bool(forKey: "NightSwitch")
+        if darkMode {
+            self.view.backgroundColor = KKCBackgroundNightMode
         }
         else {
-            self.view.backgroundColor = UIColor.white
+            self.view.backgroundColor = KKCBackgroundLightMode
         }
+        self.tableView.tableFooterView = UIView()
+        navigationController?.navigationBar.barTintColor = KKCMainColor
+        navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: KKCMainTextColor]
+        navigationController?.navigationBar.barStyle = UIBarStyle.black;
+        NotificationCenter.default.addObserver(self, selector: #selector(darkModeEnabled(_:)), name: .darkModeEnabled, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(darkModeDisabled(_:)), name: .darkModeDisabled, object: nil)
+    }
 
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+    deinit {
+        NotificationCenter.default.removeObserver(self, name: .darkModeEnabled, object: nil)
+        NotificationCenter.default.removeObserver(self, name: .darkModeDisabled, object: nil)
     }
 
     override func didReceiveMemoryWarning() {
@@ -90,7 +95,14 @@ class DesatekTableViewController: UITableViewController {
             cell.desatekLabel.text = "O aplikaci"
             cell.photoImageView.image = UIImage(named: "icon_about")
         }
-
+        if self.darkMode == true {
+            cell.backgroundColor = KKCBackgroundNightMode
+            cell.desatekLabel.textColor = KKCTextNightMode
+        }
+        else {
+            cell.backgroundColor = KKCBackgroundLightMode
+            cell.desatekLabel.textColor = KKCTextLightMode
+        }
         return cell
     }
     
@@ -112,11 +124,12 @@ class DesatekTableViewController: UITableViewController {
             }
             if indexPath.row == RosaryConstants.dnes.rawValue {
                 ruzenecDetailViewController.desatek = rowData[Date().getDayOfWeek()].desatek
+                ruzenecDetailViewController.navigationItem.title = rowData[Date().getDayOfWeek()].desatek?.name
             }
             else {
                 if let selectedDesatek = rowData[indexPath.row].desatek {
-                    print(selectedDesatek)
                     ruzenecDetailViewController.desatek = selectedDesatek
+                    ruzenecDetailViewController.navigationItem.title = selectedDesatek.name
                 }
             }
             
@@ -165,34 +178,34 @@ class DesatekTableViewController: UITableViewController {
             fatalError("Unable to instanciate Ruzenec")
         }
 
-        guard let radostny = Desatek(name: "Radostny ruzenec", photo: photoRadostny, desatek: RosaryConstants.radostny.rawValue) else {
+        guard let radostny = Desatek(name: "Radostný růženec", photo: photoRadostny, desatek: RosaryConstants.radostny.rawValue) else {
             fatalError("Unable to instanciate Radostny ruzenec")
         }
         
-        guard let bolestny = Desatek(name: "Bolestny ruzenec", photo: photoBolestny, desatek: RosaryConstants.bolestny.rawValue) else {
+        guard let bolestny = Desatek(name: "Bolestný růženec", photo: photoBolestny, desatek: RosaryConstants.bolestny.rawValue) else {
             fatalError("Unable to instanciate bolestny ruzenec")
         }
         
-        guard let svetla = Desatek(name: "Ruzenec Svetla", photo: photoSvetla, desatek: RosaryConstants.svetla.rawValue) else {
+        guard let svetla = Desatek(name: "Růženec světla", photo: photoSvetla, desatek: RosaryConstants.svetla.rawValue) else {
             fatalError("Unable to instanciate ruzenec svetla")
         }
         
-        guard let slavny = Desatek(name: "Slavny ruzenec", photo: photoSlavny, desatek: RosaryConstants.slavny.rawValue) else {
+        guard let slavny = Desatek(name: "Slavný růženec", photo: photoSlavny, desatek: RosaryConstants.slavny.rawValue) else {
             fatalError("Unable to instanciate slavny ruzenec")
         }
         
-        guard let korunka = Desatek(name: "Korunka k Bozimu milosrdenstvi", photo: photoKorunka, desatek: RosaryConstants.korunka.rawValue) else {
+        guard let korunka = Desatek(name: "Korunka k Božímu milosrdenství", photo: photoKorunka, desatek: RosaryConstants.korunka.rawValue) else {
             fatalError("Unable to instanciate r3")
         }
-        guard let sedmibolestne =  Desatek(name: "Sedmibolestna tajemstvi", photo: photoSedmibolestny, desatek: RosaryConstants.sedmibolestne.rawValue) else {
+        guard let sedmibolestne =  Desatek(name: "Sedmibolestná tajemství", photo: photoSedmibolestny, desatek: RosaryConstants.sedmibolestne.rawValue) else {
             fatalError("Unable to instanciate sedmiradostny ruzenec")
         }
         
-        guard let sedmiradostne = Desatek(name: "Sedmiradostne tajemstvi", photo: photoSedmiradostna, desatek: RosaryConstants.sedmiradostne.rawValue) else {
+        guard let sedmiradostne = Desatek(name: "Sedmiradostná tajemství", photo: photoSedmiradostna, desatek: RosaryConstants.sedmiradostne.rawValue) else {
             fatalError("Unable to instanciate sedmiradostny")
         }
         
-        guard let sv_josef = Desatek(name: "Ruzenec ke sv. Josefovi", photo: photoJoseph, desatek: RosaryConstants.sv_Josef.rawValue) else {
+        guard let sv_josef = Desatek(name: "Růženec ke sv. Josefovi", photo: photoJoseph, desatek: RosaryConstants.sv_Josef.rawValue) else {
             fatalError("Unable to instanciate ruzenec sv josefa")
             
         }
@@ -205,6 +218,17 @@ class DesatekTableViewController: UITableViewController {
         rowData = desatky.map { RowData(type: .desatek, desatek: $0) }
         rowData.append(RowData(type: .settings, desatek: nil))
         rowData.append(RowData(type: .about, desatek: nil))
+    }
+    @objc private func darkModeEnabled(_ notification: Notification) {
+        self.darkMode = true
+        self.tableView.backgroundColor = KKCBackgroundNightMode
+        self.tableView.reloadData()
+    }
+    
+    @objc private func darkModeDisabled(_ notification: Notification) {
+        self.darkMode = false
+        self.tableView.backgroundColor = KKCBackgroundLightMode
+        self.tableView.reloadData()
     }
 }
 

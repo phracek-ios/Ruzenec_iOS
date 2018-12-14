@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 import BonMot
 
-func generateContent(text: String) -> NSAttributedString {
+func generateContent(text: String, darkMode: Bool) -> NSAttributedString {
     
     let baseStyle = StringStyle(
         .font(UIFont.systemFont(ofSize: 16)),
@@ -37,10 +37,16 @@ func generateContent(text: String) -> NSAttributedString {
         .style("red", redStyle)
     ]
     
+    var textColor = KKCTextLightMode
+    if darkMode {
+        textColor = KKCTextNightMode
+    }
+
     let content = baseStyle.byAdding(
-        .color(UIColor.darkGray),
+        .color(textColor),
         .xmlRules(rules)
     )
+
     var generated_text = text
     generated_text = generated_text.replacingOccurrences(of: "<p>\n", with: "<p>")
     generated_text = generated_text.replacingOccurrences(of: "\n</p>", with: "</p>")
