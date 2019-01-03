@@ -10,7 +10,7 @@ import UIKit
 import BonMot
 
 var statusBarIsHidden = true
-class RuzenecViewController: UIViewController, UINavigationControllerDelegate {
+class RuzenecViewController: UIViewController, UINavigationControllerDelegate, UIScrollViewDelegate {
     
     //MARK: Properties
     @IBOutlet weak var ruzenec_text_contain: UILabel!
@@ -18,6 +18,8 @@ class RuzenecViewController: UIViewController, UINavigationControllerDelegate {
     @IBOutlet weak var next_button: UIButton!
     @IBOutlet var rosary_view_controller: UIView!
     @IBOutlet weak var previous_button: UIButton!
+    @IBOutlet weak var scrollView: UIScrollView!
+    
     var count: Int = 0
     var image_count: Int = 0
     var type_desatek: Int = 0
@@ -34,6 +36,7 @@ class RuzenecViewController: UIViewController, UINavigationControllerDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.scrollView.delegate = self
         self.view.isUserInteractionEnabled = true
         ruzenec_text_contain.numberOfLines = 0
         
@@ -70,6 +73,11 @@ class RuzenecViewController: UIViewController, UINavigationControllerDelegate {
         }
     }
 
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        if scrollView.contentOffset.x != 0 {
+            scrollView.contentOffset.x = 0
+        }
+    }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         //UIApplication.shared.isStatusBarHidden = true
@@ -131,7 +139,6 @@ class RuzenecViewController: UIViewController, UINavigationControllerDelegate {
 
     func show_ruzenec_sedmi_text(by direction: Bool) {
         guard let rosaryStructure = rosaryStructure else { return }
-        print(zdravas_number)
         switch count {
         case rsn.lordOne, rsn.lordTwo, rsn.lordThree, rsn.lordFour, rsn.lordFive, rsn.lordSix, rsn.lordSeven:
             ruzenec_text_contain.attributedText = get_html_text(text: rosaryStructure.lordPrayer)
@@ -287,6 +294,8 @@ class RuzenecViewController: UIViewController, UINavigationControllerDelegate {
                 }
             }
         }
+        self.ruzenec_text_contain.lineBreakMode = NSLineBreakMode.byWordWrapping
+        self.ruzenec_text_contain.textAlignment = .center
 
     }
     @IBAction func previous_button(_ sender: UIButton) {

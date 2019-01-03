@@ -12,6 +12,7 @@ struct RosaryStructure: Decodable {
     var lordPrayer: String
     var aveMaria: String
     var aveMariaEnd: String
+    var aveMariaFull: String
     var gloriaPatri: String
     var salveRegina: String
     var inNominePatri: String
