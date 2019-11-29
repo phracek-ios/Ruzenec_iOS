@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -15,6 +15,8 @@
 		01A204F721C2870500D49EE5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 01A204F621C2845000D49EE5 /* Assets.xcassets */; };
 		01A936A020D4447500A5D979 /* DesatekTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01A9369F20D4447500A5D979 /* DesatekTableViewController.swift */; };
 		01A936A220D4474F00A5D979 /* Desatek.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01A936A120D4474F00A5D979 /* Desatek.swift */; };
+		01B0A6B3238C3BE60062C4BC /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01B0A6B2238C3BE60062C4BC /* Utils.swift */; };
+		01BCB598238C2B2A00209176 /* Global.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01BCB597238C2B2A00209176 /* Global.swift */; };
 		01BD588F2190465E006A44AA /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01BD588E2190465E006A44AA /* Constants.swift */; };
 		01CD80A020F66F0500A8BE5C /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 01CD809F20F66F0500A8BE5C /* Settings.storyboard */; };
 		01FC3D8820C86E23005FABEF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01FC3D8720C86E23005FABEF /* AppDelegate.swift */; };
@@ -49,6 +51,8 @@
 		01A204F621C2845000D49EE5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = "Supporting Files/Assets.xcassets"; sourceTree = "<group>"; };
 		01A9369F20D4447500A5D979 /* DesatekTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesatekTableViewController.swift; sourceTree = "<group>"; };
 		01A936A120D4474F00A5D979 /* Desatek.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Desatek.swift; sourceTree = "<group>"; };
+		01B0A6B2238C3BE60062C4BC /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
+		01BCB597238C2B2A00209176 /* Global.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Global.swift; sourceTree = "<group>"; };
 		01BD588E2190465E006A44AA /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		01CD809F20F66F0500A8BE5C /* Settings.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Settings.storyboard; sourceTree = "<group>"; };
 		01CD80A220F6890200A8BE5C /* ruzenec.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = ruzenec.json; sourceTree = "<group>"; };
@@ -98,6 +102,8 @@
 				0110EF4C219C15FF008EAE8A /* GeneratorText.swift */,
 				012061C021C142000048E9B0 /* RosaryColors.swift */,
 				012061C221C1446E0048E9B0 /* NotificationName.swift */,
+				01BCB597238C2B2A00209176 /* Global.swift */,
+				01B0A6B2238C3BE60062C4BC /* Utils.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -313,20 +319,15 @@
 			files = (
 			);
 			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-RuzeneciOS/Pods-RuzeneciOS-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/BonMot/BonMot.framework",
+				"${PODS_ROOT}/Target Support Files/Pods-RuzeneciOS/Pods-RuzeneciOS-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
-			);
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/BonMot.framework",
+				"${PODS_ROOT}/Target Support Files/Pods-RuzeneciOS/Pods-RuzeneciOS-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-RuzeneciOS/Pods-RuzeneciOS-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-RuzeneciOS/Pods-RuzeneciOS-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		6DBDDC70320E5593E456E291 /* [CP] Check Pods Manifest.lock */ = {
@@ -365,7 +366,9 @@
 				4BF14E2D2102021D0070ECD6 /* RosaryStructure.swift in Sources */,
 				01FC3D8820C86E23005FABEF /* AppDelegate.swift in Sources */,
 				4BF14E30210206190070ECD6 /* RosaryDataService.swift in Sources */,
+				01B0A6B3238C3BE60062C4BC /* Utils.swift in Sources */,
 				01A936A220D4474F00A5D979 /* Desatek.swift in Sources */,
+				01BCB598238C2B2A00209176 /* Global.swift in Sources */,
 				4B01C4CF20F63D41008D4CEA /* AboutViewController.swift in Sources */,
 				01A936A020D4447500A5D979 /* DesatekTableViewController.swift in Sources */,
 				0159D01D20D05E5C00D759D4 /* DesatekTableViewCell.swift in Sources */,
@@ -541,9 +544,10 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = org.phracek.Ruzenec;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = RuzenecDevelopmentProfile;
+				PROVISIONING_PROFILE_SPECIFIER = RuzenecDeveloperProfile;
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -563,6 +567,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = org.phracek.Ruzenec;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = RuzenecDistributionProfile;

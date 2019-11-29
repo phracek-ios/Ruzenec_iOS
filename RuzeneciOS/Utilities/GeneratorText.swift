@@ -10,16 +10,15 @@ import Foundation
 import UIKit
 import BonMot
 
-func generateContent(text: String, darkMode: Bool) -> NSAttributedString {
+func generateContent(text: String, font_name: String = "Helvetica", size: CGFloat = 16, color: UIColor = UIColor.darkGray) -> NSAttributedString {
     
     let baseStyle = StringStyle(
-        .font(UIFont.systemFont(ofSize: 16)),
-        .lineHeightMultiple(1),
-        .alignment(.center)
+        .font(UIFont(name: font_name, size: size)!),
+        .lineHeightMultiple(1)
     )
     
     let emphasized = baseStyle.byAdding(
-        .font(UIFont.italicSystemFont(ofSize: 16))
+        .font(UIFont(name: font_name, size: size)!.italic())
     )
 
     let paragraph = baseStyle.byAdding(
@@ -37,13 +36,8 @@ func generateContent(text: String, darkMode: Bool) -> NSAttributedString {
         .style("red", redStyle)
     ]
     
-    var textColor = KKCTextLightMode
-    if darkMode {
-        textColor = KKCTextNightMode
-    }
-
     let content = baseStyle.byAdding(
-        .color(textColor),
+        .color(color),
         .xmlRules(rules)
     )
 
@@ -58,3 +52,17 @@ func generateContent(text: String, darkMode: Bool) -> NSAttributedString {
     return generated_text.styled(with: content)
 }
 
+extension UIFont {
+    func withTraits(traits: UIFontDescriptor.SymbolicTraits) -> UIFont {
+        let descriptor = fontDescriptor.withSymbolicTraits(traits)
+        return UIFont(descriptor: descriptor!, size: 0)
+    }
+
+    func bold() -> UIFont {
+        return withTraits(traits: .traitBold)
+    }
+
+    func italic() -> UIFont {
+        return withTraits(traits: .traitItalic)
+    }
+}

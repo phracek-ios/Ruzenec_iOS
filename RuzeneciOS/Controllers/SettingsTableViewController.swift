@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import BonMot
 
 class SettingsTableViewController: UITableViewController {
     
@@ -17,26 +18,71 @@ class SettingsTableViewController: UITableViewController {
 
     @IBOutlet weak var NightSwitchCell: UITableViewCell!
     @IBOutlet weak var DimOffSwitchCell: UITableViewCell!
+    @IBOutlet weak var VibrateSwitch: UISwitch!
+    @IBOutlet weak var VibrateLabel: UILabel!
+    @IBOutlet weak var VibrateCell: UITableViewCell!
+    
+    @IBOutlet weak var footLabel: UILabel!
+    @IBOutlet weak var footSwitch: UISwitch!
+    @IBOutlet weak var footCell: UITableViewCell!
+    
+    @IBOutlet weak var fontPickerLabel: UILabel!
+    @IBOutlet weak var labelExample: UILabel!
+    
+    @IBOutlet weak var slider: UISlider!
+    @IBOutlet weak var fontCell: UITableViewCell!
     
     var DarkModeOn = Bool()
-    
+    let exampleText: String = "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Etiam neque"
+    var fontName: String = ""
+    var fontSize: String = "16"
+    var back = KKCBackgroundNightMode
+    var text = KKCTextNightMode
     override func viewDidLoad() {
-        let userDefaults = UserDefaults.standard
+        super.viewDidLoad()
         title = "Nastavení Růžence"
-        NightSwitch.isOn = userDefaults.bool(forKey: "NightSwitch")
-        if NightSwitch.isOn == true {
-            enabledDark()
-        }
-        else {
-            disabledDark()
-        }
-        DimOffSwitch.isOn = userDefaults.bool(forKey: "DimmScreen")
         self.tableView.tableFooterView = UIView()
     }
     
     deinit {
         NotificationCenter.default.removeObserver(self, name: .darkModeEnabled, object: nil)
         NotificationCenter.default.removeObserver(self, name: .darkModeDisabled, object: nil)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        let userDefaults = UserDefaults.standard
+        NightSwitch.isOn = userDefaults.bool(forKey: "NightSwitch")
+        if NightSwitch.isOn == true {
+            self.back = KKCBackgroundNightMode
+            self.text = KKCTextNightMode
+
+        }
+        else {
+            self.back = KKCBackgroundLightMode
+            self.text = KKCTextLightMode
+        }
+        setupUI()
+
+        DimOffSwitch.isOn = userDefaults.bool(forKey: "DimmScreen")
+        VibrateSwitch.isOn = userDefaults.bool(forKey: "Vibrate")
+        self.fontSize = userDefaults.string(forKey: "FontSize") ?? "16"
+        footSwitch.isOn = userDefaults.bool(forKey: "FootFont")
+        if footSwitch.isOn == true {
+            self.fontName = "Times New Roman"
+        } else {
+            self.fontName = "Helvetica"
+        }
+        slider.setValue(Float(Int(self.fontSize)!), animated: true)
+        labelExample.attributedText = generateContent(text: exampleText, font_name: self.fontName, size: get_cgfloat(size: self.fontSize), color: self.text)
+    }
+    
+    @IBAction func sliderValueChanged(_ sender: Any) {
+        let userDefaults = UserDefaults.standard
+        self.fontSize = "\(Int(slider.value))"
+        print(self.fontSize)
+        userDefaults.set(self.fontSize, forKey: "FontSize")
+        labelExample.attributedText = generateContent(text: exampleText, font_name: self.fontName, size: get_cgfloat(size: self.fontSize), color: self.text)
     }
     
     @IBAction func DimOffAction(_ sender: Any) {
@@ -54,35 +100,67 @@ class SettingsTableViewController: UITableViewController {
     @IBAction func NightSwitchAction(_ sender: Any) {
         let userDefaults = UserDefaults.standard
         if NightSwitch.isOn == true {
+            self.back = KKCBackgroundNightMode
+            self.text = KKCTextNightMode
             userDefaults.set(true, forKey: "NightSwitch")
-            enabledDark()
             NotificationCenter.default.post(name: .darkModeEnabled, object:nil)
         }
         else {
+            self.back = KKCBackgroundLightMode
+            self.text = KKCTextLightMode
             userDefaults.set(false, forKey: "NightSwitch")
-            disabledDark()
             NotificationCenter.default.post(name: .darkModeDisabled, object: nil)
         }
+        setupUI()
     }
 
-    
-    func enabledDark() {
-        self.view.backgroundColor = KKCBackgroundNightMode
-        self.NightSwitchLabel.textColor = KKCTextNightMode
-        self.NightSwitchLabel.backgroundColor = KKCBackgroundNightMode
-        self.NightSwitchCell.backgroundColor = KKCBackgroundNightMode
-        self.DimOffScreenLabel.textColor = KKCTextNightMode
-        self.DimOffSwitch.backgroundColor = KKCBackgroundNightMode
-        self.DimOffSwitchCell.backgroundColor = KKCBackgroundNightMode
+    @IBAction func VibrateAction(_ sender: Any) {
+        let userDefaults = UserDefaults.standard
+        if VibrateSwitch.isOn == true {
+            userDefaults.set(true, forKey: "Vibrate")
+        }
+        else {
+            userDefaults.set(false, forKey: "Vibrate")
+        }
     }
     
-    func disabledDark() {
-        self.view.backgroundColor = KKCBackgroundLightMode
-        self.NightSwitchLabel.textColor = KKCTextLightMode
-        self.NightSwitchLabel.backgroundColor = KKCBackgroundLightMode
-        self.NightSwitchCell.backgroundColor = KKCBackgroundLightMode
-        self.DimOffScreenLabel.textColor = KKCTextLightMode
-        self.DimOffSwitch.backgroundColor = KKCBackgroundLightMode
-        self.DimOffSwitchCell.backgroundColor = KKCBackgroundLightMode
+    @IBAction func footMode(_ sender: Any) {
+        let userDefault = UserDefaults.standard
+        if footSwitch.isOn == true {
+            self.fontName = "Times New Roman"
+        } else {
+            self.fontName = "Helvetica"
+        }
+        userDefault.set(footSwitch.isOn, forKey: "FootFont")
+        labelExample.attributedText = generateContent(text: exampleText, font_name: self.fontName, size: get_cgfloat(size: self.fontSize), color: self.text)
+
+    }
+    func setupUI() {
+        self.view.backgroundColor = self.back
+        
+        self.NightSwitchLabel.textColor = self.text
+        self.NightSwitchLabel.backgroundColor = self.back
+        self.NightSwitch.backgroundColor = self.back
+        self.NightSwitchCell.backgroundColor = self.back
+        
+        self.DimOffScreenLabel.textColor = self.text
+        self.DimOffScreenLabel.backgroundColor = self.back
+        self.DimOffSwitch.backgroundColor = self.back
+        self.DimOffSwitchCell.backgroundColor = self.back
+        
+        self.VibrateSwitch.backgroundColor = self.back
+        self.VibrateCell.backgroundColor = self.back
+        self.VibrateLabel.backgroundColor = self.back
+        self.VibrateLabel.textColor = self.text
+        
+        self.footSwitch.backgroundColor = self.back
+        self.footCell.backgroundColor = self.back
+        self.footLabel.backgroundColor = self.back
+        self.footLabel.textColor = self.text
+        self.labelExample.backgroundColor = self.back
+        self.labelExample.textColor = self.text
+        self.fontCell.backgroundColor = self.back
+        self.fontPickerLabel.backgroundColor = self.back
+        self.fontPickerLabel.textColor = self.text
     }
 }

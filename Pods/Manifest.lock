@@ -1,16 +1,16 @@
 PODS:
-  - BonMot (5.3)
+  - BonMot (5.4.1)
 
 DEPENDENCIES:
   - BonMot
 
 SPEC REPOS:
-  https://github.com/cocoapods/specs.git:
+  trunk:
     - BonMot
 
 SPEC CHECKSUMS:
-  BonMot: 0104d1b4eda54f4a4b7393d6559539ef25498fbd
+  BonMot: aa82119ff2ffa184223d8a31c72aed84fbb009e0
 
 PODFILE CHECKSUM: 4b7b734b0642f8cc0a95efcc00db2de6bdec6c57
 
-COCOAPODS: 1.5.3
+COCOAPODS: 1.8.4

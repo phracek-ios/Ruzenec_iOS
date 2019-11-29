@@ -10,7 +10,7 @@ import UIKit
 import BonMot
 
 var statusBarIsHidden = true
-class RuzenecViewController: UIViewController, UINavigationControllerDelegate, UIScrollViewDelegate {
+class RuzenecViewController: UIViewController, UINavigationControllerDelegate, UIScrollViewDelegate, UIGestureRecognizerDelegate {
     
     //MARK: Properties
     @IBOutlet weak var ruzenec_text_contain: UILabel!
@@ -19,6 +19,19 @@ class RuzenecViewController: UIViewController, UINavigationControllerDelegate, U
     @IBOutlet var rosary_view_controller: UIView!
     @IBOutlet weak var previous_button: UIButton!
     @IBOutlet weak var scrollView: UIScrollView!
+    var back = KKCBackgroundNightMode
+    var text = KKCTextNightMode
+    var isStatusBarHidden = false {
+        didSet {
+            UIView.animate(withDuration: 0.25) { () -> Void in
+                self.setNeedsStatusBarAppearanceUpdate()
+            }
+        }
+    }
+    
+    override var prefersStatusBarHidden: Bool {
+        return isStatusBarHidden
+    }
     
     var count: Int = 0
     var image_count: Int = 0
@@ -33,17 +46,20 @@ class RuzenecViewController: UIViewController, UINavigationControllerDelegate, U
     var rn = RosaryNumbers.init()
     var rsn = RosarySevenNumbers.init()
     var crown = Crown.init()
+    var font_name: String = "Helvetica"
+    var font_size: String = "16"
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.scrollView.delegate = self
         self.view.isUserInteractionEnabled = true
         ruzenec_text_contain.numberOfLines = 0
-        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         rosaryStructure = RosaryDataService.shared.rosaryStructure
         let userDefaults = UserDefaults.standard
-        darkMode = userDefaults.bool(forKey: "NightSwitch")
-        enabledDarkMode()
         setupUI()
         if let desatek = desatek {
             navigationController?.title = desatek.name
@@ -56,7 +72,28 @@ class RuzenecViewController: UIViewController, UINavigationControllerDelegate, U
             navigationController?.navigationBar.barTintColor = KKCMainColor
             navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: KKCMainTextColor]
             navigationController?.navigationBar.barStyle = UIBarStyle.black;
-
+            if userDefaults.bool(forKey: "FootFont") {
+                self.font_name = "Times New Roman"
+            } else {
+                userDefaults.set(true, forKey: "FootFont")
+                self.font_name = "Helvetica"
+            }
+            
+            if let saveFontSize = userDefaults.string(forKey: "FontSize") {
+                self.font_size = saveFontSize
+            } else {
+                userDefaults.set(16, forKey: "FontSize")
+                self.font_size = "16"
+            }
+            darkMode = userDefaults.bool(forKey: "NightSwitch")
+            if darkMode == true {
+                self.back = KKCBackgroundNightMode
+                self.text = KKCTextNightMode
+            }
+            else {
+                self.back = KKCBackgroundLightMode
+                self.text = KKCTextLightMode
+            }
             self.zdravas_number = desatek.desatek
             if self.zdravas_number == RosaryConstants.korunka.rawValue {
                 typ_obrazku = "m"
@@ -71,21 +108,29 @@ class RuzenecViewController: UIViewController, UINavigationControllerDelegate, U
             }
             show_texts(by: true)
         }
+        enabledDarkMode()
     }
-
+    
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         if scrollView.contentOffset.x != 0 {
             scrollView.contentOffset.x = 0
         }
     }
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(true)
-        //UIApplication.shared.isStatusBarHidden = true
+    
+    func toggleNavigationBarVisibility() {
+        if let isNarBarHidden = navigationController?.isNavigationBarHidden {
+            if !isNarBarHidden { // It's necessary to hide the status bar before  nav bar hidding (because of a jump of content)...
+                isStatusBarHidden = !isNarBarHidden
+            }
+            navigationController?.setNavigationBarHidden(!isNarBarHidden, animated: true)
+            if isNarBarHidden { // ... and it's necessary to show the status bar after nav bar showing (because of a jump of content).
+                isStatusBarHidden = !isNarBarHidden
+            }
+        }
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(false)
-        //UIApplication.shared.isStatusBarHidden = false
+    @objc func didTapOnScreen() {
+        toggleNavigationBarVisibility()
     }
     
     func show_image (by direction: Bool) {
@@ -114,6 +159,7 @@ class RuzenecViewController: UIViewController, UINavigationControllerDelegate, U
             image_count -= 1
         }
     }
+    
     func show_ruzenec_zacatek(by direction: Bool) {
         guard let rosaryStructure = rosaryStructure else { return }
 
@@ -243,7 +289,7 @@ class RuzenecViewController: UIViewController, UINavigationControllerDelegate, U
             previous_button.isEnabled = false
         case crown.salve:
             previous_button.isEnabled = true
-            ruzenec_text_contain.attributedText = get_html_text(text: "\(rosaryStructure.aveMaria)\(rosaryStructure.aveMariaEnd)")
+            ruzenec_text_contain.attributedText = get_html_text(text: "\(rosaryStructure.aveMariaFull)")
         case crown.credo:
             ruzenec_text_contain.attributedText = get_html_text(text: rosaryStructure.credo)
         case crown.crownOne, crown.crownTwo, crown.crownThree, crown.crownFour, crown.crownFive:
@@ -299,27 +345,21 @@ class RuzenecViewController: UIViewController, UINavigationControllerDelegate, U
 
     }
     @IBAction func previous_button(_ sender: UIButton) {
+        Global.vibrate()
         enabledDarkMode()
         show_texts(by: false)
     }
 
     @IBAction func next_button(_ sender: UIButton) {
+        Global.vibrate()
         enabledDarkMode()
         show_texts(by: true)
     }
         
     func enabledDarkMode() {
-        if darkMode == true {
-            self.view.backgroundColor = KKCBackgroundNightMode
-            self.ruzenec_text_contain.backgroundColor = KKCBackgroundNightMode
-            self.ruzenec_text_contain.textColor = KKCTextNightMode
-        }
-        else {
-            self.view.backgroundColor = KKCBackgroundLightMode
-            self.ruzenec_text_contain.backgroundColor = KKCBackgroundLightMode
-            self.ruzenec_text_contain.textColor = KKCTextLightMode
-        }
-
+        self.view.backgroundColor = self.back
+        self.ruzenec_text_contain.backgroundColor = self.back
+        self.ruzenec_text_contain.textColor = self.text
     }
 
     private func get_html_text(text: String, kindForGeneration: Int = 0) -> NSAttributedString {
@@ -332,12 +372,15 @@ class RuzenecViewController: UIViewController, UINavigationControllerDelegate, U
             main_text = "\(rosaryStructure.aveMaria)<red>\(text)</red>\(rosaryStructure.aveMariaEnd)"
         }
 
-        return generateContent(text: main_text, darkMode: self.darkMode)
+        return generateContent(text: main_text, font_name: self.font_name, size: get_cgfloat(size: self.font_size), color: self.text)
     }
 }
 
 private extension RuzenecViewController {
     func setupUI() {
         ruzenec_text_contain.textAlignment = .center
+        let tap = UITapGestureRecognizer(target: self, action: #selector(didTapOnScreen))
+        tap.delegate = self
+        view.addGestureRecognizer(tap)
     }
 }
