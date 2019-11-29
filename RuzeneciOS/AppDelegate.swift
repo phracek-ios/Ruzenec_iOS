@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -20,6 +21,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UINavigationBar.appearance().barTintColor = KKCMainColor
         UINavigationBar.appearance().tintColor = KKCTextNightMode
         UINavigationBar.appearance().isTranslucent = false
+        FirebaseApp.configure()
         return true
     }
 

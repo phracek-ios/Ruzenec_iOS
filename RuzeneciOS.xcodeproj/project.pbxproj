@@ -12,6 +12,7 @@
 		012061C321C1446E0048E9B0 /* NotificationName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 012061C221C1446E0048E9B0 /* NotificationName.swift */; };
 		0159D01D20D05E5C00D759D4 /* DesatekTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0159D01C20D05E5C00D759D4 /* DesatekTableViewCell.swift */; };
 		015B37AA20F78EA4001E15D3 /* ruzenec.json in Resources */ = {isa = PBXBuildFile; fileRef = 01CD80A220F6890200A8BE5C /* ruzenec.json */; };
+		0180F6AC239179DD00B863C1 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0180F6AB239179DD00B863C1 /* GoogleService-Info.plist */; };
 		01A204F721C2870500D49EE5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 01A204F621C2845000D49EE5 /* Assets.xcassets */; };
 		01A936A020D4447500A5D979 /* DesatekTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01A9369F20D4447500A5D979 /* DesatekTableViewController.swift */; };
 		01A936A220D4474F00A5D979 /* Desatek.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01A936A120D4474F00A5D979 /* Desatek.swift */; };
@@ -48,6 +49,7 @@
 		012061C021C142000048E9B0 /* RosaryColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RosaryColors.swift; sourceTree = "<group>"; };
 		012061C221C1446E0048E9B0 /* NotificationName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationName.swift; sourceTree = "<group>"; };
 		0159D01C20D05E5C00D759D4 /* DesatekTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesatekTableViewCell.swift; sourceTree = "<group>"; };
+		0180F6AB239179DD00B863C1 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		01A204F621C2845000D49EE5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = "Supporting Files/Assets.xcassets"; sourceTree = "<group>"; };
 		01A9369F20D4447500A5D979 /* DesatekTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesatekTableViewController.swift; sourceTree = "<group>"; };
 		01A936A120D4474F00A5D979 /* Desatek.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Desatek.swift; sourceTree = "<group>"; };
@@ -139,6 +141,7 @@
 		01FC3D8620C86E23005FABEF /* RuzeneciOS */ = {
 			isa = PBXGroup;
 			children = (
+				0180F6AB239179DD00B863C1 /* GoogleService-Info.plist */,
 				01A204F621C2845000D49EE5 /* Assets.xcassets */,
 				01BD589021907630006A44AA /* Utilities */,
 				01CD80A320F6990500A8BE5C /* Supporting Files */,
@@ -300,6 +303,7 @@
 				01FC3D8D20C86E23005FABEF /* Main.storyboard in Resources */,
 				01A204F721C2870500D49EE5 /* Assets.xcassets in Resources */,
 				01CD80A020F66F0500A8BE5C /* Settings.storyboard in Resources */,
+				0180F6AC239179DD00B863C1 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
