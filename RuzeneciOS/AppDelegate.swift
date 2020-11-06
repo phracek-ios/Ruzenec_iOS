@@ -22,6 +22,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UINavigationBar.appearance().tintColor = KKCTextNightMode
         UINavigationBar.appearance().isTranslucent = false
         FirebaseApp.configure()
+        window = UIWindow(frame: UIScreen.main.bounds)
+        window?.makeKeyAndVisible()
+        
+        let layout = UICollectionViewFlowLayout()
+        let mainVC = DesatekCollectionViewController(collectionViewLayout: layout)
+        window?.rootViewController = UINavigationController(rootViewController: mainVC)
+        
         return true
     }
 

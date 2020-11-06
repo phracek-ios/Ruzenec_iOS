@@ -12,13 +12,14 @@ class RosaryDataService {
     
     // MARK: - Shared
     static var shared = RosaryDataService()
-    
     // MARK: - Properties
     var rosaryStructure: RosaryStructure?
+    var rosarySpeakStructure: RosarySpeakStructure?
     
     // MARK: -
     func loadData() {
         parseJSON()
+        parseSpeakJSON()
     }
     
     private func parseJSON() {
@@ -34,5 +35,17 @@ class RosaryDataService {
             print("File not found")
         }
     }
-    
+    private func parseSpeakJSON() {
+        if let path = Bundle.main.path(forResource: "ruzenec_speak", ofType: "json") {
+            do {
+                let data = try Data(contentsOf: URL(fileURLWithPath: path))
+                rosarySpeakStructure = try JSONDecoder().decode(RosarySpeakStructure.self, from: data)
+                print(rosarySpeakStructure.debugDescription)
+            } catch {
+                print(error)
+            }
+        } else {
+            print("File not found")
+        }
+    }
 }

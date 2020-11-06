@@ -7,28 +7,27 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		010CDF292548953E0086C6D3 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 010CDF282548953E0086C6D3 /* Extensions.swift */; };
 		0110EF4D219C15FF008EAE8A /* GeneratorText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0110EF4C219C15FF008EAE8A /* GeneratorText.swift */; };
 		012061C121C142000048E9B0 /* RosaryColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 012061C021C142000048E9B0 /* RosaryColors.swift */; };
 		012061C321C1446E0048E9B0 /* NotificationName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 012061C221C1446E0048E9B0 /* NotificationName.swift */; };
-		0159D01D20D05E5C00D759D4 /* DesatekTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0159D01C20D05E5C00D759D4 /* DesatekTableViewCell.swift */; };
+		0159D01D20D05E5C00D759D4 /* DesatekCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0159D01C20D05E5C00D759D4 /* DesatekCollectionViewCell.swift */; };
 		015B37AA20F78EA4001E15D3 /* ruzenec.json in Resources */ = {isa = PBXBuildFile; fileRef = 01CD80A220F6890200A8BE5C /* ruzenec.json */; };
 		0180F6AC239179DD00B863C1 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0180F6AB239179DD00B863C1 /* GoogleService-Info.plist */; };
 		01A204F721C2870500D49EE5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 01A204F621C2845000D49EE5 /* Assets.xcassets */; };
-		01A936A020D4447500A5D979 /* DesatekTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01A9369F20D4447500A5D979 /* DesatekTableViewController.swift */; };
+		01A936A020D4447500A5D979 /* DesatekCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01A9369F20D4447500A5D979 /* DesatekCollectionViewController.swift */; };
 		01A936A220D4474F00A5D979 /* Desatek.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01A936A120D4474F00A5D979 /* Desatek.swift */; };
 		01B0A6B3238C3BE60062C4BC /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01B0A6B2238C3BE60062C4BC /* Utils.swift */; };
 		01BCB598238C2B2A00209176 /* Global.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01BCB597238C2B2A00209176 /* Global.swift */; };
 		01BD588F2190465E006A44AA /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01BD588E2190465E006A44AA /* Constants.swift */; };
-		01CD80A020F66F0500A8BE5C /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 01CD809F20F66F0500A8BE5C /* Settings.storyboard */; };
+		01F33AF7255431E300B72E81 /* ruzenec_speak.json in Resources */ = {isa = PBXBuildFile; fileRef = 01F33AF6255431E300B72E81 /* ruzenec_speak.json */; };
 		01FC3D8820C86E23005FABEF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01FC3D8720C86E23005FABEF /* AppDelegate.swift */; };
 		01FC3D8A20C86E23005FABEF /* RuzenecViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01FC3D8920C86E23005FABEF /* RuzenecViewController.swift */; };
-		01FC3D8D20C86E23005FABEF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 01FC3D8B20C86E23005FABEF /* Main.storyboard */; };
 		01FC3D9220C86E24005FABEF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 01FC3D9020C86E24005FABEF /* LaunchScreen.storyboard */; };
 		01FC3D9D20C86E24005FABEF /* RuzeneciOSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01FC3D9C20C86E24005FABEF /* RuzeneciOSTests.swift */; };
 		0E2D2CF3215114882532659B /* Pods_RuzeneciOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3D8E30C721E0B1E060848D7 /* Pods_RuzeneciOS.framework */; };
 		4B01C4CD20F63D2B008D4CEA /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B01C4CC20F63D2B008D4CEA /* SettingsTableViewController.swift */; };
 		4B01C4CF20F63D41008D4CEA /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B01C4CE20F63D41008D4CEA /* AboutViewController.swift */; };
-		4B01C4D120F63DAF008D4CEA /* About.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4B01C4D020F63DAF008D4CEA /* About.storyboard */; };
 		4BF14E292101FF3A0070ECD6 /* Rosary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BF14E282101FF3A0070ECD6 /* Rosary.swift */; };
 		4BF14E2D2102021D0070ECD6 /* RosaryStructure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BF14E2C2102021D0070ECD6 /* RosaryStructure.swift */; };
 		4BF14E30210206190070ECD6 /* RosaryDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BF14E2F210206190070ECD6 /* RosaryDataService.swift */; };
@@ -45,23 +44,23 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		010CDF282548953E0086C6D3 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		0110EF4C219C15FF008EAE8A /* GeneratorText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneratorText.swift; sourceTree = "<group>"; };
 		012061C021C142000048E9B0 /* RosaryColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RosaryColors.swift; sourceTree = "<group>"; };
 		012061C221C1446E0048E9B0 /* NotificationName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationName.swift; sourceTree = "<group>"; };
-		0159D01C20D05E5C00D759D4 /* DesatekTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesatekTableViewCell.swift; sourceTree = "<group>"; };
+		0159D01C20D05E5C00D759D4 /* DesatekCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesatekCollectionViewCell.swift; sourceTree = "<group>"; };
 		0180F6AB239179DD00B863C1 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		01A204F621C2845000D49EE5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = "Supporting Files/Assets.xcassets"; sourceTree = "<group>"; };
-		01A9369F20D4447500A5D979 /* DesatekTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesatekTableViewController.swift; sourceTree = "<group>"; };
+		01A9369F20D4447500A5D979 /* DesatekCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesatekCollectionViewController.swift; sourceTree = "<group>"; };
 		01A936A120D4474F00A5D979 /* Desatek.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Desatek.swift; sourceTree = "<group>"; };
 		01B0A6B2238C3BE60062C4BC /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		01BCB597238C2B2A00209176 /* Global.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Global.swift; sourceTree = "<group>"; };
 		01BD588E2190465E006A44AA /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
-		01CD809F20F66F0500A8BE5C /* Settings.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Settings.storyboard; sourceTree = "<group>"; };
 		01CD80A220F6890200A8BE5C /* ruzenec.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = ruzenec.json; sourceTree = "<group>"; };
+		01F33AF6255431E300B72E81 /* ruzenec_speak.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = ruzenec_speak.json; sourceTree = "<group>"; };
 		01FC3D8420C86E23005FABEF /* RuzeneciOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RuzeneciOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		01FC3D8720C86E23005FABEF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		01FC3D8920C86E23005FABEF /* RuzenecViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RuzenecViewController.swift; sourceTree = "<group>"; };
-		01FC3D8C20C86E23005FABEF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		01FC3D9120C86E24005FABEF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		01FC3D9320C86E24005FABEF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		01FC3D9820C86E24005FABEF /* RuzeneciOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RuzeneciOSTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -69,7 +68,6 @@
 		01FC3D9E20C86E24005FABEF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4B01C4CC20F63D2B008D4CEA /* SettingsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
 		4B01C4CE20F63D41008D4CEA /* AboutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
-		4B01C4D020F63DAF008D4CEA /* About.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = About.storyboard; sourceTree = "<group>"; };
 		4BF14E282101FF3A0070ECD6 /* Rosary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rosary.swift; sourceTree = "<group>"; };
 		4BF14E2C2102021D0070ECD6 /* RosaryStructure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RosaryStructure.swift; sourceTree = "<group>"; };
 		4BF14E2F210206190070ECD6 /* RosaryDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RosaryDataService.swift; sourceTree = "<group>"; };
@@ -106,6 +104,7 @@
 				012061C221C1446E0048E9B0 /* NotificationName.swift */,
 				01BCB597238C2B2A00209176 /* Global.swift */,
 				01B0A6B2238C3BE60062C4BC /* Utils.swift */,
+				010CDF282548953E0086C6D3 /* Extensions.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -114,6 +113,7 @@
 			isa = PBXGroup;
 			children = (
 				01CD80A220F6890200A8BE5C /* ruzenec.json */,
+				01F33AF6255431E300B72E81 /* ruzenec_speak.json */,
 			);
 			path = "Supporting Files";
 			sourceTree = "<group>";
@@ -146,7 +146,6 @@
 				01BD589021907630006A44AA /* Utilities */,
 				01CD80A320F6990500A8BE5C /* Supporting Files */,
 				01FC3D8720C86E23005FABEF /* AppDelegate.swift */,
-				01FC3D8B20C86E23005FABEF /* Main.storyboard */,
 				01FC3D9020C86E24005FABEF /* LaunchScreen.storyboard */,
 				01FC3D9320C86E24005FABEF /* Info.plist */,
 				4BF14E2E210206040070ECD6 /* Services */,
@@ -176,12 +175,10 @@
 		4B01C4CB20F63D19008D4CEA /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				4B01C4D020F63DAF008D4CEA /* About.storyboard */,
 				4B01C4CE20F63D41008D4CEA /* AboutViewController.swift */,
-				0159D01C20D05E5C00D759D4 /* DesatekTableViewCell.swift */,
-				01A9369F20D4447500A5D979 /* DesatekTableViewController.swift */,
+				0159D01C20D05E5C00D759D4 /* DesatekCollectionViewCell.swift */,
+				01A9369F20D4447500A5D979 /* DesatekCollectionViewController.swift */,
 				01FC3D8920C86E23005FABEF /* RuzenecViewController.swift */,
-				01CD809F20F66F0500A8BE5C /* Settings.storyboard */,
 				4B01C4CC20F63D2B008D4CEA /* SettingsTableViewController.swift */,
 			);
 			path = Controllers;
@@ -261,7 +258,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0930;
-				LastUpgradeCheck = 0930;
+				LastUpgradeCheck = 1210;
 				ORGANIZATIONNAME = "Petr Hracek";
 				TargetAttributes = {
 					01FC3D8320C86E23005FABEF = {
@@ -298,11 +295,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				01FC3D9220C86E24005FABEF /* LaunchScreen.storyboard in Resources */,
+				01F33AF7255431E300B72E81 /* ruzenec_speak.json in Resources */,
 				015B37AA20F78EA4001E15D3 /* ruzenec.json in Resources */,
-				4B01C4D120F63DAF008D4CEA /* About.storyboard in Resources */,
-				01FC3D8D20C86E23005FABEF /* Main.storyboard in Resources */,
 				01A204F721C2870500D49EE5 /* Assets.xcassets in Resources */,
-				01CD80A020F66F0500A8BE5C /* Settings.storyboard in Resources */,
 				0180F6AC239179DD00B863C1 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -374,9 +369,10 @@
 				01A936A220D4474F00A5D979 /* Desatek.swift in Sources */,
 				01BCB598238C2B2A00209176 /* Global.swift in Sources */,
 				4B01C4CF20F63D41008D4CEA /* AboutViewController.swift in Sources */,
-				01A936A020D4447500A5D979 /* DesatekTableViewController.swift in Sources */,
-				0159D01D20D05E5C00D759D4 /* DesatekTableViewCell.swift in Sources */,
+				01A936A020D4447500A5D979 /* DesatekCollectionViewController.swift in Sources */,
+				0159D01D20D05E5C00D759D4 /* DesatekCollectionViewCell.swift in Sources */,
 				4B01C4CD20F63D2B008D4CEA /* SettingsTableViewController.swift in Sources */,
+				010CDF292548953E0086C6D3 /* Extensions.swift in Sources */,
 				0110EF4D219C15FF008EAE8A /* GeneratorText.swift in Sources */,
 				4BF14E292101FF3A0070ECD6 /* Rosary.swift in Sources */,
 			);
@@ -401,14 +397,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		01FC3D8B20C86E23005FABEF /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				01FC3D8C20C86E23005FABEF /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		01FC3D9020C86E24005FABEF /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -446,6 +434,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -471,7 +460,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -506,6 +495,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -525,7 +515,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
@@ -543,7 +533,7 @@
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = 32253C46P7;
 				INFOPLIST_FILE = RuzeneciOS/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -566,7 +556,7 @@
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = 32253C46P7;
 				INFOPLIST_FILE = RuzeneciOS/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
