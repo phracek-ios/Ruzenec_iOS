@@ -448,11 +448,13 @@ class RuzenecViewController: UIViewController, UINavigationControllerDelegate, U
             guard let rosary = rosaryStructure else { return }
             let rosary_begin = "\(rosarySpeak.credo) \(rosarySpeak.lordPrayer) \(rosarySpeak.aveMaria)v kterého věříme\(rosarySpeak.aveMariaEnd)\(rosarySpeak.aveMaria)v kterého doufáme\(rosarySpeak.aveMariaEnd)\(rosarySpeak.aveMaria)kterého nade všechno milujeme\(rosarySpeak.aveMariaEnd) \(rosarySpeak.gloriaPatri)"
             var text_to_speak: String = ""
+            print(desatek?.desatek)
             switch desatek?.desatek {
             // Ruzenec Radostny, Bolestny, Svetla, Slavny
             case 1, 2, 3, 4:
                 text_to_speak += rosary_begin
                 for n in 0..<5 {
+                    print(rosary.rosaries[desatek!.desatek - 1].decades[n])
                     text_to_speak += rosarySpeak.lordPrayer + String.init(repeating: "\(rosarySpeak.aveMaria)\(rosary.rosaries[desatek!.desatek - 1].decades[n])\(rosarySpeak.aveMariaEnd)", count: 10) + rosarySpeak.gloriaPatri + rosarySpeak.meaCulpa
                 }
                 text_to_speak += rosarySpeak.salveRegina + rosarySpeak.pray
@@ -464,14 +466,23 @@ class RuzenecViewController: UIViewController, UINavigationControllerDelegate, U
                 }
             // Sedmi bolestna, Sedmi radostna
             case 6, 7:
-                text_to_speak = "\(rosarySpeak.lordPrayer) \(rosarySpeak.aveMariaFull) \(rosarySpeak.credo)"
+                text_to_speak += rosary_begin
+                for n in 0..<7 {
+                    print(rosary.rosaries[desatek!.desatek - 2].decades[n])
+                    text_to_speak += rosarySpeak.lordPrayer + String.init(repeating: "\(rosarySpeak.aveMaria)\(rosary.rosaries[desatek!.desatek - 2].decades[n])\(rosarySpeak.aveMariaEnd)", count: 7) + rosarySpeak.gloriaPatri + rosarySpeak.meaCulpa
+                }
+                text_to_speak += "\n" + rosarySpeak.salveRegina + rosarySpeak.pray
             // Ke svatemu Josefovi
             case 8:
-                text_to_speak = "\(rosarySpeak.lordPrayer) \(rosarySpeak.aveMariaFull) \(rosarySpeak.credo)"
+                text_to_speak += rosary_begin
+                for n in 0..<5 {
+                    print(rosary.rosaries[desatek!.desatek - 2].decades[n])
+                    text_to_speak += rosarySpeak.lordPrayer + String.init(repeating: "\(rosarySpeak.aveMaria)\(rosary.rosaries[desatek!.desatek - 2].decades[n])\(rosarySpeak.aveMariaEnd)", count: 7) + rosarySpeak.gloriaPatri + rosarySpeak.meaCulpa
+                }
+                text_to_speak += "\n" + rosarySpeak.salveRegina + rosarySpeak.prayJosef
             default:
                 text_to_speak = ""
             }
-            print(text_to_speak)
             speakText(text: text_to_speak)
             speak = true
             play_button.setTitle("Stop", for: .normal)

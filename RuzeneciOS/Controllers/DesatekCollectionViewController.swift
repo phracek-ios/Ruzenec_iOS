@@ -142,9 +142,8 @@ class DesatekCollectionViewController: UICollectionViewController, UICollectionV
             let settingsViewController = SettingsTableViewController()
             navigationController?.pushViewController(settingsViewController, animated: true)
         case .about:
-            if let aboutViewController = UIStoryboard(name: "About", bundle: nil).instantiateInitialViewController() {
-                navigationController?.pushViewController(aboutViewController, animated: true)
-            }
+            let aboutViewController = AboutViewController()
+            navigationController?.pushViewController(aboutViewController, animated: true)
         }
     }
 

@@ -12,7 +12,13 @@ import WebKit
 
 class AboutViewController: UIViewController, UITextViewDelegate {
     
-    @IBOutlet weak var aboutWebView: WKWebView!
+    // MARK properties
+    lazy var aboutWebView: WKWebView = {
+        let wk = WKWebView()
+        wk.translatesAutoresizingMaskIntoConstraints = false
+        return wk
+    }()
+
     
     var darkMode: Bool = false
     var text_dark: String = ""
@@ -20,6 +26,7 @@ class AboutViewController: UIViewController, UITextViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "O aplikaci"
+        setupView()
         let htmlString = "Růženec<br>Autor mobilní aplikace: Petr Hráček<br><br>Případné chyby, návrhy, připomínky, nápady či postřehy prosím zašlete na adresu:<br> <a href=\"phracek@gmail.com\">phracek@gmail.com</a>"
         let userDefaults = UserDefaults.standard
         self.darkMode = userDefaults.bool(forKey: "NightSwitch")
@@ -42,7 +49,7 @@ class AboutViewController: UIViewController, UITextViewDelegate {
         navigationController?.navigationBar.barStyle = UIBarStyle.black;
         NotificationCenter.default.addObserver(self, selector: #selector(darkModeEnabled(_:)), name: .darkModeEnabled, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(darkModeDisabled(_:)), name: .darkModeDisabled, object: nil)
-   }
+    }
     
     deinit {
         NotificationCenter.default.removeObserver(self, name: .darkModeEnabled, object: nil)
@@ -51,6 +58,13 @@ class AboutViewController: UIViewController, UITextViewDelegate {
     func textView(_ textView: UITextView, shouldInteractWith URL: URL, in characterRange: NSRange, interaction: UITextItemInteraction) -> Bool {
         UIApplication.shared.open(URL, options: [:], completionHandler: nil)
         return false
+    }
+    
+    func setupView() {
+        self.view.addSubview(aboutWebView)
+        self.view.addConstraintsWithFormat(format: "H:|-10-[v0]-10-|", views: aboutWebView)
+        self.view.addConstraintsWithFormat(format: "V:|-10-[v0]-10-|", views: aboutWebView)
+        aboutWebView.widthAnchor.constraint(equalTo: self.view.widthAnchor).isActive = true
     }
     
     @objc private func darkModeEnabled(_ notification: Notification) {
