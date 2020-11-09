@@ -103,7 +103,6 @@ class RuzenecViewController: UIViewController, UINavigationControllerDelegate, U
     var crown = Crown.init()
     var font_name: String = "Helvetica"
     var font_size: String = "16"
-    
     let synthesizer = AVSpeechSynthesizer()
     
     override func viewDidLoad() {
@@ -112,6 +111,7 @@ class RuzenecViewController: UIViewController, UINavigationControllerDelegate, U
         self.scrollView.delegate = self
         self.view.isUserInteractionEnabled = true
         ruzenec_text_contain.numberOfLines = 0
+
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -119,6 +119,7 @@ class RuzenecViewController: UIViewController, UINavigationControllerDelegate, U
         rosaryStructure = RosaryDataService.shared.rosaryStructure
         rosarySpeakStructure = RosaryDataService.shared.rosarySpeakStructure
         let userDefaults = UserDefaults.standard
+        speak = false
         setupUI()
         if let desatek = desatek {
             navigationController?.title = desatek.name
@@ -402,12 +403,6 @@ class RuzenecViewController: UIViewController, UINavigationControllerDelegate, U
         }
     }
 
-    //MARK: Navigation
-    
-    @IBAction func cancel(_ sender: UIButton) {
-        dismiss(animated: true, completion: nil)
-    }
-
     //MARK: Actions
     
     func show_texts(by direction: Bool) {
@@ -448,11 +443,10 @@ class RuzenecViewController: UIViewController, UINavigationControllerDelegate, U
     @objc func playAction(sender: UIButton) {
         Global.vibrate()
         print("Playaction")
-        print(desatek?.desatek)
         if speak == false {
             guard let rosarySpeak = rosarySpeakStructure else { return }
             guard let rosary = rosaryStructure else { return }
-            var rosary_begin = "\(rosarySpeak.credo) \(rosarySpeak.lordPrayer) \(rosarySpeak.aveMaria)v kterého věříme\(rosarySpeak.aveMariaEnd)\(rosarySpeak.aveMaria)v kterého doufáme\(rosarySpeak.aveMariaEnd)\(rosarySpeak.aveMaria)kterého nade všechno milujeme\(rosarySpeak.aveMariaEnd) \(rosarySpeak.gloriaPatri)"
+            let rosary_begin = "\(rosarySpeak.credo) \(rosarySpeak.lordPrayer) \(rosarySpeak.aveMaria)v kterého věříme\(rosarySpeak.aveMariaEnd)\(rosarySpeak.aveMaria)v kterého doufáme\(rosarySpeak.aveMariaEnd)\(rosarySpeak.aveMaria)kterého nade všechno milujeme\(rosarySpeak.aveMariaEnd) \(rosarySpeak.gloriaPatri)"
             var text_to_speak: String = ""
             switch desatek?.desatek {
             // Ruzenec Radostny, Bolestny, Svetla, Slavny
@@ -462,7 +456,7 @@ class RuzenecViewController: UIViewController, UINavigationControllerDelegate, U
                     text_to_speak += rosarySpeak.lordPrayer + String.init(repeating: "\(rosarySpeak.aveMaria)\(rosary.rosaries[desatek!.desatek - 1].decades[n])\(rosarySpeak.aveMariaEnd)", count: 10) + rosarySpeak.gloriaPatri + rosarySpeak.meaCulpa
                 }
                 text_to_speak += rosarySpeak.salveRegina + rosarySpeak.pray
-                // Korunka k Bozimu milosrdenstvi
+            // Korunka k Bozimu milosrdenstvi
             case 5:
                 text_to_speak = "\(rosarySpeak.lordPrayer) \(rosarySpeak.aveMariaFull) \(rosarySpeak.credo) "
                 for _ in 0..<5 {
@@ -478,19 +472,19 @@ class RuzenecViewController: UIViewController, UINavigationControllerDelegate, U
                 text_to_speak = ""
             }
             print(text_to_speak)
-            let utterance = AVSpeechUtterance(string: text_to_speak)
-            utterance.voice = AVSpeechSynthesisVoice(language: "cs_CZ")
+            speakText(text: text_to_speak)
             speak = true
             play_button.setTitle("Stop", for: .normal)
-            synthesizer.speak(utterance)
+            print("playing finished")
         }
         else {
-            synthesizer.stopSpeaking(at: .immediate)
+            self.synthesizer.stopSpeaking(at: .immediate)
             play_button.setTitle("Play", for: .normal)
             speak = false
+            print("playing stopped")
         }
         enabledDarkMode()
-        print("playing finished")
+
     }
 
     @objc func nextAction(sender: UIButton) {
@@ -499,7 +493,20 @@ class RuzenecViewController: UIViewController, UINavigationControllerDelegate, U
         enabledDarkMode()
         show_texts(by: true)
     }
+    
+    @objc func speakText(text: String) {
+        if self.synthesizer.isSpeaking {
+            self.synthesizer.stopSpeaking(at: .immediate)
+        }
+        else {
+            let utterance: AVSpeechUtterance = AVSpeechUtterance(string: text)
+            utterance.voice = AVSpeechSynthesisVoice(language: "cs_CZ")
+            DispatchQueue.main.async {
+                self.synthesizer.speak(utterance)
+            }
+        }
         
+    }
     func enabledDarkMode() {
         self.view.backgroundColor = self.back
         self.ruzenec_text_contain.backgroundColor = self.back
