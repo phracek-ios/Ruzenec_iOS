@@ -49,7 +49,6 @@ class RuzenecViewController: UIViewController, UINavigationControllerDelegate, U
     lazy var play_button: UIButton = {
         let btn = UIButton()
         btn.translatesAutoresizingMaskIntoConstraints = false
-        btn.setTitle("Play", for: .normal)
         btn.addTarget(self, action: #selector(playAction), for: .touchUpInside)
         return btn
     }()
@@ -104,6 +103,7 @@ class RuzenecViewController: UIViewController, UINavigationControllerDelegate, U
     var font_name: String = "Helvetica"
     var font_size: String = "16"
     let synthesizer = AVSpeechSynthesizer()
+    let keys = SettingsBundleHelper.SettingsBundleKeys.self
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -132,20 +132,20 @@ class RuzenecViewController: UIViewController, UINavigationControllerDelegate, U
             navigationController?.navigationBar.barTintColor = KKCMainColor
             navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: KKCMainTextColor]
             navigationController?.navigationBar.barStyle = UIBarStyle.black;
-            if userDefaults.bool(forKey: "FootFont") {
+            if userDefaults.bool(forKey: keys.serifEnabled) {
                 self.font_name = "Times New Roman"
             } else {
-                userDefaults.set(true, forKey: "FootFont")
+                userDefaults.set(true, forKey: keys.serifEnabled)
                 self.font_name = "Helvetica"
             }
             
-            if let saveFontSize = userDefaults.string(forKey: "FontSize") {
+            if let saveFontSize = userDefaults.string(forKey: keys.fontSize) {
                 self.font_size = saveFontSize
             } else {
-                userDefaults.set(16, forKey: "FontSize")
+                userDefaults.set(16, forKey: keys.fontSize)
                 self.font_size = "16"
             }
-            darkMode = userDefaults.bool(forKey: "NightSwitch")
+            darkMode = userDefaults.bool(forKey: keys.night)
             if darkMode == true {
                 self.back = KKCBackgroundNightMode
                 self.text = KKCTextNightMode
@@ -199,14 +199,11 @@ class RuzenecViewController: UIViewController, UINavigationControllerDelegate, U
         
         scrollView.addSubview(scrollViewContainer)
         scrollViewContainer.addSubview(ruzenec_image)
+        ruzenec_image.heightAnchor.constraint(equalToConstant: 175).isActive = true
         scrollViewContainer.addSubview(ruzenec_text_contain)
         btnViewContainer.addSubview(previous_button)
         btnViewContainer.addSubview(play_button)
         btnViewContainer.addSubview(next_button)
-
-
-        let img = UIImage(named: "s1")
-        let newimage = ResizeImage(image: img!, scaleToHeight: 100)
 
         scrollView.addConstraintsWithFormat(format: "H:|-12-[v0]-12-|", views: scrollViewContainer)
         scrollViewContainer.widthAnchor.constraint(equalTo: scrollView.widthAnchor, constant: -12-12).isActive = true
@@ -220,6 +217,8 @@ class RuzenecViewController: UIViewController, UINavigationControllerDelegate, U
         btnViewContainer.addConstraintsWithFormat(format: "H:|-12-[v0(100)]", views: previous_button)
         btnViewContainer.addConstraintsWithFormat(format: "H:[v0(100)]-12-|", views: next_button)
         play_button.centerXAnchor.constraint(equalTo: btnViewContainer.centerXAnchor).isActive = true
+        let play_img = UIImage(named: "ic_play")
+        play_button.setImage(play_img, for: .normal)
 
     }
     
@@ -444,6 +443,8 @@ class RuzenecViewController: UIViewController, UINavigationControllerDelegate, U
         Global.vibrate()
         print("Playaction")
         if speak == false {
+            let play_img = UIImage(named: "ic_stop")
+            play_button.setImage(play_img, for: .normal)
             guard let rosarySpeak = rosarySpeakStructure else { return }
             guard let rosary = rosaryStructure else { return }
             let rosary_begin = "\(rosarySpeak.credo) \(rosarySpeak.lordPrayer) \(rosarySpeak.aveMaria)v kterého věříme\(rosarySpeak.aveMariaEnd)\(rosarySpeak.aveMaria)v kterého doufáme\(rosarySpeak.aveMariaEnd)\(rosarySpeak.aveMaria)kterého nade všechno milujeme\(rosarySpeak.aveMariaEnd) \(rosarySpeak.gloriaPatri)"
@@ -485,12 +486,12 @@ class RuzenecViewController: UIViewController, UINavigationControllerDelegate, U
             }
             speakText(text: text_to_speak)
             speak = true
-            play_button.setTitle("Stop", for: .normal)
             print("playing finished")
         }
         else {
+            let play_img = UIImage(named: "ic_play")
+            play_button.setImage(play_img, for: .normal)
             self.synthesizer.stopSpeaking(at: .immediate)
-            play_button.setTitle("Play", for: .normal)
             speak = false
             print("playing stopped")
         }

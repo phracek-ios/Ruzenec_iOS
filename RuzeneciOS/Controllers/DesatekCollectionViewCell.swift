@@ -23,7 +23,7 @@ class DesatekCollectionViewCell: UICollectionViewCell {
         return piv
     }()
     
-    lazy var desatelLabel: UILabel = {
+    lazy var desatekLabel: UILabel = {
         let l = UILabel()
         l.lineBreakMode = .byWordWrapping
         l.numberOfLines = 0
@@ -35,7 +35,7 @@ class DesatekCollectionViewCell: UICollectionViewCell {
         super.init(frame: frame)
 
     }
-    
+    let keys = SettingsBundleHelper.SettingsBundleKeys.self
     func configureCell(name: String, image_name: String) {
         let userDefaults = UserDefaults.standard
         let imgHeight : CGFloat = 75
@@ -46,21 +46,23 @@ class DesatekCollectionViewCell: UICollectionViewCell {
         photoImageView.contentMode = .scaleAspectFit
         photoImageView.clipsToBounds = true
 
-        let darkMode = userDefaults.bool(forKey: "NightSwitch")
+        let darkMode = userDefaults.bool(forKey: keys.night)
         if darkMode {
-            desatelLabel.textColor = KKCBackgroundNightMode
+            desatekLabel.textColor = KKCTextNightMode
+            desatekLabel.backgroundColor = KKCBackgroundNightMode
         }
         else {
-            desatelLabel.textColor = KKCBackgroundLightMode
+            desatekLabel.textColor = KKCTextLightMode
+            desatekLabel.backgroundColor = KKCBackgroundLightMode
         }
         
         self.addSubview(photoImageView)
-        self.addSubview(desatelLabel)
-        desatelLabel.text = name
-        desatelLabel.textAlignment = .left
+        self.addSubview(desatekLabel)
+        desatekLabel.text = name
+        desatekLabel.textAlignment = .left
         addConstraintsWithFormat(format: "V:|-5-[v0(\(imgHeight))]-5-|", views: photoImageView)
-        addConstraintsWithFormat(format: "V:|[v0]|", views: desatelLabel)
-        addConstraintsWithFormat(format: "H:|-5-[v0]-20-[v1]-5-|", views: photoImageView, desatelLabel)
+        addConstraintsWithFormat(format: "V:|[v0]|", views: desatekLabel)
+        addConstraintsWithFormat(format: "H:|-5-[v0]-20-[v1]-5-|", views: photoImageView, desatekLabel)
 
     }
     

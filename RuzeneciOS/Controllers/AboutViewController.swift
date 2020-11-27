@@ -29,7 +29,9 @@ class AboutViewController: UIViewController, UITextViewDelegate {
         setupView()
         let htmlString = "Růženec<br>Autor mobilní aplikace: Petr Hráček<br><br>Případné chyby, návrhy, připomínky, nápady či postřehy prosím zašlete na adresu:<br> <a href=\"phracek@gmail.com\">phracek@gmail.com</a>"
         let userDefaults = UserDefaults.standard
-        self.darkMode = userDefaults.bool(forKey: "NightSwitch")
+        let keys = SettingsBundleHelper.SettingsBundleKeys.self
+
+        self.darkMode = userDefaults.bool(forKey: keys.night)
         self.aboutWebView.isOpaque = false
         self.text_dark = "<div style=\"color:#ffffff\"><font size=20>" + htmlString + "</font></div></body></html>"
         self.text_light = "<div style=\"color:#000000\"><font size=20>" + htmlString + "</font></div></body></html>"
