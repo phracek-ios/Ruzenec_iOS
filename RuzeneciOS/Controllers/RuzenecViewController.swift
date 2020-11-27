@@ -104,6 +104,7 @@ class RuzenecViewController: UIViewController, UINavigationControllerDelegate, U
     var font_name: String = "Helvetica"
     var font_size: String = "16"
     let synthesizer = AVSpeechSynthesizer()
+    let keys = SettingsBundleHelper.SettingsBundleKeys.self
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -132,20 +133,20 @@ class RuzenecViewController: UIViewController, UINavigationControllerDelegate, U
             navigationController?.navigationBar.barTintColor = KKCMainColor
             navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: KKCMainTextColor]
             navigationController?.navigationBar.barStyle = UIBarStyle.black;
-            if userDefaults.bool(forKey: "FootFont") {
+            if userDefaults.bool(forKey: keys.serifEnabled) {
                 self.font_name = "Times New Roman"
             } else {
-                userDefaults.set(true, forKey: "FootFont")
+                userDefaults.set(true, forKey: keys.serifEnabled)
                 self.font_name = "Helvetica"
             }
             
-            if let saveFontSize = userDefaults.string(forKey: "FontSize") {
+            if let saveFontSize = userDefaults.string(forKey: keys.fontSize) {
                 self.font_size = saveFontSize
             } else {
-                userDefaults.set(16, forKey: "FontSize")
+                userDefaults.set(16, forKey: keys.fontSize)
                 self.font_size = "16"
             }
-            darkMode = userDefaults.bool(forKey: "NightSwitch")
+            darkMode = userDefaults.bool(forKey: keys.night)
             if darkMode == true {
                 self.back = KKCBackgroundNightMode
                 self.text = KKCTextNightMode

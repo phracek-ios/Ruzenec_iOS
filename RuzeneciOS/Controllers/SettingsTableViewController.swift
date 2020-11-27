@@ -8,29 +8,10 @@
 
 import UIKit
 import BonMot
+import FirebaseAnalytics
 
 class SettingsTableViewController: UITableViewController {
     
-    @IBOutlet weak var NightSwitchLabel: UILabel!
-    @IBOutlet weak var NightSwitch: UISwitch!
-    @IBOutlet weak var DimOffSwitch: UISwitch!
-    @IBOutlet weak var DimOffScreenLabel: UILabel!
-
-    @IBOutlet weak var NightSwitchCell: UITableViewCell!
-    @IBOutlet weak var DimOffSwitchCell: UITableViewCell!
-    @IBOutlet weak var VibrateSwitch: UISwitch!
-    @IBOutlet weak var VibrateLabel: UILabel!
-    @IBOutlet weak var VibrateCell: UITableViewCell!
-    
-    @IBOutlet weak var footLabel: UILabel!
-    @IBOutlet weak var footSwitch: UISwitch!
-    @IBOutlet weak var footCell: UITableViewCell!
-    
-    @IBOutlet weak var fontPickerLabel: UILabel!
-    @IBOutlet weak var labelExample: UILabel!
-    
-    @IBOutlet weak var slider: UISlider!
-    @IBOutlet weak var fontCell: UITableViewCell!
     
     var DarkModeOn = Bool()
     let exampleText: String = "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Etiam neque"
@@ -38,9 +19,17 @@ class SettingsTableViewController: UITableViewController {
     var fontSize: String = "16"
     var back = KKCBackgroundNightMode
     var text = KKCTextNightMode
+    var settings = [SettingsItem]()
+    var className: String {
+        return String(describing: self)
+    }
+    let settingsDelegate = SettingsDelegateManager()
+    let keys = SettingsBundleHelper.SettingsBundleKeys.self
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Nastavení Růžence"
+        loadSettings()
+        setupSettingsTable()
         self.tableView.tableFooterView = UIView()
     }
     
@@ -51,116 +40,173 @@ class SettingsTableViewController: UITableViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        Analytics.logEvent(AnalyticsEventScreenView,
+                           parameters:[AnalyticsParameterScreenName: "Nastaveni Ruzence",
+                                       AnalyticsParameterScreenClass: className])
         let userDefaults = UserDefaults.standard
-        NightSwitch.isOn = userDefaults.bool(forKey: "NightSwitch")
-        if NightSwitch.isOn == true {
+        self.DarkModeOn = userDefaults.bool(forKey: keys.night)
+        if self.DarkModeOn == true {
             self.back = KKCBackgroundNightMode
             self.text = KKCTextNightMode
-
         }
         else {
             self.back = KKCBackgroundLightMode
             self.text = KKCTextLightMode
         }
         setupUI()
-
-        DimOffSwitch.isOn = userDefaults.bool(forKey: "DimmScreen")
-        VibrateSwitch.isOn = userDefaults.bool(forKey: "Vibrate")
         self.fontSize = userDefaults.string(forKey: "FontSize") ?? "16"
-        footSwitch.isOn = userDefaults.bool(forKey: "FootFont")
-        if footSwitch.isOn == true {
-            self.fontName = "Times New Roman"
-        } else {
-            self.fontName = "Helvetica"
-        }
-        slider.setValue(Float(Int(self.fontSize)!), animated: true)
-        labelExample.attributedText = generateContent(text: exampleText, font_name: self.fontName, size: get_cgfloat(size: self.fontSize), color: self.text)
+        self.tableView.reloadData()
+        print("Settings View Will Appear")
     }
     
-    @IBAction func sliderValueChanged(_ sender: Any) {
-        let userDefaults = UserDefaults.standard
-        self.fontSize = "\(Int(slider.value))"
-        print(self.fontSize)
-        userDefaults.set(self.fontSize, forKey: "FontSize")
-        labelExample.attributedText = generateContent(text: exampleText, font_name: self.fontName, size: get_cgfloat(size: self.fontSize), color: self.text)
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
     }
     
-    @IBAction func DimOffAction(_ sender: Any) {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return settings.count
+    }
+    
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let userDefaults = UserDefaults.standard
-        if DimOffSwitch.isOn == true {
-            UIApplication.shared.isIdleTimerDisabled = true
-            userDefaults.set(true, forKey: "DimmScreen")
-        }
-        else {
-            UIApplication.shared.isIdleTimerDisabled = false
-            userDefaults.set(false, forKey: "DimmScreen")
+        switch settings[indexPath.row].type {
+        case .slider:
+            let cell = tableView.dequeueReusableCell(withIdentifier: SettingsSliderTableViewCell.cellId, for: indexPath) as! SettingsSliderTableViewCell
+            cell.configureCell(settingsItem: settings[indexPath.row],
+                               delegate: settingsDelegate,
+                               cellWidth: tableView.frame.width)
+            cell.accessoryType = .none
+            return cell
+        default:
+            let set = settings[indexPath.row]
+            print(set.prefsString)
+            let cell = UITableViewCell(style: UITableViewCellStyle.default, reuseIdentifier: "cell")
+            
+            let sw = UISwitch()
+            sw.isOn = userDefaults.bool(forKey: set.prefsString)
+            if set.prefsString == keys.night {
+                sw.addTarget(self, action: #selector(nightTarget(_:)), for: .valueChanged)
+            }
+            else if set.prefsString == keys.idleTimer {
+                sw.addTarget(self, action: #selector(idleTarget(_:)), for: .valueChanged)
+            }
+            else if set.prefsString == keys.serifEnabled {
+                sw.addTarget(self, action: #selector(serifTarget(_:)), for: .valueChanged)
+            }
+            else if set.prefsString == keys.vibrationEnabled {
+                sw.addTarget(self, action: #selector(vibrateTarget(_:)), for: .valueChanged)
+            }
+            cell.textLabel?.text = settings[indexPath.row].title
+            cell.detailTextLabel?.text = settings[indexPath.row].detail
+
+            cell.backgroundColor = self.back
+            cell.textLabel?.backgroundColor = self.back
+            cell.textLabel?.textColor = self.text
+            cell.detailTextLabel?.backgroundColor = self.back
+            cell.detailTextLabel?.textColor = self.text
+
+            cell.accessoryView = sw
+            cell.accessoryType = .none
+            return cell
         }
     }
     
-    @IBAction func NightSwitchAction(_ sender: Any) {
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if settings[indexPath.row].type == SettingsItemType.slider {
+            return 150
+        }
+        return UITableViewAutomaticDimension
+    }
+    
+    override func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UITableViewAutomaticDimension
+    }
+    
+    func setupSettingsTable() {
+        tableView.register(SettingsSliderTableViewCell.self, forCellReuseIdentifier: SettingsSliderTableViewCell.cellId)
+    }
+    
+    func loadSettings() {
+        settings.append(SettingsItem(type: SettingsItemType.onOffSwitch,
+                                     title: "Noční režim",
+                                     description: "",
+                                     prefsString: keys.night,
+                                     defValue: false,
+                                     eventHandler: nil))
+        settings.append(SettingsItem(type: SettingsItemType.onOffSwitch,
+                                    title: "Zabránit vypínání obrazovky",
+                                    description: "",
+                                    prefsString: keys.idleTimer,
+                                    defValue: false,
+                                    eventHandler: nil))
+        settings.append(SettingsItem(type: SettingsItemType.onOffSwitch,
+                                    title: "Vibrační zpětná vazba",
+                                    description: "",
+                                    prefsString: keys.vibrationEnabled,
+                                    defValue: false,
+                                    eventHandler: nil))
+        settings.append(SettingsItem(type: SettingsItemType.onOffSwitch,
+                                 title: "Patkové písmo",
+                                 description: "",
+                                 prefsString: keys.serifEnabled,
+                                 defValue: false,
+                                 eventHandler: nil))
+        settings.append(SettingsItem(type: SettingsItemType.slider,
+                                 title: "Velikost písma",
+                                 description: "Velikost písma, které bude použito u modliteb.",
+                                 prefsString: keys.fontSize,
+                                 defValue: false,
+                                 eventHandler: nil))
+        print("loadSettings finished")
+    }
+    
+    @objc func nightTarget(_ sender: UISwitch) {
+        
+        print("Switch Target Night \(sender.isOn)")
+        Global.vibrate()
         let userDefaults = UserDefaults.standard
-        if NightSwitch.isOn == true {
+        userDefaults.set(sender.isOn, forKey: keys.night)
+        self.DarkModeOn = sender.isOn
+        if sender.isOn == true {
             self.back = KKCBackgroundNightMode
             self.text = KKCTextNightMode
-            userDefaults.set(true, forKey: "NightSwitch")
             NotificationCenter.default.post(name: .darkModeEnabled, object:nil)
         }
         else {
             self.back = KKCBackgroundLightMode
             self.text = KKCTextLightMode
-            userDefaults.set(false, forKey: "NightSwitch")
             NotificationCenter.default.post(name: .darkModeDisabled, object: nil)
         }
         setupUI()
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+        }
     }
 
-    @IBAction func VibrateAction(_ sender: Any) {
+    @objc func idleTarget(_ sender: UISwitch!) {
+        
+        print("Idle Target Night \(sender.isOn)")
+        Global.vibrate()
         let userDefaults = UserDefaults.standard
-        if VibrateSwitch.isOn == true {
-            userDefaults.set(true, forKey: "Vibrate")
-        }
-        else {
-            userDefaults.set(false, forKey: "Vibrate")
-        }
+        userDefaults.set(sender.isOn, forKey: keys.idleTimer)
     }
     
-    @IBAction func footMode(_ sender: Any) {
-        let userDefault = UserDefaults.standard
-        if footSwitch.isOn == true {
-            self.fontName = "Times New Roman"
-        } else {
-            self.fontName = "Helvetica"
-        }
-        userDefault.set(footSwitch.isOn, forKey: "FootFont")
-        labelExample.attributedText = generateContent(text: exampleText, font_name: self.fontName, size: get_cgfloat(size: self.fontSize), color: self.text)
-
+    @objc func serifTarget(_ sender: UISwitch!) {
+        
+        print("Serif Target \(sender.isOn)")
+        Global.vibrate()
+        let userDefaults = UserDefaults.standard
+        userDefaults.set(sender.isOn, forKey: keys.serifEnabled)
     }
+    
+    @objc func vibrateTarget(_ sender: UISwitch!) {
+        print("Vibrate Target \(sender.isOn)")
+        let userDefaults = UserDefaults.standard
+        userDefaults.set(sender.isOn, forKey: keys.vibrationEnabled)
+    }
+    
+
     func setupUI() {
         self.view.backgroundColor = self.back
-        
-        self.NightSwitchLabel.textColor = self.text
-        self.NightSwitchLabel.backgroundColor = self.back
-        self.NightSwitch.backgroundColor = self.back
-        self.NightSwitchCell.backgroundColor = self.back
-        
-        self.DimOffScreenLabel.textColor = self.text
-        self.DimOffScreenLabel.backgroundColor = self.back
-        self.DimOffSwitch.backgroundColor = self.back
-        self.DimOffSwitchCell.backgroundColor = self.back
-        
-        self.VibrateSwitch.backgroundColor = self.back
-        self.VibrateCell.backgroundColor = self.back
-        self.VibrateLabel.backgroundColor = self.back
-        self.VibrateLabel.textColor = self.text
-        
-        self.footSwitch.backgroundColor = self.back
-        self.footCell.backgroundColor = self.back
-        self.footLabel.backgroundColor = self.back
-        self.footLabel.textColor = self.text
-        self.labelExample.backgroundColor = self.back
-        self.labelExample.textColor = self.text
-        self.fontCell.backgroundColor = self.back
-        self.fontPickerLabel.backgroundColor = self.back
-        self.fontPickerLabel.textColor = self.text
     }
 }

@@ -11,11 +11,6 @@ import UIKit
 import UserNotifications
 import SystemConfiguration
 
-class SettingsBundleHelper {
-    struct SettingsBundleKeys {
-        static let vibrationEnabled = "ruzenecAppSettingVibrace"
-    }
-}
 
 class Global {
     static func vibrate() {

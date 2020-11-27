@@ -28,6 +28,8 @@ class DesatekCollectionViewController: UICollectionViewController, UICollectionV
     }
     //MARK: Properties
     
+    let keys = SettingsBundleHelper.SettingsBundleKeys.self
+
     fileprivate var desatky = [Desatek]()
     fileprivate var rowData = [RowData]()
     fileprivate var darkMode: Bool = false
@@ -39,14 +41,6 @@ class DesatekCollectionViewController: UICollectionViewController, UICollectionV
                                        AnalyticsParameterScreenClass: className])
         loadDesatky()
         loadRowData()
-        let userDefaults = UserDefaults.standard
-        let dimmOff = userDefaults.bool(forKey: "DimmScreen")
-        if dimmOff == true {
-            UIApplication.shared.isIdleTimerDisabled = true
-        }
-        else {
-            UIApplication.shared.isIdleTimerDisabled = false
-        }
         setupCollectionView()
 
         navigationItem.title = "Růženec"
@@ -54,10 +48,27 @@ class DesatekCollectionViewController: UICollectionViewController, UICollectionV
         navigationController?.navigationBar.barTintColor = KKCMainColor
         navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: KKCMainTextColor]
         navigationController?.navigationBar.barStyle = UIBarStyle.black;
-//        NotificationCenter.default.addObserver(self, selector: #selector(darkModeEnabled(_:)), name: .darkModeEnabled, object: nil)
-//        NotificationCenter.default.addObserver(self, selector: #selector(darkModeDisabled(_:)), name: .darkModeDisabled, object: nil)
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        let userDefaults = UserDefaults.standard
+        let dimmOff = userDefaults.bool(forKey: keys.idleTimer)
+        if dimmOff == true {
+            UIApplication.shared.isIdleTimerDisabled = true
+        }
+        else {
+            UIApplication.shared.isIdleTimerDisabled = false
+        }
+        self.darkMode = userDefaults.bool(forKey: keys.night)
+        if self.darkMode {
+            self.collectionView!.backgroundColor = KKCBackgroundNightMode
+        } else {
+            self.collectionView!.backgroundColor = KKCBackgroundLightMode
+        }
+        self.collectionView?.reloadData()
+        
+    }
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
         super.traitCollectionDidChange(previousTraitCollection)
         guard previousTraitCollection != nil else { return }
@@ -202,17 +213,6 @@ class DesatekCollectionViewController: UICollectionViewController, UICollectionV
         rowData = desatky.map { RowData(type: .desatek, desatek: $0) }
         rowData.append(RowData(type: .settings, desatek: nil))
         rowData.append(RowData(type: .about, desatek: nil))
-    }
-    @objc private func darkModeEnabled(_ notification: Notification) {
-        self.darkMode = true
-        self.collectionView!.backgroundColor = KKCBackgroundNightMode
-        //self.tableView.reloadData()
-    }
-
-    @objc private func darkModeDisabled(_ notification: Notification) {
-        self.darkMode = false
-        self.collectionView!.backgroundColor = KKCBackgroundLightMode
-        //self.tableView.reloadData()
     }
 }
 
