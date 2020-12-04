@@ -8,17 +8,70 @@
 
 import UIKit
 import BonMot
+import AVFoundation
 
 var statusBarIsHidden = true
 class RuzenecViewController: UIViewController, UINavigationControllerDelegate, UIScrollViewDelegate, UIGestureRecognizerDelegate {
     
     //MARK: Properties
-    @IBOutlet weak var ruzenec_text_contain: UILabel!
-    @IBOutlet weak var ruzenec_image: UIImageView!
-    @IBOutlet weak var next_button: UIButton!
-    @IBOutlet var rosary_view_controller: UIView!
-    @IBOutlet weak var previous_button: UIButton!
-    @IBOutlet weak var scrollView: UIScrollView!
+    
+    lazy var ruzenec_text_contain: UILabel = {
+        let l = UILabel()
+        l.lineBreakMode = .byWordWrapping
+        l.numberOfLines = 0
+        l.translatesAutoresizingMaskIntoConstraints = false
+        return l
+    }()
+
+    lazy var ruzenec_image: UIImageView = {
+        let ri = UIImageView()
+        ri.translatesAutoresizingMaskIntoConstraints = false
+        ri.sizeToFit()
+        return ri
+    }()
+
+    lazy var next_button: UIButton = {
+        let btn = UIButton()
+        btn.translatesAutoresizingMaskIntoConstraints = false
+        btn.setTitle("Další", for: .normal)
+        btn.addTarget(self, action: #selector(nextAction), for: .touchUpInside)
+        return btn
+    }()
+
+    lazy var previous_button: UIButton = {
+        let btn = UIButton()
+        btn.setTitle("Předchozí", for: .normal)
+        btn.translatesAutoresizingMaskIntoConstraints = false
+        btn.addTarget(self, action: #selector(previousAction), for: .touchUpInside)
+        return btn
+    }()
+    
+    lazy var play_button: UIButton = {
+        let btn = UIButton()
+        btn.translatesAutoresizingMaskIntoConstraints = false
+        btn.addTarget(self, action: #selector(playAction), for: .touchUpInside)
+        return btn
+    }()
+
+    lazy var scrollView: UIScrollView = {
+        let sv = UIScrollView()
+        sv.translatesAutoresizingMaskIntoConstraints = false
+        return sv
+    }()
+    
+    lazy var scrollViewContainer: UIStackView = {
+        let svc = UIStackView()
+        svc.translatesAutoresizingMaskIntoConstraints = false
+        return svc
+    }()
+    
+    lazy var btnViewContainer: UIStackView = {
+        let bvc = UIStackView()
+        bvc.translatesAutoresizingMaskIntoConstraints = false
+        return bvc
+    }()
+    
+
     var back = KKCBackgroundNightMode
     var text = KKCTextNightMode
     var isStatusBarHidden = false {
@@ -37,29 +90,36 @@ class RuzenecViewController: UIViewController, UINavigationControllerDelegate, U
     var image_count: Int = 0
     var type_desatek: Int = 0
     var zdravas_number: Int = 0
-
+    var speak: Bool = false
     var zrno: Int = 0
     var desatek: Desatek?
     var typ_obrazku: String = "r"
     var darkMode: Bool = true
     fileprivate var rosaryStructure: RosaryStructure?
+    fileprivate var rosarySpeakStructure: RosarySpeakStructure?
     var rn = RosaryNumbers.init()
     var rsn = RosarySevenNumbers.init()
     var crown = Crown.init()
     var font_name: String = "Helvetica"
     var font_size: String = "16"
+    let synthesizer = AVSpeechSynthesizer()
+    let keys = SettingsBundleHelper.SettingsBundleKeys.self
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupView()
         self.scrollView.delegate = self
         self.view.isUserInteractionEnabled = true
         ruzenec_text_contain.numberOfLines = 0
+
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         rosaryStructure = RosaryDataService.shared.rosaryStructure
+        rosarySpeakStructure = RosaryDataService.shared.rosarySpeakStructure
         let userDefaults = UserDefaults.standard
+        speak = false
         setupUI()
         if let desatek = desatek {
             navigationController?.title = desatek.name
@@ -72,20 +132,20 @@ class RuzenecViewController: UIViewController, UINavigationControllerDelegate, U
             navigationController?.navigationBar.barTintColor = KKCMainColor
             navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: KKCMainTextColor]
             navigationController?.navigationBar.barStyle = UIBarStyle.black;
-            if userDefaults.bool(forKey: "FootFont") {
+            if userDefaults.bool(forKey: keys.serifEnabled) {
                 self.font_name = "Times New Roman"
             } else {
-                userDefaults.set(true, forKey: "FootFont")
+                userDefaults.set(true, forKey: keys.serifEnabled)
                 self.font_name = "Helvetica"
             }
             
-            if let saveFontSize = userDefaults.string(forKey: "FontSize") {
+            if let saveFontSize = userDefaults.string(forKey: keys.fontSize) {
                 self.font_size = saveFontSize
             } else {
-                userDefaults.set(16, forKey: "FontSize")
+                userDefaults.set(16, forKey: keys.fontSize)
                 self.font_size = "16"
             }
-            darkMode = userDefaults.bool(forKey: "NightSwitch")
+            darkMode = userDefaults.bool(forKey: keys.night)
             if darkMode == true {
                 self.back = KKCBackgroundNightMode
                 self.text = KKCTextNightMode
@@ -127,6 +187,39 @@ class RuzenecViewController: UIViewController, UINavigationControllerDelegate, U
                 isStatusBarHidden = !isNarBarHidden
             }
         }
+    }
+    
+    func setupView() {
+        self.view.addSubview(scrollView)
+        self.view.addSubview(btnViewContainer)
+        self.view.addConstraintsWithFormat(format: "H:|-10-[v0]-10-|", views: scrollView)
+        self.view.addConstraintsWithFormat(format: "H:|-20-[v0]-20-|", views: btnViewContainer)
+        self.view.addConstraintsWithFormat(format: "V:|-10-[v0]-20-[v1(40)]-10-|", views: scrollView, btnViewContainer)
+        scrollView.widthAnchor.constraint(equalTo: self.view.widthAnchor).isActive = true
+        
+        scrollView.addSubview(scrollViewContainer)
+        scrollViewContainer.addSubview(ruzenec_image)
+        ruzenec_image.heightAnchor.constraint(equalToConstant: 175).isActive = true
+        scrollViewContainer.addSubview(ruzenec_text_contain)
+        btnViewContainer.addSubview(previous_button)
+        btnViewContainer.addSubview(play_button)
+        btnViewContainer.addSubview(next_button)
+
+        scrollView.addConstraintsWithFormat(format: "H:|-12-[v0]-12-|", views: scrollViewContainer)
+        scrollViewContainer.widthAnchor.constraint(equalTo: scrollView.widthAnchor, constant: -12-12).isActive = true
+        scrollViewContainer.topAnchor.constraint(equalTo: scrollView.topAnchor, constant: +10).isActive = true
+        scrollViewContainer.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor, constant: -25).isActive = true
+
+        scrollViewContainer.addConstraintsWithFormat(format: "H:|-50-[v0]-50-|", views: ruzenec_image)
+        scrollViewContainer.addConstraintsWithFormat(format: "H:|-10-[v0]-10-|", views: ruzenec_text_contain)
+        scrollViewContainer.addConstraintsWithFormat(format: "V:|-20-[v0]-20-[v1]-20-|", views: ruzenec_image, ruzenec_text_contain)
+        
+        btnViewContainer.addConstraintsWithFormat(format: "H:|-12-[v0(100)]", views: previous_button)
+        btnViewContainer.addConstraintsWithFormat(format: "H:[v0(100)]-12-|", views: next_button)
+        play_button.centerXAnchor.constraint(equalTo: btnViewContainer.centerXAnchor).isActive = true
+        let play_img = UIImage(named: "ic_play")
+        play_button.setImage(play_img, for: .normal)
+
     }
     
     @objc func didTapOnScreen() {
@@ -309,12 +402,6 @@ class RuzenecViewController: UIViewController, UINavigationControllerDelegate, U
         }
     }
 
-    //MARK: Navigation
-    
-    @IBAction func cancel(_ sender: UIButton) {
-        dismiss(animated: true, completion: nil)
-    }
-
     //MARK: Actions
     
     func show_texts(by direction: Bool) {
@@ -344,22 +431,104 @@ class RuzenecViewController: UIViewController, UINavigationControllerDelegate, U
         self.ruzenec_text_contain.textAlignment = .center
 
     }
-    @IBAction func previous_button(_ sender: UIButton) {
+    
+    @objc func previousAction(sender: UIButton) {
         Global.vibrate()
+        print("PreviousAction")
         enabledDarkMode()
         show_texts(by: false)
     }
 
-    @IBAction func next_button(_ sender: UIButton) {
+    @objc func playAction(sender: UIButton) {
         Global.vibrate()
+        print("Playaction")
+        if speak == false {
+            let play_img = UIImage(named: "ic_stop")
+            play_button.setImage(play_img, for: .normal)
+            guard let rosarySpeak = rosarySpeakStructure else { return }
+            guard let rosary = rosaryStructure else { return }
+            let rosary_begin = "\(rosarySpeak.credo) \(rosarySpeak.lordPrayer) \(rosarySpeak.aveMaria)v kterého věříme\(rosarySpeak.aveMariaEnd)\(rosarySpeak.aveMaria)v kterého doufáme\(rosarySpeak.aveMariaEnd)\(rosarySpeak.aveMaria)kterého nade všechno milujeme\(rosarySpeak.aveMariaEnd) \(rosarySpeak.gloriaPatri)"
+            var text_to_speak: String = ""
+            print(desatek?.desatek)
+            switch desatek?.desatek {
+            // Ruzenec Radostny, Bolestny, Svetla, Slavny
+            case 1, 2, 3, 4:
+                text_to_speak += rosary_begin
+                for n in 0..<5 {
+                    print(rosary.rosaries[desatek!.desatek - 1].decades[n])
+                    text_to_speak += rosarySpeak.lordPrayer + String.init(repeating: "\(rosarySpeak.aveMaria)\(rosary.rosaries[desatek!.desatek - 1].decades[n])\(rosarySpeak.aveMariaEnd)", count: 10) + rosarySpeak.gloriaPatri + rosarySpeak.meaCulpa
+                }
+                text_to_speak += rosarySpeak.salveRegina + rosarySpeak.pray
+            // Korunka k Bozimu milosrdenstvi
+            case 5:
+                text_to_speak = "\(rosarySpeak.lordPrayer) \(rosarySpeak.aveMariaFull) \(rosarySpeak.credo) "
+                for _ in 0..<5 {
+                    text_to_speak += rosarySpeak.korunka_main + String.init(repeating: " \(rosarySpeak.korunka_rosary) ", count: 10) + String.init(repeating: "\(rosarySpeak.korunka_end)", count: 3)
+                }
+            // Sedmi bolestna, Sedmi radostna
+            case 6, 7:
+                text_to_speak += rosary_begin
+                for n in 0..<7 {
+                    print(rosary.rosaries[desatek!.desatek - 2].decades[n])
+                    text_to_speak += rosarySpeak.lordPrayer + String.init(repeating: "\(rosarySpeak.aveMaria)\(rosary.rosaries[desatek!.desatek - 2].decades[n])\(rosarySpeak.aveMariaEnd)", count: 7) + rosarySpeak.gloriaPatri + rosarySpeak.meaCulpa
+                }
+                text_to_speak += "\n" + rosarySpeak.salveRegina + rosarySpeak.pray
+            // Ke svatemu Josefovi
+            case 8:
+                text_to_speak += rosary_begin
+                for n in 0..<5 {
+                    print(rosary.rosaries[desatek!.desatek - 2].decades[n])
+                    text_to_speak += rosarySpeak.lordPrayer + String.init(repeating: "\(rosarySpeak.aveMaria)\(rosary.rosaries[desatek!.desatek - 2].decades[n])\(rosarySpeak.aveMariaEnd)", count: 7) + rosarySpeak.gloriaPatri + rosarySpeak.meaCulpa
+                }
+                text_to_speak += "\n" + rosarySpeak.salveRegina + rosarySpeak.prayJosef
+            default:
+                text_to_speak = ""
+            }
+            speakText(text: text_to_speak)
+            speak = true
+            print("playing finished")
+        }
+        else {
+            let play_img = UIImage(named: "ic_play")
+            play_button.setImage(play_img, for: .normal)
+            self.synthesizer.stopSpeaking(at: .immediate)
+            speak = false
+            print("playing stopped")
+        }
+        enabledDarkMode()
+
+    }
+
+    @objc func nextAction(sender: UIButton) {
+        Global.vibrate()
+        print("NextAction")
         enabledDarkMode()
         show_texts(by: true)
     }
+    
+    @objc func speakText(text: String) {
+        if self.synthesizer.isSpeaking {
+            self.synthesizer.stopSpeaking(at: .immediate)
+        }
+        else {
+            let utterance: AVSpeechUtterance = AVSpeechUtterance(string: text)
+            utterance.voice = AVSpeechSynthesisVoice(language: "cs_CZ")
+            DispatchQueue.main.async {
+                self.synthesizer.speak(utterance)
+            }
+        }
         
+    }
     func enabledDarkMode() {
         self.view.backgroundColor = self.back
         self.ruzenec_text_contain.backgroundColor = self.back
         self.ruzenec_text_contain.textColor = self.text
+        self.play_button.backgroundColor = self.back
+        self.next_button.backgroundColor = self.back
+        self.previous_button.backgroundColor = self.back
+        self.next_button.setTitleColor(self.text, for: .normal)
+        self.play_button.setTitleColor(self.text, for: .normal)
+        self.previous_button.setTitleColor(self.text, for: .normal)
     }
 
     private func get_html_text(text: String, kindForGeneration: Int = 0) -> NSAttributedString {

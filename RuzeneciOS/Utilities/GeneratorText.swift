@@ -12,6 +12,7 @@ import BonMot
 
 func generateContent(text: String, font_name: String = "Helvetica", size: CGFloat = 16, color: UIColor = UIColor.darkGray) -> NSAttributedString {
     
+    print(font_name)
     let baseStyle = StringStyle(
         .font(UIFont(name: font_name, size: size)!),
         .lineHeightMultiple(1)

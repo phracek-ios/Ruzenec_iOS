@@ -1,7 +1,10 @@
 {
     "lordPrayer": "Otče náš, jenž jsi na nebesích,<br>posvěť se jméno tvé.<br>Přijď království tvé.<br>Buď vůle tvá jako v nebi, tak i na zemi.<br>Chléb náš vezdejší dej nám dnes.<br>A odpusť nám naše viny,<br>jako i my odpouštíme našim viníkům.<br>A neuveď nás v pokušení,<br>ale zbav nás od zlého.<br>Amen",
+    "lordPrayerText": "Otče náš, jenž jsi na nebesích,posvěť se jméno tvé. Přijď království tvé. Buď vůle tvá jako v nebi, tak i na zemi. Chléb náš vezdejší dej nám dnes.A odpusť nám naše viny,jako i my odpouštíme našim viníkům. A neuveď nás v pokušení, ale zbav nás od zlého. Amen",
     "aveMaria": "Zdrávas, Maria, milosti plná,<br>Pán s tebou;<br>požehnaná ty mezi ženami<br>a požehnaný plod života tvého, Ježíš,<br>",
     "aveMariaEnd": ".<br>Svatá Maria, Matko Boží,<br>pros za nás hříšné<br>nyní i v hodinu smrti naší.<br>Amen.",
+    "aveMariaText": "Zdrávas, Maria, milosti plná,Pán s tebou; požehnaná ty mezi ženami a požehnaný plod života tvého, Ježíš,",
+    "aveMariaEndText": ". Svatá Maria, Matko Boží, pros za nás hříšné nyní i v hodinu smrti naší. Amen.",
     "aveMariaFull": "Zdrávas, Maria, milosti plná,<br>Pán s tebou;<br>požehnaná ty mezi ženami<br>a požehnaný plod života tvého, Ježíš.<br>Svatá Maria, Matko Boží,<br>pros za nás hříšné<br>nyní i v hodinu smrti naší.<br>Amen.",
     "gloriaPatri": "Sláva Otci i Synu i Duchu Svatému,<br>jako byla na počátku, i nyní i vždycky<br>a na věky věků.<br>Amen.",
     "salveRegina": "Zdrávas, Královno, Matko milosrdenství,<br>živote, sladkosti a naděje naše, buď zdráva!<br>K tobě voláme, vyhnaní synové Evy,<br>k tobě vzdycháme, lkajíce a plačíce<br>v tomto slzavém údolí.<br>A proto, orodovnice naše,<br>obrať k nám své milosrdné oči<br>a Ježíše, požehnaný plod života svého,<br>nám po tomto putování ukaž,<br>ó milostivá, ó přívětivá, ó přesladká Panno, Maria!",
@@ -24,7 +27,7 @@
                         "s kterým jsi Alžbětu navštívila",
                         "kterého jsi v Betlémě porodila",
                         "kterého jsi v chrámě obětovala",
-                        "kterého jsi v chráme nalezla"]
+                        "kterého jsi v chrámě nalezla"]
          },
          {
              "id": 2,

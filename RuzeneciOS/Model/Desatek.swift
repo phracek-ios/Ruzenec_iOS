@@ -13,12 +13,12 @@ class Desatek {
     //MARK: Properties
     
     var name: String
-    var photo: UIImage?
+    var photo: String
     var desatek: Int
     
     //MARK: Initialization
     
-    init?(name: String, photo: UIImage?, desatek: Int){
+    init?(name: String, photo: String, desatek: Int){
         
         // The name must not be empty
         guard !name.isEmpty else {
