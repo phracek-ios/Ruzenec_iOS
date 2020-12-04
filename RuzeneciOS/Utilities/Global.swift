@@ -11,15 +11,11 @@ import UIKit
 import UserNotifications
 import SystemConfiguration
 
-class SettingsBundleHelper {
-    struct SettingsBundleKeys {
-        static let vibrationEnabled = "ruzenecAppSettingVibrace"
-    }
-}
 
 class Global {
     static func vibrate() {
-        let vibrate = UserDefaults.standard.bool(forKey: "Vibrate")
+        let keys = SettingsBundleHelper.SettingsBundleKeys.self
+        let vibrate = UserDefaults.standard.bool(forKey: keys.vibrationEnabled)
         if vibrate {
             let generator = UIImpactFeedbackGenerator(style: .heavy)
             generator.impactOccurred()

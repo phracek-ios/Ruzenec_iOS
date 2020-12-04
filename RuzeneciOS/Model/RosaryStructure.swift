@@ -28,3 +28,23 @@ struct RosaryStructure: Decodable {
     var painRedeem: String
     var rosaries: [Rosary]
 }
+
+struct RosarySpeakStructure: Decodable {
+    var lordPrayer: String
+    var aveMaria: String
+    var aveMariaEnd: String
+    var aveMariaFull: String
+    var gloriaPatri: String
+    var salveRegina: String
+    var inNominePatri: String
+    var credo: String
+    var pray: String
+    var prayJosef: String
+    var meaCulpa: String
+    var korunka_main: String
+    var korunka_rosary: String
+    var korunka_end: String
+    var meaCulpaOriginal: String
+    var painEnd: String
+    var painRedeem: String
+}
