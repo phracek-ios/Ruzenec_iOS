@@ -22,6 +22,7 @@ class SettingsBundleHelper {
         static let appGuidVersion = "ruzenecAppGuidVersion"
         static let appVersion = "ruzenecAppVersion"
         static let rateAppPref = "ruzenecRunsToShowRateApp"
+        static let pompejCounter = "ruzenecPompejCounter"
     }
     
 }

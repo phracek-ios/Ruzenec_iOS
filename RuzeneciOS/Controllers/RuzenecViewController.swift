@@ -168,7 +168,18 @@ class RuzenecViewController: UIViewController, UINavigationControllerDelegate, U
             }
             show_texts(by: true)
         }
+        if synthesizer.isPaused {
+            let play_img = UIImage(named: "ic_pause")
+            play_button.setImage(play_img, for: .normal)
+        }
         enabledDarkMode()
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        if self.synthesizer.isSpeaking {
+            self.synthesizer.pauseSpeaking(at: .immediate)
+        }
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
@@ -442,7 +453,7 @@ class RuzenecViewController: UIViewController, UINavigationControllerDelegate, U
     @objc func playAction(sender: UIButton) {
         Global.vibrate()
         print("Playaction")
-        if speak == false {
+        if !self.synthesizer.isSpeaking {
             let play_img = UIImage(named: "ic_stop")
             play_button.setImage(play_img, for: .normal)
             guard let rosarySpeak = rosarySpeakStructure else { return }
@@ -485,15 +496,41 @@ class RuzenecViewController: UIViewController, UINavigationControllerDelegate, U
                 text_to_speak = ""
             }
             speakText(text: text_to_speak)
-            speak = true
             print("playing finished")
         }
         else {
+            // TODO Pozastavit nebo stopnou. Dialog
             let play_img = UIImage(named: "ic_play")
             play_button.setImage(play_img, for: .normal)
-            self.synthesizer.stopSpeaking(at: .immediate)
-            speak = false
-            print("playing stopped")
+            self.synthesizer.pauseSpeaking(at: .immediate)
+            if !self.synthesizer.isPaused {
+                let pauseDialog = UIAlertController()
+                let stopPlay = UIAlertAction(title: "Zastavit přehrávání", style: UIAlertActionStyle.default, handler: { (alert: UIAlertAction!) in
+                    self.synthesizer.stopSpeaking(at: .immediate)
+                    print("playing stopped")
+                })
+                let pausePlay = UIAlertAction(title: "Pozastavit přehrávání", style: UIAlertActionStyle.default, handler: { (alert: UIAlertAction!) in
+                    self.synthesizer.pauseSpeaking(at: .immediate)
+                    print("playing paused")
+                    let play_img = UIImage(named: "ic_pause")
+                    self.play_button.setImage(play_img, for: .normal)
+                })
+                let cancel = UIAlertAction(title: "Zrušit", style: UIAlertActionStyle.cancel, handler: { (alert: UIAlertAction!) in
+                    self.synthesizer.continueSpeaking()
+                    let play_img = UIImage(named: "ic_stop")
+                    self.play_button.setImage(play_img, for: .normal)
+                    print("continue playing")
+                })
+                pauseDialog.addAction(stopPlay)
+                pauseDialog.addAction(pausePlay)
+                pauseDialog.addAction(cancel)
+                self.present(pauseDialog, animated:true,completion: nil)
+            }
+            else {
+                let play_img = UIImage(named: "ic_stop")
+                play_button.setImage(play_img, for: .normal)
+                self.synthesizer.continueSpeaking()
+            }
         }
         enabledDarkMode()
 

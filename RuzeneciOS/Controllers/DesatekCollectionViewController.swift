@@ -126,7 +126,7 @@ class DesatekCollectionViewController: UICollectionViewController, UICollectionV
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: view.frame.width, height: 100)
+        return CGSize(width: view.frame.width, height: 80)
     }
 
     //MARK: - Navigation
@@ -137,18 +137,24 @@ class DesatekCollectionViewController: UICollectionViewController, UICollectionV
         switch data.type {
 
         case .desatek:
-            let ruzenecViewController = RuzenecViewController()
-            if indexPath.row == RosaryConstants.dnes.rawValue {
-                ruzenecViewController.desatek = rowData[Date().getDayOfWeek()].desatek
-                ruzenecViewController.navigationItem.title = rowData[Date().getDayOfWeek()].desatek?.name
+            if indexPath.row == RosaryConstants.pompej.rawValue {
+                let pompejViewController = PompejViewController()
+                navigationController?.pushViewController(pompejViewController, animated: true)
             }
             else {
-                if let selectedDesatek = rowData[indexPath.row].desatek {
-                    ruzenecViewController.desatek = selectedDesatek
-                    ruzenecViewController.navigationItem.title = selectedDesatek.name
+                let ruzenecViewController = RuzenecViewController()
+                if indexPath.row == RosaryConstants.dnes.rawValue {
+                    ruzenecViewController.desatek = rowData[Date().getDayOfWeek()].desatek
+                    ruzenecViewController.navigationItem.title = rowData[Date().getDayOfWeek()].desatek?.name
                 }
+                else {
+                    if let selectedDesatek = rowData[indexPath.row].desatek {
+                        ruzenecViewController.desatek = selectedDesatek
+                        ruzenecViewController.navigationItem.title = selectedDesatek.name
+                    }
+                }
+                navigationController?.pushViewController(ruzenecViewController, animated: true)
             }
-            navigationController?.pushViewController(ruzenecViewController, animated: true)
         case .settings:
             let settingsViewController = SettingsTableViewController()
             navigationController?.pushViewController(settingsViewController, animated: true)
@@ -168,6 +174,7 @@ class DesatekCollectionViewController: UICollectionViewController, UICollectionV
         let photoSedmibolestny = "icon_sorrow"
         let photoJoseph = "icon_joseph"
         let photoSedmiradostna = "icon_mary"
+        let photoPompej = "icon_pompej"
 
         guard let calendar = Desatek(name: "Růženec na dnešní den", photo: photoCalendar, desatek: RosaryConstants.dnes.rawValue) else {
             fatalError("Unable to instanciate Ruzenec")
@@ -205,8 +212,12 @@ class DesatekCollectionViewController: UICollectionViewController, UICollectionV
             
         }
         
+        guard let pompejska_novena = Desatek(name: "Pompejská novéna", photo: photoPompej, desatek: RosaryConstants.pompej.rawValue) else {
+            fatalError("Unable to instanciate pompej novena")
+        }
+        
         desatky += [calendar, radostny, bolestny, svetla, slavny, korunka, sedmibolestne,
-        sedmiradostne, sv_josef]
+        sedmiradostne, sv_josef, pompejska_novena]
     }
     
     private func loadRowData() {
