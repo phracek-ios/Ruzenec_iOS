@@ -228,12 +228,12 @@ class PompejPrayViewController: UIViewController, UINavigationControllerDelegate
         scrollViewContainer.addSubview(pompejStructureBtn)
         scrollViewContainer.addSubview(fullText)
         scrollViewContainer.addConstraintsWithFormat(format: "H:|-10-[v0]-30-|", views: novenaTitleLable)
-        scrollViewContainer.addConstraintsWithFormat(format: "H:|-10-[v0]-30-|", views: pompejImage)
+        scrollViewContainer.addConstraintsWithFormat(format: "H:|-30-[v0(300)]-30-|", views: pompejImage)
         scrollViewContainer.addConstraintsWithFormat(format: "H:|-10-[v0]-30-|", views: play_button)
         scrollViewContainer.addConstraintsWithFormat(format: "H:|-10-[v0]-30-|", views: finishDay)
         scrollViewContainer.addConstraintsWithFormat(format: "H:|-10-[v0]-30-|", views: pompejStructureBtn)
         scrollViewContainer.addConstraintsWithFormat(format: "H:|-10-[v0]-30-|", views: fullText)
-        scrollViewContainer.addConstraintsWithFormat(format: "V:|-20-[v0]-40-[v1]-20-[v2]-20-[v3]-20-[v4]-20-[v5]-20-|", views: novenaTitleLable, pompejImage, play_button, finishDay, pompejStructureBtn, fullText)
+        scrollViewContainer.addConstraintsWithFormat(format: "V:|-20-[v0]-40-[v1(300)]-20-[v2]-20-[v3]-20-[v4]-20-[v5]-20-|", views: novenaTitleLable, pompejImage, play_button, finishDay, pompejStructureBtn, fullText)
         
     }
     
