@@ -14,7 +14,6 @@ class SettingsTableViewController: UITableViewController {
     
     
     var DarkModeOn = Bool()
-    let exampleText: String = "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Etiam neque"
     var fontName: String = ""
     var fontSize: String = "16"
     var back = KKCBackgroundNightMode
