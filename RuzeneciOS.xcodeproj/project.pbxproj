@@ -26,6 +26,8 @@
 		01C3639F255EAA77003E685F /* SettingsDelegateManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01C3639E255EAA77003E685F /* SettingsDelegateManager.swift */; };
 		01C363A4255EAAC5003E685F /* SettingsBundleHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01C363A3255EAAC5003E685F /* SettingsBundleHelper.swift */; };
 		01F33AF7255431E300B72E81 /* ruzenec_speak.json in Resources */ = {isa = PBXBuildFile; fileRef = 01F33AF6255431E300B72E81 /* ruzenec_speak.json */; };
+		01F6B35E2701D2B100300134 /* PompejViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01F6B35D2701D2B100300134 /* PompejViewController.swift */; };
+		01F6B3602701E16200300134 /* PompejPrayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01F6B35F2701E16200300134 /* PompejPrayViewController.swift */; };
 		01FC3D8820C86E23005FABEF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01FC3D8720C86E23005FABEF /* AppDelegate.swift */; };
 		01FC3D8A20C86E23005FABEF /* RuzenecViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01FC3D8920C86E23005FABEF /* RuzenecViewController.swift */; };
 		01FC3D9220C86E24005FABEF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 01FC3D9020C86E24005FABEF /* LaunchScreen.storyboard */; };
@@ -68,6 +70,8 @@
 		01C363A3255EAAC5003E685F /* SettingsBundleHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsBundleHelper.swift; sourceTree = "<group>"; };
 		01CD80A220F6890200A8BE5C /* ruzenec.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = ruzenec.json; sourceTree = "<group>"; };
 		01F33AF6255431E300B72E81 /* ruzenec_speak.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = ruzenec_speak.json; sourceTree = "<group>"; };
+		01F6B35D2701D2B100300134 /* PompejViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PompejViewController.swift; sourceTree = "<group>"; };
+		01F6B35F2701E16200300134 /* PompejPrayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PompejPrayViewController.swift; sourceTree = "<group>"; };
 		01FC3D8420C86E23005FABEF /* RuzeneciOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RuzeneciOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		01FC3D8720C86E23005FABEF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		01FC3D8920C86E23005FABEF /* RuzenecViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RuzenecViewController.swift; sourceTree = "<group>"; };
@@ -122,6 +126,7 @@
 		01C36391255EA697003E685F /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				0159D01C20D05E5C00D759D4 /* DesatekCollectionViewCell.swift */,
 				01C36392255EA6CA003E685F /* SettingsItem.swift */,
 				01C36396255EA9EA003E685F /* SettingsSwitchTableViewCell.swift */,
 				01C3639A255EAA1E003E685F /* SettingsSliderTableViewCell.swift */,
@@ -207,10 +212,11 @@
 				01C36391255EA697003E685F /* Models */,
 				4B01C4CE20F63D41008D4CEA /* AboutViewController.swift */,
 				01C3639E255EAA77003E685F /* SettingsDelegateManager.swift */,
-				0159D01C20D05E5C00D759D4 /* DesatekCollectionViewCell.swift */,
 				01A9369F20D4447500A5D979 /* DesatekCollectionViewController.swift */,
 				01FC3D8920C86E23005FABEF /* RuzenecViewController.swift */,
 				4B01C4CC20F63D2B008D4CEA /* SettingsTableViewController.swift */,
+				01F6B35D2701D2B100300134 /* PompejViewController.swift */,
+				01F6B35F2701E16200300134 /* PompejPrayViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -400,9 +406,11 @@
 				01C363A4255EAAC5003E685F /* SettingsBundleHelper.swift in Sources */,
 				01C3639F255EAA77003E685F /* SettingsDelegateManager.swift in Sources */,
 				01B0A6B3238C3BE60062C4BC /* Utils.swift in Sources */,
+				01F6B35E2701D2B100300134 /* PompejViewController.swift in Sources */,
 				01C3639B255EAA1E003E685F /* SettingsSliderTableViewCell.swift in Sources */,
 				01A936A220D4474F00A5D979 /* Desatek.swift in Sources */,
 				01BCB598238C2B2A00209176 /* Global.swift in Sources */,
+				01F6B3602701E16200300134 /* PompejPrayViewController.swift in Sources */,
 				4B01C4CF20F63D41008D4CEA /* AboutViewController.swift in Sources */,
 				01A936A020D4447500A5D979 /* DesatekCollectionViewController.swift in Sources */,
 				0159D01D20D05E5C00D759D4 /* DesatekCollectionViewCell.swift in Sources */,
@@ -565,8 +573,9 @@
 			baseConfigurationReference = 50718E38456891037F4B8B13 /* Pods-RuzeneciOS.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Petr Hracek (TZRV254CLC)";
-				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = 32253C46P7;
 				INFOPLIST_FILE = RuzeneciOS/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
@@ -574,10 +583,10 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.2.0;
+				MARKETING_VERSION = 1.4.0;
 				PRODUCT_BUNDLE_IDENTIFIER = org.phracek.Ruzenec;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = RuzenecDeveloperProfile;
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -588,8 +597,9 @@
 			baseConfigurationReference = 6D31051EF0AC57E36AAC18C2 /* Pods-RuzeneciOS.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Petr Hracek (32253C46P7)";
-				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = 32253C46P7;
 				INFOPLIST_FILE = RuzeneciOS/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
@@ -597,10 +607,10 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.2.0;
+				MARKETING_VERSION = 1.4.0;
 				PRODUCT_BUNDLE_IDENTIFIER = org.phracek.Ruzenec;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = RuzenecDistributionProfile;
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};

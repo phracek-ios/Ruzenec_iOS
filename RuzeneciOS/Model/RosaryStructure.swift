@@ -26,6 +26,11 @@ struct RosaryStructure: Decodable {
     var meaCulpaOriginal: String
     var painEnd: String
     var painRedeem: String
+    var pompej_umysl: String
+    var pompej_prosebna: String
+    var pompej_dekovna: String
+    var pompej_pod_ochranu: String
+    var pompej_oroduj: String
     var rosaries: [Rosary]
 }
 
@@ -47,4 +52,9 @@ struct RosarySpeakStructure: Decodable {
     var meaCulpaOriginal: String
     var painEnd: String
     var painRedeem: String
+    var pompej_umysl: String
+    var pompej_prosebna: String
+    var pompej_dekovna: String
+    var pompej_pod_ochranu: String
+    var pompej_oroduj: String
 }
