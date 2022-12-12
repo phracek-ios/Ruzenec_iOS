@@ -27,7 +27,6 @@ class RosaryDataService {
             do {
                 let data = try Data(contentsOf: URL(fileURLWithPath: path))
                 rosaryStructure = try JSONDecoder().decode(RosaryStructure.self, from: data)
-                print(rosaryStructure.debugDescription)
             } catch {
                 print(error)
             }
@@ -40,7 +39,6 @@ class RosaryDataService {
             do {
                 let data = try Data(contentsOf: URL(fileURLWithPath: path))
                 rosarySpeakStructure = try JSONDecoder().decode(RosarySpeakStructure.self, from: data)
-                print(rosarySpeakStructure.debugDescription)
             } catch {
                 print(error)
             }

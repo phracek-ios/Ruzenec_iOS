@@ -101,7 +101,7 @@ class DesatekCollectionViewController: UICollectionViewController, UICollectionV
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8)
+        return UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -234,7 +234,6 @@ extension Date {
         case 1: // Sun - Slavny
             return RosaryConstants.slavny.rawValue
         case 2: // Mon - Radostny
-            print("Radostny")
             return RosaryConstants.radostny.rawValue
         case 3: // Tue - Bolestny
             return RosaryConstants.bolestny.rawValue

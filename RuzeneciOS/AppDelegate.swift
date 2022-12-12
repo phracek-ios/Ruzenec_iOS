@@ -19,10 +19,25 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
         RosaryDataService.shared.loadData()
-        UINavigationBar.appearance().barTintColor = KKCMainColor
-        UINavigationBar.appearance().tintColor = KKCTextNightMode
-        UINavigationBar.appearance().isTranslucent = false
         FirebaseApp.configure()
+        if #available(iOS 15.0, *) {
+            let appearance = UINavigationBarAppearance()
+            appearance.configureWithOpaqueBackground()
+            appearance.backgroundColor = KKCMainColor
+            appearance.titleTextAttributes = [NSAttributedString.Key.foregroundColor: KKCMainTextColor]
+            UINavigationBar.appearance().barTintColor = KKCMainColor
+            UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.foregroundColor: KKCMainTextColor]
+            UINavigationBar.appearance().isTranslucent = false
+            UINavigationBar.appearance().standardAppearance = appearance
+            UINavigationBar.appearance().scrollEdgeAppearance = appearance
+            UITabBar.appearance().barTintColor = KKCMainColor
+            UITabBar.appearance().tintColor = KKCMainTextColor
+            UITabBar.appearance().isTranslucent = false
+        } else {
+            UINavigationBar.appearance().barTintColor = KKCMainColor
+            UINavigationBar.appearance().tintColor = KKCMainTextColor
+            UINavigationBar.appearance().isTranslucent = false
+        }
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.makeKeyAndVisible()
         

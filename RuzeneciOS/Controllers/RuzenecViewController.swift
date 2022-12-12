@@ -9,6 +9,7 @@
 import UIKit
 import BonMot
 import AVFoundation
+import CallKit
 
 var statusBarIsHidden = true
 class RuzenecViewController: UIViewController, UINavigationControllerDelegate, UIScrollViewDelegate, UIGestureRecognizerDelegate {
@@ -104,6 +105,7 @@ class RuzenecViewController: UIViewController, UINavigationControllerDelegate, U
     var font_size: String = "16"
     let synthesizer = AVSpeechSynthesizer()
     let keys = SettingsBundleHelper.SettingsBundleKeys.self
+    var callObserver = CXCallObserver()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -119,6 +121,7 @@ class RuzenecViewController: UIViewController, UINavigationControllerDelegate, U
         rosaryStructure = RosaryDataService.shared.rosaryStructure
         rosarySpeakStructure = RosaryDataService.shared.rosarySpeakStructure
         let userDefaults = UserDefaults.standard
+        callObserver.setDelegate(self, queue: nil)
         speak = false
         setupUI()
         if let desatek = desatek {
@@ -203,14 +206,13 @@ class RuzenecViewController: UIViewController, UINavigationControllerDelegate, U
     func setupView() {
         self.view.addSubview(scrollView)
         self.view.addSubview(btnViewContainer)
-        self.view.addConstraintsWithFormat(format: "H:|-10-[v0]-10-|", views: scrollView)
+        //self.view.addConstraintsWithFormat(format: "H:|-10-[v0]-10-|", views: scrollView)
         self.view.addConstraintsWithFormat(format: "H:|-20-[v0]-20-|", views: btnViewContainer)
         self.view.addConstraintsWithFormat(format: "V:|-10-[v0]-20-[v1(40)]-10-|", views: scrollView, btnViewContainer)
         scrollView.widthAnchor.constraint(equalTo: self.view.widthAnchor).isActive = true
         
         scrollView.addSubview(scrollViewContainer)
         scrollViewContainer.addSubview(ruzenec_image)
-        ruzenec_image.heightAnchor.constraint(equalToConstant: 175).isActive = true
         scrollViewContainer.addSubview(ruzenec_text_contain)
         btnViewContainer.addSubview(previous_button)
         btnViewContainer.addSubview(play_button)
@@ -221,10 +223,13 @@ class RuzenecViewController: UIViewController, UINavigationControllerDelegate, U
         scrollViewContainer.topAnchor.constraint(equalTo: scrollView.topAnchor, constant: +10).isActive = true
         scrollViewContainer.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor, constant: -25).isActive = true
 
-        scrollViewContainer.addConstraintsWithFormat(format: "H:|-50-[v0]-50-|", views: ruzenec_image)
+        scrollViewContainer.centerXAnchor.constraint(equalTo: ruzenec_image.centerXAnchor).isActive = true
+        ruzenec_image.heightAnchor.constraint(equalToConstant: 150).isActive = true
+        ruzenec_image.widthAnchor.constraint(equalToConstant: 200).isActive = true
+        //scrollViewContainer.addConstraintsWithFormat(format: "H:|-50-[v0]-50-|", views: ruzenec_image)
         scrollViewContainer.addConstraintsWithFormat(format: "H:|-10-[v0]-10-|", views: ruzenec_text_contain)
-        scrollViewContainer.addConstraintsWithFormat(format: "V:|-20-[v0]-20-[v1]-20-|", views: ruzenec_image, ruzenec_text_contain)
-        
+        scrollViewContainer.addConstraintsWithFormat(format: "V:|-20-[v0(150)]-20-[v1]-20-|", views: ruzenec_image, ruzenec_text_contain)
+
         btnViewContainer.addConstraintsWithFormat(format: "H:|-12-[v0(100)]", views: previous_button)
         btnViewContainer.addConstraintsWithFormat(format: "H:[v0(100)]-12-|", views: next_button)
         play_button.centerXAnchor.constraint(equalTo: btnViewContainer.centerXAnchor).isActive = true
@@ -275,11 +280,11 @@ class RuzenecViewController: UIViewController, UINavigationControllerDelegate, U
             ruzenec_text_contain.attributedText = get_html_text(text: rosaryStructure.lordPrayer)
             previous_button.isEnabled = true
         case rn.salveReginaFirst:
-            ruzenec_text_contain.attributedText = get_html_text(text: "v kterého věříme", kindForGeneration: 1)
+            ruzenec_text_contain.attributedText = get_html_text(text: " v kterého věříme ", kindForGeneration: 1)
         case rn.salveReginaSecond:
-            ruzenec_text_contain.attributedText = get_html_text(text: "v kterého doufáme", kindForGeneration: 1)
+            ruzenec_text_contain.attributedText = get_html_text(text: " v kterého doufáme ", kindForGeneration: 1)
         case rn.salveReginaThird:
-            ruzenec_text_contain.attributedText = get_html_text(text: "kterého nade všechno milujeme", kindForGeneration: 1)
+            ruzenec_text_contain.attributedText = get_html_text(text: " kterého nade všechno milujeme ", kindForGeneration: 1)
         case rn.meaCulpa:
             ruzenec_text_contain.attributedText = get_html_text(text: rosaryStructure.gloriaPatri)
         default:
@@ -443,6 +448,7 @@ class RuzenecViewController: UIViewController, UINavigationControllerDelegate, U
 
     }
     
+
     @objc func previousAction(sender: UIButton) {
         Global.vibrate()
         print("PreviousAction")
@@ -460,7 +466,6 @@ class RuzenecViewController: UIViewController, UINavigationControllerDelegate, U
             guard let rosary = rosaryStructure else { return }
             let rosary_begin = "\(rosarySpeak.credo) \(rosarySpeak.lordPrayer) \(rosarySpeak.aveMaria)v kterého věříme\(rosarySpeak.aveMariaEnd)\(rosarySpeak.aveMaria)v kterého doufáme\(rosarySpeak.aveMariaEnd)\(rosarySpeak.aveMaria)kterého nade všechno milujeme\(rosarySpeak.aveMariaEnd) \(rosarySpeak.gloriaPatri)"
             var text_to_speak: String = ""
-            print(desatek?.desatek)
             switch desatek?.desatek {
             // Ruzenec Radostny, Bolestny, Svetla, Slavny
             case 1, 2, 3, 4:
@@ -538,7 +543,6 @@ class RuzenecViewController: UIViewController, UINavigationControllerDelegate, U
 
     @objc func nextAction(sender: UIButton) {
         Global.vibrate()
-        print("NextAction")
         enabledDarkMode()
         show_texts(by: true)
     }
@@ -588,5 +592,50 @@ private extension RuzenecViewController {
         let tap = UITapGestureRecognizer(target: self, action: #selector(didTapOnScreen))
         tap.delegate = self
         view.addGestureRecognizer(tap)
+    }
+    
+}
+
+extension RuzenecViewController: CXCallObserverDelegate {
+    
+    func callObserver(_ callObserver: CXCallObserver, callChanged call: CXCall) {
+        var synCallStarted: Bool = false
+        var synCallFinished: Bool = false
+        print(call)
+        print(call.isOutgoing)
+        print(call.hasEnded)
+        print(call.hasConnected)
+        if call.isOutgoing == true && call.hasConnected == false && call.hasEnded == false {
+            // detect dialing outgoing call
+            synCallStarted = true
+        }
+        if call.isOutgoing == false && call.hasConnected == false && call.hasEnded == false {
+          //.. 3. incoming call ringing (not answered)
+            synCallStarted = true
+        }
+        if call.hasConnected == true && call.hasEnded == false && call.isOnHold == false {
+          // Incomming or OutGoing call connected
+            synCallStarted = true
+        }
+        if call.hasEnded == true {
+            // OUtgoing call has fininshed
+            synCallFinished = true
+        }
+        if synCallStarted == true {
+            if self.synthesizer.isPaused == false {
+                // TODO Pozastavit nebo stopnou. Dialog
+                let play_img = UIImage(named: "ic_play")
+                play_button.setImage(play_img, for: .normal)
+                self.synthesizer.pauseSpeaking(at: .immediate)
+            }
+        }
+        if synCallFinished == true {
+            if self.synthesizer.isPaused {
+                let play_img = UIImage(named: "ic_stop")
+                play_button.setImage(play_img, for: .normal)
+                self.synthesizer.continueSpeaking()
+            }
+        }
+       
     }
 }

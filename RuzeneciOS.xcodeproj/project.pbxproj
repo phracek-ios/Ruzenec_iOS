@@ -142,13 +142,13 @@
 			path = Settings;
 			sourceTree = "<group>";
 		};
-		01CD80A320F6990500A8BE5C /* Supporting Files */ = {
+		01CD80A320F6990500A8BE5C /* SupportingFiles */ = {
 			isa = PBXGroup;
 			children = (
 				01CD80A220F6890200A8BE5C /* ruzenec.json */,
 				01F33AF6255431E300B72E81 /* ruzenec_speak.json */,
 			);
-			path = "Supporting Files";
+			path = SupportingFiles;
 			sourceTree = "<group>";
 		};
 		01FC3D7B20C86E23005FABEF = {
@@ -177,7 +177,7 @@
 				0180F6AB239179DD00B863C1 /* GoogleService-Info.plist */,
 				01A204F621C2845000D49EE5 /* Assets.xcassets */,
 				01BD589021907630006A44AA /* Utilities */,
-				01CD80A320F6990500A8BE5C /* Supporting Files */,
+				01CD80A320F6990500A8BE5C /* SupportingFiles */,
 				01FC3D8720C86E23005FABEF /* AppDelegate.swift */,
 				01FC3D9020C86E24005FABEF /* LaunchScreen.storyboard */,
 				01FC3D9320C86E24005FABEF /* Info.plist */,
@@ -578,7 +578,8 @@
 				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = 32253C46P7;
 				INFOPLIST_FILE = RuzeneciOS/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.lifestyle";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -602,7 +603,8 @@
 				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = 32253C46P7;
 				INFOPLIST_FILE = RuzeneciOS/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.lifestyle";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

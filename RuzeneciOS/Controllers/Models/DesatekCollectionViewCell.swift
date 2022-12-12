@@ -60,7 +60,7 @@ class DesatekCollectionViewCell: UICollectionViewCell {
         self.addSubview(desatekLabel)
         desatekLabel.text = name
         desatekLabel.textAlignment = .left
-        addConstraintsWithFormat(format: "V:|-5-[v0(\(imgHeight))]-5-|", views: photoImageView)
+        addConstraintsWithFormat(format: "V:|-5-[v0(\(imgHeight))]", views: photoImageView)
         addConstraintsWithFormat(format: "V:|[v0]|", views: desatekLabel)
         addConstraintsWithFormat(format: "H:|-5-[v0]-20-[v1]-5-|", views: photoImageView, desatekLabel)
 

@@ -11,6 +11,7 @@ import Foundation
 enum SettingsItemType {
     case onOffSwitch
     case slider
+    case picker
 }
 
 class SettingsItem {
