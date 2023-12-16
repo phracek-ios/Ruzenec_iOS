@@ -141,6 +141,14 @@ class DesatekCollectionViewController: UICollectionViewController, UICollectionV
                 let pompejViewController = PompejViewController()
                 navigationController?.pushViewController(pompejViewController, animated: true)
             }
+            else if indexPath.row == RosaryConstants.otecPio.rawValue {
+                let otecPioVC = OtecPioZacatekViewController()
+                if let selectedDesatek = rowData[Date().getDayOfWeek()].desatek {
+                    otecPioVC.desatek = selectedDesatek
+                    otecPioVC.navigationItem.title = selectedDesatek.name
+                }
+                navigationController?.pushViewController(otecPioVC, animated: true)
+            }
             else {
                 let ruzenecViewController = RuzenecViewController()
                 if indexPath.row == RosaryConstants.dnes.rawValue {
@@ -175,6 +183,7 @@ class DesatekCollectionViewController: UICollectionViewController, UICollectionV
         let photoJoseph = "icon_joseph"
         let photoSedmiradostna = "icon_mary"
         let photoPompej = "icon_pompej"
+        let photoOtecPio = "icon_otecPio"
 
         guard let calendar = Desatek(name: "Růženec na dnešní den", photo: photoCalendar, desatek: RosaryConstants.dnes.rawValue) else {
             fatalError("Unable to instanciate Ruzenec")
@@ -216,8 +225,13 @@ class DesatekCollectionViewController: UICollectionViewController, UICollectionV
             fatalError("Unable to instanciate pompej novena")
         }
         
+        guard let otec_pio = Desatek(name: "Růženec otce Pia", photo: photoOtecPio, desatek: RosaryConstants.otecPio.rawValue) else {
+            fatalError("Unable to instanciate pompej novena")
+        }
+        
         desatky += [calendar, radostny, bolestny, svetla, slavny, korunka, sedmibolestne,
-        sedmiradostne, sv_josef, pompejska_novena]
+        sedmiradostne, sv_josef, pompejska_novena, otec_pio]
+        print(desatky)
     }
     
     private func loadRowData() {

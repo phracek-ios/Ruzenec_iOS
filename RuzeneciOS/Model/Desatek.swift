@@ -25,7 +25,7 @@ class Desatek {
             return nil
         }
         // The type must not be negative
-        guard (desatek >= 0) && (desatek <= RosaryConstants.pompej.rawValue) else {
+        guard (desatek >= 0) && (desatek <= RosaryConstants.otecPio.rawValue) else {
             return nil
         }
         // Initialize stored properties
