@@ -184,26 +184,26 @@ class PompejPrayViewController: UIViewController, UINavigationControllerDelegate
         let play_img = UIImage(named: "ic_play")
         play_button.setImage(play_img, for: .normal)
         guard let rosary = rosaryStructure else { return }
-        var full_text = "\(rosary.pompej_umysl)<br>\(rosary.credo)<br><br>\(rosary.lordPrayer)<br><br>\(rosary.aveMaria)v kterého věříme\(rosary.aveMariaEnd)<br><br>\(rosary.aveMaria)v kterého doufáme\(rosary.aveMariaEnd)<br><br>\(rosary.aveMaria)kterého nade všechno milujeme\(rosary.aveMariaEnd)<br><br>\(rosary.gloriaPatri)<br><br>"
+        var full_text = "\(rosary.PompejUmysl)<br>\(rosary.VyznaniViry)<br><br>\(rosary.Otcenas)<br><br>\(rosary.ZdravasMaria)v kterého věříme\(rosary.ZdravasMariaEnd)<br><br>\(rosary.ZdravasMaria)v kterého doufáme\(rosary.ZdravasMariaEnd)<br><br>\(rosary.ZdravasMaria)kterého nade všechno milujeme\(rosary.ZdravasMariaEnd)<br><br>\(rosary.SlavaOtci)<br><br>"
         full_text += "<br>" + "<red>Radostný růženec</red><br><br>"
         if dekovna {
-            full_text += rosary.pompej_dekovna
+            full_text += rosary.PompejDekovna
         } else {
-            full_text += rosary.pompej_prosebna
+            full_text += rosary.PompejProsebna
         }
         full_text += "<br>" + "<red>Bolestný růženec</red><br><br>"
         if dekovna {
-            full_text += rosary.pompej_dekovna
+            full_text += rosary.PompejDekovna
         } else {
-            full_text += rosary.pompej_prosebna
+            full_text += rosary.PompejProsebna
         }
         full_text += "<br>" + "<red>Slavný růženec</red><br><br>"
         if dekovna {
-            full_text += rosary.pompej_dekovna
+            full_text += rosary.PompejDekovna
         } else {
-            full_text += rosary.pompej_prosebna
+            full_text += rosary.PompejProsebna
         }
-        full_text += "<br>" + rosary.pompej_pod_ochranu + "<br><br>" + rosary.pompej_oroduj + "<br><br>" + rosary.pompej_oroduj + "<br><br>"+rosary.pompej_oroduj
+        full_text += "<br>" + rosary.PompejPodOchranu + "<br><br>" + rosary.PompejOroduj + "<br><br>" + rosary.PompejOroduj + "<br><br>"+rosary.PompejOroduj
         fullText.attributedText = generateContent(text: full_text)
         self.fullText.isHidden = show_full
     }
@@ -279,21 +279,21 @@ class PompejPrayViewController: UIViewController, UINavigationControllerDelegate
             play_button.setImage(play_img, for: .normal)
             guard let rosarySpeak = rosarySpeakStructure else { return }
             guard let rosary = rosaryStructure else { return }
-            var text_to_speak = "\(rosarySpeak.pompej_umysl)     \(rosarySpeak.credo)   \(rosarySpeak.lordPrayer) \(rosarySpeak.aveMaria)v kterého věříme\(rosarySpeak.aveMariaEnd)\(rosarySpeak.aveMaria)v kterého doufáme\(rosarySpeak.aveMariaEnd)\(rosarySpeak.aveMaria)kterého nade všechno milujeme\(rosarySpeak.aveMariaEnd) \(rosarySpeak.gloriaPatri) "
+            var text_to_speak = "\(rosarySpeak.PompejUmysl)     \(rosarySpeak.VyznaniViry)   \(rosarySpeak.Otcenas) \(rosarySpeak.ZdravasMaria)v kterého věříme\(rosarySpeak.ZdravasMariaEnd)\(rosarySpeak.ZdravasMaria)v kterého doufáme\(rosarySpeak.ZdravasMariaEnd)\(rosarySpeak.ZdravasMaria)kterého nade všechno milujeme\(rosarySpeak.ZdravasMariaEnd) \(rosarySpeak.SlavaOtci) "
             print(text_to_speak)
             for m in [1, 2, 4] {
                 print(m)
                 for n in 0..<5 {
-                    text_to_speak += rosarySpeak.lordPrayer + String.init(repeating: "\(rosarySpeak.aveMaria)\(rosary.rosaries[m - 1].decades[n])\(rosarySpeak.aveMariaEnd)", count: 10) + rosarySpeak.gloriaPatri + rosarySpeak.meaCulpa
+                    text_to_speak += rosarySpeak.Otcenas + String.init(repeating: "\(rosarySpeak.ZdravasMaria)\(rosary.Ruzence[m - 1].decades[n])\(rosarySpeak.ZdravasMariaEnd)", count: 10) + rosarySpeak.SlavaOtci + rosarySpeak.MojeVina
                 }
-                text_to_speak += rosarySpeak.salveRegina + rosarySpeak.pray
+                text_to_speak += rosarySpeak.ZdravasKralovno + rosarySpeak.ZaverecnaModlitba
                 if dekovna {
-                    text_to_speak += rosarySpeak.pompej_dekovna
+                    text_to_speak += rosarySpeak.PompejDekovna
                 } else {
-                    text_to_speak += rosarySpeak.pompej_prosebna
+                    text_to_speak += rosarySpeak.PompejProsebna
                 }
             }
-            text_to_speak += rosarySpeak.pompej_pod_ochranu + rosarySpeak.pompej_oroduj
+            text_to_speak += rosarySpeak.PompejPodOchranu + rosarySpeak.PompejOroduj
             print(text_to_speak)
             speakText(text: text_to_speak)
             print("playing finished")

@@ -271,45 +271,46 @@ class RuzenecViewController: UIViewController, UINavigationControllerDelegate, U
     
     func show_ruzenec_zacatek(by direction: Bool) {
         guard let rosaryStructure = rosaryStructure else { return }
-
+        var text: NSAttributedString
         switch count {
         case rn.credo:
-            ruzenec_text_contain.attributedText = get_html_text(text: "\(rosaryStructure.inNominePatri)\n\(rosaryStructure.credo)")
+            text = get_html_text(text: "\(rosaryStructure.VeJmenuOtce)\n\(rosaryStructure.VyznaniViry)")
             previous_button.isEnabled = false
         case rn.lord:
-            ruzenec_text_contain.attributedText = get_html_text(text: rosaryStructure.lordPrayer)
+            text = get_html_text(text: rosaryStructure.Otcenas)
             previous_button.isEnabled = true
         case rn.salveReginaFirst:
-            ruzenec_text_contain.attributedText = get_html_text(text: " v kterého věříme ", kindForGeneration: 1)
+            text = get_html_text(text: " v kterého věříme ", kindForGeneration: 1)
         case rn.salveReginaSecond:
-            ruzenec_text_contain.attributedText = get_html_text(text: " v kterého doufáme ", kindForGeneration: 1)
+            text = get_html_text(text: " v kterého doufáme ", kindForGeneration: 1)
         case rn.salveReginaThird:
-            ruzenec_text_contain.attributedText = get_html_text(text: " kterého nade všechno milujeme ", kindForGeneration: 1)
+            text = get_html_text(text: " kterého nade všechno milujeme ", kindForGeneration: 1)
         case rn.meaCulpa:
-            ruzenec_text_contain.attributedText = get_html_text(text: rosaryStructure.gloriaPatri)
+            text = get_html_text(text: rosaryStructure.SlavaOtci)
         default:
-            ruzenec_text_contain.text = "Error"
+            text = get_html_text(text: "Error")
         }
+        ruzenec_text_contain.attributedText = text
     }
 
     func show_ruzenec_sedmi_text(by direction: Bool) {
         guard let rosaryStructure = rosaryStructure else { return }
         switch count {
         case rsn.lordOne, rsn.lordTwo, rsn.lordThree, rsn.lordFour, rsn.lordFive, rsn.lordSix, rsn.lordSeven:
-            ruzenec_text_contain.attributedText = get_html_text(text: rosaryStructure.lordPrayer)
+            ruzenec_text_contain.attributedText = get_html_text(text: rosaryStructure.Otcenas)
         case rsn.rosaryOne..<(rsn.meaCulpaOne-1), rsn.rosaryTwo..<(rsn.meaCulpaTwo-1),
              rsn.rosaryThree..<(rsn.meaCulpaThree-1), rsn.rosaryFour..<(rsn.meaCulpaFour-1),
              rsn.rosaryFive..<(rsn.meaCulpaFive-1), rsn.rosarySix..<(rsn.meaCulpaSix-1),
              rsn.rosarySeven..<(rsn.meaCulpaSeven-1):
-            let rosary = rosaryStructure.rosaries[self.zdravas_number - 2]
+            let rosary = rosaryStructure.Ruzence[self.zdravas_number - 2]
             let secret = rosary.decades[self.type_desatek]
             ruzenec_text_contain.attributedText = get_html_text(text: secret, kindForGeneration: 1)
         case rsn.meaCulpaOne - 1, rsn.meaCulpaTwo - 1, rsn.meaCulpaThree - 1,
              rsn.meaCulpaFour - 1, rsn.meaCulpaFive - 1,
              rsn.meaCulpaSix - 1, rsn.meaCulpaSeven - 1:
-            ruzenec_text_contain.attributedText = get_html_text(text: rosaryStructure.gloriaPatri)
+            ruzenec_text_contain.attributedText = get_html_text(text: rosaryStructure.SlavaOtci)
         case rsn.meaCulpaOne, rsn.meaCulpaTwo, rsn.meaCulpaThree, rsn.meaCulpaFour, rsn.meaCulpaFive, rsn.meaCulpaSix:
-            ruzenec_text_contain.attributedText = get_html_text(text: rosaryStructure.meaCulpa)
+            ruzenec_text_contain.attributedText = get_html_text(text: rosaryStructure.MojeVina)
             if direction {
                 self.type_desatek += 1
             }
@@ -317,24 +318,24 @@ class RuzenecViewController: UIViewController, UINavigationControllerDelegate, U
                 self.type_desatek -= 1
             }
         case rsn.meaCulpaSeven:
-            ruzenec_text_contain.attributedText = get_html_text(text: rosaryStructure.meaCulpa)
+            ruzenec_text_contain.attributedText = get_html_text(text: rosaryStructure.MojeVina)
             next_button.isEnabled = true
         case rsn.salveRegina:
             if self.zdravas_number == 7 {
-                ruzenec_text_contain.attributedText = get_html_text(text: rosaryStructure.salveRegina)
+                ruzenec_text_contain.attributedText = get_html_text(text: rosaryStructure.ZdravasKralovno)
             }
             else {
-                ruzenec_text_contain.attributedText = get_html_text(text: rosaryStructure.painRedeem)
+                ruzenec_text_contain.attributedText = get_html_text(text: rosaryStructure.BolestnyRedeem)
             }
             if self.zdravas_number == 6 {
                 next_button.isEnabled = true
             }
         case rsn.pray, rsn.painReedem:
             if self.zdravas_number == 7 {
-                ruzenec_text_contain.attributedText = get_html_text(text: rosaryStructure.pray)
+                ruzenec_text_contain.attributedText = get_html_text(text: rosaryStructure.ZaverecnaModlitba)
             }
             else {
-                ruzenec_text_contain.attributedText = get_html_text(text: rosaryStructure.painEnd)
+                ruzenec_text_contain.attributedText = get_html_text(text: rosaryStructure.BolestnyEnd)
             }
             next_button.isEnabled = false
         default:
@@ -347,24 +348,24 @@ class RuzenecViewController: UIViewController, UINavigationControllerDelegate, U
 
         switch count {
         case rn.lordFirst, rn.lordSecond, rn.lordThird, rn.lordFourth, rn.lordFifth:
-            ruzenec_text_contain.attributedText = get_html_text(text: rosaryStructure.lordPrayer)
+            ruzenec_text_contain.attributedText = get_html_text(text: rosaryStructure.Otcenas)
         case rn.rosaryFirst..<(rn.meaCulpaFirst-1), rn.rosarySecond..<(rn.meaCulpaSecond-1),
              rn.rosaryThird..<(rn.meaCulpaThird-1), rn.rosaryFourth..<(rn.meaCulpaFourth-1),
              rn.rosaryFifth..<(rn.meaCulpaFifth-1):
             if self.zdravas_number == 8 {
-                let rosary = rosaryStructure.rosaries[self.zdravas_number - 2]
+                let rosary = rosaryStructure.Ruzence[self.zdravas_number - 2]
                 let secret = rosary.decades[self.type_desatek]
                 ruzenec_text_contain.attributedText = get_html_text(text: secret, kindForGeneration: 1)
             }
             else {
-                let rosary = rosaryStructure.rosaries[self.zdravas_number - 1]
+                let rosary = rosaryStructure.Ruzence[self.zdravas_number - 1]
                 let secret = rosary.decades[self.type_desatek]
                 ruzenec_text_contain.attributedText = get_html_text(text: secret, kindForGeneration: 1)
             }
         case rn.meaCulpaFirst - 1, rn.meaCulpaSecond - 1, rn.meaCulpaThird - 1, rn.meaCulpaFourth - 1, rn.meaCulpaFifth - 1:
-            ruzenec_text_contain.attributedText = get_html_text(text: rosaryStructure.gloriaPatri)
+            ruzenec_text_contain.attributedText = get_html_text(text: rosaryStructure.SlavaOtci)
         case rn.meaCulpaFirst, rn.meaCulpaSecond, rn.meaCulpaThird, rn.meaCulpaFourth, rn.meaCulpaFifth:
-            ruzenec_text_contain.attributedText = get_html_text(text: rosaryStructure.meaCulpa)
+            ruzenec_text_contain.attributedText = get_html_text(text: rosaryStructure.MojeVina)
             if count < rn.meaCulpaFifth {
                 if direction {
                     self.type_desatek += 1
@@ -374,14 +375,14 @@ class RuzenecViewController: UIViewController, UINavigationControllerDelegate, U
                 }
             }
         case rn.salveRegina:
-            ruzenec_text_contain.attributedText = get_html_text(text: rosaryStructure.salveRegina)
+            ruzenec_text_contain.attributedText = get_html_text(text: rosaryStructure.ZdravasKralovno)
             next_button.isEnabled = true
         case rn.pray:
             if self.zdravas_number == 8 {
-                ruzenec_text_contain.attributedText = get_html_text(text: rosaryStructure.prayJosef)
+                ruzenec_text_contain.attributedText = get_html_text(text: rosaryStructure.ZaverecnaModlitbaJosef)
             }
             else {
-                ruzenec_text_contain.attributedText = get_html_text(text: rosaryStructure.pray)
+                ruzenec_text_contain.attributedText = get_html_text(text: rosaryStructure.ZaverecnaModlitba)
             }
             next_button.isEnabled = false
         default:
@@ -394,24 +395,24 @@ class RuzenecViewController: UIViewController, UINavigationControllerDelegate, U
         
         switch count {
         case crown.lord:
-            ruzenec_text_contain.attributedText = get_html_text(text: rosaryStructure.lordPrayer)
+            ruzenec_text_contain.attributedText = get_html_text(text: rosaryStructure.Otcenas)
             previous_button.isEnabled = false
         case crown.salve:
             previous_button.isEnabled = true
-            ruzenec_text_contain.attributedText = get_html_text(text: "\(rosaryStructure.aveMariaFull)")
+            ruzenec_text_contain.attributedText = get_html_text(text: "\(rosaryStructure.ZdravasMariaFull)")
         case crown.credo:
-            ruzenec_text_contain.attributedText = get_html_text(text: rosaryStructure.credo)
+            ruzenec_text_contain.attributedText = get_html_text(text: rosaryStructure.VyznaniViry)
         case crown.crownOne, crown.crownTwo, crown.crownThree, crown.crownFour, crown.crownFive:
-            ruzenec_text_contain.attributedText = get_html_text(text: rosaryStructure.korunka_main)
+            ruzenec_text_contain.attributedText = get_html_text(text: rosaryStructure.KorunkaHlavni)
         case crown.smallCrownOne...(crown.crownTwo - 1), crown.smallCrownTwo...(crown.crownThree - 1),
              crown.smallCrownThree...(crown.crownFour - 1), crown.smallCrownFour...(crown.crownFive - 1),
              crown.smallCrownFive...(crown.saintOne - 1):
-            ruzenec_text_contain.attributedText = get_html_text(text: rosaryStructure.korunka_rosary)
+            ruzenec_text_contain.attributedText = get_html_text(text: rosaryStructure.KorunkaRuzenec)
         case crown.saintOne, crown.saintTwo:
-            ruzenec_text_contain.attributedText = get_html_text(text: rosaryStructure.korunka_end)
+            ruzenec_text_contain.attributedText = get_html_text(text: rosaryStructure.KorunkaKonec)
             next_button.isEnabled = true
         case crown.saintThree:
-            ruzenec_text_contain.attributedText = get_html_text(text: rosaryStructure.korunka_end)
+            ruzenec_text_contain.attributedText = get_html_text(text: rosaryStructure.KorunkaKonec)
             next_button.isEnabled = false
         default:
             ruzenec_text_contain.text = "Error"
@@ -464,39 +465,39 @@ class RuzenecViewController: UIViewController, UINavigationControllerDelegate, U
             play_button.setImage(play_img, for: .normal)
             guard let rosarySpeak = rosarySpeakStructure else { return }
             guard let rosary = rosaryStructure else { return }
-            let rosary_begin = "\(rosarySpeak.credo) \(rosarySpeak.lordPrayer) \(rosarySpeak.aveMaria)v kterého věříme\(rosarySpeak.aveMariaEnd)\(rosarySpeak.aveMaria)v kterého doufáme\(rosarySpeak.aveMariaEnd)\(rosarySpeak.aveMaria)kterého nade všechno milujeme\(rosarySpeak.aveMariaEnd) \(rosarySpeak.gloriaPatri)"
+            let rosary_begin = "\(rosarySpeak.VyznaniViry) \(rosarySpeak.Otcenas) \(rosarySpeak.ZdravasMaria)v kterého věříme\(rosarySpeak.ZdravasMariaEnd)\(rosarySpeak.ZdravasMaria)v kterého doufáme\(rosarySpeak.ZdravasMariaEnd)\(rosarySpeak.ZdravasMaria)kterého nade všechno milujeme\(rosarySpeak.ZdravasMariaEnd) \(rosarySpeak.SlavaOtci)"
             var text_to_speak: String = ""
             switch desatek?.desatek {
             // Ruzenec Radostny, Bolestny, Svetla, Slavny
             case 1, 2, 3, 4:
                 text_to_speak += rosary_begin
                 for n in 0..<5 {
-                    print(rosary.rosaries[desatek!.desatek - 1].decades[n])
-                    text_to_speak += rosarySpeak.lordPrayer + String.init(repeating: "\(rosarySpeak.aveMaria)\(rosary.rosaries[desatek!.desatek - 1].decades[n])\(rosarySpeak.aveMariaEnd)", count: 10) + rosarySpeak.gloriaPatri + rosarySpeak.meaCulpa
+                    print(rosary.Ruzence[desatek!.desatek - 1].decades[n])
+                    text_to_speak += rosarySpeak.Otcenas + String.init(repeating: "\(rosarySpeak.ZdravasMaria)\(rosary.Ruzence[desatek!.desatek - 1].decades[n])\(rosarySpeak.ZdravasMariaEnd)", count: 10) + rosarySpeak.SlavaOtci + rosarySpeak.MojeVina
                 }
-                text_to_speak += rosarySpeak.salveRegina + rosarySpeak.pray
+                text_to_speak += rosarySpeak.ZdravasKralovno + rosarySpeak.ZaverecnaModlitba
             // Korunka k Bozimu milosrdenstvi
             case 5:
-                text_to_speak = "\(rosarySpeak.lordPrayer) \(rosarySpeak.aveMariaFull) \(rosarySpeak.credo) "
+                text_to_speak = "\(rosarySpeak.Otcenas) \(rosarySpeak.ZdravasMariaFull) \(rosarySpeak.VyznaniViry) "
                 for _ in 0..<5 {
-                    text_to_speak += rosarySpeak.korunka_main + String.init(repeating: " \(rosarySpeak.korunka_rosary) ", count: 10) + String.init(repeating: "\(rosarySpeak.korunka_end)", count: 3)
+                    text_to_speak += rosarySpeak.KorunkaHlavni + String.init(repeating: " \(rosarySpeak.KorunkaRuzenec) ", count: 10) + String.init(repeating: "\(rosarySpeak.KorunkaKonec)", count: 3)
                 }
             // Sedmi bolestna, Sedmi radostna
             case 6, 7:
                 text_to_speak += rosary_begin
                 for n in 0..<7 {
-                    print(rosary.rosaries[desatek!.desatek - 2].decades[n])
-                    text_to_speak += rosarySpeak.lordPrayer + String.init(repeating: "\(rosarySpeak.aveMaria)\(rosary.rosaries[desatek!.desatek - 2].decades[n])\(rosarySpeak.aveMariaEnd)", count: 7) + rosarySpeak.gloriaPatri + rosarySpeak.meaCulpa
+                    print(rosary.Ruzence[desatek!.desatek - 2].decades[n])
+                    text_to_speak += rosarySpeak.Otcenas + String.init(repeating: "\(rosarySpeak.ZdravasMaria)\(rosary.Ruzence[desatek!.desatek - 2].decades[n])\(rosarySpeak.ZdravasMariaEnd)", count: 7) + rosarySpeak.SlavaOtci + rosarySpeak.MojeVina
                 }
-                text_to_speak += "\n" + rosarySpeak.salveRegina + rosarySpeak.pray
+                text_to_speak += "\n" + rosarySpeak.ZdravasKralovno + rosarySpeak.ZaverecnaModlitba
             // Ke svatemu Josefovi
             case 8:
                 text_to_speak += rosary_begin
                 for n in 0..<5 {
-                    print(rosary.rosaries[desatek!.desatek - 2].decades[n])
-                    text_to_speak += rosarySpeak.lordPrayer + String.init(repeating: "\(rosarySpeak.aveMaria)\(rosary.rosaries[desatek!.desatek - 2].decades[n])\(rosarySpeak.aveMariaEnd)", count: 7) + rosarySpeak.gloriaPatri + rosarySpeak.meaCulpa
+                    print(rosary.Ruzence[desatek!.desatek - 2].decades[n])
+                    text_to_speak += rosarySpeak.Otcenas + String.init(repeating: "\(rosarySpeak.ZdravasMaria)\(rosary.Ruzence[desatek!.desatek - 2].decades[n])\(rosarySpeak.ZdravasMariaEnd)", count: 7) + rosarySpeak.SlavaOtci + rosarySpeak.MojeVina
                 }
-                text_to_speak += "\n" + rosarySpeak.salveRegina + rosarySpeak.prayJosef
+                text_to_speak += "\n" + rosarySpeak.ZdravasMaria + rosarySpeak.ZaverecnaModlitbaJosef
             default:
                 text_to_speak = ""
             }
@@ -579,7 +580,7 @@ class RuzenecViewController: UIViewController, UINavigationControllerDelegate, U
             main_text = text
         }
         else if kindForGeneration == 1 {
-            main_text = "\(rosaryStructure.aveMaria)<red>\(text)</red>\(rosaryStructure.aveMariaEnd)"
+            main_text = "\(rosaryStructure.ZdravasMaria)<red>\(text)</red>\(rosaryStructure.ZdravasMariaEnd)"
         }
 
         return generateContent(text: main_text, font_name: self.font_name, size: get_cgfloat(size: self.font_size), color: self.text)
