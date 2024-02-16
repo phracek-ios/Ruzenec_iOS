@@ -480,8 +480,9 @@ class RuzenecViewController: UIViewController, UINavigationControllerDelegate, U
             case 5:
                 text_to_speak = "\(rosarySpeak.Otcenas) \(rosarySpeak.ZdravasMariaFull) \(rosarySpeak.VyznaniViry) "
                 for _ in 0..<5 {
-                    text_to_speak += rosarySpeak.KorunkaHlavni + String.init(repeating: " \(rosarySpeak.KorunkaRuzenec) ", count: 10) + String.init(repeating: "\(rosarySpeak.KorunkaKonec)", count: 3)
+                    text_to_speak += rosarySpeak.KorunkaHlavni + String.init(repeating: " \(rosarySpeak.KorunkaRuzenec) ", count: 10)
                 }
+                text_to_speak += String.init(repeating: "\(rosarySpeak.KorunkaKonec)", count: 3)
             // Sedmi bolestna, Sedmi radostna
             case 6, 7:
                 text_to_speak += rosary_begin
