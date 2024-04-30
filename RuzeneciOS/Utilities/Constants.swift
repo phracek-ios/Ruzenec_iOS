@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 enum RosaryConstants: Int {
-    case dnes = 0, radostny, bolestny, svetla, slavny, korunka, sedmibolestne, sedmiradostne, sv_Josef, pompej, otecPio
+    case dnes = 0, radostny, bolestny, svetla, slavny, korunka, sedmibolestne, sedmiradostne, frantiseksedmibolestne, frantiseksedmiradostne, sv_Josef, pompej, otecPio
 }
 
 struct RosaryNumbers {

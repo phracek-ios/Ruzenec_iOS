@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		010CDF292548953E0086C6D3 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 010CDF282548953E0086C6D3 /* Extensions.swift */; };
 		0110EF4D219C15FF008EAE8A /* GeneratorText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0110EF4C219C15FF008EAE8A /* GeneratorText.swift */; };
+		011A6DFD2BE0D53600C772BE /* FrantiskanskyRuzenecViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 011A6DFC2BE0D53600C772BE /* FrantiskanskyRuzenecViewController.swift */; };
 		012061C121C142000048E9B0 /* RosaryColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 012061C021C142000048E9B0 /* RosaryColors.swift */; };
 		012061C321C1446E0048E9B0 /* NotificationName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 012061C221C1446E0048E9B0 /* NotificationName.swift */; };
 		0159D01D20D05E5C00D759D4 /* DesatekCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0159D01C20D05E5C00D759D4 /* DesatekCollectionViewCell.swift */; };
@@ -54,6 +55,7 @@
 /* Begin PBXFileReference section */
 		010CDF282548953E0086C6D3 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		0110EF4C219C15FF008EAE8A /* GeneratorText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneratorText.swift; sourceTree = "<group>"; };
+		011A6DFC2BE0D53600C772BE /* FrantiskanskyRuzenecViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrantiskanskyRuzenecViewController.swift; sourceTree = "<group>"; };
 		012061C021C142000048E9B0 /* RosaryColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RosaryColors.swift; sourceTree = "<group>"; };
 		012061C221C1446E0048E9B0 /* NotificationName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationName.swift; sourceTree = "<group>"; };
 		0159D01C20D05E5C00D759D4 /* DesatekCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesatekCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -220,6 +222,7 @@
 				01F6B35D2701D2B100300134 /* PompejViewController.swift */,
 				01F6B35F2701E16200300134 /* PompejPrayViewController.swift */,
 				01BFD2E52AE817B30028396B /* OtecPioZacatekRuzenecViewController.swift */,
+				011A6DFC2BE0D53600C772BE /* FrantiskanskyRuzenecViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -414,6 +417,7 @@
 				01C3639B255EAA1E003E685F /* SettingsSliderTableViewCell.swift in Sources */,
 				01A936A220D4474F00A5D979 /* Desatek.swift in Sources */,
 				01BCB598238C2B2A00209176 /* Global.swift in Sources */,
+				011A6DFD2BE0D53600C772BE /* FrantiskanskyRuzenecViewController.swift in Sources */,
 				01F6B3602701E16200300134 /* PompejPrayViewController.swift in Sources */,
 				4B01C4CF20F63D41008D4CEA /* AboutViewController.swift in Sources */,
 				01A936A020D4447500A5D979 /* DesatekCollectionViewController.swift in Sources */,
