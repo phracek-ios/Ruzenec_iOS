@@ -58,6 +58,7 @@
 		011A6DFC2BE0D53600C772BE /* FrantiskanskyRuzenecViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrantiskanskyRuzenecViewController.swift; sourceTree = "<group>"; };
 		012061C021C142000048E9B0 /* RosaryColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RosaryColors.swift; sourceTree = "<group>"; };
 		012061C221C1446E0048E9B0 /* NotificationName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationName.swift; sourceTree = "<group>"; };
+		0120740B2BECF7E90042DC76 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 		0159D01C20D05E5C00D759D4 /* DesatekCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesatekCollectionViewCell.swift; sourceTree = "<group>"; };
 		0180F6AB239179DD00B863C1 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		01A9369F20D4447500A5D979 /* DesatekCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesatekCollectionViewController.swift; sourceTree = "<group>"; };
@@ -188,6 +189,7 @@
 				4BF14E2E210206040070ECD6 /* Services */,
 				4B01C4CB20F63D19008D4CEA /* Controllers */,
 				4BF14E272101FF1E0070ECD6 /* Model */,
+				0120740B2BECF7E90042DC76 /* PrivacyInfo.xcprivacy */,
 			);
 			path = RuzeneciOS;
 			sourceTree = "<group>";
@@ -583,7 +585,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = 32253C46P7;
 				INFOPLIST_FILE = RuzeneciOS/Info.plist;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.lifestyle";
@@ -592,7 +594,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.5.1;
+				MARKETING_VERSION = 1.6.0;
 				PRODUCT_BUNDLE_IDENTIFIER = org.phracek.Ruzenec;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -608,7 +610,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = 32253C46P7;
 				INFOPLIST_FILE = RuzeneciOS/Info.plist;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.lifestyle";
@@ -617,7 +619,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.5.1;
+				MARKETING_VERSION = 1.6.0;
 				PRODUCT_BUNDLE_IDENTIFIER = org.phracek.Ruzenec;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";

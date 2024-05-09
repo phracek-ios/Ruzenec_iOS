@@ -108,6 +108,69 @@ struct OtecPioRosaryNumbers {
     }
 }
 
+struct RosaryFrantisekNumbers {
+    let counter: Int = 13
+    let credo: Int = 1
+    let lord: Int = 2
+    let salveReginaFirst = 3
+    let salveReginaSecond = 4
+    let salveReginaThird = 5
+    let meaCulpa = 6
+    let lordOne: Int = 7
+    let lordTwo: Int
+    let lordThree: Int
+    let lordFour: Int
+    let lordFive: Int
+    let lordSix: Int
+    let lordSeven: Int
+    let lordEight: Int
+    let rosaryOne: Int
+    let rosaryTwo: Int
+    let rosaryThree: Int
+    let rosaryFour: Int
+    let rosaryFive: Int
+    let rosarySix: Int
+    let rosarySeven: Int
+    let pray: Int
+    let meaCulpaOne: Int
+    let meaCulpaTwo: Int
+    let meaCulpaThree: Int
+    let meaCulpaFour: Int
+    let meaCulpaFive: Int
+    let meaCulpaSix: Int
+    let meaCulpaSeven: Int
+    let salveRegina: Int
+    let painReedem: Int
+    let painEnd: Int
+    init() {
+        self.lordTwo = lordOne + counter
+        self.lordThree = lordTwo + counter
+        self.lordFour = lordThree + counter
+        self.lordFive = lordFour + counter
+        self.lordSix = lordFive + counter
+        self.lordSeven = lordSix + counter
+        self.lordEight = lordSeven + counter
+        self.rosaryOne = lordOne + 1
+        self.rosaryTwo = lordTwo + 1
+        self.rosaryThree = lordThree + 1
+        self.rosaryFour = lordFour + 1
+        self.rosaryFive = lordFive + 1
+        self.rosarySix = lordSix + 1
+        self.rosarySeven = lordSeven + 1
+        self.meaCulpaOne = lordTwo - 1
+        self.meaCulpaTwo = lordThree - 1
+        self.meaCulpaThree = lordFour - 1
+        self.meaCulpaFour = lordFive - 1
+        self.meaCulpaFive = lordSix - 1
+        self.meaCulpaSix = lordSeven - 1
+        self.meaCulpaSeven = lordEight - 1
+        self.salveRegina = meaCulpaSeven + 1
+        self.painReedem = self.salveRegina + 1
+        self.painEnd = self.painReedem + 1
+        self.pray = salveRegina + 1
+    }
+}
+
 
 struct RosarySevenNumbers {
     let counter: Int = 10

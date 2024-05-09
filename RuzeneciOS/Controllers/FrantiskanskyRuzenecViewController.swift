@@ -80,12 +80,11 @@ class FrantiskanskyRuzenecViewController: UIViewController, UINavigationControll
     var speak: Bool = false
     var zrno: Int = 0
     var desatek: Desatek?
-    var typ_obrazku: String = "s"
+    var typ_obrazku: String = "f"
     var darkMode: Bool = true
     fileprivate var rosaryStructure: RosaryStructure?
     fileprivate var rosarySpeakStructure: RosarySpeakStructure?
-    var rn = RosaryNumbers.init()
-    var rsn = RosarySevenNumbers.init()
+    var rn = RosaryFrantisekNumbers.init()
     var crown = Crown.init()
     var font_name: String = "Helvetica"
     var font_size: String = "16"
@@ -252,7 +251,7 @@ class FrantiskanskyRuzenecViewController: UIViewController, UINavigationControll
 
         }
         show_image(by: direction)
-        if count < 10 {
+        if count < 7 {
             show_ruzenec_zacatek(by: direction)
         }
         else {
@@ -267,6 +266,7 @@ class FrantiskanskyRuzenecViewController: UIViewController, UINavigationControll
     func show_ruzenec_zacatek(by direction: Bool) {
         guard let rosaryStructure = rosaryStructure else { return }
         var text: NSAttributedString
+        debugPrint("show_ruzenec_zacatek: count \(count)")
         switch count {
         case rn.credo:
             text = get_html_text(text: "\(rosaryStructure.VeJmenuOtce)\n\(rosaryStructure.VyznaniViry)")
@@ -285,27 +285,26 @@ class FrantiskanskyRuzenecViewController: UIViewController, UINavigationControll
         default:
             text = get_html_text(text: "Error")
         }
-        print(text)
-        print(count)
         ruzenec_text_contain.attributedText = text
     }
     func show_ruzenec_text(by direction: Bool) {
         guard let rosaryStructure = rosaryStructure else { return }
+        debugPrint("show_ruzenec_text: count \(count)")
         switch count {
-        case rsn.lordOne, rsn.lordTwo, rsn.lordThree, rsn.lordFour, rsn.lordFive, rsn.lordSix, rsn.lordSeven:
+        case rn.lordOne, rn.lordTwo, rn.lordThree, rn.lordFour, rn.lordFive, rn.lordSix, rn.lordSeven:
             ruzenec_text_contain.attributedText = get_html_text(text: rosaryStructure.Otcenas)
-        case rsn.rosaryOne..<(rsn.meaCulpaOne-1), rsn.rosaryTwo..<(rsn.meaCulpaTwo-1),
-             rsn.rosaryThree..<(rsn.meaCulpaThree-1), rsn.rosaryFour..<(rsn.meaCulpaFour-1),
-             rsn.rosaryFive..<(rsn.meaCulpaFive-1), rsn.rosarySix..<(rsn.meaCulpaSix-1),
-             rsn.rosarySeven..<(rsn.meaCulpaSeven-1):
+        case rn.rosaryOne..<(rn.meaCulpaOne-1), rn.rosaryTwo..<(rn.meaCulpaTwo-1),
+            rn.rosaryThree..<(rn.meaCulpaThree-1), rn.rosaryFour..<(rn.meaCulpaFour-1),
+            rn.rosaryFive..<(rn.meaCulpaFive-1), rn.rosarySix..<(rn.meaCulpaSix-1),
+            rn.rosarySeven..<(rn.meaCulpaSeven-1):
             let rosary = rosaryStructure.Ruzence[self.zdravas_number - 2]
             let secret = rosary.decades[self.type_desatek]
             ruzenec_text_contain.attributedText = get_html_text(text: secret, kindForGeneration: 1)
-        case rsn.meaCulpaOne - 1, rsn.meaCulpaTwo - 1, rsn.meaCulpaThree - 1,
-             rsn.meaCulpaFour - 1, rsn.meaCulpaFive - 1,
-             rsn.meaCulpaSix - 1, rsn.meaCulpaSeven - 1:
+        case rn.meaCulpaOne - 1, rn.meaCulpaTwo - 1, rn.meaCulpaThree - 1,
+            rn.meaCulpaFour - 1, rn.meaCulpaFive - 1,
+            rn.meaCulpaSix - 1, rn.meaCulpaSeven - 1:
             ruzenec_text_contain.attributedText = get_html_text(text: rosaryStructure.SlavaOtci)
-        case rsn.meaCulpaOne, rsn.meaCulpaTwo, rsn.meaCulpaThree, rsn.meaCulpaFour, rsn.meaCulpaFive, rsn.meaCulpaSix:
+        case rn.meaCulpaOne, rn.meaCulpaTwo, rn.meaCulpaThree, rn.meaCulpaFour, rn.meaCulpaFive, rn.meaCulpaSix:
             ruzenec_text_contain.attributedText = get_html_text(text: rosaryStructure.MojeVina)
             if direction {
                 self.type_desatek += 1
@@ -313,10 +312,10 @@ class FrantiskanskyRuzenecViewController: UIViewController, UINavigationControll
             else {
                 self.type_desatek -= 1
             }
-        case rsn.meaCulpaSeven:
+        case rn.meaCulpaSeven:
             ruzenec_text_contain.attributedText = get_html_text(text: rosaryStructure.MojeVina)
             next_button.isEnabled = true
-        case rsn.salveRegina:
+        case rn.salveRegina:
             if self.zdravas_number == 7 {
                 ruzenec_text_contain.attributedText = get_html_text(text: rosaryStructure.ZdravasKralovno)
             }
@@ -326,7 +325,7 @@ class FrantiskanskyRuzenecViewController: UIViewController, UINavigationControll
             if self.zdravas_number == 6 {
                 next_button.isEnabled = true
             }
-        case rsn.pray, rsn.painReedem:
+        case rn.pray, rn.painReedem:
             if self.zdravas_number == 7 {
                 ruzenec_text_contain.attributedText = get_html_text(text: rosaryStructure.ZaverecnaModlitba)
             }
