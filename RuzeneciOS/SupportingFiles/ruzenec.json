@@ -90,12 +90,34 @@
          },
          {
              "id": 8,
+             "name": "Františkánský sedmibolestný růženec",
+             "decades": ["kterého utrpení ti bylo Simeonem zvěstované",
+                         "s kterým jsi utekla do Egypta",
+                         "kterého jsi s bolestí tři dny hledala",
+                         "který se s tebou setkal na křížové cestě",
+                         "kterého jsi viděla umírat na kříži",
+                         "kterého mrtvé tělo jsi držela v náručí",
+                         "kterého jsi s bolestí do hrobu položila"],
+         },
+         {
+             "id": 9,
+             "name": "Františkánský sedmiradostný růženec",
+             "decades": ["kterého jsi, Neposkvrněná Panno, s radostí z Ducha Svatého počala",
+                          "s kterým jsi, Neposkvrněná Panno, s radostí Alžbětu navštívila",
+                          "kterého jsi, Neposkvrněná Panno, v Betlémě porodila",
+                          "kterého jsi, Neposkvrněná Panno, třem králům ke klanění představila",
+                          "kterého jsi, Neposkvrněná Panno, s radostí v chrámě nalezla",
+                          "kterého jsi, Neposkvrněná Panno, zmrtvýchvstalého s radostí první pozdravila",
+                          "který Tě, Neposkvrněná Panno, na nebe vzal a Královnou nebe i země korunoval"],
+         },
+         {
+             "id": 10,
              "name": "Růženec ke sv. Josefovi",
              "decades": ["který jsi sv. Josefa za ženicha nejčistší Panně Marii vyvolil",
                           "který jsi sv. Josefa jako živitele miloval",
                           "který jsi sv. Josefa poslušný byl",
                           "který ses se sv. Josefem modlil a pracoval",
                           "který jsi sv. Josefa za patrona církve vyvolil"],
-         },
+         }
      ]
 }

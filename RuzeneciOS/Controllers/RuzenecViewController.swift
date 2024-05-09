@@ -280,11 +280,29 @@ class RuzenecViewController: UIViewController, UINavigationControllerDelegate, U
             text = get_html_text(text: rosaryStructure.Otcenas)
             previous_button.isEnabled = true
         case rn.salveReginaFirst:
-            text = get_html_text(text: " v kterého věříme ", kindForGeneration: 1)
+            if self.zdravas_number == RosaryConstants.sedmiradostne.rawValue {
+                text = get_html_text(text: " který rozmnožuje naši víru ", kindForGeneration: 1)
+            } else if self.zdravas_number == RosaryConstants.sedmibolestne.rawValue {
+                text = get_html_text(text: " který v nás <b>upevňuje úctu</b> k Sedmibolestné Matce ", kindForGeneration: 1)
+            } else {
+                text = get_html_text(text: " v kterého věříme ", kindForGeneration: 1)
+            }
         case rn.salveReginaSecond:
-            text = get_html_text(text: " v kterého doufáme ", kindForGeneration: 1)
+            if self.zdravas_number == RosaryConstants.sedmiradostne.rawValue {
+                text = get_html_text(text: " který posiluje naši naději ", kindForGeneration: 1)
+            } else if self.zdravas_number == RosaryConstants.sedmibolestne.rawValue {
+                text = get_html_text(text: " který v nás <b>upevňuje důvěru</b> k Sedmibolestné Matce ", kindForGeneration: 1)
+            } else {
+                text = get_html_text(text: " v kterého doufáme ", kindForGeneration: 1)
+            }
         case rn.salveReginaThird:
-            text = get_html_text(text: " kterého nade všechno milujeme ", kindForGeneration: 1)
+            if self.zdravas_number == RosaryConstants.sedmiradostne.rawValue {
+                text = get_html_text(text: " který rozněcuje naši lásku ", kindForGeneration: 1)
+            } else if self.zdravas_number == RosaryConstants.sedmibolestne.rawValue {
+                text = get_html_text(text: " který v nás <b>upevňuje lásku</b> k Sedmibolestné Matce ", kindForGeneration: 1)
+            } else {
+                text = get_html_text(text: " kterého nade všechno milujeme ", kindForGeneration: 1)
+            }
         case rn.meaCulpa:
             text = get_html_text(text: rosaryStructure.SlavaOtci)
         default:
@@ -483,8 +501,8 @@ class RuzenecViewController: UIViewController, UINavigationControllerDelegate, U
                     text_to_speak += rosarySpeak.KorunkaHlavni + String.init(repeating: " \(rosarySpeak.KorunkaRuzenec) ", count: 10)
                 }
                 text_to_speak += String.init(repeating: "\(rosarySpeak.KorunkaKonec)", count: 3)
-            // Sedmi bolestna, Sedmi radostna
-            case 6, 7:
+            // Sedmi bolestna, Sedmi radostna, FrantisekSedmiRadostny, FrantisekSedmiBolestny
+            case 6, 7, 8, 9:
                 text_to_speak += rosary_begin
                 for n in 0..<7 {
                     print(rosary.Ruzence[desatek!.desatek - 2].decades[n])
@@ -492,7 +510,7 @@ class RuzenecViewController: UIViewController, UINavigationControllerDelegate, U
                 }
                 text_to_speak += "\n" + rosarySpeak.ZdravasKralovno + rosarySpeak.ZaverecnaModlitba
             // Ke svatemu Josefovi
-            case 8:
+            case 10:
                 text_to_speak += rosary_begin
                 for n in 0..<5 {
                     print(rosary.Ruzence[desatek!.desatek - 2].decades[n])

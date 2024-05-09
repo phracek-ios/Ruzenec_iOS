@@ -133,7 +133,6 @@ class DesatekCollectionViewController: UICollectionViewController, UICollectionV
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let data = rowData[indexPath.row]
-
         switch data.type {
 
         case .desatek:
@@ -148,6 +147,14 @@ class DesatekCollectionViewController: UICollectionViewController, UICollectionV
                     otecPioVC.navigationItem.title = selectedDesatek.name
                 }
                 navigationController?.pushViewController(otecPioVC, animated: true)
+            }
+            else if (indexPath.row == RosaryConstants.frantiseksedmibolestne.rawValue) || (indexPath.row == RosaryConstants.frantiseksedmiradostne.rawValue){
+                let frantiskanskyVC = FrantiskanskyRuzenecViewController()
+                if let selectedDesatek = rowData[indexPath.row].desatek {
+                    frantiskanskyVC.desatek = selectedDesatek
+                    frantiskanskyVC.navigationItem.title = selectedDesatek.name
+                }
+                navigationController?.pushViewController(frantiskanskyVC, animated: true)
             }
             else {
                 let ruzenecViewController = RuzenecViewController()
@@ -180,6 +187,7 @@ class DesatekCollectionViewController: UICollectionViewController, UICollectionV
         let photoSlavny = "icon_slavny"
         let photoKorunka = "icon_korunka"
         let photoSedmibolestny = "icon_sorrow"
+        let photoFrantisekSedmi = "icon_frantisek"
         let photoJoseph = "icon_joseph"
         let photoSedmiradostna = "icon_mary"
         let photoPompej = "icon_pompej"
@@ -215,6 +223,13 @@ class DesatekCollectionViewController: UICollectionViewController, UICollectionV
         guard let sedmiradostne = Desatek(name: "Sedmiradostná tajemství", photo: photoSedmiradostna, desatek: RosaryConstants.sedmiradostne.rawValue) else {
             fatalError("Unable to instanciate sedmiradostny")
         }
+        guard let frantiskanskysedmiradostny =  Desatek(name: "Františkánský sedmiradostný růženec", photo: photoFrantisekSedmi, desatek: RosaryConstants.frantiseksedmiradostne.rawValue) else {
+            fatalError("Unable to instanciate sedmiradostny ruzenec")
+        }
+        
+        guard let frantiskanskysedmibolestny = Desatek(name: "Františkánský sedmibolestný růženec", photo: photoFrantisekSedmi, desatek: RosaryConstants.frantiseksedmibolestne.rawValue) else {
+            fatalError("Unable to instanciate sedmiradostny")
+        }
         
         guard let sv_josef = Desatek(name: "Růženec ke sv. Josefovi", photo: photoJoseph, desatek: RosaryConstants.sv_Josef.rawValue) else {
             fatalError("Unable to instanciate ruzenec sv josefa")
@@ -230,8 +245,7 @@ class DesatekCollectionViewController: UICollectionViewController, UICollectionV
         }
         
         desatky += [calendar, radostny, bolestny, svetla, slavny, korunka, sedmibolestne,
-        sedmiradostne, sv_josef, pompejska_novena, otec_pio]
-        print(desatky)
+        sedmiradostne, frantiskanskysedmibolestny, frantiskanskysedmiradostny, sv_josef, pompejska_novena, otec_pio]
     }
     
     private func loadRowData() {
