@@ -29,6 +29,7 @@ class DesatekCollectionViewController: UICollectionViewController, UICollectionV
     //MARK: Properties
     
     let keys = SettingsBundleHelper.SettingsBundleKeys.self
+    let userDefaults = UserDefaults.standard
 
     fileprivate var desatky = [Desatek]()
     fileprivate var rowData = [RowData]()
@@ -42,17 +43,13 @@ class DesatekCollectionViewController: UICollectionViewController, UICollectionV
         loadDesatky()
         loadRowData()
         setupCollectionView()
-
-        navigationItem.title = "Růženec"
-
-        navigationController?.navigationBar.barTintColor = KKCMainColor
-        navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: KKCMainTextColor]
-        navigationController?.navigationBar.barStyle = UIBarStyle.black;
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        let userDefaults = UserDefaults.standard
+
+        navigationItem.title = "Růženec"
+
         let dimmOff = userDefaults.bool(forKey: keys.idleTimer)
         if dimmOff == true {
             UIApplication.shared.isIdleTimerDisabled = true
@@ -67,7 +64,10 @@ class DesatekCollectionViewController: UICollectionViewController, UICollectionV
             self.collectionView!.backgroundColor = KKCBackgroundLightMode
         }
         self.collectionView?.reloadData()
-        
+        navigationController?.navigationBar.barTintColor = UIColor.white//KKCMainTextColor
+        navigationController?.navigationBar.backgroundColor = UIColor.white
+        navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: KKCMainTextColor]
+
     }
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
         super.traitCollectionDidChange(previousTraitCollection)

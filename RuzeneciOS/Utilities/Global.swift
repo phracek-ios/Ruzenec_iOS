@@ -21,4 +21,22 @@ class Global {
             generator.impactOccurred()
         }
     }
+    static func getUUID() -> String {
+        let keys = SettingsBundleHelper.SettingsBundleKeys.self
+        var uuidString: String  = ""
+        let userDefaults = UserDefaults.standard
+        if userDefaults.object(forKey: keys.reminderUUID) == nil {
+            uuidString = UUID().uuidString
+            userDefaults.set(uuidString, forKey: keys.reminderUUID)
+        } else {
+            uuidString = userDefaults.string(forKey: keys.reminderUUID)!
+        }
+        return uuidString
+    }
+    
+    static func getIdentifier() -> String {
+        let uuidString = Global.getUUID()
+        return "\(uuidString)-ruzenec"
+        
+    }
 }

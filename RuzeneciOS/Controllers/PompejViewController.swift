@@ -91,6 +91,12 @@ class PompejViewController: UIViewController, UINavigationControllerDelegate, UI
         else {
             navigationController?.navigationBar.tintColor = KKCTextLightMode
         }
+        if userDefaults.bool(forKey: keys.idleTimer) == true {
+            UIApplication.shared.isIdleTimerDisabled = true
+        }
+        else {
+            UIApplication.shared.isIdleTimerDisabled = false
+        }
         let novenaCounter = userDefaults.integer(forKey: keys.pompejCounter)
         novenaLabelCounter.text = "\(novenaCounter). den novény"
         novenaLabelCounter.textAlignment = .center

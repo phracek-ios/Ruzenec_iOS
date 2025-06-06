@@ -9,6 +9,7 @@
 import UIKit
 import Firebase
 import AVFoundation
+import UserNotifications
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -21,29 +22,49 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         RosaryDataService.shared.loadData()
         FirebaseApp.configure()
         if #available(iOS 15.0, *) {
+            debugPrint("iOS15 or higher")
             let appearance = UINavigationBarAppearance()
             appearance.configureWithOpaqueBackground()
             appearance.backgroundColor = KKCMainColor
             appearance.titleTextAttributes = [NSAttributedString.Key.foregroundColor: KKCMainTextColor]
-            UINavigationBar.appearance().barTintColor = KKCMainColor
-            UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.foregroundColor: KKCMainTextColor]
-            UINavigationBar.appearance().isTranslucent = false
             UINavigationBar.appearance().standardAppearance = appearance
             UINavigationBar.appearance().scrollEdgeAppearance = appearance
+            UINavigationBar.appearance().barTintColor = KKCTextLightMode
+            UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.foregroundColor: KKCMainTextColor]
+            UINavigationBar.appearance().isTranslucent = false
             UITabBar.appearance().barTintColor = KKCMainColor
             UITabBar.appearance().tintColor = KKCMainTextColor
             UITabBar.appearance().isTranslucent = false
         } else {
-            UINavigationBar.appearance().barTintColor = KKCMainColor
+            debugPrint("Less then iOS15")
+            UINavigationBar.appearance().barTintColor = KKCTextLightMode
             UINavigationBar.appearance().tintColor = KKCMainTextColor
             UINavigationBar.appearance().isTranslucent = false
+            UITabBar.appearance().barTintColor = KKCTextLightMode
+            UITabBar.appearance().tintColor = KKCMainTextColor
+            UITabBar.appearance().isTranslucent = false
+        }
+        UNUserNotificationCenter.current().delegate = self
+        // Specify your request for authorization
+        center.requestAuthorization(options: [.alert, .sound, .badge]) {
+            (granted, error) in
+            if granted {
+                print("Notifications are granted")
+            } else {
+                print("User do not want to be bothered.")
+            }
+        }
+        let userDefaults = UserDefaults.standard
+        let keys = SettingsBundleHelper.SettingsBundleKeys.self
+        if userDefaults.object(forKey: keys.countRuzenec) == nil {
+            userDefaults.set(7, forKey: keys.countRuzenec)
         }
         window = UIWindow(frame: UIScreen.main.bounds)
-        window?.makeKeyAndVisible()
-        
         let layout = UICollectionViewFlowLayout()
         let mainVC = DesatekCollectionViewController(collectionViewLayout: layout)
         window?.rootViewController = UINavigationController(rootViewController: mainVC)
+        window?.makeKeyAndVisible()
+
         
         return true
     }
@@ -69,7 +90,31 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
-
+    func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
+        debugPrint(userInfo)
+    }
 
 }
 
+extension AppDelegate: UNUserNotificationCenterDelegate {
+    func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
+        switch response.actionIdentifier {
+        case "snoozeAction":
+            // Handle snooze action
+            break
+        case "cancelAction":
+            // Handle cancel action
+            break
+        default:
+            // Handle default action
+            break
+        }
+
+        completionHandler()
+    }
+
+    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+        // Handle foreground presentation options
+        completionHandler([.alert, .sound, .badge])
+    }
+}

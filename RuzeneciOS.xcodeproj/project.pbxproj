@@ -12,12 +12,17 @@
 		011A6DFD2BE0D53600C772BE /* FrantiskanskyRuzenecViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 011A6DFC2BE0D53600C772BE /* FrantiskanskyRuzenecViewController.swift */; };
 		012061C121C142000048E9B0 /* RosaryColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 012061C021C142000048E9B0 /* RosaryColors.swift */; };
 		012061C321C1446E0048E9B0 /* NotificationName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 012061C221C1446E0048E9B0 /* NotificationName.swift */; };
+		013A74C42DE7205E006284A0 /* DateManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 013A74C32DE7205E006284A0 /* DateManager.swift */; };
 		0159D01D20D05E5C00D759D4 /* DesatekCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0159D01C20D05E5C00D759D4 /* DesatekCollectionViewCell.swift */; };
 		015B37AA20F78EA4001E15D3 /* ruzenec.json in Resources */ = {isa = PBXBuildFile; fileRef = 01CD80A220F6890200A8BE5C /* ruzenec.json */; };
+		0162A8832DE6E51A003C677A /* SettingsTimeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0162A8822DE6E51A003C677A /* SettingsTimeTableViewCell.swift */; };
+		0162A8852DE6E773003C677A /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0162A8842DE6E773003C677A /* NotificationManager.swift */; };
 		0180F6AC239179DD00B863C1 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0180F6AB239179DD00B863C1 /* GoogleService-Info.plist */; };
 		01A936A020D4447500A5D979 /* DesatekCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01A9369F20D4447500A5D979 /* DesatekCollectionViewController.swift */; };
 		01A936A220D4474F00A5D979 /* Desatek.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01A936A120D4474F00A5D979 /* Desatek.swift */; };
 		01B0A6B3238C3BE60062C4BC /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01B0A6B2238C3BE60062C4BC /* Utils.swift */; };
+		01B2F03D2DEF449A00EFC194 /* SettingsTextTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01B2F03C2DEF449A00EFC194 /* SettingsTextTableViewCell.swift */; };
+		01B2F03F2DEF44CD00EFC194 /* SelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01B2F03E2DEF44CD00EFC194 /* SelectionViewController.swift */; };
 		01BCB598238C2B2A00209176 /* Global.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01BCB597238C2B2A00209176 /* Global.swift */; };
 		01BD588F2190465E006A44AA /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01BD588E2190465E006A44AA /* Constants.swift */; };
 		01BFD2E62AE817B30028396B /* OtecPioZacatekRuzenecViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01BFD2E52AE817B30028396B /* OtecPioZacatekRuzenecViewController.swift */; };
@@ -59,11 +64,16 @@
 		012061C021C142000048E9B0 /* RosaryColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RosaryColors.swift; sourceTree = "<group>"; };
 		012061C221C1446E0048E9B0 /* NotificationName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationName.swift; sourceTree = "<group>"; };
 		0120740B2BECF7E90042DC76 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
+		013A74C32DE7205E006284A0 /* DateManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateManager.swift; sourceTree = "<group>"; };
 		0159D01C20D05E5C00D759D4 /* DesatekCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesatekCollectionViewCell.swift; sourceTree = "<group>"; };
+		0162A8822DE6E51A003C677A /* SettingsTimeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTimeTableViewCell.swift; sourceTree = "<group>"; };
+		0162A8842DE6E773003C677A /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
 		0180F6AB239179DD00B863C1 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		01A9369F20D4447500A5D979 /* DesatekCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesatekCollectionViewController.swift; sourceTree = "<group>"; };
 		01A936A120D4474F00A5D979 /* Desatek.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Desatek.swift; sourceTree = "<group>"; };
 		01B0A6B2238C3BE60062C4BC /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
+		01B2F03C2DEF449A00EFC194 /* SettingsTextTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTextTableViewCell.swift; sourceTree = "<group>"; };
+		01B2F03E2DEF44CD00EFC194 /* SelectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectionViewController.swift; sourceTree = "<group>"; };
 		01BCB597238C2B2A00209176 /* Global.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Global.swift; sourceTree = "<group>"; };
 		01BD588E2190465E006A44AA /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		01BFD2E52AE817B30028396B /* OtecPioZacatekRuzenecViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtecPioZacatekRuzenecViewController.swift; sourceTree = "<group>"; };
@@ -124,6 +134,8 @@
 				01BCB597238C2B2A00209176 /* Global.swift */,
 				01B0A6B2238C3BE60062C4BC /* Utils.swift */,
 				010CDF282548953E0086C6D3 /* Extensions.swift */,
+				0162A8842DE6E773003C677A /* NotificationManager.swift */,
+				013A74C32DE7205E006284A0 /* DateManager.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -135,6 +147,8 @@
 				01C36392255EA6CA003E685F /* SettingsItem.swift */,
 				01C36396255EA9EA003E685F /* SettingsSwitchTableViewCell.swift */,
 				01C3639A255EAA1E003E685F /* SettingsSliderTableViewCell.swift */,
+				0162A8822DE6E51A003C677A /* SettingsTimeTableViewCell.swift */,
+				01B2F03C2DEF449A00EFC194 /* SettingsTextTableViewCell.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -181,14 +195,14 @@
 			children = (
 				0180F6AB239179DD00B863C1 /* GoogleService-Info.plist */,
 				01E4A8C52947782D007A63BA /* Assets.xcassets */,
-				01BD589021907630006A44AA /* Utilities */,
+				4B01C4CB20F63D19008D4CEA /* Controllers */,
+				4BF14E272101FF1E0070ECD6 /* Model */,
+				4BF14E2E210206040070ECD6 /* Services */,
 				01CD80A320F6990500A8BE5C /* SupportingFiles */,
+				01BD589021907630006A44AA /* Utilities */,
 				01FC3D8720C86E23005FABEF /* AppDelegate.swift */,
 				01FC3D9020C86E24005FABEF /* LaunchScreen.storyboard */,
 				01FC3D9320C86E24005FABEF /* Info.plist */,
-				4BF14E2E210206040070ECD6 /* Services */,
-				4B01C4CB20F63D19008D4CEA /* Controllers */,
-				4BF14E272101FF1E0070ECD6 /* Model */,
 				0120740B2BECF7E90042DC76 /* PrivacyInfo.xcprivacy */,
 			);
 			path = RuzeneciOS;
@@ -217,14 +231,15 @@
 				01C363A2255EAA9C003E685F /* Settings */,
 				01C36391255EA697003E685F /* Models */,
 				4B01C4CE20F63D41008D4CEA /* AboutViewController.swift */,
-				01C3639E255EAA77003E685F /* SettingsDelegateManager.swift */,
 				01A9369F20D4447500A5D979 /* DesatekCollectionViewController.swift */,
-				01FC3D8920C86E23005FABEF /* RuzenecViewController.swift */,
-				4B01C4CC20F63D2B008D4CEA /* SettingsTableViewController.swift */,
+				011A6DFC2BE0D53600C772BE /* FrantiskanskyRuzenecViewController.swift */,
+				01BFD2E52AE817B30028396B /* OtecPioZacatekRuzenecViewController.swift */,
 				01F6B35D2701D2B100300134 /* PompejViewController.swift */,
 				01F6B35F2701E16200300134 /* PompejPrayViewController.swift */,
-				01BFD2E52AE817B30028396B /* OtecPioZacatekRuzenecViewController.swift */,
-				011A6DFC2BE0D53600C772BE /* FrantiskanskyRuzenecViewController.swift */,
+				01FC3D8920C86E23005FABEF /* RuzenecViewController.swift */,
+				01B2F03E2DEF44CD00EFC194 /* SelectionViewController.swift */,
+				01C3639E255EAA77003E685F /* SettingsDelegateManager.swift */,
+				4B01C4CC20F63D2B008D4CEA /* SettingsTableViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -302,8 +317,9 @@
 		01FC3D7C20C86E23005FABEF /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				BuildIndependentTargetsInParallel = YES;
 				LastSwiftUpdateCheck = 0930;
-				LastUpgradeCheck = 1210;
+				LastUpgradeCheck = 1620;
 				ORGANIZATIONNAME = "Petr Hracek";
 				TargetAttributes = {
 					01FC3D8320C86E23005FABEF = {
@@ -411,17 +427,22 @@
 				01C36397255EA9EA003E685F /* SettingsSwitchTableViewCell.swift in Sources */,
 				4BF14E2D2102021D0070ECD6 /* RosaryStructure.swift in Sources */,
 				01FC3D8820C86E23005FABEF /* AppDelegate.swift in Sources */,
+				013A74C42DE7205E006284A0 /* DateManager.swift in Sources */,
 				4BF14E30210206190070ECD6 /* RosaryDataService.swift in Sources */,
 				01C363A4255EAAC5003E685F /* SettingsBundleHelper.swift in Sources */,
 				01C3639F255EAA77003E685F /* SettingsDelegateManager.swift in Sources */,
 				01B0A6B3238C3BE60062C4BC /* Utils.swift in Sources */,
+				01B2F03D2DEF449A00EFC194 /* SettingsTextTableViewCell.swift in Sources */,
 				01F6B35E2701D2B100300134 /* PompejViewController.swift in Sources */,
 				01C3639B255EAA1E003E685F /* SettingsSliderTableViewCell.swift in Sources */,
 				01A936A220D4474F00A5D979 /* Desatek.swift in Sources */,
 				01BCB598238C2B2A00209176 /* Global.swift in Sources */,
 				011A6DFD2BE0D53600C772BE /* FrantiskanskyRuzenecViewController.swift in Sources */,
+				01B2F03F2DEF44CD00EFC194 /* SelectionViewController.swift in Sources */,
 				01F6B3602701E16200300134 /* PompejPrayViewController.swift in Sources */,
+				0162A8852DE6E773003C677A /* NotificationManager.swift in Sources */,
 				4B01C4CF20F63D41008D4CEA /* AboutViewController.swift in Sources */,
+				0162A8832DE6E51A003C677A /* SettingsTimeTableViewCell.swift in Sources */,
 				01A936A020D4447500A5D979 /* DesatekCollectionViewController.swift in Sources */,
 				0159D01D20D05E5C00D759D4 /* DesatekCollectionViewCell.swift in Sources */,
 				4B01C4CD20F63D2B008D4CEA /* SettingsTableViewController.swift in Sources */,
@@ -500,6 +521,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -561,6 +583,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -585,8 +608,9 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 32253C46P7;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				INFOPLIST_FILE = RuzeneciOS/Info.plist;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.lifestyle";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
@@ -594,7 +618,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.6.0;
+				MARKETING_VERSION = 1.9.0;
 				PRODUCT_BUNDLE_IDENTIFIER = org.phracek.Ruzenec;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -610,8 +634,9 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 32253C46P7;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				INFOPLIST_FILE = RuzeneciOS/Info.plist;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.lifestyle";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
@@ -619,7 +644,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.6.0;
+				MARKETING_VERSION = 1.9.0;
 				PRODUCT_BUNDLE_IDENTIFIER = org.phracek.Ruzenec;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -631,7 +656,6 @@
 		01FC3DA520C86E24005FABEF /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = RuzeneciOSTests/Info.plist;
@@ -651,7 +675,6 @@
 		01FC3DA620C86E24005FABEF /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = RuzeneciOSTests/Info.plist;

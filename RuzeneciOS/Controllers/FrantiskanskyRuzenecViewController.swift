@@ -22,6 +22,14 @@ class FrantiskanskyRuzenecViewController: UIViewController, UINavigationControll
         l.translatesAutoresizingMaskIntoConstraints = false
         return l
     }()
+    
+    lazy var ruzenec_counter_label: UILabel = {
+        let l = UILabel()
+        l.lineBreakMode = .byWordWrapping
+        l.numberOfLines = 0
+        l.translatesAutoresizingMaskIntoConstraints = false
+        return l
+    }()
 
     lazy var ruzenec_image: UIImageView = {
         let ri = UIImageView()
@@ -35,6 +43,8 @@ class FrantiskanskyRuzenecViewController: UIViewController, UINavigationControll
         btn.translatesAutoresizingMaskIntoConstraints = false
         btn.setTitle("Další", for: .normal)
         btn.addTarget(self, action: #selector(nextAction), for: .touchUpInside)
+        btn.layer.borderWidth = 1
+        btn.layer.cornerRadius = 6
         return btn
     }()
 
@@ -43,6 +53,8 @@ class FrantiskanskyRuzenecViewController: UIViewController, UINavigationControll
         btn.setTitle("Předchozí", for: .normal)
         btn.translatesAutoresizingMaskIntoConstraints = false
         btn.addTarget(self, action: #selector(previousAction), for: .touchUpInside)
+        btn.layer.borderWidth = 1
+        btn.layer.cornerRadius = 6
         return btn
     }()
     
@@ -91,6 +103,8 @@ class FrantiskanskyRuzenecViewController: UIViewController, UINavigationControll
     let synthesizer = AVSpeechSynthesizer()
     let keys = SettingsBundleHelper.SettingsBundleKeys.self
     var callObserver = CXCallObserver()
+    let userDefaults = UserDefaults.standard
+    var ruzenec_counter: Int = 0
     
     var isStatusBarHidden = false {
         didSet {
@@ -105,7 +119,6 @@ class FrantiskanskyRuzenecViewController: UIViewController, UINavigationControll
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupView()
         self.scrollView.delegate = self
         self.view.isUserInteractionEnabled = true
         ruzenec_text_contain.numberOfLines = 0
@@ -113,9 +126,15 @@ class FrantiskanskyRuzenecViewController: UIViewController, UINavigationControll
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        setupView()
+        if userDefaults.bool(forKey: keys.idleTimer) == true {
+            UIApplication.shared.isIdleTimerDisabled = true
+        }
+        else {
+            UIApplication.shared.isIdleTimerDisabled = false
+        }
         rosaryStructure = RosaryDataService.shared.rosaryStructure
         rosarySpeakStructure = RosaryDataService.shared.rosarySpeakStructure
-        let userDefaults = UserDefaults.standard
         callObserver.setDelegate(self, queue: nil)
         speak = false
         setupUI()
@@ -193,11 +212,14 @@ class FrantiskanskyRuzenecViewController: UIViewController, UINavigationControll
         self.view.addSubview(scrollView)
         self.view.addSubview(btnViewContainer)
         self.view.addConstraintsWithFormat(format: "H:|-20-[v0]-20-|", views: btnViewContainer)
-        self.view.addConstraintsWithFormat(format: "V:|-10-[v0]-20-[v1(40)]-10-|", views: scrollView, btnViewContainer)
+        self.view.addConstraintsWithFormat(format: "V:|-10-[v0]-20-[v1(80)]-30-|", views: scrollView, btnViewContainer)
         scrollView.widthAnchor.constraint(equalTo: self.view.widthAnchor).isActive = true
         
         scrollView.addSubview(scrollViewContainer)
         scrollViewContainer.addSubview(ruzenec_image)
+        if userDefaults.bool(forKey: keys.desatekCounter) == true {
+            scrollViewContainer.addSubview(ruzenec_counter_label)
+        }
         scrollViewContainer.addSubview(ruzenec_text_contain)
         btnViewContainer.addSubview(previous_button)
         btnViewContainer.addSubview(play_button)
@@ -209,14 +231,18 @@ class FrantiskanskyRuzenecViewController: UIViewController, UINavigationControll
         scrollViewContainer.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor, constant: -25).isActive = true
 
         scrollViewContainer.centerXAnchor.constraint(equalTo: ruzenec_image.centerXAnchor).isActive = true
+        if userDefaults.bool(forKey: keys.desatekCounter) == true {
+            ruzenec_counter_label.trailingAnchor.constraint(equalTo: scrollViewContainer.trailingAnchor, constant: -20).isActive = true
+            ruzenec_counter_label.topAnchor.constraint(equalTo: scrollViewContainer.topAnchor, constant: 20).isActive = true
+        }
         ruzenec_image.heightAnchor.constraint(equalToConstant: 150).isActive = true
         ruzenec_image.widthAnchor.constraint(equalToConstant: 200).isActive = true
         //scrollViewContainer.addConstraintsWithFormat(format: "H:|-50-[v0]-50-|", views: ruzenec_image)
         scrollViewContainer.addConstraintsWithFormat(format: "H:|-10-[v0]-10-|", views: ruzenec_text_contain)
-        scrollViewContainer.addConstraintsWithFormat(format: "V:|-20-[v0]-20-[v1]", views: ruzenec_image, ruzenec_text_contain)
+        scrollViewContainer.addConstraintsWithFormat(format: "V:|-20-[v0(150)]-20-[v1]-20-|", views: ruzenec_image, ruzenec_text_contain)
 
-        btnViewContainer.addConstraintsWithFormat(format: "H:|-12-[v0(100)]", views: previous_button)
-        btnViewContainer.addConstraintsWithFormat(format: "H:[v0(100)]-12-|", views: next_button)
+        btnViewContainer.addConstraintsWithFormat(format: "H:|-12-[v0(120)]", views: previous_button)
+        btnViewContainer.addConstraintsWithFormat(format: "H:[v0(120)]-12-|", views: next_button)
         play_button.centerXAnchor.constraint(equalTo: btnViewContainer.centerXAnchor).isActive = true
         let play_img = UIImage(named: "ic_play")
         play_button.setImage(play_img, for: .normal)
@@ -261,19 +287,31 @@ class FrantiskanskyRuzenecViewController: UIViewController, UINavigationControll
         self.ruzenec_text_contain.textAlignment = .center
 
     }
-    
+    func getRuzenec() -> Rosary {
+        if let rosaryStructure = rosaryStructure {
+            for ruzenec in rosaryStructure.Ruzence {
+                if ruzenec.id == self.zdravas_number {
+                    return ruzenec
+                }
+            }
+        }
+        return Rosary(id: 0, name: "", decades: [])
+    }
 
+    
     func show_ruzenec_zacatek(by direction: Bool) {
         guard let rosaryStructure = rosaryStructure else { return }
         var text: NSAttributedString
         debugPrint("show_ruzenec_zacatek: count \(count)")
+        ruzenec_counter = 0
+        setRuzenecCounter()
         switch count {
         case rn.credo:
             text = get_html_text(text: "\(rosaryStructure.VeJmenuOtce)\n\(rosaryStructure.VyznaniViry)")
-            previous_button.isEnabled = false
+            previous_button.isHidden = true
         case rn.lord:
             text = get_html_text(text: rosaryStructure.Otcenas)
-            previous_button.isEnabled = true
+            previous_button.isHidden = false
         case rn.salveReginaFirst:
             text = get_html_text(text: " v kterého věříme ", kindForGeneration: 1)
         case rn.salveReginaSecond:
@@ -287,23 +325,48 @@ class FrantiskanskyRuzenecViewController: UIViewController, UINavigationControll
         }
         ruzenec_text_contain.attributedText = text
     }
+    
+    func setRuzenecCounter() {
+        if ruzenec_counter == 0 {
+            ruzenec_counter_label.text = ""
+        } else {
+            ruzenec_counter_label.text = "\(ruzenec_counter)/10"
+        }
+    }
+    
     func show_ruzenec_text(by direction: Bool) {
         guard let rosaryStructure = rosaryStructure else { return }
         debugPrint("show_ruzenec_text: count \(count)")
         switch count {
         case rn.lordOne, rn.lordTwo, rn.lordThree, rn.lordFour, rn.lordFive, rn.lordSix, rn.lordSeven:
             ruzenec_text_contain.attributedText = get_html_text(text: rosaryStructure.Otcenas)
+            ruzenec_counter = 0
+            setRuzenecCounter()
         case rn.rosaryOne..<(rn.meaCulpaOne-1), rn.rosaryTwo..<(rn.meaCulpaTwo-1),
             rn.rosaryThree..<(rn.meaCulpaThree-1), rn.rosaryFour..<(rn.meaCulpaFour-1),
             rn.rosaryFive..<(rn.meaCulpaFive-1), rn.rosarySix..<(rn.meaCulpaSix-1),
             rn.rosarySeven..<(rn.meaCulpaSeven-1):
-            let rosary = rosaryStructure.Ruzence[self.zdravas_number - 2]
+            let rosary = self.getRuzenec()
             let secret = rosary.decades[self.type_desatek]
+            if direction {
+                ruzenec_counter += 1
+            }
+            else {
+                if ruzenec_counter == 0 {
+                    ruzenec_counter = 10
+                } else {
+                    ruzenec_counter -= 1
+                }
+
+            }
+            setRuzenecCounter()
             ruzenec_text_contain.attributedText = get_html_text(text: secret, kindForGeneration: 1)
         case rn.meaCulpaOne - 1, rn.meaCulpaTwo - 1, rn.meaCulpaThree - 1,
             rn.meaCulpaFour - 1, rn.meaCulpaFive - 1,
             rn.meaCulpaSix - 1, rn.meaCulpaSeven - 1:
             ruzenec_text_contain.attributedText = get_html_text(text: rosaryStructure.SlavaOtci)
+            ruzenec_counter = 0
+            setRuzenecCounter()
         case rn.meaCulpaOne, rn.meaCulpaTwo, rn.meaCulpaThree, rn.meaCulpaFour, rn.meaCulpaFive, rn.meaCulpaSix:
             ruzenec_text_contain.attributedText = get_html_text(text: rosaryStructure.MojeVina)
             if direction {
@@ -312,9 +375,11 @@ class FrantiskanskyRuzenecViewController: UIViewController, UINavigationControll
             else {
                 self.type_desatek -= 1
             }
+            ruzenec_counter = 0
+            setRuzenecCounter()
         case rn.meaCulpaSeven:
             ruzenec_text_contain.attributedText = get_html_text(text: rosaryStructure.MojeVina)
-            next_button.isEnabled = true
+            next_button.isHidden = false
         case rn.salveRegina:
             if self.zdravas_number == 7 {
                 ruzenec_text_contain.attributedText = get_html_text(text: rosaryStructure.ZdravasKralovno)
@@ -323,8 +388,10 @@ class FrantiskanskyRuzenecViewController: UIViewController, UINavigationControll
                 ruzenec_text_contain.attributedText = get_html_text(text: rosaryStructure.BolestnyRedeem)
             }
             if self.zdravas_number == 6 {
-                next_button.isEnabled = true
+                next_button.isHidden = false
             }
+            ruzenec_counter = 0
+            setRuzenecCounter()
         case rn.pray, rn.painReedem:
             if self.zdravas_number == 7 {
                 ruzenec_text_contain.attributedText = get_html_text(text: rosaryStructure.ZaverecnaModlitba)
@@ -332,7 +399,9 @@ class FrantiskanskyRuzenecViewController: UIViewController, UINavigationControll
             else {
                 ruzenec_text_contain.attributedText = get_html_text(text: rosaryStructure.BolestnyEnd)
             }
-            next_button.isEnabled = false
+            next_button.isHidden = true
+            ruzenec_counter = 0
+            setRuzenecCounter()
         default:
             ruzenec_text_contain.text = "Error"
         }
@@ -426,6 +495,8 @@ class FrantiskanskyRuzenecViewController: UIViewController, UINavigationControll
         self.play_button.backgroundColor = self.back
         self.next_button.backgroundColor = self.back
         self.previous_button.backgroundColor = self.back
+        self.ruzenec_counter_label.textColor = self.text
+        self.ruzenec_counter_label.backgroundColor = self.back
         self.next_button.setTitleColor(self.text, for: .normal)
         self.play_button.setTitleColor(self.text, for: .normal)
         self.previous_button.setTitleColor(self.text, for: .normal)

@@ -89,8 +89,8 @@ class SettingsSliderTableViewCell: UITableViewCell {
         print(cellWidth)
         let titleWidth = cellWidth - itemSlider.frame.width - 12 - 15 - 12
         let detailWidth = cellWidth - itemSlider.frame.width - 12 - 20
-        addConstraintsWithFormat(format: "H:|-12-[v0(\(titleWidth))]", views: title)
-        addConstraintsWithFormat(format: "H:|-12-[v0(\(detailWidth))]", views: detail)
+        addConstraintsWithFormat(format: "H:|-20-[v0(\(titleWidth))]", views: title)
+        addConstraintsWithFormat(format: "H:|-20-[v0(\(detailWidth))]", views: detail)
         addConstraintsWithFormat(format: "V:|-20-[v0]-10-[v1]", views: title, detail)
 
 //        detail.widthAnchor.constraint(equalTo: title.widthAnchor ).isActive = true
