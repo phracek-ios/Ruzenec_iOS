@@ -24,6 +24,12 @@ class SettingsBundleHelper {
         static let rateAppPref = "ruzenecRunsToShowRateApp"
         static let pompejCounter = "ruzenecPompejCounter"
         static let voice = "ruzenecAppVoice"
+        static let desatekCounter = "ruzenecDesatekCounter"
+        static let reminderHour = "ruzenecAppHour"
+        static let reminderMinute = "ruzenecAppMinute"
+        static let reminderEnabled = "ruzenecAppReminderEnabled"
+        static let reminderUUID = "ruzenecAppUUID"
+        static let countRuzenec = "ruzenecAppcountRuzenec"
     }
     
 }

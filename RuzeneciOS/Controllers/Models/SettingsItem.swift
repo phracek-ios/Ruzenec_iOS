@@ -12,6 +12,8 @@ enum SettingsItemType {
     case onOffSwitch
     case slider
     case picker
+    case text
+    case timeSwitch
 }
 
 class SettingsItem {

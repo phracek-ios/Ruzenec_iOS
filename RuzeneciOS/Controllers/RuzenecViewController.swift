@@ -11,12 +11,19 @@ import BonMot
 import AVFoundation
 import CallKit
 
-var statusBarIsHidden = true
 class RuzenecViewController: UIViewController, UINavigationControllerDelegate, UIScrollViewDelegate, UIGestureRecognizerDelegate {
     
     //MARK: Properties
     
     lazy var ruzenec_text_contain: UILabel = {
+        let l = UILabel()
+        l.lineBreakMode = .byWordWrapping
+        l.numberOfLines = 0
+        l.translatesAutoresizingMaskIntoConstraints = false
+        return l
+    }()
+    
+    lazy var ruzenec_counter_label: UILabel = {
         let l = UILabel()
         l.lineBreakMode = .byWordWrapping
         l.numberOfLines = 0
@@ -36,6 +43,8 @@ class RuzenecViewController: UIViewController, UINavigationControllerDelegate, U
         btn.translatesAutoresizingMaskIntoConstraints = false
         btn.setTitle("Další", for: .normal)
         btn.addTarget(self, action: #selector(nextAction), for: .touchUpInside)
+        btn.layer.borderWidth = 1
+        btn.layer.cornerRadius = 10
         return btn
     }()
 
@@ -44,6 +53,8 @@ class RuzenecViewController: UIViewController, UINavigationControllerDelegate, U
         btn.setTitle("Předchozí", for: .normal)
         btn.translatesAutoresizingMaskIntoConstraints = false
         btn.addTarget(self, action: #selector(previousAction), for: .touchUpInside)
+        btn.layer.borderWidth = 1
+        btn.layer.cornerRadius = 10
         return btn
     }()
     
@@ -106,24 +117,29 @@ class RuzenecViewController: UIViewController, UINavigationControllerDelegate, U
     let synthesizer = AVSpeechSynthesizer()
     let keys = SettingsBundleHelper.SettingsBundleKeys.self
     var callObserver = CXCallObserver()
-    
+    let userDefaults = UserDefaults.standard
+    var ruzenec_counter: Int = 0
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupView()
-        self.scrollView.delegate = self
-        self.view.isUserInteractionEnabled = true
-        ruzenec_text_contain.numberOfLines = 0
 
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        debugPrint("RuzenecViewController viewWillAppear")
+        setupView()
         rosaryStructure = RosaryDataService.shared.rosaryStructure
         rosarySpeakStructure = RosaryDataService.shared.rosarySpeakStructure
-        let userDefaults = UserDefaults.standard
         callObserver.setDelegate(self, queue: nil)
         speak = false
         setupUI()
+        if userDefaults.bool(forKey: keys.idleTimer) == true {
+            UIApplication.shared.isIdleTimerDisabled = true
+        }
+        else {
+            UIApplication.shared.isIdleTimerDisabled = false
+        }
         if let desatek = desatek {
             navigationController?.title = desatek.name
             if darkMode {
@@ -134,7 +150,7 @@ class RuzenecViewController: UIViewController, UINavigationControllerDelegate, U
             }
             navigationController?.navigationBar.barTintColor = KKCMainColor
             navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: KKCMainTextColor]
-            navigationController?.navigationBar.barStyle = UIBarStyle.black;
+            //navigationController?.navigationBar.barStyle = UIBarStyle.default;
             if userDefaults.bool(forKey: keys.serifEnabled) {
                 self.font_name = "Times New Roman"
             } else {
@@ -169,6 +185,7 @@ class RuzenecViewController: UIViewController, UINavigationControllerDelegate, U
                    typ_obrazku = "s"
                 }
             }
+            self.previous_button.isHidden = true
             show_texts(by: true)
         }
         if synthesizer.isPaused {
@@ -204,15 +221,22 @@ class RuzenecViewController: UIViewController, UINavigationControllerDelegate, U
     }
     
     func setupView() {
+        debugPrint("RuzenecViewController setupView")
+        self.scrollView.delegate = self
+        self.view.isUserInteractionEnabled = true
         self.view.addSubview(scrollView)
         self.view.addSubview(btnViewContainer)
         //self.view.addConstraintsWithFormat(format: "H:|-10-[v0]-10-|", views: scrollView)
         self.view.addConstraintsWithFormat(format: "H:|-20-[v0]-20-|", views: btnViewContainer)
-        self.view.addConstraintsWithFormat(format: "V:|-10-[v0]-20-[v1(40)]-10-|", views: scrollView, btnViewContainer)
+        self.view.addConstraintsWithFormat(format: "V:|-10-[v0]-20-[v1(80)]-30-|", views: scrollView, btnViewContainer)
         scrollView.widthAnchor.constraint(equalTo: self.view.widthAnchor).isActive = true
         
         scrollView.addSubview(scrollViewContainer)
         scrollViewContainer.addSubview(ruzenec_image)
+        
+        if userDefaults.bool(forKey: keys.desatekCounter) == true {
+            scrollViewContainer.addSubview(ruzenec_counter_label)
+        }
         scrollViewContainer.addSubview(ruzenec_text_contain)
         btnViewContainer.addSubview(previous_button)
         btnViewContainer.addSubview(play_button)
@@ -224,18 +248,24 @@ class RuzenecViewController: UIViewController, UINavigationControllerDelegate, U
         scrollViewContainer.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor, constant: -25).isActive = true
 
         scrollViewContainer.centerXAnchor.constraint(equalTo: ruzenec_image.centerXAnchor).isActive = true
+        if userDefaults.bool(forKey: keys.desatekCounter) == true {
+            ruzenec_counter_label.trailingAnchor.constraint(equalTo: scrollViewContainer.trailingAnchor, constant: -20).isActive = true
+            ruzenec_counter_label.topAnchor.constraint(equalTo: scrollViewContainer.topAnchor, constant: 20).isActive = true
+        }
         ruzenec_image.heightAnchor.constraint(equalToConstant: 150).isActive = true
         ruzenec_image.widthAnchor.constraint(equalToConstant: 200).isActive = true
         //scrollViewContainer.addConstraintsWithFormat(format: "H:|-50-[v0]-50-|", views: ruzenec_image)
         scrollViewContainer.addConstraintsWithFormat(format: "H:|-10-[v0]-10-|", views: ruzenec_text_contain)
         scrollViewContainer.addConstraintsWithFormat(format: "V:|-20-[v0(150)]-20-[v1]-20-|", views: ruzenec_image, ruzenec_text_contain)
 
-        btnViewContainer.addConstraintsWithFormat(format: "H:|-12-[v0(100)]", views: previous_button)
-        btnViewContainer.addConstraintsWithFormat(format: "H:[v0(100)]-12-|", views: next_button)
+        btnViewContainer.addConstraintsWithFormat(format: "H:|-12-[v0(120)]", views: previous_button)
+        btnViewContainer.addConstraintsWithFormat(format: "H:[v0(120)]-12-|", views: next_button)
         play_button.centerXAnchor.constraint(equalTo: btnViewContainer.centerXAnchor).isActive = true
         let play_img = UIImage(named: "ic_play")
         play_button.setImage(play_img, for: .normal)
-
+        let tap = UITapGestureRecognizer(target: self, action: #selector(didTapOnScreen))
+        tap.delegate = self
+        self.view.addGestureRecognizer(tap)
     }
     
     @objc func didTapOnScreen() {
@@ -272,13 +302,15 @@ class RuzenecViewController: UIViewController, UINavigationControllerDelegate, U
     func show_ruzenec_zacatek(by direction: Bool) {
         guard let rosaryStructure = rosaryStructure else { return }
         var text: NSAttributedString
+        ruzenec_counter = 0
+        setRuzenecCounter()
         switch count {
         case rn.credo:
             text = get_html_text(text: "\(rosaryStructure.VeJmenuOtce)\n\(rosaryStructure.VyznaniViry)")
-            previous_button.isEnabled = false
+            previous_button.isHidden = true
         case rn.lord:
             text = get_html_text(text: rosaryStructure.Otcenas)
-            previous_button.isEnabled = true
+            previous_button.isHidden = false
         case rn.salveReginaFirst:
             if self.zdravas_number == RosaryConstants.sedmiradostne.rawValue {
                 text = get_html_text(text: " který rozmnožuje naši víru ", kindForGeneration: 1)
@@ -316,19 +348,36 @@ class RuzenecViewController: UIViewController, UINavigationControllerDelegate, U
         switch count {
         case rsn.lordOne, rsn.lordTwo, rsn.lordThree, rsn.lordFour, rsn.lordFive, rsn.lordSix, rsn.lordSeven:
             ruzenec_text_contain.attributedText = get_html_text(text: rosaryStructure.Otcenas)
+            ruzenec_counter = 0
+            setRuzenecCounterSedm()
         case rsn.rosaryOne..<(rsn.meaCulpaOne-1), rsn.rosaryTwo..<(rsn.meaCulpaTwo-1),
              rsn.rosaryThree..<(rsn.meaCulpaThree-1), rsn.rosaryFour..<(rsn.meaCulpaFour-1),
              rsn.rosaryFive..<(rsn.meaCulpaFive-1), rsn.rosarySix..<(rsn.meaCulpaSix-1),
              rsn.rosarySeven..<(rsn.meaCulpaSeven-1):
-            let rosary = rosaryStructure.Ruzence[self.zdravas_number - 2]
+            let rosary = self.getRuzenec()
             let secret = rosary.decades[self.type_desatek]
+            if direction {
+                ruzenec_counter += 1
+            }
+            else {
+                if ruzenec_counter == 0 {
+                    ruzenec_counter = 7
+                } else {
+                    ruzenec_counter -= 1
+                }
+            }
+            setRuzenecCounterSedm()
             ruzenec_text_contain.attributedText = get_html_text(text: secret, kindForGeneration: 1)
         case rsn.meaCulpaOne - 1, rsn.meaCulpaTwo - 1, rsn.meaCulpaThree - 1,
              rsn.meaCulpaFour - 1, rsn.meaCulpaFive - 1,
              rsn.meaCulpaSix - 1, rsn.meaCulpaSeven - 1:
             ruzenec_text_contain.attributedText = get_html_text(text: rosaryStructure.SlavaOtci)
+            ruzenec_counter = 0
+            setRuzenecCounterSedm()
         case rsn.meaCulpaOne, rsn.meaCulpaTwo, rsn.meaCulpaThree, rsn.meaCulpaFour, rsn.meaCulpaFive, rsn.meaCulpaSix:
             ruzenec_text_contain.attributedText = get_html_text(text: rosaryStructure.MojeVina)
+            ruzenec_counter = 0
+            setRuzenecCounterSedm()
             if direction {
                 self.type_desatek += 1
             }
@@ -337,7 +386,9 @@ class RuzenecViewController: UIViewController, UINavigationControllerDelegate, U
             }
         case rsn.meaCulpaSeven:
             ruzenec_text_contain.attributedText = get_html_text(text: rosaryStructure.MojeVina)
-            next_button.isEnabled = true
+            next_button.isHidden = false
+            ruzenec_counter = 0
+            setRuzenecCounterSedm()
         case rsn.salveRegina:
             if self.zdravas_number == 7 {
                 ruzenec_text_contain.attributedText = get_html_text(text: rosaryStructure.ZdravasKralovno)
@@ -346,8 +397,10 @@ class RuzenecViewController: UIViewController, UINavigationControllerDelegate, U
                 ruzenec_text_contain.attributedText = get_html_text(text: rosaryStructure.BolestnyRedeem)
             }
             if self.zdravas_number == 6 {
-                next_button.isEnabled = true
+                next_button.isHidden = false
             }
+            ruzenec_counter = 0
+            setRuzenecCounterSedm()
         case rsn.pray, rsn.painReedem:
             if self.zdravas_number == 7 {
                 ruzenec_text_contain.attributedText = get_html_text(text: rosaryStructure.ZaverecnaModlitba)
@@ -355,34 +408,77 @@ class RuzenecViewController: UIViewController, UINavigationControllerDelegate, U
             else {
                 ruzenec_text_contain.attributedText = get_html_text(text: rosaryStructure.BolestnyEnd)
             }
-            next_button.isEnabled = false
+            next_button.isHidden = true
         default:
             ruzenec_text_contain.text = "Error"
         }
     }
     
+    func getRuzenec() -> Rosary {
+        if let rosaryStructure = rosaryStructure {
+            for ruzenec in rosaryStructure.Ruzence {
+                if ruzenec.id == self.zdravas_number {
+                    return ruzenec
+                }
+            }
+        }
+        return Rosary(id: 0, name: "", decades: [])
+    }
+    
+    func setRuzenecCounter() {
+        if ruzenec_counter == 0 {
+            ruzenec_counter_label.text = ""
+        } else {
+            ruzenec_counter_label.text = "\(ruzenec_counter)/10"
+        }
+    }
+    
+    func setRuzenecCounterSedm() {
+        if ruzenec_counter == 0 {
+            ruzenec_counter_label.text = ""
+        } else {
+            ruzenec_counter_label.text = "\(ruzenec_counter)/7"
+        }
+    }
     func show_ruzenec_text(by direction: Bool) {
         guard let rosaryStructure = rosaryStructure else { return }
-
         switch count {
         case rn.lordFirst, rn.lordSecond, rn.lordThird, rn.lordFourth, rn.lordFifth:
             ruzenec_text_contain.attributedText = get_html_text(text: rosaryStructure.Otcenas)
+            ruzenec_counter = 0
+            setRuzenecCounter()
         case rn.rosaryFirst..<(rn.meaCulpaFirst-1), rn.rosarySecond..<(rn.meaCulpaSecond-1),
              rn.rosaryThird..<(rn.meaCulpaThird-1), rn.rosaryFourth..<(rn.meaCulpaFourth-1),
              rn.rosaryFifth..<(rn.meaCulpaFifth-1):
+            if direction {
+                ruzenec_counter += 1
+            }
+            else {
+                if ruzenec_counter == 0 {
+                    ruzenec_counter = 10
+                } else {
+                    ruzenec_counter -= 1
+                }
+
+            }
+            setRuzenecCounter()
             if self.zdravas_number == 8 {
-                let rosary = rosaryStructure.Ruzence[self.zdravas_number - 2]
+                let rosary = self.getRuzenec()
                 let secret = rosary.decades[self.type_desatek]
                 ruzenec_text_contain.attributedText = get_html_text(text: secret, kindForGeneration: 1)
             }
             else {
-                let rosary = rosaryStructure.Ruzence[self.zdravas_number - 1]
+                let rosary = self.getRuzenec()
                 let secret = rosary.decades[self.type_desatek]
                 ruzenec_text_contain.attributedText = get_html_text(text: secret, kindForGeneration: 1)
             }
         case rn.meaCulpaFirst - 1, rn.meaCulpaSecond - 1, rn.meaCulpaThird - 1, rn.meaCulpaFourth - 1, rn.meaCulpaFifth - 1:
+            ruzenec_counter = 0
+            setRuzenecCounter()
             ruzenec_text_contain.attributedText = get_html_text(text: rosaryStructure.SlavaOtci)
         case rn.meaCulpaFirst, rn.meaCulpaSecond, rn.meaCulpaThird, rn.meaCulpaFourth, rn.meaCulpaFifth:
+            ruzenec_counter = 0
+            setRuzenecCounter()
             ruzenec_text_contain.attributedText = get_html_text(text: rosaryStructure.MojeVina)
             if count < rn.meaCulpaFifth {
                 if direction {
@@ -393,17 +489,23 @@ class RuzenecViewController: UIViewController, UINavigationControllerDelegate, U
                 }
             }
         case rn.salveRegina:
+            ruzenec_counter = 0
+            setRuzenecCounter()
             ruzenec_text_contain.attributedText = get_html_text(text: rosaryStructure.ZdravasKralovno)
-            next_button.isEnabled = true
+            next_button.isHidden = false
         case rn.pray:
+            ruzenec_counter = 0
+            setRuzenecCounter()
             if self.zdravas_number == 8 {
                 ruzenec_text_contain.attributedText = get_html_text(text: rosaryStructure.ZaverecnaModlitbaJosef)
             }
             else {
                 ruzenec_text_contain.attributedText = get_html_text(text: rosaryStructure.ZaverecnaModlitba)
             }
-            next_button.isEnabled = false
+            next_button.isHidden = true
         default:
+            ruzenec_counter = 0
+            setRuzenecCounter()
             ruzenec_text_contain.text = "Error"
         }
     }
@@ -414,24 +516,44 @@ class RuzenecViewController: UIViewController, UINavigationControllerDelegate, U
         switch count {
         case crown.lord:
             ruzenec_text_contain.attributedText = get_html_text(text: rosaryStructure.Otcenas)
-            previous_button.isEnabled = false
+            previous_button.isHidden = true
+            ruzenec_counter = 0
+            setRuzenecCounter()
         case crown.salve:
-            previous_button.isEnabled = true
+            previous_button.isHidden = false
             ruzenec_text_contain.attributedText = get_html_text(text: "\(rosaryStructure.ZdravasMariaFull)")
+            ruzenec_counter = 0
+            setRuzenecCounter()
         case crown.credo:
             ruzenec_text_contain.attributedText = get_html_text(text: rosaryStructure.VyznaniViry)
         case crown.crownOne, crown.crownTwo, crown.crownThree, crown.crownFour, crown.crownFive:
             ruzenec_text_contain.attributedText = get_html_text(text: rosaryStructure.KorunkaHlavni)
+            ruzenec_counter = 0
+            setRuzenecCounter()
         case crown.smallCrownOne...(crown.crownTwo - 1), crown.smallCrownTwo...(crown.crownThree - 1),
              crown.smallCrownThree...(crown.crownFour - 1), crown.smallCrownFour...(crown.crownFive - 1),
              crown.smallCrownFive...(crown.saintOne - 1):
             ruzenec_text_contain.attributedText = get_html_text(text: rosaryStructure.KorunkaRuzenec)
+            if direction {
+                ruzenec_counter += 1
+            }
+            else {
+                if ruzenec_counter == 0 {
+                    ruzenec_counter = 10
+                } else {
+                    ruzenec_counter -= 1
+                }
+
+            }
+            setRuzenecCounter()
         case crown.saintOne, crown.saintTwo:
+            ruzenec_counter = 0
+            setRuzenecCounter()
             ruzenec_text_contain.attributedText = get_html_text(text: rosaryStructure.KorunkaKonec)
-            next_button.isEnabled = true
+            next_button.isHidden = false
         case crown.saintThree:
             ruzenec_text_contain.attributedText = get_html_text(text: rosaryStructure.KorunkaKonec)
-            next_button.isEnabled = false
+            next_button.isHidden = true
         default:
             ruzenec_text_contain.text = "Error"
         }
@@ -470,14 +592,12 @@ class RuzenecViewController: UIViewController, UINavigationControllerDelegate, U
 
     @objc func previousAction(sender: UIButton) {
         Global.vibrate()
-        print("PreviousAction")
         enabledDarkMode()
         show_texts(by: false)
     }
 
     @objc func playAction(sender: UIButton) {
         Global.vibrate()
-        print("Playaction")
         if !self.synthesizer.isSpeaking {
             let play_img = UIImage(named: "ic_stop")
             play_button.setImage(play_img, for: .normal)
@@ -587,6 +707,8 @@ class RuzenecViewController: UIViewController, UINavigationControllerDelegate, U
         self.play_button.backgroundColor = self.back
         self.next_button.backgroundColor = self.back
         self.previous_button.backgroundColor = self.back
+        self.ruzenec_counter_label.textColor = self.text
+        self.ruzenec_counter_label.backgroundColor = self.back
         self.next_button.setTitleColor(self.text, for: .normal)
         self.play_button.setTitleColor(self.text, for: .normal)
         self.previous_button.setTitleColor(self.text, for: .normal)

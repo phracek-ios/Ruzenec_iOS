@@ -24,6 +24,8 @@ class SettingsTableViewController: UITableViewController {
     }
     let settingsDelegate = SettingsDelegateManager()
     let keys = SettingsBundleHelper.SettingsBundleKeys.self
+    let userDefaults = UserDefaults.standard
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Nastavení Růžence"
@@ -42,7 +44,6 @@ class SettingsTableViewController: UITableViewController {
         Analytics.logEvent(AnalyticsEventScreenView,
                            parameters:[AnalyticsParameterScreenName: "Nastaveni Ruzence",
                                        AnalyticsParameterScreenClass: className])
-        let userDefaults = UserDefaults.standard
         self.DarkModeOn = userDefaults.bool(forKey: keys.night)
         if self.DarkModeOn == true {
             self.back = KKCBackgroundNightMode
@@ -67,7 +68,6 @@ class SettingsTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let userDefaults = UserDefaults.standard
         switch settings[indexPath.row].type {
         case .slider:
             let cell = tableView.dequeueReusableCell(withIdentifier: SettingsSliderTableViewCell.cellId, for: indexPath) as! SettingsSliderTableViewCell
@@ -75,6 +75,16 @@ class SettingsTableViewController: UITableViewController {
                                delegate: settingsDelegate,
                                cellWidth: tableView.frame.width)
             cell.accessoryType = .none
+            return cell
+        case .timeSwitch:
+            let cell = tableView.dequeueReusableCell(withIdentifier: SettingsTimeTableViewCell.cellId, for: indexPath) as! SettingsTimeTableViewCell
+            cell.configureCell(settingsItem: settings[indexPath.row],
+                               cellWidth: tableView.frame.width)
+            return cell
+        case .text:
+            let cell = tableView.dequeueReusableCell(withIdentifier: SettingsTextTableViewCell.cellId, for: indexPath) as! SettingsTextTableViewCell
+            cell.configureCell(settingsItem: settings[indexPath.row],
+                               cellWidth: tableView.frame.width)
             return cell
         default:
             let set = settings[indexPath.row]
@@ -114,6 +124,12 @@ class SettingsTableViewController: UITableViewController {
         if settings[indexPath.row].type == SettingsItemType.slider {
             return 150
         }
+        if settings[indexPath.row].type == SettingsItemType.timeSwitch {
+            return 180
+        }
+        if settings[indexPath.row].type == SettingsItemType.text {
+            return 100
+        }
         return UITableViewAutomaticDimension
     }
     
@@ -121,8 +137,22 @@ class SettingsTableViewController: UITableViewController {
         return UITableViewAutomaticDimension
     }
     
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        switch settings[indexPath.row].type {
+        case .text:
+            let svController = SelectionViewController()
+            svController.presentingNavigationController = self.navigationController
+            svController.settingsViewController = self
+            self.present(svController, animated: true)
+        default:
+            break
+        }
+    }
     func setupSettingsTable() {
         tableView.register(SettingsSliderTableViewCell.self, forCellReuseIdentifier: SettingsSliderTableViewCell.cellId)
+        tableView.register(SettingsTimeTableViewCell.self, forCellReuseIdentifier: SettingsTimeTableViewCell.cellId)
+        tableView.register(SettingsTextTableViewCell.self, forCellReuseIdentifier: SettingsTextTableViewCell.cellId)
+        tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 15, right: 0)
     }
     
     func loadSettings() {
@@ -150,10 +180,28 @@ class SettingsTableViewController: UITableViewController {
                                  prefsString: keys.serifEnabled,
                                  defValue: false,
                                  eventHandler: nil))
+        settings.append(SettingsItem(type: SettingsItemType.onOffSwitch,
+                                 title: "Číslování desátků",
+                                 description: "",
+                                 prefsString: keys.desatekCounter,
+                                 defValue: false,
+                                 eventHandler: nil))
         settings.append(SettingsItem(type: SettingsItemType.slider,
                                  title: "Velikost písma",
                                  description: "Velikost písma, které bude použito u modliteb.",
                                  prefsString: keys.fontSize,
+                                 defValue: false,
+                                 eventHandler: nil))
+        settings.append(SettingsItem(type: SettingsItemType.timeSwitch,
+                                 title: "Připomínka modliteb",
+                                 description: "Zobrazení notifikace pro modlitbu",
+                                 prefsString: keys.reminderEnabled,
+                                 defValue: false,
+                                 eventHandler: nil))
+        settings.append(SettingsItem(type: SettingsItemType.text,
+                                 title: "Opakování růžence",
+                                 description: "Možnost nastavení (1-30 dní) 7 dní standard.",
+                                     prefsString: keys.desatekCounter,
                                  defValue: false,
                                  eventHandler: nil))
         print("loadSettings finished")
@@ -163,7 +211,6 @@ class SettingsTableViewController: UITableViewController {
         
         print("Switch Target Night \(sender.isOn)")
         Global.vibrate()
-        let userDefaults = UserDefaults.standard
         userDefaults.set(sender.isOn, forKey: keys.night)
         self.DarkModeOn = sender.isOn
         if sender.isOn == true {
@@ -186,7 +233,6 @@ class SettingsTableViewController: UITableViewController {
         
         print("Idle Target Night \(sender.isOn)")
         Global.vibrate()
-        let userDefaults = UserDefaults.standard
         userDefaults.set(sender.isOn, forKey: keys.idleTimer)
     }
     
@@ -194,13 +240,11 @@ class SettingsTableViewController: UITableViewController {
         
         print("Serif Target \(sender.isOn)")
         Global.vibrate()
-        let userDefaults = UserDefaults.standard
         userDefaults.set(sender.isOn, forKey: keys.serifEnabled)
     }
     
     @objc func vibrateTarget(_ sender: UISwitch!) {
         print("Vibrate Target \(sender.isOn)")
-        let userDefaults = UserDefaults.standard
         userDefaults.set(sender.isOn, forKey: keys.vibrationEnabled)
     }
     
