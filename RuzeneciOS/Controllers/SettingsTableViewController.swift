@@ -105,6 +105,12 @@ class SettingsTableViewController: UITableViewController {
             else if set.prefsString == keys.vibrationEnabled {
                 sw.addTarget(self, action: #selector(vibrateTarget(_:)), for: .valueChanged)
             }
+            else if set.prefsString == keys.manVoice {
+                sw.addTarget(self, action: #selector(manVoice(_:)), for: .valueChanged)
+            }
+            else if set.prefsString == keys.womanVoice {
+                sw.addTarget(self, action: #selector(womanVoice(_:)), for: .valueChanged)
+            }
             cell.textLabel?.text = settings[indexPath.row].title
             cell.detailTextLabel?.text = settings[indexPath.row].detail
 
@@ -192,6 +198,18 @@ class SettingsTableViewController: UITableViewController {
                                  prefsString: keys.fontSize,
                                  defValue: false,
                                  eventHandler: nil))
+        settings.append(SettingsItem(type: SettingsItemType.onOffSwitch,
+                                 title: "Použit mužský hlas pro přehrání růžence",
+                                 description: "",
+                                 prefsString: keys.manVoice,
+                                 defValue: false,
+                                 eventHandler: nil))
+        settings.append(SettingsItem(type: SettingsItemType.onOffSwitch,
+                                 title: "Použit ženský hlas pro přehrání růžence",
+                                 description: "",
+                                 prefsString: keys.womanVoice,
+                                 defValue: false,
+                                 eventHandler: nil))
         settings.append(SettingsItem(type: SettingsItemType.timeSwitch,
                                  title: "Připomínka modliteb",
                                  description: "Zobrazení notifikace pro modlitbu",
@@ -247,7 +265,16 @@ class SettingsTableViewController: UITableViewController {
         print("Vibrate Target \(sender.isOn)")
         userDefaults.set(sender.isOn, forKey: keys.vibrationEnabled)
     }
-    
+    @objc func manVoice(_ sender: UISwitch!) {
+        print("manVoice Target \(sender.isOn)")
+        userDefaults.set(sender.isOn, forKey: keys.manVoice)
+        userDefaults.set(!sender.isOn, forKey: keys.womanVoice)
+    }
+    @objc func womanVoice(_ sender: UISwitch!) {
+        print("womanVoice Target \(sender.isOn)")
+        userDefaults.set(!sender.isOn, forKey: keys.manVoice)
+        userDefaults.set(sender.isOn, forKey: keys.womanVoice)
+    }
 
     func setupUI() {
         self.view.backgroundColor = self.back
