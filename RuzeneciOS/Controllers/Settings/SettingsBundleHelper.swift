@@ -17,6 +17,8 @@ class SettingsBundleHelper {
         static let night = "ruzenecAppSettingNightMode"
         static let serifEnabled = "ruzenecAppSettingSerifEnabled"
         static let fontSize = "ruzenecAppSettingFontSize"
+        static let manVoice = "ruzenecManVoice"
+        static let womanVoice = "ruzenecWomanVoice"
 
         static let appGuid = "ruzenecAppGuid"
         static let appGuidVersion = "ruzenecAppGuidVersion"

@@ -114,11 +114,14 @@ class RuzenecViewController: UIViewController, UINavigationControllerDelegate, U
     var crown = Crown.init()
     var font_name: String = "Helvetica"
     var font_size: String = "16"
-    let synthesizer = AVSpeechSynthesizer()
+    // let synthesizer = AVSpeechSynthesizer()
     let keys = SettingsBundleHelper.SettingsBundleKeys.self
     var callObserver = CXCallObserver()
     let userDefaults = UserDefaults.standard
     var ruzenec_counter: Int = 0
+    var synCallStarted: Bool = false
+    public var audioPlayer = AVAudioPlayer()
+    var playlistPlayer = PlaylistPlayer()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -188,17 +191,20 @@ class RuzenecViewController: UIViewController, UINavigationControllerDelegate, U
             self.previous_button.isHidden = true
             show_texts(by: true)
         }
-        if synthesizer.isPaused {
-            let play_img = UIImage(named: "ic_pause")
-            play_button.setImage(play_img, for: .normal)
-        }
+//        if synthesizer.isPaused {
+//            let play_img = UIImage(named: "ic_pause")
+//            play_button.setImage(play_img, for: .normal)
+//        }
         enabledDarkMode()
     }
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
-        if self.synthesizer.isSpeaking {
-            self.synthesizer.pauseSpeaking(at: .immediate)
+//        if self.synthesizer.isSpeaking {
+//            self.synthesizer.pauseSpeaking(at: .immediate)
+//        }
+        if playlistPlayer.isPlaying {
+            playlistPlayer.stop()
         }
     }
     
@@ -268,6 +274,7 @@ class RuzenecViewController: UIViewController, UINavigationControllerDelegate, U
         self.view.addGestureRecognizer(tap)
     }
     
+
     @objc func didTapOnScreen() {
         toggleNavigationBarVisibility()
     }
@@ -598,73 +605,48 @@ class RuzenecViewController: UIViewController, UINavigationControllerDelegate, U
 
     @objc func playAction(sender: UIButton) {
         Global.vibrate()
-        if !self.synthesizer.isSpeaking {
+        if !playlistPlayer.isPlaying {
             let play_img = UIImage(named: "ic_stop")
             play_button.setImage(play_img, for: .normal)
-            guard let rosarySpeak = rosarySpeakStructure else { return }
-            guard let rosary = rosaryStructure else { return }
-            let rosary_begin = "\(rosarySpeak.VyznaniViry) \(rosarySpeak.Otcenas) \(rosarySpeak.ZdravasMaria)v kterého věříme\(rosarySpeak.ZdravasMariaEnd)\(rosarySpeak.ZdravasMaria)v kterého doufáme\(rosarySpeak.ZdravasMariaEnd)\(rosarySpeak.ZdravasMaria)kterého nade všechno milujeme\(rosarySpeak.ZdravasMariaEnd) \(rosarySpeak.SlavaOtci)"
-            var text_to_speak: String = ""
-            switch desatek?.desatek {
-            // Ruzenec Radostny, Bolestny, Svetla, Slavny
-            case 1, 2, 3, 4:
-                text_to_speak += rosary_begin
-                for n in 0..<5 {
-                    print(rosary.Ruzence[desatek!.desatek - 1].decades[n])
-                    text_to_speak += rosarySpeak.Otcenas + String.init(repeating: "\(rosarySpeak.ZdravasMaria)\(rosary.Ruzence[desatek!.desatek - 1].decades[n])\(rosarySpeak.ZdravasMariaEnd)", count: 10) + rosarySpeak.SlavaOtci + rosarySpeak.MojeVina
-                }
-                text_to_speak += rosarySpeak.ZdravasKralovno + rosarySpeak.ZaverecnaModlitba
-            // Korunka k Bozimu milosrdenstvi
-            case 5:
-                text_to_speak = "\(rosarySpeak.Otcenas) \(rosarySpeak.ZdravasMariaFull) \(rosarySpeak.VyznaniViry) "
-                for _ in 0..<5 {
-                    text_to_speak += rosarySpeak.KorunkaHlavni + String.init(repeating: " \(rosarySpeak.KorunkaRuzenec) ", count: 10)
-                }
-                text_to_speak += String.init(repeating: "\(rosarySpeak.KorunkaKonec)", count: 3)
-            // Sedmi bolestna, Sedmi radostna, FrantisekSedmiRadostny, FrantisekSedmiBolestny
-            case 6, 7, 8, 9:
-                text_to_speak += rosary_begin
-                for n in 0..<7 {
-                    print(rosary.Ruzence[desatek!.desatek - 2].decades[n])
-                    text_to_speak += rosarySpeak.Otcenas + String.init(repeating: "\(rosarySpeak.ZdravasMaria)\(rosary.Ruzence[desatek!.desatek - 2].decades[n])\(rosarySpeak.ZdravasMariaEnd)", count: 7) + rosarySpeak.SlavaOtci + rosarySpeak.MojeVina
-                }
-                text_to_speak += "\n" + rosarySpeak.ZdravasKralovno + rosarySpeak.ZaverecnaModlitba
-            // Ke svatemu Josefovi
-            case 10:
-                text_to_speak += rosary_begin
-                for n in 0..<5 {
-                    print(rosary.Ruzence[desatek!.desatek - 2].decades[n])
-                    text_to_speak += rosarySpeak.Otcenas + String.init(repeating: "\(rosarySpeak.ZdravasMaria)\(rosary.Ruzence[desatek!.desatek - 2].decades[n])\(rosarySpeak.ZdravasMariaEnd)", count: 7) + rosarySpeak.SlavaOtci + rosarySpeak.MojeVina
-                }
-                text_to_speak += "\n" + rosarySpeak.ZdravasMaria + rosarySpeak.ZaverecnaModlitbaJosef
-            default:
-                text_to_speak = ""
+            var prefix = "man_"
+            if userDefaults.bool(forKey: keys.womanVoice) {
+                prefix = "woman_"
             }
-            speakText(text: text_to_speak)
-            print("playing finished")
+            if playlistPlayer.isPaused {
+                playlistPlayer.resume()
+            }
+            else {
+                playVoiceMp3(prefix_voice: prefix)
+            }
+
         }
         else {
             // TODO Pozastavit nebo stopnou. Dialog
             let play_img = UIImage(named: "ic_play")
             play_button.setImage(play_img, for: .normal)
-            self.synthesizer.pauseSpeaking(at: .immediate)
-            if !self.synthesizer.isPaused {
+            playlistPlayer.pause()
+            if !self.playlistPlayer.isPlaying {
                 let pauseDialog = UIAlertController()
                 let stopPlay = UIAlertAction(title: "Zastavit přehrávání", style: UIAlertActionStyle.default, handler: { (alert: UIAlertAction!) in
-                    self.synthesizer.stopSpeaking(at: .immediate)
+                    //self.synthesizer.stopSpeaking(at: .immediate)
                     print("playing stopped")
+                    self.playlistPlayer.isPaused = false
+                    self.playlistPlayer.stop()
                 })
                 let pausePlay = UIAlertAction(title: "Pozastavit přehrávání", style: UIAlertActionStyle.default, handler: { (alert: UIAlertAction!) in
-                    self.synthesizer.pauseSpeaking(at: .immediate)
+                    //self.synthesizer.pauseSpeaking(at: .immediate)
                     print("playing paused")
                     let play_img = UIImage(named: "ic_pause")
                     self.play_button.setImage(play_img, for: .normal)
+                    self.playlistPlayer.isPaused = true
+                    self.playlistPlayer.pause()
                 })
                 let cancel = UIAlertAction(title: "Zrušit", style: UIAlertActionStyle.cancel, handler: { (alert: UIAlertAction!) in
-                    self.synthesizer.continueSpeaking()
+                    //self.synthesizer.continueSpeaking()
                     let play_img = UIImage(named: "ic_stop")
                     self.play_button.setImage(play_img, for: .normal)
                     print("continue playing")
+                    self.playlistPlayer.resume()
                 })
                 pauseDialog.addAction(stopPlay)
                 pauseDialog.addAction(pausePlay)
@@ -674,32 +656,113 @@ class RuzenecViewController: UIViewController, UINavigationControllerDelegate, U
             else {
                 let play_img = UIImage(named: "ic_stop")
                 play_button.setImage(play_img, for: .normal)
-                self.synthesizer.continueSpeaking()
+                self.playlistPlayer.play()
             }
         }
         enabledDarkMode()
 
     }
 
+    func playVoiceMp3(prefix_voice: String) {
+        let korunka_prefix = "Korunka"
+        let josef_prefix = "Josef"
+
+        var playList: [String] = []
+        let druh = desatek?.desatek
+        switch druh {
+        case 1, 2, 3, 4:
+            // Ruzenec - HOTOVO
+            playList.append(prefix_voice + "Ruzenec_zacatek")
+            playList.append(prefix_voice + "Otce_nas")
+            var typeRuzenec = "Radostny"
+            if druh == 2 {
+                typeRuzenec = "Bolestny"
+            }
+            if druh == 3 {
+                typeRuzenec = "Slavny"
+            }
+            if druh == 4 {
+                typeRuzenec = "Svetla"
+            }
+            for k in 1...5 {
+                playList.append(prefix_voice + "Otce_nas")
+                for _ in 1...10 {
+                    let index = String(format: "%02d", k)
+                    playList.append(prefix_voice + "\(typeRuzenec)-\(index)")
+                }
+                playList.append(prefix_voice + "Desatek-konec")
+            }
+            playList.append(prefix_voice + "Ruzenec_konec")
+        case 5:
+            // Korunka k Bozimu milosrdenstvi
+            playList.append(prefix_voice + "\(korunka_prefix)_Otce_nas")
+            playList.append(prefix_voice + "\(korunka_prefix)_ZdravasMaria")
+            playList.append(prefix_voice + "\(korunka_prefix)_Vyznani_viry")
+            for _ in 1...3 {
+                playList.append(prefix_voice + "\(korunka_prefix)_hlavni")
+                for _ in 1...10 {
+                    playList.append(prefix_voice + "\(korunka_prefix)_Ruzenec")
+                }
+            }
+            for _ in 1...3 {
+                playList.append(prefix_voice + "\(korunka_prefix)_konec")
+            }
+        case 6, 7, 8, 9:
+            // Sedmi bolestna, Sedmi radostna, FrantisekSedmiRadostny, FrantisekSedmiBolestny
+            playList.append(prefix_voice + "Ruzenec_zacatek")
+            playList.append(prefix_voice + "Otce_nas")
+            var typeRuzence = "7Bolestny"
+            if druh == 7 {
+                typeRuzence = "7Radostny"
+            }
+            if druh == 8 {
+                typeRuzence = "Frantisek7Radostny"
+            }
+            if druh == 9 {
+                typeRuzence = "Frantisek7Bolestny"
+            }
+            for k in 1...7 {
+                playList.append(prefix_voice + "Otce_nas")
+//                for _ in 1...7 {
+                    let index = String(format: "%02d", k)
+                    playList.append(prefix_voice + "\(typeRuzence)-\(index)")
+//                }
+                playList.append(prefix_voice + "Ruzenec_Desatek-konec")
+            }
+            playList.append(prefix_voice + "\(typeRuzence)_konec")
+        case 10:
+            // Ke svatemu Josefovi
+            playList.append(prefix_voice + "Ruzenec_zacatek")
+            playList.append(prefix_voice + "Otce_nas")
+            for k in 1...5 {
+                playList.append(prefix_voice + "Otce_nas")
+//                for _ in 1...10 {
+                    let index = String(format: "%02d", k)
+                    playList.append(prefix_voice + "SvJosef-\(index)")
+//                }
+                playList.append(prefix_voice + "Ruzenec_Desatek-konec")
+            }
+            playList.append(prefix_voice + "SvJosef_konec")
+        default:
+            print("Nothing to do")
+        }
+        print(playList)
+        playlistPlayer.onPlaybackFinished = { [weak self] in
+            DispatchQueue.main.async {
+                let play_img = UIImage(named: "ic_play")
+                self?.play_button.setImage(play_img, for: .normal)
+            }
+        }
+        playlistPlayer.setupPlaylist(fileNames: playList)
+        playlistPlayer.play()
+    }
+    
     @objc func nextAction(sender: UIButton) {
         Global.vibrate()
         enabledDarkMode()
         show_texts(by: true)
     }
     
-    @objc func speakText(text: String) {
-        if self.synthesizer.isSpeaking {
-            self.synthesizer.stopSpeaking(at: .immediate)
-        }
-        else {
-            let utterance: AVSpeechUtterance = AVSpeechUtterance(string: text)
-            utterance.voice = AVSpeechSynthesisVoice(language: "cs_CZ")
-            DispatchQueue.main.async {
-                self.synthesizer.speak(utterance)
-            }
-        }
-        
-    }
     func enabledDarkMode() {
         self.view.backgroundColor = self.back
         self.ruzenec_text_contain.backgroundColor = self.back
@@ -764,18 +827,20 @@ extension RuzenecViewController: CXCallObserverDelegate {
             synCallFinished = true
         }
         if synCallStarted == true {
-            if self.synthesizer.isPaused == false {
+            if self.playlistPlayer.isPlaying {
                 // TODO Pozastavit nebo stopnou. Dialog
                 let play_img = UIImage(named: "ic_play")
                 play_button.setImage(play_img, for: .normal)
-                self.synthesizer.pauseSpeaking(at: .immediate)
+                self.playlistPlayer.isPaused = true
+                self.playlistPlayer.pause()
             }
         }
         if synCallFinished == true {
-            if self.synthesizer.isPaused {
+            if self.playlistPlayer.isPlaying == false {
                 let play_img = UIImage(named: "ic_stop")
                 play_button.setImage(play_img, for: .normal)
-                self.synthesizer.continueSpeaking()
+                self.playlistPlayer.isPaused = false
+                self.playlistPlayer.resume()
             }
         }
        

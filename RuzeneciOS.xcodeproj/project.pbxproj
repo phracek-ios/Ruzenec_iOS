@@ -18,6 +18,71 @@
 		0162A8832DE6E51A003C677A /* SettingsTimeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0162A8822DE6E51A003C677A /* SettingsTimeTableViewCell.swift */; };
 		0162A8852DE6E773003C677A /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0162A8842DE6E773003C677A /* NotificationManager.swift */; };
 		0180F6AC239179DD00B863C1 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0180F6AB239179DD00B863C1 /* GoogleService-Info.plist */; };
+		0196853930666C79001AF394 /* PlayerlistPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0196853830666C79001AF394 /* PlayerlistPlayer.swift */; };
+		019685D030668560001AF394 /* man_Korunka_Vyznani_viry.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 019685B630668560001AF394 /* man_Korunka_Vyznani_viry.mp3 */; };
+		019685D130668560001AF394 /* man_Svetla-05.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 019685CE30668560001AF394 /* man_Svetla-05.mp3 */; };
+		019685D230668560001AF394 /* man_Korunka_ZdravasMaria.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 019685B730668560001AF394 /* man_Korunka_ZdravasMaria.mp3 */; };
+		019685D330668560001AF394 /* man_Radostny-04.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 019685C330668560001AF394 /* man_Radostny-04.mp3 */; };
+		019685D430668560001AF394 /* man_Svetla-03.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 019685CC30668560001AF394 /* man_Svetla-03.mp3 */; };
+		019685D530668560001AF394 /* man_Svetla-01.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 019685CA30668560001AF394 /* man_Svetla-01.mp3 */; };
+		019685D630668560001AF394 /* man_Korunka_konec.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 019685B330668560001AF394 /* man_Korunka_konec.mp3 */; };
+		019685D730668560001AF394 /* man_Ruzenec_konec.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 019685BF30668560001AF394 /* man_Ruzenec_konec.mp3 */; };
+		019685D830668560001AF394 /* man_Otce_nas.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 019685B830668560001AF394 /* man_Otce_nas.mp3 */; };
+		019685D930668560001AF394 /* man_Bolestny-04.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 019685BC30668560001AF394 /* man_Bolestny-04.mp3 */; };
+		019685DA30668560001AF394 /* man_Radostny-02.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 019685C130668560001AF394 /* man_Radostny-02.mp3 */; };
+		019685DB30668560001AF394 /* man_Bolestny-05.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 019685BD30668560001AF394 /* man_Bolestny-05.mp3 */; };
+		019685DC30668560001AF394 /* man_Bolestny-03.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 019685BB30668560001AF394 /* man_Bolestny-03.mp3 */; };
+		019685DD30668560001AF394 /* man_Korunka_Otce_nas.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 019685B430668560001AF394 /* man_Korunka_Otce_nas.mp3 */; };
+		019685DE30668560001AF394 /* man_Svetla-04.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 019685CD30668560001AF394 /* man_Svetla-04.mp3 */; };
+		019685DF30668560001AF394 /* man_Ruzenec_zacatek.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 019685CF30668560001AF394 /* man_Ruzenec_zacatek.mp3 */; };
+		019685E030668560001AF394 /* man_Bolestny-01.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 019685B930668560001AF394 /* man_Bolestny-01.mp3 */; };
+		019685E130668560001AF394 /* man_Slavny-04.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 019685C830668560001AF394 /* man_Slavny-04.mp3 */; };
+		019685E230668560001AF394 /* man_Bolestny-02.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 019685BA30668560001AF394 /* man_Bolestny-02.mp3 */; };
+		019685E330668560001AF394 /* man_Slavny-05.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 019685C930668560001AF394 /* man_Slavny-05.mp3 */; };
+		019685E430668560001AF394 /* man_Slavny-02.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 019685C630668560001AF394 /* man_Slavny-02.mp3 */; };
+		019685E530668560001AF394 /* man_Slavny-01.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 019685C530668560001AF394 /* man_Slavny-01.mp3 */; };
+		019685E630668560001AF394 /* man_Slavny-03.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 019685C730668560001AF394 /* man_Slavny-03.mp3 */; };
+		019685E730668560001AF394 /* man_Radostny-03.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 019685C230668560001AF394 /* man_Radostny-03.mp3 */; };
+		019685E830668560001AF394 /* man_Svetla-02.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 019685CB30668560001AF394 /* man_Svetla-02.mp3 */; };
+		019685E930668560001AF394 /* man_Desatek-konec.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 019685BE30668560001AF394 /* man_Desatek-konec.mp3 */; };
+		019685EA30668560001AF394 /* man_Radostny-01.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 019685C030668560001AF394 /* man_Radostny-01.mp3 */; };
+		019685EB30668560001AF394 /* man_Korunka_hlavni.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 019685B230668560001AF394 /* man_Korunka_hlavni.mp3 */; };
+		019685EC30668560001AF394 /* man_Korunka_Ruzenec.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 019685B530668560001AF394 /* man_Korunka_Ruzenec.mp3 */; };
+		019685ED30668560001AF394 /* man_Radostny-05.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 019685C430668560001AF394 /* man_Radostny-05.mp3 */; };
+		019685FC30669D67001AF394 /* man_Frantisek7Bolestny-04.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 019685F130669D67001AF394 /* man_Frantisek7Bolestny-04.mp3 */; };
+		019685FD30669D67001AF394 /* man_Frantisek7Radostny-07.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 019685FB30669D67001AF394 /* man_Frantisek7Radostny-07.mp3 */; };
+		019685FE30669D67001AF394 /* man_Frantisek7Bolestny-05.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 019685F230669D67001AF394 /* man_Frantisek7Bolestny-05.mp3 */; };
+		019685FF30669D67001AF394 /* man_Frantisek7Radostny-02.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 019685F630669D67001AF394 /* man_Frantisek7Radostny-02.mp3 */; };
+		0196860030669D67001AF394 /* man_Frantisek7Bolestny-03.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 019685F030669D67001AF394 /* man_Frantisek7Bolestny-03.mp3 */; };
+		0196860130669D67001AF394 /* man_Frantisek7Radostny-03.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 019685F730669D67001AF394 /* man_Frantisek7Radostny-03.mp3 */; };
+		0196860230669D67001AF394 /* man_Frantisek7Radostny-06.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 019685FA30669D67001AF394 /* man_Frantisek7Radostny-06.mp3 */; };
+		0196860330669D67001AF394 /* man_Frantisek7Bolestny-06.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 019685F330669D67001AF394 /* man_Frantisek7Bolestny-06.mp3 */; };
+		0196860430669D67001AF394 /* man_Frantisek7Bolestny-02.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 019685EF30669D67001AF394 /* man_Frantisek7Bolestny-02.mp3 */; };
+		0196860530669D67001AF394 /* man_Frantisek7Bolestny-07.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 019685F430669D67001AF394 /* man_Frantisek7Bolestny-07.mp3 */; };
+		0196860630669D67001AF394 /* man_Frantisek7Radostny-05.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 019685F930669D67001AF394 /* man_Frantisek7Radostny-05.mp3 */; };
+		0196860730669D67001AF394 /* man_Frantisek7Radostny-04.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 019685F830669D67001AF394 /* man_Frantisek7Radostny-04.mp3 */; };
+		0196860830669D67001AF394 /* man_Frantisek7Bolestny-01.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 019685EE30669D67001AF394 /* man_Frantisek7Bolestny-01.mp3 */; };
+		0196860930669D67001AF394 /* man_Frantisek7Radostny-01.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 019685F530669D67001AF394 /* man_Frantisek7Radostny-01.mp3 */; };
+		0196860F30669D78001AF394 /* man_SvJosef-04.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 0196860D30669D78001AF394 /* man_SvJosef-04.mp3 */; };
+		0196861030669D78001AF394 /* man_SvJosef-05.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 0196860E30669D78001AF394 /* man_SvJosef-05.mp3 */; };
+		0196861130669D78001AF394 /* man_SvJosef-01.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 0196860A30669D78001AF394 /* man_SvJosef-01.mp3 */; };
+		0196861230669D78001AF394 /* man_SvJosef-02.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 0196860B30669D78001AF394 /* man_SvJosef-02.mp3 */; };
+		0196861330669D78001AF394 /* man_SvJosef-03.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 0196860C30669D78001AF394 /* man_SvJosef-03.mp3 */; };
+		0196862230669EA0001AF394 /* man_7Radostny-07.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 0196862130669EA0001AF394 /* man_7Radostny-07.mp3 */; };
+		0196862330669EA0001AF394 /* man_7Bolestny-02.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 0196861530669EA0001AF394 /* man_7Bolestny-02.mp3 */; };
+		0196862430669EA0001AF394 /* man_7Bolestny-05.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 0196861830669EA0001AF394 /* man_7Bolestny-05.mp3 */; };
+		0196862530669EA0001AF394 /* man_7Radostny-06.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 0196862030669EA0001AF394 /* man_7Radostny-06.mp3 */; };
+		0196862630669EA0001AF394 /* man_7Bolestny-07.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 0196861A30669EA0001AF394 /* man_7Bolestny-07.mp3 */; };
+		0196862730669EA0001AF394 /* man_7Bolestny-06.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 0196861930669EA0001AF394 /* man_7Bolestny-06.mp3 */; };
+		0196862830669EA0001AF394 /* man_7Radostny-04.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 0196861E30669EA0001AF394 /* man_7Radostny-04.mp3 */; };
+		0196862930669EA0001AF394 /* man_7Bolestny-03.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 0196861630669EA0001AF394 /* man_7Bolestny-03.mp3 */; };
+		0196862A30669EA0001AF394 /* man_7Radostny-05.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 0196861F30669EA0001AF394 /* man_7Radostny-05.mp3 */; };
+		0196862B30669EA0001AF394 /* man_7Bolestny-01.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 0196861430669EA0001AF394 /* man_7Bolestny-01.mp3 */; };
+		0196862C30669EA0001AF394 /* man_7Radostny-01.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 0196861B30669EA0001AF394 /* man_7Radostny-01.mp3 */; };
+		0196862D30669EA0001AF394 /* man_7Radostny-03.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 0196861D30669EA0001AF394 /* man_7Radostny-03.mp3 */; };
+		0196862E30669EA0001AF394 /* man_7Radostny-02.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 0196861C30669EA0001AF394 /* man_7Radostny-02.mp3 */; };
+		0196862F30669EA0001AF394 /* man_7Bolestny-04.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 0196861730669EA0001AF394 /* man_7Bolestny-04.mp3 */; };
+		01A242FA305D508D00F13C9C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01A242F9305D508D00F13C9C /* SceneDelegate.swift */; };
 		01A936A020D4447500A5D979 /* DesatekCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01A9369F20D4447500A5D979 /* DesatekCollectionViewController.swift */; };
 		01A936A220D4474F00A5D979 /* Desatek.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01A936A120D4474F00A5D979 /* Desatek.swift */; };
 		01B0A6B3238C3BE60062C4BC /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01B0A6B2238C3BE60062C4BC /* Utils.swift */; };
@@ -69,6 +134,71 @@
 		0162A8822DE6E51A003C677A /* SettingsTimeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTimeTableViewCell.swift; sourceTree = "<group>"; };
 		0162A8842DE6E773003C677A /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
 		0180F6AB239179DD00B863C1 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		0196853830666C79001AF394 /* PlayerlistPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerlistPlayer.swift; sourceTree = "<group>"; };
+		019685B230668560001AF394 /* man_Korunka_hlavni.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = man_Korunka_hlavni.mp3; sourceTree = "<group>"; };
+		019685B330668560001AF394 /* man_Korunka_konec.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = man_Korunka_konec.mp3; sourceTree = "<group>"; };
+		019685B430668560001AF394 /* man_Korunka_Otce_nas.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = man_Korunka_Otce_nas.mp3; sourceTree = "<group>"; };
+		019685B530668560001AF394 /* man_Korunka_Ruzenec.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = man_Korunka_Ruzenec.mp3; sourceTree = "<group>"; };
+		019685B630668560001AF394 /* man_Korunka_Vyznani_viry.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = man_Korunka_Vyznani_viry.mp3; sourceTree = "<group>"; };
+		019685B730668560001AF394 /* man_Korunka_ZdravasMaria.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = man_Korunka_ZdravasMaria.mp3; sourceTree = "<group>"; };
+		019685B830668560001AF394 /* man_Otce_nas.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = man_Otce_nas.mp3; sourceTree = "<group>"; };
+		019685B930668560001AF394 /* man_Bolestny-01.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "man_Bolestny-01.mp3"; sourceTree = "<group>"; };
+		019685BA30668560001AF394 /* man_Bolestny-02.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "man_Bolestny-02.mp3"; sourceTree = "<group>"; };
+		019685BB30668560001AF394 /* man_Bolestny-03.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "man_Bolestny-03.mp3"; sourceTree = "<group>"; };
+		019685BC30668560001AF394 /* man_Bolestny-04.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "man_Bolestny-04.mp3"; sourceTree = "<group>"; };
+		019685BD30668560001AF394 /* man_Bolestny-05.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "man_Bolestny-05.mp3"; sourceTree = "<group>"; };
+		019685BE30668560001AF394 /* man_Desatek-konec.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "man_Desatek-konec.mp3"; sourceTree = "<group>"; };
+		019685BF30668560001AF394 /* man_Ruzenec_konec.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = man_Ruzenec_konec.mp3; sourceTree = "<group>"; };
+		019685C030668560001AF394 /* man_Radostny-01.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "man_Radostny-01.mp3"; sourceTree = "<group>"; };
+		019685C130668560001AF394 /* man_Radostny-02.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "man_Radostny-02.mp3"; sourceTree = "<group>"; };
+		019685C230668560001AF394 /* man_Radostny-03.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "man_Radostny-03.mp3"; sourceTree = "<group>"; };
+		019685C330668560001AF394 /* man_Radostny-04.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "man_Radostny-04.mp3"; sourceTree = "<group>"; };
+		019685C430668560001AF394 /* man_Radostny-05.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "man_Radostny-05.mp3"; sourceTree = "<group>"; };
+		019685C530668560001AF394 /* man_Slavny-01.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "man_Slavny-01.mp3"; sourceTree = "<group>"; };
+		019685C630668560001AF394 /* man_Slavny-02.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "man_Slavny-02.mp3"; sourceTree = "<group>"; };
+		019685C730668560001AF394 /* man_Slavny-03.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "man_Slavny-03.mp3"; sourceTree = "<group>"; };
+		019685C830668560001AF394 /* man_Slavny-04.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "man_Slavny-04.mp3"; sourceTree = "<group>"; };
+		019685C930668560001AF394 /* man_Slavny-05.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "man_Slavny-05.mp3"; sourceTree = "<group>"; };
+		019685CA30668560001AF394 /* man_Svetla-01.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "man_Svetla-01.mp3"; sourceTree = "<group>"; };
+		019685CB30668560001AF394 /* man_Svetla-02.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "man_Svetla-02.mp3"; sourceTree = "<group>"; };
+		019685CC30668560001AF394 /* man_Svetla-03.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "man_Svetla-03.mp3"; sourceTree = "<group>"; };
+		019685CD30668560001AF394 /* man_Svetla-04.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "man_Svetla-04.mp3"; sourceTree = "<group>"; };
+		019685CE30668560001AF394 /* man_Svetla-05.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "man_Svetla-05.mp3"; sourceTree = "<group>"; };
+		019685CF30668560001AF394 /* man_Ruzenec_zacatek.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = man_Ruzenec_zacatek.mp3; sourceTree = "<group>"; };
+		019685EE30669D67001AF394 /* man_Frantisek7Bolestny-01.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "man_Frantisek7Bolestny-01.mp3"; sourceTree = "<group>"; };
+		019685EF30669D67001AF394 /* man_Frantisek7Bolestny-02.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "man_Frantisek7Bolestny-02.mp3"; sourceTree = "<group>"; };
+		019685F030669D67001AF394 /* man_Frantisek7Bolestny-03.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "man_Frantisek7Bolestny-03.mp3"; sourceTree = "<group>"; };
+		019685F130669D67001AF394 /* man_Frantisek7Bolestny-04.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "man_Frantisek7Bolestny-04.mp3"; sourceTree = "<group>"; };
+		019685F230669D67001AF394 /* man_Frantisek7Bolestny-05.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "man_Frantisek7Bolestny-05.mp3"; sourceTree = "<group>"; };
+		019685F330669D67001AF394 /* man_Frantisek7Bolestny-06.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "man_Frantisek7Bolestny-06.mp3"; sourceTree = "<group>"; };
+		019685F430669D67001AF394 /* man_Frantisek7Bolestny-07.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "man_Frantisek7Bolestny-07.mp3"; sourceTree = "<group>"; };
+		019685F530669D67001AF394 /* man_Frantisek7Radostny-01.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "man_Frantisek7Radostny-01.mp3"; sourceTree = "<group>"; };
+		019685F630669D67001AF394 /* man_Frantisek7Radostny-02.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "man_Frantisek7Radostny-02.mp3"; sourceTree = "<group>"; };
+		019685F730669D67001AF394 /* man_Frantisek7Radostny-03.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "man_Frantisek7Radostny-03.mp3"; sourceTree = "<group>"; };
+		019685F830669D67001AF394 /* man_Frantisek7Radostny-04.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "man_Frantisek7Radostny-04.mp3"; sourceTree = "<group>"; };
+		019685F930669D67001AF394 /* man_Frantisek7Radostny-05.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "man_Frantisek7Radostny-05.mp3"; sourceTree = "<group>"; };
+		019685FA30669D67001AF394 /* man_Frantisek7Radostny-06.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "man_Frantisek7Radostny-06.mp3"; sourceTree = "<group>"; };
+		019685FB30669D67001AF394 /* man_Frantisek7Radostny-07.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "man_Frantisek7Radostny-07.mp3"; sourceTree = "<group>"; };
+		0196860A30669D78001AF394 /* man_SvJosef-01.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "man_SvJosef-01.mp3"; sourceTree = "<group>"; };
+		0196860B30669D78001AF394 /* man_SvJosef-02.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "man_SvJosef-02.mp3"; sourceTree = "<group>"; };
+		0196860C30669D78001AF394 /* man_SvJosef-03.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "man_SvJosef-03.mp3"; sourceTree = "<group>"; };
+		0196860D30669D78001AF394 /* man_SvJosef-04.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "man_SvJosef-04.mp3"; sourceTree = "<group>"; };
+		0196860E30669D78001AF394 /* man_SvJosef-05.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "man_SvJosef-05.mp3"; sourceTree = "<group>"; };
+		0196861430669EA0001AF394 /* man_7Bolestny-01.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "man_7Bolestny-01.mp3"; sourceTree = "<group>"; };
+		0196861530669EA0001AF394 /* man_7Bolestny-02.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "man_7Bolestny-02.mp3"; sourceTree = "<group>"; };
+		0196861630669EA0001AF394 /* man_7Bolestny-03.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "man_7Bolestny-03.mp3"; sourceTree = "<group>"; };
+		0196861730669EA0001AF394 /* man_7Bolestny-04.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "man_7Bolestny-04.mp3"; sourceTree = "<group>"; };
+		0196861830669EA0001AF394 /* man_7Bolestny-05.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "man_7Bolestny-05.mp3"; sourceTree = "<group>"; };
+		0196861930669EA0001AF394 /* man_7Bolestny-06.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "man_7Bolestny-06.mp3"; sourceTree = "<group>"; };
+		0196861A30669EA0001AF394 /* man_7Bolestny-07.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "man_7Bolestny-07.mp3"; sourceTree = "<group>"; };
+		0196861B30669EA0001AF394 /* man_7Radostny-01.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "man_7Radostny-01.mp3"; sourceTree = "<group>"; };
+		0196861C30669EA0001AF394 /* man_7Radostny-02.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "man_7Radostny-02.mp3"; sourceTree = "<group>"; };
+		0196861D30669EA0001AF394 /* man_7Radostny-03.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "man_7Radostny-03.mp3"; sourceTree = "<group>"; };
+		0196861E30669EA0001AF394 /* man_7Radostny-04.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "man_7Radostny-04.mp3"; sourceTree = "<group>"; };
+		0196861F30669EA0001AF394 /* man_7Radostny-05.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "man_7Radostny-05.mp3"; sourceTree = "<group>"; };
+		0196862030669EA0001AF394 /* man_7Radostny-06.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "man_7Radostny-06.mp3"; sourceTree = "<group>"; };
+		0196862130669EA0001AF394 /* man_7Radostny-07.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "man_7Radostny-07.mp3"; sourceTree = "<group>"; };
+		01A242F9305D508D00F13C9C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		01A9369F20D4447500A5D979 /* DesatekCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesatekCollectionViewController.swift; sourceTree = "<group>"; };
 		01A936A120D4474F00A5D979 /* Desatek.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Desatek.swift; sourceTree = "<group>"; };
 		01B0A6B2238C3BE60062C4BC /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
@@ -124,6 +254,76 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		016858FB305D3A5E009BA088 /* raw */ = {
+			isa = PBXGroup;
+			children = (
+				0196861430669EA0001AF394 /* man_7Bolestny-01.mp3 */,
+				0196861530669EA0001AF394 /* man_7Bolestny-02.mp3 */,
+				0196861630669EA0001AF394 /* man_7Bolestny-03.mp3 */,
+				0196861730669EA0001AF394 /* man_7Bolestny-04.mp3 */,
+				0196861830669EA0001AF394 /* man_7Bolestny-05.mp3 */,
+				0196861930669EA0001AF394 /* man_7Bolestny-06.mp3 */,
+				0196861A30669EA0001AF394 /* man_7Bolestny-07.mp3 */,
+				0196861B30669EA0001AF394 /* man_7Radostny-01.mp3 */,
+				0196861C30669EA0001AF394 /* man_7Radostny-02.mp3 */,
+				0196861D30669EA0001AF394 /* man_7Radostny-03.mp3 */,
+				0196861E30669EA0001AF394 /* man_7Radostny-04.mp3 */,
+				0196861F30669EA0001AF394 /* man_7Radostny-05.mp3 */,
+				0196862030669EA0001AF394 /* man_7Radostny-06.mp3 */,
+				0196862130669EA0001AF394 /* man_7Radostny-07.mp3 */,
+				019685EE30669D67001AF394 /* man_Frantisek7Bolestny-01.mp3 */,
+				019685EF30669D67001AF394 /* man_Frantisek7Bolestny-02.mp3 */,
+				019685F030669D67001AF394 /* man_Frantisek7Bolestny-03.mp3 */,
+				019685F130669D67001AF394 /* man_Frantisek7Bolestny-04.mp3 */,
+				019685F230669D67001AF394 /* man_Frantisek7Bolestny-05.mp3 */,
+				019685F330669D67001AF394 /* man_Frantisek7Bolestny-06.mp3 */,
+				019685F430669D67001AF394 /* man_Frantisek7Bolestny-07.mp3 */,
+				019685F530669D67001AF394 /* man_Frantisek7Radostny-01.mp3 */,
+				019685F630669D67001AF394 /* man_Frantisek7Radostny-02.mp3 */,
+				019685F730669D67001AF394 /* man_Frantisek7Radostny-03.mp3 */,
+				019685F830669D67001AF394 /* man_Frantisek7Radostny-04.mp3 */,
+				019685F930669D67001AF394 /* man_Frantisek7Radostny-05.mp3 */,
+				019685FA30669D67001AF394 /* man_Frantisek7Radostny-06.mp3 */,
+				019685FB30669D67001AF394 /* man_Frantisek7Radostny-07.mp3 */,
+				019685B230668560001AF394 /* man_Korunka_hlavni.mp3 */,
+				019685B330668560001AF394 /* man_Korunka_konec.mp3 */,
+				019685B430668560001AF394 /* man_Korunka_Otce_nas.mp3 */,
+				019685B530668560001AF394 /* man_Korunka_Ruzenec.mp3 */,
+				019685B630668560001AF394 /* man_Korunka_Vyznani_viry.mp3 */,
+				019685B730668560001AF394 /* man_Korunka_ZdravasMaria.mp3 */,
+				019685B830668560001AF394 /* man_Otce_nas.mp3 */,
+				019685B930668560001AF394 /* man_Bolestny-01.mp3 */,
+				019685BA30668560001AF394 /* man_Bolestny-02.mp3 */,
+				019685BB30668560001AF394 /* man_Bolestny-03.mp3 */,
+				019685BC30668560001AF394 /* man_Bolestny-04.mp3 */,
+				019685BD30668560001AF394 /* man_Bolestny-05.mp3 */,
+				019685BE30668560001AF394 /* man_Desatek-konec.mp3 */,
+				019685BF30668560001AF394 /* man_Ruzenec_konec.mp3 */,
+				019685C030668560001AF394 /* man_Radostny-01.mp3 */,
+				019685C130668560001AF394 /* man_Radostny-02.mp3 */,
+				019685C230668560001AF394 /* man_Radostny-03.mp3 */,
+				019685C330668560001AF394 /* man_Radostny-04.mp3 */,
+				019685C430668560001AF394 /* man_Radostny-05.mp3 */,
+				0196860A30669D78001AF394 /* man_SvJosef-01.mp3 */,
+				0196860B30669D78001AF394 /* man_SvJosef-02.mp3 */,
+				0196860C30669D78001AF394 /* man_SvJosef-03.mp3 */,
+				0196860D30669D78001AF394 /* man_SvJosef-04.mp3 */,
+				0196860E30669D78001AF394 /* man_SvJosef-05.mp3 */,
+				019685C530668560001AF394 /* man_Slavny-01.mp3 */,
+				019685C630668560001AF394 /* man_Slavny-02.mp3 */,
+				019685C730668560001AF394 /* man_Slavny-03.mp3 */,
+				019685C830668560001AF394 /* man_Slavny-04.mp3 */,
+				019685C930668560001AF394 /* man_Slavny-05.mp3 */,
+				019685CA30668560001AF394 /* man_Svetla-01.mp3 */,
+				019685CB30668560001AF394 /* man_Svetla-02.mp3 */,
+				019685CC30668560001AF394 /* man_Svetla-03.mp3 */,
+				019685CD30668560001AF394 /* man_Svetla-04.mp3 */,
+				019685CE30668560001AF394 /* man_Svetla-05.mp3 */,
+				019685CF30668560001AF394 /* man_Ruzenec_zacatek.mp3 */,
+			);
+			path = raw;
+			sourceTree = "<group>";
+		};
 		01BD589021907630006A44AA /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
@@ -136,6 +336,7 @@
 				010CDF282548953E0086C6D3 /* Extensions.swift */,
 				0162A8842DE6E773003C677A /* NotificationManager.swift */,
 				013A74C32DE7205E006284A0 /* DateManager.swift */,
+				0196853830666C79001AF394 /* PlayerlistPlayer.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -193,6 +394,7 @@
 		01FC3D8620C86E23005FABEF /* RuzeneciOS */ = {
 			isa = PBXGroup;
 			children = (
+				016858FB305D3A5E009BA088 /* raw */,
 				0180F6AB239179DD00B863C1 /* GoogleService-Info.plist */,
 				01E4A8C52947782D007A63BA /* Assets.xcassets */,
 				4B01C4CB20F63D19008D4CEA /* Controllers */,
@@ -204,6 +406,7 @@
 				01FC3D9020C86E24005FABEF /* LaunchScreen.storyboard */,
 				01FC3D9320C86E24005FABEF /* Info.plist */,
 				0120740B2BECF7E90042DC76 /* PrivacyInfo.xcprivacy */,
+				01A242F9305D508D00F13C9C /* SceneDelegate.swift */,
 			);
 			path = RuzeneciOS;
 			sourceTree = "<group>";
@@ -355,6 +558,69 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				019685D030668560001AF394 /* man_Korunka_Vyznani_viry.mp3 in Resources */,
+				019685D130668560001AF394 /* man_Svetla-05.mp3 in Resources */,
+				019685D230668560001AF394 /* man_Korunka_ZdravasMaria.mp3 in Resources */,
+				019685D330668560001AF394 /* man_Radostny-04.mp3 in Resources */,
+				019685D430668560001AF394 /* man_Svetla-03.mp3 in Resources */,
+				019685D530668560001AF394 /* man_Svetla-01.mp3 in Resources */,
+				019685D630668560001AF394 /* man_Korunka_konec.mp3 in Resources */,
+				019685D730668560001AF394 /* man_Ruzenec_konec.mp3 in Resources */,
+				019685D830668560001AF394 /* man_Otce_nas.mp3 in Resources */,
+				019685D930668560001AF394 /* man_Bolestny-04.mp3 in Resources */,
+				019685DA30668560001AF394 /* man_Radostny-02.mp3 in Resources */,
+				019685DB30668560001AF394 /* man_Bolestny-05.mp3 in Resources */,
+				019685DC30668560001AF394 /* man_Bolestny-03.mp3 in Resources */,
+				019685DD30668560001AF394 /* man_Korunka_Otce_nas.mp3 in Resources */,
+				0196862230669EA0001AF394 /* man_7Radostny-07.mp3 in Resources */,
+				0196862330669EA0001AF394 /* man_7Bolestny-02.mp3 in Resources */,
+				0196862430669EA0001AF394 /* man_7Bolestny-05.mp3 in Resources */,
+				0196862530669EA0001AF394 /* man_7Radostny-06.mp3 in Resources */,
+				0196862630669EA0001AF394 /* man_7Bolestny-07.mp3 in Resources */,
+				0196862730669EA0001AF394 /* man_7Bolestny-06.mp3 in Resources */,
+				0196862830669EA0001AF394 /* man_7Radostny-04.mp3 in Resources */,
+				0196862930669EA0001AF394 /* man_7Bolestny-03.mp3 in Resources */,
+				0196862A30669EA0001AF394 /* man_7Radostny-05.mp3 in Resources */,
+				0196862B30669EA0001AF394 /* man_7Bolestny-01.mp3 in Resources */,
+				0196862C30669EA0001AF394 /* man_7Radostny-01.mp3 in Resources */,
+				0196862D30669EA0001AF394 /* man_7Radostny-03.mp3 in Resources */,
+				0196862E30669EA0001AF394 /* man_7Radostny-02.mp3 in Resources */,
+				0196862F30669EA0001AF394 /* man_7Bolestny-04.mp3 in Resources */,
+				019685DE30668560001AF394 /* man_Svetla-04.mp3 in Resources */,
+				019685DF30668560001AF394 /* man_Ruzenec_zacatek.mp3 in Resources */,
+				019685FC30669D67001AF394 /* man_Frantisek7Bolestny-04.mp3 in Resources */,
+				019685FD30669D67001AF394 /* man_Frantisek7Radostny-07.mp3 in Resources */,
+				019685FE30669D67001AF394 /* man_Frantisek7Bolestny-05.mp3 in Resources */,
+				019685FF30669D67001AF394 /* man_Frantisek7Radostny-02.mp3 in Resources */,
+				0196860030669D67001AF394 /* man_Frantisek7Bolestny-03.mp3 in Resources */,
+				0196860130669D67001AF394 /* man_Frantisek7Radostny-03.mp3 in Resources */,
+				0196860230669D67001AF394 /* man_Frantisek7Radostny-06.mp3 in Resources */,
+				0196860330669D67001AF394 /* man_Frantisek7Bolestny-06.mp3 in Resources */,
+				0196860430669D67001AF394 /* man_Frantisek7Bolestny-02.mp3 in Resources */,
+				0196860530669D67001AF394 /* man_Frantisek7Bolestny-07.mp3 in Resources */,
+				0196860630669D67001AF394 /* man_Frantisek7Radostny-05.mp3 in Resources */,
+				0196860730669D67001AF394 /* man_Frantisek7Radostny-04.mp3 in Resources */,
+				0196860830669D67001AF394 /* man_Frantisek7Bolestny-01.mp3 in Resources */,
+				0196860930669D67001AF394 /* man_Frantisek7Radostny-01.mp3 in Resources */,
+				019685E030668560001AF394 /* man_Bolestny-01.mp3 in Resources */,
+				019685E130668560001AF394 /* man_Slavny-04.mp3 in Resources */,
+				019685E230668560001AF394 /* man_Bolestny-02.mp3 in Resources */,
+				019685E330668560001AF394 /* man_Slavny-05.mp3 in Resources */,
+				019685E430668560001AF394 /* man_Slavny-02.mp3 in Resources */,
+				019685E530668560001AF394 /* man_Slavny-01.mp3 in Resources */,
+				019685E630668560001AF394 /* man_Slavny-03.mp3 in Resources */,
+				019685E730668560001AF394 /* man_Radostny-03.mp3 in Resources */,
+				019685E830668560001AF394 /* man_Svetla-02.mp3 in Resources */,
+				019685E930668560001AF394 /* man_Desatek-konec.mp3 in Resources */,
+				019685EA30668560001AF394 /* man_Radostny-01.mp3 in Resources */,
+				019685EB30668560001AF394 /* man_Korunka_hlavni.mp3 in Resources */,
+				019685EC30668560001AF394 /* man_Korunka_Ruzenec.mp3 in Resources */,
+				019685ED30668560001AF394 /* man_Radostny-05.mp3 in Resources */,
+				0196860F30669D78001AF394 /* man_SvJosef-04.mp3 in Resources */,
+				0196861030669D78001AF394 /* man_SvJosef-05.mp3 in Resources */,
+				0196861130669D78001AF394 /* man_SvJosef-01.mp3 in Resources */,
+				0196861230669D78001AF394 /* man_SvJosef-02.mp3 in Resources */,
+				0196861330669D78001AF394 /* man_SvJosef-03.mp3 in Resources */,
 				01FC3D9220C86E24005FABEF /* LaunchScreen.storyboard in Resources */,
 				01F33AF7255431E300B72E81 /* ruzenec_speak.json in Resources */,
 				015B37AA20F78EA4001E15D3 /* ruzenec.json in Resources */,
@@ -381,9 +647,13 @@
 			inputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-RuzeneciOS/Pods-RuzeneciOS-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
+			inputPaths = (
+			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-RuzeneciOS/Pods-RuzeneciOS-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -431,6 +701,7 @@
 				4BF14E30210206190070ECD6 /* RosaryDataService.swift in Sources */,
 				01C363A4255EAAC5003E685F /* SettingsBundleHelper.swift in Sources */,
 				01C3639F255EAA77003E685F /* SettingsDelegateManager.swift in Sources */,
+				0196853930666C79001AF394 /* PlayerlistPlayer.swift in Sources */,
 				01B0A6B3238C3BE60062C4BC /* Utils.swift in Sources */,
 				01B2F03D2DEF449A00EFC194 /* SettingsTextTableViewCell.swift in Sources */,
 				01F6B35E2701D2B100300134 /* PompejViewController.swift in Sources */,
@@ -442,6 +713,7 @@
 				01F6B3602701E16200300134 /* PompejPrayViewController.swift in Sources */,
 				0162A8852DE6E773003C677A /* NotificationManager.swift in Sources */,
 				4B01C4CF20F63D41008D4CEA /* AboutViewController.swift in Sources */,
+				01A242FA305D508D00F13C9C /* SceneDelegate.swift in Sources */,
 				0162A8832DE6E51A003C677A /* SettingsTimeTableViewCell.swift in Sources */,
 				01A936A020D4447500A5D979 /* DesatekCollectionViewController.swift in Sources */,
 				0159D01D20D05E5C00D759D4 /* DesatekCollectionViewCell.swift in Sources */,
@@ -613,17 +885,19 @@
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				INFOPLIST_FILE = RuzeneciOS/Info.plist;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.lifestyle";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.9.0;
+				MARKETING_VERSION = 1.10.0;
 				PRODUCT_BUNDLE_IDENTIFIER = org.phracek.Ruzenec;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -639,17 +913,19 @@
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				INFOPLIST_FILE = RuzeneciOS/Info.plist;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.lifestyle";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.9.0;
+				MARKETING_VERSION = 1.10.0;
 				PRODUCT_BUNDLE_IDENTIFIER = org.phracek.Ruzenec;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
