@@ -38,7 +38,7 @@ class DesatekCollectionViewCell: UICollectionViewCell {
     let keys = SettingsBundleHelper.SettingsBundleKeys.self
     func configureCell(name: String, image_name: String) {
         let userDefaults = UserDefaults.standard
-        let imgHeight : CGFloat = 75
+        let imgHeight : CGFloat = 55
         let img = UIImage(named: image_name)
 
 

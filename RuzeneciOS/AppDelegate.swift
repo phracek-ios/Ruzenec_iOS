@@ -26,22 +26,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             let appearance = UINavigationBarAppearance()
             appearance.configureWithOpaqueBackground()
             appearance.backgroundColor = KKCMainColor
-            appearance.titleTextAttributes = [NSAttributedString.Key.foregroundColor: KKCMainTextColor]
+            appearance.titleTextAttributes = [NSAttributedString.Key.foregroundColor: KKCTextLightMode]
             UINavigationBar.appearance().standardAppearance = appearance
             UINavigationBar.appearance().scrollEdgeAppearance = appearance
             UINavigationBar.appearance().barTintColor = KKCTextLightMode
-            UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.foregroundColor: KKCMainTextColor]
+            UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.foregroundColor: KKCTextLightMode]
             UINavigationBar.appearance().isTranslucent = false
-            UITabBar.appearance().barTintColor = KKCMainColor
-            UITabBar.appearance().tintColor = KKCMainTextColor
+            UITabBar.appearance().barTintColor = KKCTextLightMode
+            UITabBar.appearance().tintColor = KKCTextLightMode
             UITabBar.appearance().isTranslucent = false
         } else {
             debugPrint("Less then iOS15")
             UINavigationBar.appearance().barTintColor = KKCTextLightMode
-            UINavigationBar.appearance().tintColor = KKCMainTextColor
+            UINavigationBar.appearance().tintColor = KKCTextLightMode
             UINavigationBar.appearance().isTranslucent = false
             UITabBar.appearance().barTintColor = KKCTextLightMode
-            UITabBar.appearance().tintColor = KKCMainTextColor
+            UITabBar.appearance().tintColor = KKCTextLightMode
             UITabBar.appearance().isTranslucent = false
         }
         UNUserNotificationCenter.current().delegate = self
@@ -58,6 +58,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let keys = SettingsBundleHelper.SettingsBundleKeys.self
         if userDefaults.object(forKey: keys.countRuzenec) == nil {
             userDefaults.set(7, forKey: keys.countRuzenec)
+        }
+        if userDefaults.object(forKey: keys.manVoice) == nil {
+            userDefaults.set(true, forKey: keys.manVoice)
+            userDefaults.set(false, forKey: keys.womanVoice)
         }
 
         

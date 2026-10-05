@@ -291,20 +291,14 @@ class RuzenecViewController: UIViewController, UINavigationControllerDelegate, U
     func handle_counter (by direction: Bool) {
         if direction {
             count += 1
-        }
-        else {
-            count -= 1
-        }
-    }
-    
-    func handle_image_counter(by direction: Bool) {
-        if direction {
             image_count += 1
         }
         else {
+            count -= 1
             image_count -= 1
         }
     }
+    
     
     func show_ruzenec_zacatek(by direction: Bool) {
         guard let rosaryStructure = rosaryStructure else { return }
@@ -432,7 +426,7 @@ class RuzenecViewController: UIViewController, UINavigationControllerDelegate, U
         return Rosary(id: 0, name: "", decades: [])
     }
     
-    func setRuzenecCounter() {
+    func setRuzenecCounter(is_sedmi: Bool = false) {
         if ruzenec_counter == 0 {
             ruzenec_counter_label.text = ""
         } else {
@@ -571,7 +565,6 @@ class RuzenecViewController: UIViewController, UINavigationControllerDelegate, U
     func show_texts(by direction: Bool) {
         show_image(by: direction)
         handle_counter(by: direction)
-        handle_image_counter(by: direction)
         if self.zdravas_number == RosaryConstants.korunka.rawValue{
             show_korunka(by: direction)
         }
@@ -673,7 +666,8 @@ class RuzenecViewController: UIViewController, UINavigationControllerDelegate, U
         case 1, 2, 3, 4:
             // Ruzenec - HOTOVO
             playList.append(prefix_voice + "Ruzenec_zacatek")
-            playList.append(prefix_voice + "Otce_nas")
+            playList.append(prefix_voice + "Pozdraveni_andelske")
+            playList.append(prefix_voice + "Slava_otci")
             var typeRuzenec = "Radostny"
             if druh == 2 {
                 typeRuzenec = "Bolestny"
@@ -686,19 +680,19 @@ class RuzenecViewController: UIViewController, UINavigationControllerDelegate, U
             }
             for k in 1...5 {
                 playList.append(prefix_voice + "Otce_nas")
+                let index = String(format: "%02d", k)
                 for _ in 1...10 {
-                    let index = String(format: "%02d", k)
                     playList.append(prefix_voice + "\(typeRuzenec)-\(index)")
                 }
                 playList.append(prefix_voice + "Desatek-konec")
             }
             playList.append(prefix_voice + "Ruzenec_konec")
         case 5:
-            // Korunka k Bozimu milosrdenstvi
+            // Korunka k Bozimu milosrdenstvi - HOTOVO
             playList.append(prefix_voice + "\(korunka_prefix)_Otce_nas")
             playList.append(prefix_voice + "\(korunka_prefix)_ZdravasMaria")
             playList.append(prefix_voice + "\(korunka_prefix)_Vyznani_viry")
-            for _ in 1...3 {
+            for _ in 1...5 {
                 playList.append(prefix_voice + "\(korunka_prefix)_hlavni")
                 for _ in 1...10 {
                     playList.append(prefix_voice + "\(korunka_prefix)_Ruzenec")
@@ -721,28 +715,32 @@ class RuzenecViewController: UIViewController, UINavigationControllerDelegate, U
             if druh == 9 {
                 typeRuzence = "Frantisek7Bolestny"
             }
+            playList.append(prefix_voice + "\(typeRuzence)_pozdraveni")
+
             for k in 1...7 {
                 playList.append(prefix_voice + "Otce_nas")
 //                for _ in 1...7 {
                     let index = String(format: "%02d", k)
                     playList.append(prefix_voice + "\(typeRuzence)-\(index)")
 //                }
-                playList.append(prefix_voice + "Ruzenec_Desatek-konec")
+                playList.append(prefix_voice + "Desatek-konec")
             }
             playList.append(prefix_voice + "\(typeRuzence)_konec")
         case 10:
-            // Ke svatemu Josefovi
+            // Ke svatemu Josefovi - HOTOVO
             playList.append(prefix_voice + "Ruzenec_zacatek")
-            playList.append(prefix_voice + "Otce_nas")
+            playList.append(prefix_voice + "Pozdraveni_andelske")
+            playList.append(prefix_voice + "Slava_otci")
             for k in 1...5 {
                 playList.append(prefix_voice + "Otce_nas")
-//                for _ in 1...10 {
+                for _ in 1...10 {
                     let index = String(format: "%02d", k)
                     playList.append(prefix_voice + "SvJosef-\(index)")
-//                }
-                playList.append(prefix_voice + "Ruzenec_Desatek-konec")
+                }
+                playList.append(prefix_voice + "Desatek-konec")
             }
-            playList.append(prefix_voice + "SvJosef_konec")
+            playList.append(prefix_voice + "Ruzenec_konec")
+            playList.append(prefix_voice + "SvatyJosef_konec")
         default:
             print("Nothing to do")
         }
