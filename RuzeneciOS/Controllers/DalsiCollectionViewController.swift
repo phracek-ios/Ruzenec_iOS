@@ -1,16 +1,16 @@
 //
-//  DesatekCollectionViewController.swift
+//  DalsiCollectionViewController.swift
 //  RuzeneciOS
 //
-//  Created by Petr Hracek on 15/06/2018.
-//  Copyright © 2018 Petr Hracek. All rights reserved.
+//  Created by Petr Hracek on 01.10.2026.
+//  Copyright © 2026 Petr Hracek. All rights reserved.
 //
 
 import UIKit
 import os.log
 import FirebaseAnalytics
 
-class DesatekCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
+class JineCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     
     enum RowType {
         case desatek
@@ -107,85 +107,75 @@ class DesatekCollectionViewController: UICollectionViewController, UICollectionV
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: DesatekCollectionViewCell.cellId, for: indexPath) as! DesatekCollectionViewCell
         let data = rowData[indexPath.row]
-        let name = data.desatek!.name
-        let image_name = data.desatek!.photo
+        var name: String = ""
+        var image_name: String = ""
+        name = data.desatek!.name
+        image_name = data.desatek!.photo
         cell.configureCell(name: name, image_name: image_name)
 
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: view.frame.width, height: 60)
+        return CGSize(width: view.frame.width, height: 80)
     }
 
     //MARK: - Navigation
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        if indexPath.row == RosaryConstants.otecPio.rawValue {
-            let otecPioVC = OtecPioZacatekViewController()
-            if let selectedDesatek = rowData[Date().getDayOfWeek()].desatek {
-                otecPioVC.desatek = selectedDesatek
-                otecPioVC.navigationItem.title = selectedDesatek.name
-            }
-            navigationController?.pushViewController(otecPioVC, animated: true)
-        }
-        else if (indexPath.row == RosaryConstants.frantiseksedmibolestne.rawValue) || (indexPath.row == RosaryConstants.frantiseksedmiradostne.rawValue){
-            let frantiskanskyVC = FrantiskanskyRuzenecViewController()
-            if let selectedDesatek = rowData[indexPath.row].desatek {
-                frantiskanskyVC.desatek = selectedDesatek
-                frantiskanskyVC.navigationItem.title = selectedDesatek.name
-            }
-            navigationController?.pushViewController(frantiskanskyVC, animated: true)
+        let data = rowData[indexPath.row]
+        if indexPath.row == RosaryConstants.pompej.rawValue {
+            let pompejViewController = PompejViewController()
+            navigationController?.pushViewController(pompejViewController, animated: true)
         }
         else {
             let ruzenecViewController = RuzenecViewController()
-            if indexPath.row == RosaryConstants.dnes.rawValue {
-                ruzenecViewController.desatek = rowData[Date().getDayOfWeek()].desatek
-                ruzenecViewController.navigationItem.title = rowData[Date().getDayOfWeek()].desatek?.name
-            }
-            else {
-                if let selectedDesatek = rowData[indexPath.row].desatek {
-                    ruzenecViewController.desatek = selectedDesatek
-                    ruzenecViewController.navigationItem.title = selectedDesatek.name
-                }
+            if let selectedDesatek = rowData[indexPath.row].desatek {
+                ruzenecViewController.desatek = selectedDesatek
+                ruzenecViewController.navigationItem.title = selectedDesatek.name
             }
             navigationController?.pushViewController(ruzenecViewController, animated: true)
         }
     }
 
     private func loadDesatky() {
-        let photoCalendar = "icon_calendar"
-        let photoRadostny = "icon_radostny"
-        let photoBolestny = "icon_bolestny"
-        let photoSvetla = "icon_svetla"
-        let photoSlavny = "icon_slavny"
-        let photoKorunka = "icon_korunka"
-
-        guard let calendar = Desatek(name: "Růženec na dnešní den", photo: photoCalendar, desatek: RosaryConstants.dnes.rawValue) else {
-            fatalError("Unable to instanciate Ruzenec")
-        }
-
-        guard let radostny = Desatek(name: "Radostný růženec", photo: photoRadostny, desatek: RosaryConstants.radostny.rawValue) else {
-            fatalError("Unable to instanciate Radostny ruzenec")
+        let photoSedmibolestny = "icon_sorrow"
+        let photoFrantisekSedmi = "icon_frantisek"
+        let photoJoseph = "icon_joseph"
+        let photoSedmiradostna = "icon_mary"
+        let photoOtecPio = "icon_otecPio"
+        let photoPompej = "icon_pompej"
+        
+        guard let pompejska_novena = Desatek(name: "Pompejská novéna", photo: photoPompej, desatek: RosaryConstants.pompej.rawValue) else {
+            fatalError("Unable to instanciate pompej novena")
         }
         
-        guard let bolestny = Desatek(name: "Bolestný růženec", photo: photoBolestny, desatek: RosaryConstants.bolestny.rawValue) else {
-            fatalError("Unable to instanciate bolestny ruzenec")
+        guard let sedmibolestne =  Desatek(name: "Sedmibolestná tajemství", photo: photoSedmibolestny, desatek: RosaryConstants.sedmibolestne.rawValue) else {
+            fatalError("Unable to instanciate sedmiradostny ruzenec")
         }
         
-        guard let svetla = Desatek(name: "Růženec světla", photo: photoSvetla, desatek: RosaryConstants.svetla.rawValue) else {
-            fatalError("Unable to instanciate ruzenec svetla")
+        guard let sedmiradostne = Desatek(name: "Sedmiradostná tajemství", photo: photoSedmiradostna, desatek: RosaryConstants.sedmiradostne.rawValue) else {
+            fatalError("Unable to instanciate sedmiradostny")
+        }
+        guard let frantiskanskysedmiradostny =  Desatek(name: "Františkánský sedmiradostný růženec", photo: photoFrantisekSedmi, desatek: RosaryConstants.frantiseksedmiradostne.rawValue) else {
+            fatalError("Unable to instanciate sedmiradostny ruzenec")
         }
         
-        guard let slavny = Desatek(name: "Slavný růženec", photo: photoSlavny, desatek: RosaryConstants.slavny.rawValue) else {
-            fatalError("Unable to instanciate slavny ruzenec")
+        guard let frantiskanskysedmibolestny = Desatek(name: "Františkánský sedmibolestný růženec", photo: photoFrantisekSedmi, desatek: RosaryConstants.frantiseksedmibolestne.rawValue) else {
+            fatalError("Unable to instanciate sedmiradostny")
         }
-        guard let korunka = Desatek(name: "Korunka k Božímu milosrdenství", photo: photoKorunka, desatek: RosaryConstants.korunka.rawValue) else {
-            fatalError("Unable to instanciate r3")
-        }
-
         
-        desatky += [calendar, radostny, bolestny, svetla, slavny, korunka]
+        guard let sv_josef = Desatek(name: "Růženec ke sv. Josefovi", photo: photoJoseph, desatek: RosaryConstants.sv_Josef.rawValue) else {
+            fatalError("Unable to instanciate ruzenec sv josefa")
+            
+        }
+        
+        guard let otec_pio = Desatek(name: "Růženec otce Pia", photo: photoOtecPio, desatek: RosaryConstants.otecPio.rawValue) else {
+            fatalError("Unable to instanciate pompej novena")
+        }
+        
+        desatky += [sedmibolestne,
+                    sedmiradostne, frantiskanskysedmibolestny, frantiskanskysedmiradostny, sv_josef, otec_pio, pompejska_novena]
     }
     
     private func loadRowData() {
@@ -193,27 +183,3 @@ class DesatekCollectionViewController: UICollectionViewController, UICollectionV
     }
 }
 
-extension Date {
-    func getDayOfWeek() -> Int {
-        let weekDay = Calendar.current.dateComponents([.weekday], from: self).weekday
-        switch weekDay {
-        case 1: // Sun - Slavny
-            return RosaryConstants.slavny.rawValue
-        case 2: // Mon - Radostny
-            return RosaryConstants.radostny.rawValue
-        case 3: // Tue - Bolestny
-            return RosaryConstants.bolestny.rawValue
-        case 4: // Wed - Slavny
-            return RosaryConstants.slavny.rawValue
-        case 5: // Thu - Svetla
-            return RosaryConstants.svetla.rawValue
-        case 6: // Fri - Bolestny
-            return RosaryConstants.bolestny.rawValue
-        case 7: // Sat - Radostny
-            return RosaryConstants.radostny.rawValue
-        default:
-            print("Error fetching days")
-            return -1
-        }
-    }
-}

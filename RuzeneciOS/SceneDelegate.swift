@@ -21,9 +21,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let scene = (scene as? UIWindowScene) else { return }
         self.currentScene = scene
         self.window = UIWindow(windowScene: scene)
-        let layout = UICollectionViewFlowLayout()
-        let mainVC = DesatekCollectionViewController(collectionViewLayout: layout)
-        window?.rootViewController = UINavigationController(rootViewController: mainVC)
+        window?.rootViewController = UINavigationController(rootViewController: RuzenecTabBarController())
         window?.makeKeyAndVisible()
     }
 

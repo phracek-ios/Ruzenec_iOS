@@ -18,6 +18,9 @@
 		0162A8832DE6E51A003C677A /* SettingsTimeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0162A8822DE6E51A003C677A /* SettingsTimeTableViewCell.swift */; };
 		0162A8852DE6E773003C677A /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0162A8842DE6E773003C677A /* NotificationManager.swift */; };
 		0180F6AC239179DD00B863C1 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0180F6AB239179DD00B863C1 /* GoogleService-Info.plist */; };
+		0194A1F4306E67F000EE266E /* RuzenecTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0194A1F3306E67F000EE266E /* RuzenecTabBarController.swift */; };
+		0194A1F6306E691500EE266E /* DalsiCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0194A1F5306E691500EE266E /* DalsiCollectionViewController.swift */; };
+		0194A1F8306E6CFF00EE266E /* SettingsCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0194A1F7306E6CFF00EE266E /* SettingsCollectionViewController.swift */; };
 		0196853930666C79001AF394 /* PlayerlistPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0196853830666C79001AF394 /* PlayerlistPlayer.swift */; };
 		019685D030668560001AF394 /* man_Korunka_Vyznani_viry.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 019685B630668560001AF394 /* man_Korunka_Vyznani_viry.mp3 */; };
 		019685D130668560001AF394 /* man_Svetla-05.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 019685CE30668560001AF394 /* man_Svetla-05.mp3 */; };
@@ -88,6 +91,12 @@
 		01B0A6B3238C3BE60062C4BC /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01B0A6B2238C3BE60062C4BC /* Utils.swift */; };
 		01B2F03D2DEF449A00EFC194 /* SettingsTextTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01B2F03C2DEF449A00EFC194 /* SettingsTextTableViewCell.swift */; };
 		01B2F03F2DEF44CD00EFC194 /* SelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01B2F03E2DEF44CD00EFC194 /* SelectionViewController.swift */; };
+		01BA2751306BEB5500F7F096 /* man_Pozdraveni_andelske.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 01BA2750306BEB5500F7F096 /* man_Pozdraveni_andelske.mp3 */; };
+		01BA2753306BEB6400F7F096 /* woman_Pozdraveni_andelske.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 01BA2752306BEB6400F7F096 /* woman_Pozdraveni_andelske.mp3 */; };
+		01BA2755306BF21900F7F096 /* woman_Slava_otci.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 01BA2754306BF21900F7F096 /* woman_Slava_otci.mp3 */; };
+		01BA2757306BF22000F7F096 /* man_Slava_otci.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 01BA2756306BF22000F7F096 /* man_Slava_otci.mp3 */; };
+		01BA2759306BF4AE00F7F096 /* man_SvatyJosef_konec.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 01BA2758306BF4AE00F7F096 /* man_SvatyJosef_konec.mp3 */; };
+		01BA275B306BF4B600F7F096 /* woman_SvatyJosef_konec.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 01BA275A306BF4B600F7F096 /* woman_SvatyJosef_konec.mp3 */; };
 		01BCB598238C2B2A00209176 /* Global.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01BCB597238C2B2A00209176 /* Global.swift */; };
 		01BD588F2190465E006A44AA /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01BD588E2190465E006A44AA /* Constants.swift */; };
 		01BFD2E62AE817B30028396B /* OtecPioZacatekRuzenecViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01BFD2E52AE817B30028396B /* OtecPioZacatekRuzenecViewController.swift */; };
@@ -96,6 +105,55 @@
 		01C3639B255EAA1E003E685F /* SettingsSliderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01C3639A255EAA1E003E685F /* SettingsSliderTableViewCell.swift */; };
 		01C3639F255EAA77003E685F /* SettingsDelegateManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01C3639E255EAA77003E685F /* SettingsDelegateManager.swift */; };
 		01C363A4255EAAC5003E685F /* SettingsBundleHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01C363A3255EAAC5003E685F /* SettingsBundleHelper.swift */; };
+		01E079FB3066B2B0007667A0 /* woman_7Bolestny-07.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 01E079F33066B2B0007667A0 /* woman_7Bolestny-07.mp3 */; };
+		01E079FC3066B2B0007667A0 /* woman_7Bolestny-03.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 01E079EF3066B2B0007667A0 /* woman_7Bolestny-03.mp3 */; };
+		01E079FD3066B2B0007667A0 /* woman_7Bolestny-01.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 01E079ED3066B2B0007667A0 /* woman_7Bolestny-01.mp3 */; };
+		01E079FE3066B2B0007667A0 /* woman_7Radostny-07.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 01E079FA3066B2B0007667A0 /* woman_7Radostny-07.mp3 */; };
+		01E079FF3066B2B0007667A0 /* woman_7Radostny-05.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 01E079F83066B2B0007667A0 /* woman_7Radostny-05.mp3 */; };
+		01E07A003066B2B0007667A0 /* woman_7Radostny-04.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 01E079F73066B2B0007667A0 /* woman_7Radostny-04.mp3 */; };
+		01E07A013066B2B0007667A0 /* woman_7Bolestny-05.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 01E079F13066B2B0007667A0 /* woman_7Bolestny-05.mp3 */; };
+		01E07A023066B2B0007667A0 /* woman_7Bolestny-02.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 01E079EE3066B2B0007667A0 /* woman_7Bolestny-02.mp3 */; };
+		01E07A033066B2B0007667A0 /* woman_7Bolestny-06.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 01E079F23066B2B0007667A0 /* woman_7Bolestny-06.mp3 */; };
+		01E07A043066B2B0007667A0 /* woman_7Bolestny-04.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 01E079F03066B2B0007667A0 /* woman_7Bolestny-04.mp3 */; };
+		01E07A053066B2B0007667A0 /* woman_7Radostny-01.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 01E079F43066B2B0007667A0 /* woman_7Radostny-01.mp3 */; };
+		01E07A063066B2B0007667A0 /* woman_7Radostny-03.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 01E079F63066B2B0007667A0 /* woman_7Radostny-03.mp3 */; };
+		01E07A073066B2B0007667A0 /* woman_7Radostny-06.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 01E079F93066B2B0007667A0 /* woman_7Radostny-06.mp3 */; };
+		01E07A083066B2B0007667A0 /* woman_7Radostny-02.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 01E079F53066B2B0007667A0 /* woman_7Radostny-02.mp3 */; };
+		01E07A0F3066B2E1007667A0 /* woman_Korunka_Vyznani_viry.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 01E07A0D3066B2E1007667A0 /* woman_Korunka_Vyznani_viry.mp3 */; };
+		01E07A103066B2E1007667A0 /* woman_Korunka_konec.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 01E07A0A3066B2E1007667A0 /* woman_Korunka_konec.mp3 */; };
+		01E07A113066B2E1007667A0 /* woman_Korunka_Ruzenec.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 01E07A0C3066B2E1007667A0 /* woman_Korunka_Ruzenec.mp3 */; };
+		01E07A123066B2E1007667A0 /* woman_Korunka_ZdravasMaria.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 01E07A0E3066B2E1007667A0 /* woman_Korunka_ZdravasMaria.mp3 */; };
+		01E07A133066B2E1007667A0 /* woman_Korunka_hlavni.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 01E07A093066B2E1007667A0 /* woman_Korunka_hlavni.mp3 */; };
+		01E07A143066B2E1007667A0 /* woman_Korunka_Otce_nas.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 01E07A0B3066B2E1007667A0 /* woman_Korunka_Otce_nas.mp3 */; };
+		01E07A163066B2F5007667A0 /* woman_Otce_nas.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 01E07A153066B2F5007667A0 /* woman_Otce_nas.mp3 */; };
+		01E07A1C3066B305007667A0 /* woman_Bolestny-05.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 01E07A1B3066B305007667A0 /* woman_Bolestny-05.mp3 */; };
+		01E07A1D3066B305007667A0 /* woman_Bolestny-03.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 01E07A193066B305007667A0 /* woman_Bolestny-03.mp3 */; };
+		01E07A1E3066B305007667A0 /* woman_Bolestny-02.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 01E07A183066B305007667A0 /* woman_Bolestny-02.mp3 */; };
+		01E07A1F3066B305007667A0 /* woman_Bolestny-04.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 01E07A1A3066B305007667A0 /* woman_Bolestny-04.mp3 */; };
+		01E07A203066B305007667A0 /* woman_Bolestny-01.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 01E07A173066B305007667A0 /* woman_Bolestny-01.mp3 */; };
+		01E07A223066B30D007667A0 /* woman_Desatek-konec.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 01E07A213066B30D007667A0 /* woman_Desatek-konec.mp3 */; };
+		01E07A243066B323007667A0 /* woman_Ruzenec_konec.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 01E07A233066B323007667A0 /* woman_Ruzenec_konec.mp3 */; };
+		01E07A2A3066B32E007667A0 /* woman_Radostny-02.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 01E07A263066B32E007667A0 /* woman_Radostny-02.mp3 */; };
+		01E07A2B3066B32E007667A0 /* woman_Radostny-03.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 01E07A273066B32E007667A0 /* woman_Radostny-03.mp3 */; };
+		01E07A2C3066B32E007667A0 /* woman_Radostny-04.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 01E07A283066B32E007667A0 /* woman_Radostny-04.mp3 */; };
+		01E07A2D3066B32E007667A0 /* woman_Radostny-05.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 01E07A293066B32E007667A0 /* woman_Radostny-05.mp3 */; };
+		01E07A2E3066B32E007667A0 /* woman_Radostny-01.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 01E07A253066B32E007667A0 /* woman_Radostny-01.mp3 */; };
+		01E07A343066B338007667A0 /* woman_SvJosef-01.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 01E07A2F3066B338007667A0 /* woman_SvJosef-01.mp3 */; };
+		01E07A353066B338007667A0 /* woman_SvJosef-02.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 01E07A303066B338007667A0 /* woman_SvJosef-02.mp3 */; };
+		01E07A363066B338007667A0 /* woman_SvJosef-04.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 01E07A323066B338007667A0 /* woman_SvJosef-04.mp3 */; };
+		01E07A373066B338007667A0 /* woman_SvJosef-05.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 01E07A333066B338007667A0 /* woman_SvJosef-05.mp3 */; };
+		01E07A383066B338007667A0 /* woman_SvJosef-03.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 01E07A313066B338007667A0 /* woman_SvJosef-03.mp3 */; };
+		01E07A3E3066B343007667A0 /* woman_Slavny-04.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 01E07A3C3066B343007667A0 /* woman_Slavny-04.mp3 */; };
+		01E07A3F3066B343007667A0 /* woman_Slavny-03.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 01E07A3B3066B343007667A0 /* woman_Slavny-03.mp3 */; };
+		01E07A403066B343007667A0 /* woman_Slavny-01.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 01E07A393066B343007667A0 /* woman_Slavny-01.mp3 */; };
+		01E07A413066B343007667A0 /* woman_Slavny-02.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 01E07A3A3066B343007667A0 /* woman_Slavny-02.mp3 */; };
+		01E07A423066B343007667A0 /* woman_Slavny-05.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 01E07A3D3066B343007667A0 /* woman_Slavny-05.mp3 */; };
+		01E07A483066B351007667A0 /* woman_Svetla-05.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 01E07A473066B351007667A0 /* woman_Svetla-05.mp3 */; };
+		01E07A493066B351007667A0 /* woman_Svetla-03.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 01E07A453066B351007667A0 /* woman_Svetla-03.mp3 */; };
+		01E07A4A3066B351007667A0 /* woman_Svetla-04.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 01E07A463066B351007667A0 /* woman_Svetla-04.mp3 */; };
+		01E07A4B3066B351007667A0 /* woman_Svetla-02.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 01E07A443066B351007667A0 /* woman_Svetla-02.mp3 */; };
+		01E07A4C3066B351007667A0 /* woman_Svetla-01.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 01E07A433066B351007667A0 /* woman_Svetla-01.mp3 */; };
+		01E07A4E3066B460007667A0 /* woman_Ruzenec_zacatek.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 01E07A4D3066B460007667A0 /* woman_Ruzenec_zacatek.mp3 */; };
 		01E4A8C62947782D007A63BA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 01E4A8C52947782D007A63BA /* Assets.xcassets */; };
 		01F33AF7255431E300B72E81 /* ruzenec_speak.json in Resources */ = {isa = PBXBuildFile; fileRef = 01F33AF6255431E300B72E81 /* ruzenec_speak.json */; };
 		01F6B35E2701D2B100300134 /* PompejViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01F6B35D2701D2B100300134 /* PompejViewController.swift */; };
@@ -134,6 +192,9 @@
 		0162A8822DE6E51A003C677A /* SettingsTimeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTimeTableViewCell.swift; sourceTree = "<group>"; };
 		0162A8842DE6E773003C677A /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
 		0180F6AB239179DD00B863C1 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		0194A1F3306E67F000EE266E /* RuzenecTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RuzenecTabBarController.swift; sourceTree = "<group>"; };
+		0194A1F5306E691500EE266E /* DalsiCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DalsiCollectionViewController.swift; sourceTree = "<group>"; };
+		0194A1F7306E6CFF00EE266E /* SettingsCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsCollectionViewController.swift; sourceTree = "<group>"; };
 		0196853830666C79001AF394 /* PlayerlistPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerlistPlayer.swift; sourceTree = "<group>"; };
 		019685B230668560001AF394 /* man_Korunka_hlavni.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = man_Korunka_hlavni.mp3; sourceTree = "<group>"; };
 		019685B330668560001AF394 /* man_Korunka_konec.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = man_Korunka_konec.mp3; sourceTree = "<group>"; };
@@ -204,6 +265,12 @@
 		01B0A6B2238C3BE60062C4BC /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		01B2F03C2DEF449A00EFC194 /* SettingsTextTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTextTableViewCell.swift; sourceTree = "<group>"; };
 		01B2F03E2DEF44CD00EFC194 /* SelectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectionViewController.swift; sourceTree = "<group>"; };
+		01BA2750306BEB5500F7F096 /* man_Pozdraveni_andelske.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = man_Pozdraveni_andelske.mp3; sourceTree = "<group>"; };
+		01BA2752306BEB6400F7F096 /* woman_Pozdraveni_andelske.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = woman_Pozdraveni_andelske.mp3; sourceTree = "<group>"; };
+		01BA2754306BF21900F7F096 /* woman_Slava_otci.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = woman_Slava_otci.mp3; sourceTree = "<group>"; };
+		01BA2756306BF22000F7F096 /* man_Slava_otci.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = man_Slava_otci.mp3; sourceTree = "<group>"; };
+		01BA2758306BF4AE00F7F096 /* man_SvatyJosef_konec.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = man_SvatyJosef_konec.mp3; sourceTree = "<group>"; };
+		01BA275A306BF4B600F7F096 /* woman_SvatyJosef_konec.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = woman_SvatyJosef_konec.mp3; sourceTree = "<group>"; };
 		01BCB597238C2B2A00209176 /* Global.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Global.swift; sourceTree = "<group>"; };
 		01BD588E2190465E006A44AA /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		01BFD2E52AE817B30028396B /* OtecPioZacatekRuzenecViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtecPioZacatekRuzenecViewController.swift; sourceTree = "<group>"; };
@@ -213,6 +280,55 @@
 		01C3639E255EAA77003E685F /* SettingsDelegateManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsDelegateManager.swift; sourceTree = "<group>"; };
 		01C363A3255EAAC5003E685F /* SettingsBundleHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsBundleHelper.swift; sourceTree = "<group>"; };
 		01CD80A220F6890200A8BE5C /* ruzenec.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = ruzenec.json; sourceTree = "<group>"; };
+		01E079ED3066B2B0007667A0 /* woman_7Bolestny-01.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "woman_7Bolestny-01.mp3"; sourceTree = "<group>"; };
+		01E079EE3066B2B0007667A0 /* woman_7Bolestny-02.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "woman_7Bolestny-02.mp3"; sourceTree = "<group>"; };
+		01E079EF3066B2B0007667A0 /* woman_7Bolestny-03.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "woman_7Bolestny-03.mp3"; sourceTree = "<group>"; };
+		01E079F03066B2B0007667A0 /* woman_7Bolestny-04.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "woman_7Bolestny-04.mp3"; sourceTree = "<group>"; };
+		01E079F13066B2B0007667A0 /* woman_7Bolestny-05.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "woman_7Bolestny-05.mp3"; sourceTree = "<group>"; };
+		01E079F23066B2B0007667A0 /* woman_7Bolestny-06.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "woman_7Bolestny-06.mp3"; sourceTree = "<group>"; };
+		01E079F33066B2B0007667A0 /* woman_7Bolestny-07.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "woman_7Bolestny-07.mp3"; sourceTree = "<group>"; };
+		01E079F43066B2B0007667A0 /* woman_7Radostny-01.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "woman_7Radostny-01.mp3"; sourceTree = "<group>"; };
+		01E079F53066B2B0007667A0 /* woman_7Radostny-02.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "woman_7Radostny-02.mp3"; sourceTree = "<group>"; };
+		01E079F63066B2B0007667A0 /* woman_7Radostny-03.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "woman_7Radostny-03.mp3"; sourceTree = "<group>"; };
+		01E079F73066B2B0007667A0 /* woman_7Radostny-04.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "woman_7Radostny-04.mp3"; sourceTree = "<group>"; };
+		01E079F83066B2B0007667A0 /* woman_7Radostny-05.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "woman_7Radostny-05.mp3"; sourceTree = "<group>"; };
+		01E079F93066B2B0007667A0 /* woman_7Radostny-06.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "woman_7Radostny-06.mp3"; sourceTree = "<group>"; };
+		01E079FA3066B2B0007667A0 /* woman_7Radostny-07.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "woman_7Radostny-07.mp3"; sourceTree = "<group>"; };
+		01E07A093066B2E1007667A0 /* woman_Korunka_hlavni.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = woman_Korunka_hlavni.mp3; sourceTree = "<group>"; };
+		01E07A0A3066B2E1007667A0 /* woman_Korunka_konec.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = woman_Korunka_konec.mp3; sourceTree = "<group>"; };
+		01E07A0B3066B2E1007667A0 /* woman_Korunka_Otce_nas.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = woman_Korunka_Otce_nas.mp3; sourceTree = "<group>"; };
+		01E07A0C3066B2E1007667A0 /* woman_Korunka_Ruzenec.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = woman_Korunka_Ruzenec.mp3; sourceTree = "<group>"; };
+		01E07A0D3066B2E1007667A0 /* woman_Korunka_Vyznani_viry.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = woman_Korunka_Vyznani_viry.mp3; sourceTree = "<group>"; };
+		01E07A0E3066B2E1007667A0 /* woman_Korunka_ZdravasMaria.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = woman_Korunka_ZdravasMaria.mp3; sourceTree = "<group>"; };
+		01E07A153066B2F5007667A0 /* woman_Otce_nas.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = woman_Otce_nas.mp3; sourceTree = "<group>"; };
+		01E07A173066B305007667A0 /* woman_Bolestny-01.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "woman_Bolestny-01.mp3"; sourceTree = "<group>"; };
+		01E07A183066B305007667A0 /* woman_Bolestny-02.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "woman_Bolestny-02.mp3"; sourceTree = "<group>"; };
+		01E07A193066B305007667A0 /* woman_Bolestny-03.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "woman_Bolestny-03.mp3"; sourceTree = "<group>"; };
+		01E07A1A3066B305007667A0 /* woman_Bolestny-04.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "woman_Bolestny-04.mp3"; sourceTree = "<group>"; };
+		01E07A1B3066B305007667A0 /* woman_Bolestny-05.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "woman_Bolestny-05.mp3"; sourceTree = "<group>"; };
+		01E07A213066B30D007667A0 /* woman_Desatek-konec.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "woman_Desatek-konec.mp3"; sourceTree = "<group>"; };
+		01E07A233066B323007667A0 /* woman_Ruzenec_konec.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = woman_Ruzenec_konec.mp3; sourceTree = "<group>"; };
+		01E07A253066B32E007667A0 /* woman_Radostny-01.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "woman_Radostny-01.mp3"; sourceTree = "<group>"; };
+		01E07A263066B32E007667A0 /* woman_Radostny-02.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "woman_Radostny-02.mp3"; sourceTree = "<group>"; };
+		01E07A273066B32E007667A0 /* woman_Radostny-03.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "woman_Radostny-03.mp3"; sourceTree = "<group>"; };
+		01E07A283066B32E007667A0 /* woman_Radostny-04.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "woman_Radostny-04.mp3"; sourceTree = "<group>"; };
+		01E07A293066B32E007667A0 /* woman_Radostny-05.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "woman_Radostny-05.mp3"; sourceTree = "<group>"; };
+		01E07A2F3066B338007667A0 /* woman_SvJosef-01.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "woman_SvJosef-01.mp3"; sourceTree = "<group>"; };
+		01E07A303066B338007667A0 /* woman_SvJosef-02.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "woman_SvJosef-02.mp3"; sourceTree = "<group>"; };
+		01E07A313066B338007667A0 /* woman_SvJosef-03.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "woman_SvJosef-03.mp3"; sourceTree = "<group>"; };
+		01E07A323066B338007667A0 /* woman_SvJosef-04.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "woman_SvJosef-04.mp3"; sourceTree = "<group>"; };
+		01E07A333066B338007667A0 /* woman_SvJosef-05.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "woman_SvJosef-05.mp3"; sourceTree = "<group>"; };
+		01E07A393066B343007667A0 /* woman_Slavny-01.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "woman_Slavny-01.mp3"; sourceTree = "<group>"; };
+		01E07A3A3066B343007667A0 /* woman_Slavny-02.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "woman_Slavny-02.mp3"; sourceTree = "<group>"; };
+		01E07A3B3066B343007667A0 /* woman_Slavny-03.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "woman_Slavny-03.mp3"; sourceTree = "<group>"; };
+		01E07A3C3066B343007667A0 /* woman_Slavny-04.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "woman_Slavny-04.mp3"; sourceTree = "<group>"; };
+		01E07A3D3066B343007667A0 /* woman_Slavny-05.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "woman_Slavny-05.mp3"; sourceTree = "<group>"; };
+		01E07A433066B351007667A0 /* woman_Svetla-01.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "woman_Svetla-01.mp3"; sourceTree = "<group>"; };
+		01E07A443066B351007667A0 /* woman_Svetla-02.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "woman_Svetla-02.mp3"; sourceTree = "<group>"; };
+		01E07A453066B351007667A0 /* woman_Svetla-03.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "woman_Svetla-03.mp3"; sourceTree = "<group>"; };
+		01E07A463066B351007667A0 /* woman_Svetla-04.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "woman_Svetla-04.mp3"; sourceTree = "<group>"; };
+		01E07A473066B351007667A0 /* woman_Svetla-05.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "woman_Svetla-05.mp3"; sourceTree = "<group>"; };
+		01E07A4D3066B460007667A0 /* woman_Ruzenec_zacatek.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = woman_Ruzenec_zacatek.mp3; sourceTree = "<group>"; };
 		01E4A8C52947782D007A63BA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = SupportingFiles/Assets.xcassets; sourceTree = "<group>"; };
 		01F33AF6255431E300B72E81 /* ruzenec_speak.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = ruzenec_speak.json; sourceTree = "<group>"; };
 		01F6B35D2701D2B100300134 /* PompejViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PompejViewController.swift; sourceTree = "<group>"; };
@@ -257,6 +373,10 @@
 		016858FB305D3A5E009BA088 /* raw */ = {
 			isa = PBXGroup;
 			children = (
+				01BA2756306BF22000F7F096 /* man_Slava_otci.mp3 */,
+				01BA2754306BF21900F7F096 /* woman_Slava_otci.mp3 */,
+				01BA2750306BEB5500F7F096 /* man_Pozdraveni_andelske.mp3 */,
+				01BA2752306BEB6400F7F096 /* woman_Pozdraveni_andelske.mp3 */,
 				0196861430669EA0001AF394 /* man_7Bolestny-01.mp3 */,
 				0196861530669EA0001AF394 /* man_7Bolestny-02.mp3 */,
 				0196861630669EA0001AF394 /* man_7Bolestny-03.mp3 */,
@@ -264,6 +384,13 @@
 				0196861830669EA0001AF394 /* man_7Bolestny-05.mp3 */,
 				0196861930669EA0001AF394 /* man_7Bolestny-06.mp3 */,
 				0196861A30669EA0001AF394 /* man_7Bolestny-07.mp3 */,
+				01E079ED3066B2B0007667A0 /* woman_7Bolestny-01.mp3 */,
+				01E079EE3066B2B0007667A0 /* woman_7Bolestny-02.mp3 */,
+				01E079EF3066B2B0007667A0 /* woman_7Bolestny-03.mp3 */,
+				01E079F03066B2B0007667A0 /* woman_7Bolestny-04.mp3 */,
+				01E079F13066B2B0007667A0 /* woman_7Bolestny-05.mp3 */,
+				01E079F23066B2B0007667A0 /* woman_7Bolestny-06.mp3 */,
+				01E079F33066B2B0007667A0 /* woman_7Bolestny-07.mp3 */,
 				0196861B30669EA0001AF394 /* man_7Radostny-01.mp3 */,
 				0196861C30669EA0001AF394 /* man_7Radostny-02.mp3 */,
 				0196861D30669EA0001AF394 /* man_7Radostny-03.mp3 */,
@@ -271,6 +398,13 @@
 				0196861F30669EA0001AF394 /* man_7Radostny-05.mp3 */,
 				0196862030669EA0001AF394 /* man_7Radostny-06.mp3 */,
 				0196862130669EA0001AF394 /* man_7Radostny-07.mp3 */,
+				01E079F43066B2B0007667A0 /* woman_7Radostny-01.mp3 */,
+				01E079F53066B2B0007667A0 /* woman_7Radostny-02.mp3 */,
+				01E079F63066B2B0007667A0 /* woman_7Radostny-03.mp3 */,
+				01E079F73066B2B0007667A0 /* woman_7Radostny-04.mp3 */,
+				01E079F83066B2B0007667A0 /* woman_7Radostny-05.mp3 */,
+				01E079F93066B2B0007667A0 /* woman_7Radostny-06.mp3 */,
+				01E079FA3066B2B0007667A0 /* woman_7Radostny-07.mp3 */,
 				019685EE30669D67001AF394 /* man_Frantisek7Bolestny-01.mp3 */,
 				019685EF30669D67001AF394 /* man_Frantisek7Bolestny-02.mp3 */,
 				019685F030669D67001AF394 /* man_Frantisek7Bolestny-03.mp3 */,
@@ -291,35 +425,72 @@
 				019685B530668560001AF394 /* man_Korunka_Ruzenec.mp3 */,
 				019685B630668560001AF394 /* man_Korunka_Vyznani_viry.mp3 */,
 				019685B730668560001AF394 /* man_Korunka_ZdravasMaria.mp3 */,
+				01E07A093066B2E1007667A0 /* woman_Korunka_hlavni.mp3 */,
+				01E07A0A3066B2E1007667A0 /* woman_Korunka_konec.mp3 */,
+				01E07A0B3066B2E1007667A0 /* woman_Korunka_Otce_nas.mp3 */,
+				01E07A0C3066B2E1007667A0 /* woman_Korunka_Ruzenec.mp3 */,
+				01E07A0D3066B2E1007667A0 /* woman_Korunka_Vyznani_viry.mp3 */,
+				01E07A0E3066B2E1007667A0 /* woman_Korunka_ZdravasMaria.mp3 */,
 				019685B830668560001AF394 /* man_Otce_nas.mp3 */,
+				01E07A153066B2F5007667A0 /* woman_Otce_nas.mp3 */,
+				01BA2758306BF4AE00F7F096 /* man_SvatyJosef_konec.mp3 */,
+				01BA275A306BF4B600F7F096 /* woman_SvatyJosef_konec.mp3 */,
 				019685B930668560001AF394 /* man_Bolestny-01.mp3 */,
 				019685BA30668560001AF394 /* man_Bolestny-02.mp3 */,
 				019685BB30668560001AF394 /* man_Bolestny-03.mp3 */,
 				019685BC30668560001AF394 /* man_Bolestny-04.mp3 */,
 				019685BD30668560001AF394 /* man_Bolestny-05.mp3 */,
+				01E07A173066B305007667A0 /* woman_Bolestny-01.mp3 */,
+				01E07A183066B305007667A0 /* woman_Bolestny-02.mp3 */,
+				01E07A193066B305007667A0 /* woman_Bolestny-03.mp3 */,
+				01E07A1A3066B305007667A0 /* woman_Bolestny-04.mp3 */,
+				01E07A1B3066B305007667A0 /* woman_Bolestny-05.mp3 */,
 				019685BE30668560001AF394 /* man_Desatek-konec.mp3 */,
+				01E07A213066B30D007667A0 /* woman_Desatek-konec.mp3 */,
 				019685BF30668560001AF394 /* man_Ruzenec_konec.mp3 */,
+				01E07A233066B323007667A0 /* woman_Ruzenec_konec.mp3 */,
 				019685C030668560001AF394 /* man_Radostny-01.mp3 */,
 				019685C130668560001AF394 /* man_Radostny-02.mp3 */,
 				019685C230668560001AF394 /* man_Radostny-03.mp3 */,
 				019685C330668560001AF394 /* man_Radostny-04.mp3 */,
 				019685C430668560001AF394 /* man_Radostny-05.mp3 */,
+				01E07A253066B32E007667A0 /* woman_Radostny-01.mp3 */,
+				01E07A263066B32E007667A0 /* woman_Radostny-02.mp3 */,
+				01E07A273066B32E007667A0 /* woman_Radostny-03.mp3 */,
+				01E07A283066B32E007667A0 /* woman_Radostny-04.mp3 */,
+				01E07A293066B32E007667A0 /* woman_Radostny-05.mp3 */,
 				0196860A30669D78001AF394 /* man_SvJosef-01.mp3 */,
 				0196860B30669D78001AF394 /* man_SvJosef-02.mp3 */,
 				0196860C30669D78001AF394 /* man_SvJosef-03.mp3 */,
 				0196860D30669D78001AF394 /* man_SvJosef-04.mp3 */,
 				0196860E30669D78001AF394 /* man_SvJosef-05.mp3 */,
+				01E07A2F3066B338007667A0 /* woman_SvJosef-01.mp3 */,
+				01E07A303066B338007667A0 /* woman_SvJosef-02.mp3 */,
+				01E07A313066B338007667A0 /* woman_SvJosef-03.mp3 */,
+				01E07A323066B338007667A0 /* woman_SvJosef-04.mp3 */,
+				01E07A333066B338007667A0 /* woman_SvJosef-05.mp3 */,
 				019685C530668560001AF394 /* man_Slavny-01.mp3 */,
 				019685C630668560001AF394 /* man_Slavny-02.mp3 */,
 				019685C730668560001AF394 /* man_Slavny-03.mp3 */,
 				019685C830668560001AF394 /* man_Slavny-04.mp3 */,
 				019685C930668560001AF394 /* man_Slavny-05.mp3 */,
+				01E07A393066B343007667A0 /* woman_Slavny-01.mp3 */,
+				01E07A3A3066B343007667A0 /* woman_Slavny-02.mp3 */,
+				01E07A3B3066B343007667A0 /* woman_Slavny-03.mp3 */,
+				01E07A3C3066B343007667A0 /* woman_Slavny-04.mp3 */,
+				01E07A3D3066B343007667A0 /* woman_Slavny-05.mp3 */,
 				019685CA30668560001AF394 /* man_Svetla-01.mp3 */,
 				019685CB30668560001AF394 /* man_Svetla-02.mp3 */,
 				019685CC30668560001AF394 /* man_Svetla-03.mp3 */,
 				019685CD30668560001AF394 /* man_Svetla-04.mp3 */,
 				019685CE30668560001AF394 /* man_Svetla-05.mp3 */,
+				01E07A433066B351007667A0 /* woman_Svetla-01.mp3 */,
+				01E07A443066B351007667A0 /* woman_Svetla-02.mp3 */,
+				01E07A453066B351007667A0 /* woman_Svetla-03.mp3 */,
+				01E07A463066B351007667A0 /* woman_Svetla-04.mp3 */,
+				01E07A473066B351007667A0 /* woman_Svetla-05.mp3 */,
 				019685CF30668560001AF394 /* man_Ruzenec_zacatek.mp3 */,
+				01E07A4D3066B460007667A0 /* woman_Ruzenec_zacatek.mp3 */,
 			);
 			path = raw;
 			sourceTree = "<group>";
@@ -443,6 +614,9 @@
 				01B2F03E2DEF44CD00EFC194 /* SelectionViewController.swift */,
 				01C3639E255EAA77003E685F /* SettingsDelegateManager.swift */,
 				4B01C4CC20F63D2B008D4CEA /* SettingsTableViewController.swift */,
+				0194A1F3306E67F000EE266E /* RuzenecTabBarController.swift */,
+				0194A1F5306E691500EE266E /* DalsiCollectionViewController.swift */,
+				0194A1F7306E6CFF00EE266E /* SettingsCollectionViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -558,8 +732,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				01BA2751306BEB5500F7F096 /* man_Pozdraveni_andelske.mp3 in Resources */,
 				019685D030668560001AF394 /* man_Korunka_Vyznani_viry.mp3 in Resources */,
 				019685D130668560001AF394 /* man_Svetla-05.mp3 in Resources */,
+				01BA275B306BF4B600F7F096 /* woman_SvatyJosef_konec.mp3 in Resources */,
 				019685D230668560001AF394 /* man_Korunka_ZdravasMaria.mp3 in Resources */,
 				019685D330668560001AF394 /* man_Radostny-04.mp3 in Resources */,
 				019685D430668560001AF394 /* man_Svetla-03.mp3 in Resources */,
@@ -573,12 +749,18 @@
 				019685DC30668560001AF394 /* man_Bolestny-03.mp3 in Resources */,
 				019685DD30668560001AF394 /* man_Korunka_Otce_nas.mp3 in Resources */,
 				0196862230669EA0001AF394 /* man_7Radostny-07.mp3 in Resources */,
+				01BA2755306BF21900F7F096 /* woman_Slava_otci.mp3 in Resources */,
 				0196862330669EA0001AF394 /* man_7Bolestny-02.mp3 in Resources */,
 				0196862430669EA0001AF394 /* man_7Bolestny-05.mp3 in Resources */,
 				0196862530669EA0001AF394 /* man_7Radostny-06.mp3 in Resources */,
 				0196862630669EA0001AF394 /* man_7Bolestny-07.mp3 in Resources */,
 				0196862730669EA0001AF394 /* man_7Bolestny-06.mp3 in Resources */,
 				0196862830669EA0001AF394 /* man_7Radostny-04.mp3 in Resources */,
+				01E07A483066B351007667A0 /* woman_Svetla-05.mp3 in Resources */,
+				01E07A493066B351007667A0 /* woman_Svetla-03.mp3 in Resources */,
+				01E07A4A3066B351007667A0 /* woman_Svetla-04.mp3 in Resources */,
+				01E07A4B3066B351007667A0 /* woman_Svetla-02.mp3 in Resources */,
+				01E07A4C3066B351007667A0 /* woman_Svetla-01.mp3 in Resources */,
 				0196862930669EA0001AF394 /* man_7Bolestny-03.mp3 in Resources */,
 				0196862A30669EA0001AF394 /* man_7Radostny-05.mp3 in Resources */,
 				0196862B30669EA0001AF394 /* man_7Bolestny-01.mp3 in Resources */,
@@ -591,6 +773,7 @@
 				019685FC30669D67001AF394 /* man_Frantisek7Bolestny-04.mp3 in Resources */,
 				019685FD30669D67001AF394 /* man_Frantisek7Radostny-07.mp3 in Resources */,
 				019685FE30669D67001AF394 /* man_Frantisek7Bolestny-05.mp3 in Resources */,
+				01E07A243066B323007667A0 /* woman_Ruzenec_konec.mp3 in Resources */,
 				019685FF30669D67001AF394 /* man_Frantisek7Radostny-02.mp3 in Resources */,
 				0196860030669D67001AF394 /* man_Frantisek7Bolestny-03.mp3 in Resources */,
 				0196860130669D67001AF394 /* man_Frantisek7Radostny-03.mp3 in Resources */,
@@ -600,11 +783,50 @@
 				0196860530669D67001AF394 /* man_Frantisek7Bolestny-07.mp3 in Resources */,
 				0196860630669D67001AF394 /* man_Frantisek7Radostny-05.mp3 in Resources */,
 				0196860730669D67001AF394 /* man_Frantisek7Radostny-04.mp3 in Resources */,
+				01E07A1C3066B305007667A0 /* woman_Bolestny-05.mp3 in Resources */,
+				01E07A3E3066B343007667A0 /* woman_Slavny-04.mp3 in Resources */,
+				01E07A3F3066B343007667A0 /* woman_Slavny-03.mp3 in Resources */,
+				01E07A403066B343007667A0 /* woman_Slavny-01.mp3 in Resources */,
+				01E07A413066B343007667A0 /* woman_Slavny-02.mp3 in Resources */,
+				01E07A423066B343007667A0 /* woman_Slavny-05.mp3 in Resources */,
+				01E07A1D3066B305007667A0 /* woman_Bolestny-03.mp3 in Resources */,
+				01E07A1E3066B305007667A0 /* woman_Bolestny-02.mp3 in Resources */,
+				01BA2757306BF22000F7F096 /* man_Slava_otci.mp3 in Resources */,
+				01E07A1F3066B305007667A0 /* woman_Bolestny-04.mp3 in Resources */,
+				01E07A203066B305007667A0 /* woman_Bolestny-01.mp3 in Resources */,
 				0196860830669D67001AF394 /* man_Frantisek7Bolestny-01.mp3 in Resources */,
 				0196860930669D67001AF394 /* man_Frantisek7Radostny-01.mp3 in Resources */,
 				019685E030668560001AF394 /* man_Bolestny-01.mp3 in Resources */,
 				019685E130668560001AF394 /* man_Slavny-04.mp3 in Resources */,
 				019685E230668560001AF394 /* man_Bolestny-02.mp3 in Resources */,
+				01E079FB3066B2B0007667A0 /* woman_7Bolestny-07.mp3 in Resources */,
+				01BA2753306BEB6400F7F096 /* woman_Pozdraveni_andelske.mp3 in Resources */,
+				01E079FC3066B2B0007667A0 /* woman_7Bolestny-03.mp3 in Resources */,
+				01E07A163066B2F5007667A0 /* woman_Otce_nas.mp3 in Resources */,
+				01E079FD3066B2B0007667A0 /* woman_7Bolestny-01.mp3 in Resources */,
+				01E079FE3066B2B0007667A0 /* woman_7Radostny-07.mp3 in Resources */,
+				01E07A0F3066B2E1007667A0 /* woman_Korunka_Vyznani_viry.mp3 in Resources */,
+				01E07A103066B2E1007667A0 /* woman_Korunka_konec.mp3 in Resources */,
+				01E07A113066B2E1007667A0 /* woman_Korunka_Ruzenec.mp3 in Resources */,
+				01E07A343066B338007667A0 /* woman_SvJosef-01.mp3 in Resources */,
+				01E07A353066B338007667A0 /* woman_SvJosef-02.mp3 in Resources */,
+				01E07A363066B338007667A0 /* woman_SvJosef-04.mp3 in Resources */,
+				01E07A373066B338007667A0 /* woman_SvJosef-05.mp3 in Resources */,
+				01E07A383066B338007667A0 /* woman_SvJosef-03.mp3 in Resources */,
+				01E07A123066B2E1007667A0 /* woman_Korunka_ZdravasMaria.mp3 in Resources */,
+				01E07A133066B2E1007667A0 /* woman_Korunka_hlavni.mp3 in Resources */,
+				01E07A143066B2E1007667A0 /* woman_Korunka_Otce_nas.mp3 in Resources */,
+				01E079FF3066B2B0007667A0 /* woman_7Radostny-05.mp3 in Resources */,
+				01E07A003066B2B0007667A0 /* woman_7Radostny-04.mp3 in Resources */,
+				01E07A013066B2B0007667A0 /* woman_7Bolestny-05.mp3 in Resources */,
+				01E07A223066B30D007667A0 /* woman_Desatek-konec.mp3 in Resources */,
+				01E07A023066B2B0007667A0 /* woman_7Bolestny-02.mp3 in Resources */,
+				01E07A033066B2B0007667A0 /* woman_7Bolestny-06.mp3 in Resources */,
+				01E07A043066B2B0007667A0 /* woman_7Bolestny-04.mp3 in Resources */,
+				01E07A053066B2B0007667A0 /* woman_7Radostny-01.mp3 in Resources */,
+				01E07A063066B2B0007667A0 /* woman_7Radostny-03.mp3 in Resources */,
+				01E07A073066B2B0007667A0 /* woman_7Radostny-06.mp3 in Resources */,
+				01E07A083066B2B0007667A0 /* woman_7Radostny-02.mp3 in Resources */,
 				019685E330668560001AF394 /* man_Slavny-05.mp3 in Resources */,
 				019685E430668560001AF394 /* man_Slavny-02.mp3 in Resources */,
 				019685E530668560001AF394 /* man_Slavny-01.mp3 in Resources */,
@@ -614,7 +836,13 @@
 				019685E930668560001AF394 /* man_Desatek-konec.mp3 in Resources */,
 				019685EA30668560001AF394 /* man_Radostny-01.mp3 in Resources */,
 				019685EB30668560001AF394 /* man_Korunka_hlavni.mp3 in Resources */,
+				01E07A2A3066B32E007667A0 /* woman_Radostny-02.mp3 in Resources */,
+				01E07A2B3066B32E007667A0 /* woman_Radostny-03.mp3 in Resources */,
+				01E07A2C3066B32E007667A0 /* woman_Radostny-04.mp3 in Resources */,
+				01E07A2D3066B32E007667A0 /* woman_Radostny-05.mp3 in Resources */,
+				01E07A2E3066B32E007667A0 /* woman_Radostny-01.mp3 in Resources */,
 				019685EC30668560001AF394 /* man_Korunka_Ruzenec.mp3 in Resources */,
+				01E07A4E3066B460007667A0 /* woman_Ruzenec_zacatek.mp3 in Resources */,
 				019685ED30668560001AF394 /* man_Radostny-05.mp3 in Resources */,
 				0196860F30669D78001AF394 /* man_SvJosef-04.mp3 in Resources */,
 				0196861030669D78001AF394 /* man_SvJosef-05.mp3 in Resources */,
@@ -623,6 +851,7 @@
 				0196861330669D78001AF394 /* man_SvJosef-03.mp3 in Resources */,
 				01FC3D9220C86E24005FABEF /* LaunchScreen.storyboard in Resources */,
 				01F33AF7255431E300B72E81 /* ruzenec_speak.json in Resources */,
+				01BA2759306BF4AE00F7F096 /* man_SvatyJosef_konec.mp3 in Resources */,
 				015B37AA20F78EA4001E15D3 /* ruzenec.json in Resources */,
 				01E4A8C62947782D007A63BA /* Assets.xcassets in Resources */,
 				0180F6AC239179DD00B863C1 /* GoogleService-Info.plist in Resources */,
@@ -690,6 +919,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				01BFD2E62AE817B30028396B /* OtecPioZacatekRuzenecViewController.swift in Sources */,
+				0194A1F6306E691500EE266E /* DalsiCollectionViewController.swift in Sources */,
 				01FC3D8A20C86E23005FABEF /* RuzenecViewController.swift in Sources */,
 				01BD588F2190465E006A44AA /* Constants.swift in Sources */,
 				012061C121C142000048E9B0 /* RosaryColors.swift in Sources */,
@@ -697,6 +927,7 @@
 				01C36397255EA9EA003E685F /* SettingsSwitchTableViewCell.swift in Sources */,
 				4BF14E2D2102021D0070ECD6 /* RosaryStructure.swift in Sources */,
 				01FC3D8820C86E23005FABEF /* AppDelegate.swift in Sources */,
+				0194A1F4306E67F000EE266E /* RuzenecTabBarController.swift in Sources */,
 				013A74C42DE7205E006284A0 /* DateManager.swift in Sources */,
 				4BF14E30210206190070ECD6 /* RosaryDataService.swift in Sources */,
 				01C363A4255EAAC5003E685F /* SettingsBundleHelper.swift in Sources */,
@@ -708,6 +939,7 @@
 				01C3639B255EAA1E003E685F /* SettingsSliderTableViewCell.swift in Sources */,
 				01A936A220D4474F00A5D979 /* Desatek.swift in Sources */,
 				01BCB598238C2B2A00209176 /* Global.swift in Sources */,
+				0194A1F8306E6CFF00EE266E /* SettingsCollectionViewController.swift in Sources */,
 				011A6DFD2BE0D53600C772BE /* FrantiskanskyRuzenecViewController.swift in Sources */,
 				01B2F03F2DEF44CD00EFC194 /* SelectionViewController.swift in Sources */,
 				01F6B3602701E16200300134 /* PompejPrayViewController.swift in Sources */,
