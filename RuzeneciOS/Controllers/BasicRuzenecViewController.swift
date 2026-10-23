@@ -1,5 +1,5 @@
 //
-//  RuzenecViewController.swift
+//  BasicRuzenecViewController.swift
 //  RuzeneciOS
 //
 //  Created by Petr Hracek on 06/06/2018.
@@ -11,7 +11,7 @@ import BonMot
 import AVFoundation
 import CallKit
 
-class RuzenecViewController: UIViewController, UINavigationControllerDelegate, UIScrollViewDelegate, UIGestureRecognizerDelegate {
+class BasicRuzenecViewController: UIViewController, UINavigationControllerDelegate, UIScrollViewDelegate, UIGestureRecognizerDelegate {
     
     //MARK: Properties
     
@@ -289,14 +289,8 @@ class RuzenecViewController: UIViewController, UINavigationControllerDelegate, U
     }
     
     func handle_counter (by direction: Bool) {
-        if direction {
-            count += 1
-            image_count += 1
-        }
-        else {
-            count -= 1
-            image_count -= 1
-        }
+        count += direction ? 1 : -1
+        image_count += direction ? 1 : -1
     }
     
     
@@ -361,11 +355,7 @@ class RuzenecViewController: UIViewController, UINavigationControllerDelegate, U
                 ruzenec_counter += 1
             }
             else {
-                if ruzenec_counter == 0 {
-                    ruzenec_counter = 7
-                } else {
-                    ruzenec_counter -= 1
-                }
+                ruzenec_counter = ruzenec_counter == 0 ? 7 : ruzenec_counter - 1
             }
             setRuzenecCounterSedm()
             ruzenec_text_contain.attributedText = get_html_text(text: secret, kindForGeneration: 1)
@@ -379,12 +369,7 @@ class RuzenecViewController: UIViewController, UINavigationControllerDelegate, U
             ruzenec_text_contain.attributedText = get_html_text(text: rosaryStructure.MojeVina)
             ruzenec_counter = 0
             setRuzenecCounterSedm()
-            if direction {
-                self.type_desatek += 1
-            }
-            else {
-                self.type_desatek -= 1
-            }
+            self.type_desatek += direction ? 1 : -1
         case rsn.meaCulpaSeven:
             ruzenec_text_contain.attributedText = get_html_text(text: rosaryStructure.MojeVina)
             next_button.isHidden = false
@@ -427,20 +412,13 @@ class RuzenecViewController: UIViewController, UINavigationControllerDelegate, U
     }
     
     func setRuzenecCounter(is_sedmi: Bool = false) {
-        if ruzenec_counter == 0 {
-            ruzenec_counter_label.text = ""
-        } else {
-            ruzenec_counter_label.text = "\(ruzenec_counter)/10"
-        }
+        ruzenec_counter_label.text = ruzenec_counter == 0 ? "" : "\(ruzenec_counter)/10"
     }
     
     func setRuzenecCounterSedm() {
-        if ruzenec_counter == 0 {
-            ruzenec_counter_label.text = ""
-        } else {
-            ruzenec_counter_label.text = "\(ruzenec_counter)/7"
-        }
+        ruzenec_counter_label.text = ruzenec_counter == 0 ? "" : "\(ruzenec_counter)/7"
     }
+    
     func show_ruzenec_text(by direction: Bool) {
         guard let rosaryStructure = rosaryStructure else { return }
         switch count {
@@ -482,12 +460,7 @@ class RuzenecViewController: UIViewController, UINavigationControllerDelegate, U
             setRuzenecCounter()
             ruzenec_text_contain.attributedText = get_html_text(text: rosaryStructure.MojeVina)
             if count < rn.meaCulpaFifth {
-                if direction {
-                    self.type_desatek += 1
-                }
-                else {
-                    self.type_desatek -= 1
-                }
+                self.type_desatek += direction ? 1 : -1
             }
         case rn.salveRegina:
             ruzenec_counter = 0
@@ -665,9 +638,10 @@ class RuzenecViewController: UIViewController, UINavigationControllerDelegate, U
         switch druh {
         case 1, 2, 3, 4:
             // Ruzenec - HOTOVO
-            playList.append(prefix_voice + "Ruzenec_zacatek")
-            playList.append(prefix_voice + "Pozdraveni_andelske")
-            playList.append(prefix_voice + "Slava_otci")
+            playList.append(prefix_voice + MP3Files.VeJmenuOtce)
+            playList.append(prefix_voice + MP3Files.VyznaniViry)
+            playList.append(prefix_voice + MP3Files.Pozdraveni_andelske)
+            playList.append(prefix_voice + MP3Files.Slava_otci)
             var typeRuzenec = "Radostny"
             if druh == 2 {
                 typeRuzenec = "Bolestny"
@@ -679,68 +653,43 @@ class RuzenecViewController: UIViewController, UINavigationControllerDelegate, U
                 typeRuzenec = "Svetla"
             }
             for k in 1...5 {
-                playList.append(prefix_voice + "Otce_nas")
+                playList.append(prefix_voice + MP3Files.Otce_nas)
                 let index = String(format: "%02d", k)
                 for _ in 1...10 {
                     playList.append(prefix_voice + "\(typeRuzenec)-\(index)")
                 }
-                playList.append(prefix_voice + "Desatek-konec")
+                playList.append(prefix_voice + MP3Files.Desatek_konec)
             }
-            playList.append(prefix_voice + "Ruzenec_konec")
+            playList.append(prefix_voice + MP3Files.Ruzenec_konec)
         case 5:
             // Korunka k Bozimu milosrdenstvi - HOTOVO
-            playList.append(prefix_voice + "\(korunka_prefix)_Otce_nas")
-            playList.append(prefix_voice + "\(korunka_prefix)_ZdravasMaria")
-            playList.append(prefix_voice + "\(korunka_prefix)_Vyznani_viry")
+            playList.append(prefix_voice + MP3Files.Otce_nas)
+            playList.append(prefix_voice + MP3Files.Zdravas_Maria)
+            playList.append(prefix_voice + MP3Files.Vyznani_viry)
             for _ in 1...5 {
-                playList.append(prefix_voice + "\(korunka_prefix)_hlavni")
+                playList.append(prefix_voice + MP3Files.Korunka_hlavni)
                 for _ in 1...10 {
-                    playList.append(prefix_voice + "\(korunka_prefix)_Ruzenec")
+                    playList.append(prefix_voice + MP3Files.Korunka_Ruzenec)
                 }
             }
             for _ in 1...3 {
-                playList.append(prefix_voice + "\(korunka_prefix)_konec")
+                playList.append(prefix_voice + MP3Files.Korunka_konec)
             }
-        case 6, 7, 8, 9:
-            // Sedmi bolestna, Sedmi radostna, FrantisekSedmiRadostny, FrantisekSedmiBolestny
-            playList.append(prefix_voice + "Ruzenec_zacatek")
-            playList.append(prefix_voice + "Otce_nas")
-            var typeRuzence = "7Bolestny"
-            if druh == 7 {
-                typeRuzence = "7Radostny"
-            }
-            if druh == 8 {
-                typeRuzence = "Frantisek7Radostny"
-            }
-            if druh == 9 {
-                typeRuzence = "Frantisek7Bolestny"
-            }
-            playList.append(prefix_voice + "\(typeRuzence)_pozdraveni")
-
-            for k in 1...7 {
-                playList.append(prefix_voice + "Otce_nas")
-//                for _ in 1...7 {
-                    let index = String(format: "%02d", k)
-                    playList.append(prefix_voice + "\(typeRuzence)-\(index)")
-//                }
-                playList.append(prefix_voice + "Desatek-konec")
-            }
-            playList.append(prefix_voice + "\(typeRuzence)_konec")
         case 10:
             // Ke svatemu Josefovi - HOTOVO
-            playList.append(prefix_voice + "Ruzenec_zacatek")
-            playList.append(prefix_voice + "Pozdraveni_andelske")
-            playList.append(prefix_voice + "Slava_otci")
+            playList.append(prefix_voice + MP3Files.VeJmenuOtce)
+            playList.append(prefix_voice + MP3Files.VyznaniViry)
+            playList.append(prefix_voice + MP3Files.Pozdraveni_andelske)
+            playList.append(prefix_voice + MP3Files.Slava_otci)
             for k in 1...5 {
-                playList.append(prefix_voice + "Otce_nas")
+                playList.append(prefix_voice + MP3Files.Otce_nas)
                 for _ in 1...10 {
                     let index = String(format: "%02d", k)
                     playList.append(prefix_voice + "SvJosef-\(index)")
                 }
-                playList.append(prefix_voice + "Desatek-konec")
+                playList.append(prefix_voice + MP3Files.Desatek_konec)
             }
-            playList.append(prefix_voice + "Ruzenec_konec")
-            playList.append(prefix_voice + "SvatyJosef_konec")
+            playList.append(prefix_voice + MP3Files.SvatyJosef_konec2)
         default:
             print("Nothing to do")
         }
@@ -789,7 +738,7 @@ class RuzenecViewController: UIViewController, UINavigationControllerDelegate, U
     }
 }
 
-private extension RuzenecViewController {
+private extension BasicRuzenecViewController {
     func setupUI() {
         ruzenec_text_contain.textAlignment = .center
         let tap = UITapGestureRecognizer(target: self, action: #selector(didTapOnScreen))
@@ -799,7 +748,7 @@ private extension RuzenecViewController {
     
 }
 
-extension RuzenecViewController: CXCallObserverDelegate {
+extension BasicRuzenecViewController: CXCallObserverDelegate {
     
     func callObserver(_ callObserver: CXCallObserver, callChanged call: CXCall) {
         var synCallStarted: Bool = false

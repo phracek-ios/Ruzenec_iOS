@@ -105,6 +105,9 @@ class FrantiskanskyRuzenecViewController: UIViewController, UINavigationControll
     var callObserver = CXCallObserver()
     let userDefaults = UserDefaults.standard
     var ruzenec_counter: Int = 0
+    public var audioPlayer = AVAudioPlayer()
+    var playlistPlayer = PlaylistPlayer()
+
     
     var isStatusBarHidden = false {
         didSet {
@@ -418,42 +421,48 @@ class FrantiskanskyRuzenecViewController: UIViewController, UINavigationControll
     @objc func playAction(sender: UIButton) {
         Global.vibrate()
         print("Playaction")
-        if !self.synthesizer.isSpeaking {
+        if !playlistPlayer.isPlaying {
             let play_img = UIImage(named: "ic_stop")
             play_button.setImage(play_img, for: .normal)
-            guard let rosarySpeak = rosarySpeakStructure else { return }
-            guard let rosary = rosaryStructure else { return }
-            let rosary_begin = "\(rosarySpeak.VyznaniViry) \(rosarySpeak.Otcenas) \(rosarySpeak.ZdravasMaria)v kterého věříme\(rosarySpeak.ZdravasMariaEnd)\(rosarySpeak.ZdravasMaria)v kterého doufáme\(rosarySpeak.ZdravasMariaEnd)\(rosarySpeak.ZdravasMaria)kterého nade všechno milujeme\(rosarySpeak.ZdravasMariaEnd) \(rosarySpeak.SlavaOtci)"
-            var text_to_speak: String = ""
-            for n in 0..<7 {
-                print(rosary.Ruzence[desatek!.desatek - 2].decades[n])
-                text_to_speak += rosarySpeak.Otcenas + String.init(repeating: "\(rosarySpeak.ZdravasMaria)\(rosary.Ruzence[desatek!.desatek - 2].decades[n])\(rosarySpeak.ZdravasMariaEnd)", count: 10) + rosarySpeak.SlavaOtci + rosarySpeak.MojeVina
+            var prefix = "man_"
+            if userDefaults.bool(forKey: keys.womanVoice) {
+                prefix = "woman_"
             }
-            text_to_speak += "\n" + rosarySpeak.ZdravasKralovno + rosarySpeak.ZaverecnaModlitba
-            speakText(text: text_to_speak)
+            if playlistPlayer.isPaused {
+                playlistPlayer.resume()
+            }
+            else {
+                playVoiceMp3(prefix_voice: prefix)
+            }
+
         }
         else {
             // TODO Pozastavit nebo stopnou. Dialog
             let play_img = UIImage(named: "ic_play")
             play_button.setImage(play_img, for: .normal)
-            self.synthesizer.pauseSpeaking(at: .immediate)
-            if !self.synthesizer.isPaused {
+            playlistPlayer.pause()
+            if !self.playlistPlayer.isPlaying {
                 let pauseDialog = UIAlertController()
                 let stopPlay = UIAlertAction(title: "Zastavit přehrávání", style: UIAlertActionStyle.default, handler: { (alert: UIAlertAction!) in
-                    self.synthesizer.stopSpeaking(at: .immediate)
+                    //self.synthesizer.stopSpeaking(at: .immediate)
                     print("playing stopped")
+                    self.playlistPlayer.isPaused = false
+                    self.playlistPlayer.stop()
                 })
                 let pausePlay = UIAlertAction(title: "Pozastavit přehrávání", style: UIAlertActionStyle.default, handler: { (alert: UIAlertAction!) in
-                    self.synthesizer.pauseSpeaking(at: .immediate)
+                    //self.synthesizer.pauseSpeaking(at: .immediate)
                     print("playing paused")
                     let play_img = UIImage(named: "ic_pause")
                     self.play_button.setImage(play_img, for: .normal)
+                    self.playlistPlayer.isPaused = true
+                    self.playlistPlayer.pause()
                 })
                 let cancel = UIAlertAction(title: "Zrušit", style: UIAlertActionStyle.cancel, handler: { (alert: UIAlertAction!) in
-                    self.synthesizer.continueSpeaking()
+                    //self.synthesizer.continueSpeaking()
                     let play_img = UIImage(named: "ic_stop")
                     self.play_button.setImage(play_img, for: .normal)
                     print("continue playing")
+                    self.playlistPlayer.resume()
                 })
                 pauseDialog.addAction(stopPlay)
                 pauseDialog.addAction(pausePlay)
@@ -463,12 +472,91 @@ class FrantiskanskyRuzenecViewController: UIViewController, UINavigationControll
             else {
                 let play_img = UIImage(named: "ic_stop")
                 play_button.setImage(play_img, for: .normal)
-                self.synthesizer.continueSpeaking()
+                self.playlistPlayer.play()
             }
         }
         enabledDarkMode()
 
     }
+    
+    func playVoiceMp3(prefix_voice: String) {
+        let josef_prefix = "Josef"
+
+        var playList: [String] = []
+        let druh = desatek?.desatek
+        print("FrantiskanskyRuzenecViewController(playVoiceMp3): \(druh)")
+        switch druh {
+        case 6, 7: // HOTOVO
+            // Sedmi bolestna, Sedmi radostna - Vyznani, Otce, Pozdraveni_andelske, Slava Otci,
+            playList.append(prefix_voice + MP3Files.VeJmenuOtce)
+            playList.append(prefix_voice + MP3Files.VyznaniViry)
+            playList.append(prefix_voice + MP3Files.Pozdraveni_andelske)
+            playList.append(prefix_voice + MP3Files.Slava_otci)
+            var typeRuzence = "7Bolestny"
+            if druh == 7 {
+                typeRuzence = "7Radostny"
+            }
+            playList.append(prefix_voice + "\(typeRuzence)_pozdraveni")
+            
+            for k in 1...7 {
+                playList.append(prefix_voice + MP3Files.Otce_nas)
+                for _ in 1...7 {
+                    let index = String(format: "%02d", k)
+                    playList.append(prefix_voice + "\(typeRuzence)-\(index)")
+                }
+                playList.append(prefix_voice + MP3Files.Desatek_konec)
+            }
+            // Pro 7 bolestny
+            // Po pane Jezisi je Udel nam Panno Maria, Prosim Te bozsky spasiteli
+            if druh == 6 {
+                playList.append(prefix_voice + MP3Files.Udel_nam_PannoMaria)
+                playList.append(prefix_voice + MP3Files.Prosime_Te_BozskySpasiteli)
+            }
+            else
+            {
+                // Pro 7radostny
+                // Po pane Jezisi, Zdravas Kralovno, klasicky konec.
+                playList.append(prefix_voice + MP3Files.Ruzenec_konec)
+            }
+        case 8, 9: // HOTOVO
+            // FrantisekSedmiRadostny, FrantisekSedmiBolestny
+            // Vyznani viry, Otce nas, Pozdraveni andelske normalni, Slava otci
+            playList.append(prefix_voice + MP3Files.VeJmenuOtce)
+            playList.append(prefix_voice + MP3Files.VyznaniViry)
+            playList.append(prefix_voice + MP3Files.Otce_nas)
+            playList.append(prefix_voice + MP3Files.Pozdraveni_andelske)
+            playList.append(prefix_voice + MP3Files.Slava_otci)
+            var typeRuzence = "Frantisek7Bolestny"
+            if druh == 9 {
+                typeRuzence = "Frantisek7Radostny"
+            }
+            for k in 1...7 {
+                playList.append(prefix_voice + MP3Files.Otce_nas)
+                // Je jich 10
+                for _ in 1...10 {
+                    let index = String(format: "%02d", k)
+                    playList.append(prefix_voice + "\(typeRuzence)-\(index)")
+                }
+                playList.append(prefix_voice + MP3Files.Slava_otci)
+            }
+
+            // Pane Jezisi, Zdravas Maria jenom ciste. Zdravas Maria jenom ciste, Zdravas kralovno, KLasicky zaveer.
+            playList.append(prefix_voice + MP3Files.Ruzenec_konec)
+
+        default:
+            print("Nothing to do")
+        }
+        print(playList)
+        playlistPlayer.onPlaybackFinished = { [weak self] in
+            DispatchQueue.main.async {
+                let play_img = UIImage(named: "ic_play")
+                self?.play_button.setImage(play_img, for: .normal)
+            }
+        }
+        playlistPlayer.setupPlaylist(fileNames: playList)
+        playlistPlayer.play()
+    }
+
     @objc func nextAction(sender: UIButton) {
         Global.vibrate()
         enabledDarkMode()

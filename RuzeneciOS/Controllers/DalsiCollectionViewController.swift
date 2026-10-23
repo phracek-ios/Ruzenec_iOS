@@ -11,15 +11,8 @@ import os.log
 import FirebaseAnalytics
 
 class JineCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
-    
-    enum RowType {
-        case desatek
-        case settings
-        case about
-    }
-    
+        
     struct RowData {
-        let type: RowType
         let desatek: Desatek?
     }
 
@@ -107,10 +100,8 @@ class JineCollectionViewController: UICollectionViewController, UICollectionView
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: DesatekCollectionViewCell.cellId, for: indexPath) as! DesatekCollectionViewCell
         let data = rowData[indexPath.row]
-        var name: String = ""
-        var image_name: String = ""
-        name = data.desatek!.name
-        image_name = data.desatek!.photo
+        let name = data.desatek!.name
+        let image_name = data.desatek!.photo
         cell.configureCell(name: name, image_name: image_name)
 
         return cell
@@ -124,13 +115,32 @@ class JineCollectionViewController: UICollectionViewController, UICollectionView
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let data = rowData[indexPath.row]
-        if indexPath.row == RosaryConstants.pompej.rawValue {
+        let desatek_type = data.desatek?.desatek
+        if desatek_type == RosaryConstants.pompej.rawValue {
             let pompejViewController = PompejViewController()
             navigationController?.pushViewController(pompejViewController, animated: true)
         }
+        else if desatek_type == RosaryConstants.otecPio.rawValue {
+            let otecPioVC = OtecPioZacatekViewController()
+            if let selectedDesatek = rowData[Date().getDayOfWeek() + 1].desatek {
+                otecPioVC.desatek = selectedDesatek
+                otecPioVC.navigationItem.title = selectedDesatek.name
+            }
+            navigationController?.pushViewController(otecPioVC, animated: true)
+
+        }
+        else if desatek_type == RosaryConstants.sv_Josef.rawValue {
+            let ruzenecViewController = BasicRuzenecViewController()
+            if let selectedDesatek = data.desatek {
+                ruzenecViewController.desatek = selectedDesatek
+                ruzenecViewController.navigationItem.title = selectedDesatek.name
+            }
+            navigationController?.pushViewController(ruzenecViewController, animated: true)
+
+        }
         else {
-            let ruzenecViewController = RuzenecViewController()
-            if let selectedDesatek = rowData[indexPath.row].desatek {
+            let ruzenecViewController = FrantiskanskyRuzenecViewController()
+            if let selectedDesatek = data.desatek {
                 ruzenecViewController.desatek = selectedDesatek
                 ruzenecViewController.navigationItem.title = selectedDesatek.name
             }
@@ -173,13 +183,14 @@ class JineCollectionViewController: UICollectionViewController, UICollectionView
         guard let otec_pio = Desatek(name: "Růženec otce Pia", photo: photoOtecPio, desatek: RosaryConstants.otecPio.rawValue) else {
             fatalError("Unable to instanciate pompej novena")
         }
-        
-        desatky += [sedmibolestne,
-                    sedmiradostne, frantiskanskysedmibolestny, frantiskanskysedmiradostny, sv_josef, otec_pio, pompejska_novena]
+        desatky = [sedmibolestne,
+                    sedmiradostne, frantiskanskysedmibolestny, frantiskanskysedmiradostny, sv_josef, pompejska_novena, otec_pio]
     }
     
     private func loadRowData() {
-        rowData = desatky.map { RowData(type: .desatek, desatek: $0) }
+        for desatek in desatky {
+            rowData.append(RowData(desatek: desatek))
+        }
     }
 }
 

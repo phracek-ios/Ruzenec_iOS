@@ -244,7 +244,7 @@ class OtecPioZacatekViewController: UIViewController, UINavigationControllerDele
         play_button.centerXAnchor.constraint(equalTo: btnViewContainer.centerXAnchor).isActive = true
         let play_img = UIImage(named: "ic_play")
         play_button.setImage(play_img, for: .normal)
-        print("OTEC PIO LOAD FINIE")
+        print("OtecPioZacatekViewController OTEC PIO LOAD FINIE")
 
     }
     func show_image (by direction: Bool) {

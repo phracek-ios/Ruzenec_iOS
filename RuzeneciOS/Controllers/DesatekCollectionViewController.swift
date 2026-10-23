@@ -14,12 +14,9 @@ class DesatekCollectionViewController: UICollectionViewController, UICollectionV
     
     enum RowType {
         case desatek
-        case settings
-        case about
     }
     
     struct RowData {
-        let type: RowType
         let desatek: Desatek?
     }
 
@@ -121,36 +118,21 @@ class DesatekCollectionViewController: UICollectionViewController, UICollectionV
     //MARK: - Navigation
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        if indexPath.row == RosaryConstants.otecPio.rawValue {
-            let otecPioVC = OtecPioZacatekViewController()
-            if let selectedDesatek = rowData[Date().getDayOfWeek()].desatek {
-                otecPioVC.desatek = selectedDesatek
-                otecPioVC.navigationItem.title = selectedDesatek.name
-            }
-            navigationController?.pushViewController(otecPioVC, animated: true)
-        }
-        else if (indexPath.row == RosaryConstants.frantiseksedmibolestne.rawValue) || (indexPath.row == RosaryConstants.frantiseksedmiradostne.rawValue){
-            let frantiskanskyVC = FrantiskanskyRuzenecViewController()
-            if let selectedDesatek = rowData[indexPath.row].desatek {
-                frantiskanskyVC.desatek = selectedDesatek
-                frantiskanskyVC.navigationItem.title = selectedDesatek.name
-            }
-            navigationController?.pushViewController(frantiskanskyVC, animated: true)
+        let data = rowData[indexPath.row]
+        let ruzenecViewController = BasicRuzenecViewController()
+        print(data.desatek?.desatek)
+        print(Date().getDayOfWeek())
+        if data.desatek?.desatek == RosaryConstants.dnes.rawValue {
+            ruzenecViewController.desatek = rowData[Date().getDayOfWeek()].desatek
+            ruzenecViewController.navigationItem.title = rowData[Date().getDayOfWeek()].desatek?.name
         }
         else {
-            let ruzenecViewController = RuzenecViewController()
-            if indexPath.row == RosaryConstants.dnes.rawValue {
-                ruzenecViewController.desatek = rowData[Date().getDayOfWeek()].desatek
-                ruzenecViewController.navigationItem.title = rowData[Date().getDayOfWeek()].desatek?.name
+            if let selectedDesatek = rowData[indexPath.row].desatek {
+                ruzenecViewController.desatek = selectedDesatek
+                ruzenecViewController.navigationItem.title = selectedDesatek.name
             }
-            else {
-                if let selectedDesatek = rowData[indexPath.row].desatek {
-                    ruzenecViewController.desatek = selectedDesatek
-                    ruzenecViewController.navigationItem.title = selectedDesatek.name
-                }
-            }
-            navigationController?.pushViewController(ruzenecViewController, animated: true)
         }
+        navigationController?.pushViewController(ruzenecViewController, animated: true)
     }
 
     private func loadDesatky() {
@@ -185,11 +167,14 @@ class DesatekCollectionViewController: UICollectionViewController, UICollectionV
         }
 
         
-        desatky += [calendar, radostny, bolestny, svetla, slavny, korunka]
+        desatky = [calendar, radostny, bolestny, svetla, slavny, korunka]
     }
     
     private func loadRowData() {
-        rowData = desatky.map { RowData(type: .desatek, desatek: $0) }
+        for desatek in desatky {
+            rowData.append(RowData(desatek: desatek))
+        }
+        print("JineCollectionViewController(loadRowData): \(rowData)")
     }
 }
 
