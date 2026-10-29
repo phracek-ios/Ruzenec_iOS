@@ -120,8 +120,6 @@ class DesatekCollectionViewController: UICollectionViewController, UICollectionV
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let data = rowData[indexPath.row]
         let ruzenecViewController = BasicRuzenecViewController()
-        print(data.desatek?.desatek)
-        print(Date().getDayOfWeek())
         if data.desatek?.desatek == RosaryConstants.dnes.rawValue {
             ruzenecViewController.desatek = rowData[Date().getDayOfWeek()].desatek
             ruzenecViewController.navigationItem.title = rowData[Date().getDayOfWeek()].desatek?.name

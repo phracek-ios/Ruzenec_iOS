@@ -27,6 +27,7 @@ class JineCollectionViewController: UICollectionViewController, UICollectionView
     fileprivate var desatky = [Desatek]()
     fileprivate var rowData = [RowData]()
     fileprivate var darkMode: Bool = false
+    var desatek: Desatek?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -121,11 +122,7 @@ class JineCollectionViewController: UICollectionViewController, UICollectionView
             navigationController?.pushViewController(pompejViewController, animated: true)
         }
         else if desatek_type == RosaryConstants.otecPio.rawValue {
-            let otecPioVC = OtecPioZacatekViewController()
-            if let selectedDesatek = rowData[Date().getDayOfWeek() + 1].desatek {
-                otecPioVC.desatek = selectedDesatek
-                otecPioVC.navigationItem.title = selectedDesatek.name
-            }
+            let otecPioVC = OtecPioRuzenecViewController()
             navigationController?.pushViewController(otecPioVC, animated: true)
 
         }
@@ -183,6 +180,7 @@ class JineCollectionViewController: UICollectionViewController, UICollectionView
         guard let otec_pio = Desatek(name: "Růženec otce Pia", photo: photoOtecPio, desatek: RosaryConstants.otecPio.rawValue) else {
             fatalError("Unable to instanciate pompej novena")
         }
+    
         desatky = [sedmibolestne,
                     sedmiradostne, frantiskanskysedmibolestny, frantiskanskysedmiradostny, sv_josef, pompejska_novena, otec_pio]
     }

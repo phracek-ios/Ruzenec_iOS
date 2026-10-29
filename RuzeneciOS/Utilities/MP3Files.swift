@@ -25,4 +25,8 @@ class MP3Files {
     static let Udel_nam_PannoMaria = "Udel_nam_PannoMaria"
     static let Prosime_Te_BozskySpasiteli = "Prosime_Te_BozskySpasiteli"
     static let SvatyJosef_konec2 = "SvatyJosef_konec2"
+    static let OtecPioPoDesatku = "OtecPioPoDesatku"
+    static let OtecPioPoKazdemZrnku = "OtecPioPoKazdemZrnku"
+    static let OtecPioZacatek = "OtecPioZacatek"
+    static let OtecPioZaver = "OtecPioZaver"
 }

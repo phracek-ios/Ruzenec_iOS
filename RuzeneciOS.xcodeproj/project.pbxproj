@@ -112,12 +112,20 @@
 		01BA2757306BF22000F7F096 /* man_Slava_otci.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 01BA2756306BF22000F7F096 /* man_Slava_otci.mp3 */; };
 		01BCB598238C2B2A00209176 /* Global.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01BCB597238C2B2A00209176 /* Global.swift */; };
 		01BD588F2190465E006A44AA /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01BD588E2190465E006A44AA /* Constants.swift */; };
-		01BFD2E62AE817B30028396B /* OtecPioZacatekRuzenecViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01BFD2E52AE817B30028396B /* OtecPioZacatekRuzenecViewController.swift */; };
+		01BFD2E62AE817B30028396B /* OtecPioRuzenecViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01BFD2E52AE817B30028396B /* OtecPioRuzenecViewController.swift */; };
 		01C36393255EA6CA003E685F /* SettingsItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01C36392255EA6CA003E685F /* SettingsItem.swift */; };
 		01C36397255EA9EA003E685F /* SettingsSwitchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01C36396255EA9EA003E685F /* SettingsSwitchTableViewCell.swift */; };
 		01C3639B255EAA1E003E685F /* SettingsSliderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01C3639A255EAA1E003E685F /* SettingsSliderTableViewCell.swift */; };
 		01C3639F255EAA77003E685F /* SettingsDelegateManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01C3639E255EAA77003E685F /* SettingsDelegateManager.swift */; };
 		01C363A4255EAAC5003E685F /* SettingsBundleHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01C363A3255EAAC5003E685F /* SettingsBundleHelper.swift */; };
+		01CF781D308F89F1002B21A3 /* man_OtecPioPoDesatku.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 01CF7815308F89F1002B21A3 /* man_OtecPioPoDesatku.mp3 */; };
+		01CF781E308F89F1002B21A3 /* man_OtecPioZacatek.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 01CF7817308F89F1002B21A3 /* man_OtecPioZacatek.mp3 */; };
+		01CF781F308F89F1002B21A3 /* woman_OtecPioZaver.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 01CF781C308F89F1002B21A3 /* woman_OtecPioZaver.mp3 */; };
+		01CF7820308F89F1002B21A3 /* woman_OtecPioPoDesatku.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 01CF7819308F89F1002B21A3 /* woman_OtecPioPoDesatku.mp3 */; };
+		01CF7821308F89F1002B21A3 /* woman_OtecPioPoKazdemZrnku.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 01CF781A308F89F1002B21A3 /* woman_OtecPioPoKazdemZrnku.mp3 */; };
+		01CF7822308F89F1002B21A3 /* woman_OtecPioZacatek.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 01CF781B308F89F1002B21A3 /* woman_OtecPioZacatek.mp3 */; };
+		01CF7823308F89F1002B21A3 /* man_OtecPioZaver.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 01CF7818308F89F1002B21A3 /* man_OtecPioZaver.mp3 */; };
+		01CF7824308F89F1002B21A3 /* man_OtecPioPoKazdemZrnku.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 01CF7816308F89F1002B21A3 /* man_OtecPioPoKazdemZrnku.mp3 */; };
 		01E079FB3066B2B0007667A0 /* woman_7Bolestny-07.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 01E079F33066B2B0007667A0 /* woman_7Bolestny-07.mp3 */; };
 		01E079FC3066B2B0007667A0 /* woman_7Bolestny-03.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 01E079EF3066B2B0007667A0 /* woman_7Bolestny-03.mp3 */; };
 		01E079FD3066B2B0007667A0 /* woman_7Bolestny-01.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 01E079ED3066B2B0007667A0 /* woman_7Bolestny-01.mp3 */; };
@@ -309,13 +317,21 @@
 		01BA2756306BF22000F7F096 /* man_Slava_otci.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = man_Slava_otci.mp3; sourceTree = "<group>"; };
 		01BCB597238C2B2A00209176 /* Global.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Global.swift; sourceTree = "<group>"; };
 		01BD588E2190465E006A44AA /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
-		01BFD2E52AE817B30028396B /* OtecPioZacatekRuzenecViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtecPioZacatekRuzenecViewController.swift; sourceTree = "<group>"; };
+		01BFD2E52AE817B30028396B /* OtecPioRuzenecViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtecPioRuzenecViewController.swift; sourceTree = "<group>"; };
 		01C36392255EA6CA003E685F /* SettingsItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsItem.swift; sourceTree = "<group>"; };
 		01C36396255EA9EA003E685F /* SettingsSwitchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsSwitchTableViewCell.swift; sourceTree = "<group>"; };
 		01C3639A255EAA1E003E685F /* SettingsSliderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsSliderTableViewCell.swift; sourceTree = "<group>"; };
 		01C3639E255EAA77003E685F /* SettingsDelegateManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsDelegateManager.swift; sourceTree = "<group>"; };
 		01C363A3255EAAC5003E685F /* SettingsBundleHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsBundleHelper.swift; sourceTree = "<group>"; };
 		01CD80A220F6890200A8BE5C /* ruzenec.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = ruzenec.json; sourceTree = "<group>"; };
+		01CF7815308F89F1002B21A3 /* man_OtecPioPoDesatku.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = man_OtecPioPoDesatku.mp3; sourceTree = "<group>"; };
+		01CF7816308F89F1002B21A3 /* man_OtecPioPoKazdemZrnku.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = man_OtecPioPoKazdemZrnku.mp3; sourceTree = "<group>"; };
+		01CF7817308F89F1002B21A3 /* man_OtecPioZacatek.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = man_OtecPioZacatek.mp3; sourceTree = "<group>"; };
+		01CF7818308F89F1002B21A3 /* man_OtecPioZaver.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = man_OtecPioZaver.mp3; sourceTree = "<group>"; };
+		01CF7819308F89F1002B21A3 /* woman_OtecPioPoDesatku.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = woman_OtecPioPoDesatku.mp3; sourceTree = "<group>"; };
+		01CF781A308F89F1002B21A3 /* woman_OtecPioPoKazdemZrnku.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = woman_OtecPioPoKazdemZrnku.mp3; sourceTree = "<group>"; };
+		01CF781B308F89F1002B21A3 /* woman_OtecPioZacatek.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = woman_OtecPioZacatek.mp3; sourceTree = "<group>"; };
+		01CF781C308F89F1002B21A3 /* woman_OtecPioZaver.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = woman_OtecPioZaver.mp3; sourceTree = "<group>"; };
 		01E079ED3066B2B0007667A0 /* woman_7Bolestny-01.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "woman_7Bolestny-01.mp3"; sourceTree = "<group>"; };
 		01E079EE3066B2B0007667A0 /* woman_7Bolestny-02.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "woman_7Bolestny-02.mp3"; sourceTree = "<group>"; };
 		01E079EF3066B2B0007667A0 /* woman_7Bolestny-03.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "woman_7Bolestny-03.mp3"; sourceTree = "<group>"; };
@@ -419,6 +435,14 @@
 		016858FB305D3A5E009BA088 /* raw */ = {
 			isa = PBXGroup;
 			children = (
+				01CF7815308F89F1002B21A3 /* man_OtecPioPoDesatku.mp3 */,
+				01CF7816308F89F1002B21A3 /* man_OtecPioPoKazdemZrnku.mp3 */,
+				01CF7817308F89F1002B21A3 /* man_OtecPioZacatek.mp3 */,
+				01CF7818308F89F1002B21A3 /* man_OtecPioZaver.mp3 */,
+				01CF7819308F89F1002B21A3 /* woman_OtecPioPoDesatku.mp3 */,
+				01CF781A308F89F1002B21A3 /* woman_OtecPioPoKazdemZrnku.mp3 */,
+				01CF781B308F89F1002B21A3 /* woman_OtecPioZacatek.mp3 */,
+				01CF781C308F89F1002B21A3 /* woman_OtecPioZaver.mp3 */,
 				01F5C101308A6F8600DA2F31 /* man_VeJmenuOtce.mp3 */,
 				01F5C102308A6F8600DA2F31 /* man_VyznaniViry.mp3 */,
 				01F5C103308A6F8600DA2F31 /* woman_VeJmenuOtce.mp3 */,
@@ -674,17 +698,17 @@
 				01C363A2255EAA9C003E685F /* Settings */,
 				01C36391255EA697003E685F /* Models */,
 				4B01C4CE20F63D41008D4CEA /* AboutViewController.swift */,
+				01FC3D8920C86E23005FABEF /* BasicRuzenecViewController.swift */,
+				0194A1F5306E691500EE266E /* DalsiCollectionViewController.swift */,
 				01A9369F20D4447500A5D979 /* DesatekCollectionViewController.swift */,
 				011A6DFC2BE0D53600C772BE /* FrantiskanskyRuzenecViewController.swift */,
-				01BFD2E52AE817B30028396B /* OtecPioZacatekRuzenecViewController.swift */,
+				01BFD2E52AE817B30028396B /* OtecPioRuzenecViewController.swift */,
 				01F6B35D2701D2B100300134 /* PompejViewController.swift */,
 				01F6B35F2701E16200300134 /* PompejPrayViewController.swift */,
-				01FC3D8920C86E23005FABEF /* BasicRuzenecViewController.swift */,
 				01B2F03E2DEF44CD00EFC194 /* SelectionViewController.swift */,
 				01C3639E255EAA77003E685F /* SettingsDelegateManager.swift */,
 				4B01C4CC20F63D2B008D4CEA /* SettingsTableViewController.swift */,
 				0194A1F3306E67F000EE266E /* RuzenecTabBarController.swift */,
-				0194A1F5306E691500EE266E /* DalsiCollectionViewController.swift */,
 				0194A1F7306E6CFF00EE266E /* SettingsCollectionViewController.swift */,
 			);
 			path = Controllers;
@@ -821,6 +845,14 @@
 				0196862330669EA0001AF394 /* man_7Bolestny-02.mp3 in Resources */,
 				0196862430669EA0001AF394 /* man_7Bolestny-05.mp3 in Resources */,
 				0196862530669EA0001AF394 /* man_7Radostny-06.mp3 in Resources */,
+				01CF781D308F89F1002B21A3 /* man_OtecPioPoDesatku.mp3 in Resources */,
+				01CF781E308F89F1002B21A3 /* man_OtecPioZacatek.mp3 in Resources */,
+				01CF781F308F89F1002B21A3 /* woman_OtecPioZaver.mp3 in Resources */,
+				01CF7820308F89F1002B21A3 /* woman_OtecPioPoDesatku.mp3 in Resources */,
+				01CF7821308F89F1002B21A3 /* woman_OtecPioPoKazdemZrnku.mp3 in Resources */,
+				01CF7822308F89F1002B21A3 /* woman_OtecPioZacatek.mp3 in Resources */,
+				01CF7823308F89F1002B21A3 /* man_OtecPioZaver.mp3 in Resources */,
+				01CF7824308F89F1002B21A3 /* man_OtecPioPoKazdemZrnku.mp3 in Resources */,
 				0196862630669EA0001AF394 /* man_7Bolestny-07.mp3 in Resources */,
 				0196862730669EA0001AF394 /* man_7Bolestny-06.mp3 in Resources */,
 				0196862830669EA0001AF394 /* man_7Radostny-04.mp3 in Resources */,
@@ -1009,7 +1041,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				01BFD2E62AE817B30028396B /* OtecPioZacatekRuzenecViewController.swift in Sources */,
+				01BFD2E62AE817B30028396B /* OtecPioRuzenecViewController.swift in Sources */,
 				0194A1F6306E691500EE266E /* DalsiCollectionViewController.swift in Sources */,
 				01FC3D8A20C86E23005FABEF /* BasicRuzenecViewController.swift in Sources */,
 				01BD588F2190465E006A44AA /* Constants.swift in Sources */,
@@ -1214,7 +1246,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.10.0;
+				MARKETING_VERSION = 1.10.2;
 				PRODUCT_BUNDLE_IDENTIFIER = org.phracek.Ruzenec;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1242,7 +1274,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.10.0;
+				MARKETING_VERSION = 1.10.2;
 				PRODUCT_BUNDLE_IDENTIFIER = org.phracek.Ruzenec;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";

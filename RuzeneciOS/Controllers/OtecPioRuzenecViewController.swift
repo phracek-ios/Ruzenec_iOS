@@ -12,7 +12,7 @@ import AVFoundation
 import CallKit
 
 // http://www.farnost-vlachovo-brezi.cz/cs/modlitby/ruzenec-otce-pia/
-class OtecPioZacatekViewController: UIViewController, UINavigationControllerDelegate, UIScrollViewDelegate, UIGestureRecognizerDelegate {
+class OtecPioRuzenecViewController: UIViewController, UINavigationControllerDelegate, UIScrollViewDelegate, UIGestureRecognizerDelegate {
     
     lazy var ruzenec_text_contain: UILabel = {
         let l = UILabel()
@@ -103,7 +103,10 @@ class OtecPioZacatekViewController: UIViewController, UINavigationControllerDele
     var callObserver = CXCallObserver()
     let userDefaults = UserDefaults.standard
     var ruzenec_counter: Int = 0
-    
+    public var audioPlayer = AVAudioPlayer()
+    var playlistPlayer = PlaylistPlayer()
+    var current_day: Int?
+
     var isStatusBarHidden = false {
         didSet {
             UIView.animate(withDuration: 0.25) { () -> Void in
@@ -130,12 +133,17 @@ class OtecPioZacatekViewController: UIViewController, UINavigationControllerDele
         callObserver.setDelegate(self, queue: nil)
         speak = false
         setupUI()
+        title = "Růženec otce Pia"
         if userDefaults.bool(forKey: keys.idleTimer) == true {
             UIApplication.shared.isIdleTimerDisabled = true
         }
         else {
             UIApplication.shared.isIdleTimerDisabled = false
         }
+        current_day = Date().getDayOfWeek()
+        // debugPrint("Current day: \(current_day!)")
+        let desatek = rosaryStructure?.Ruzence[current_day! - 1]
+        // debugPrint("Desatek is: \(desatek!)")
         if let desatek = desatek {
             navigationController?.title = desatek.name
             if darkMode {
@@ -169,7 +177,7 @@ class OtecPioZacatekViewController: UIViewController, UINavigationControllerDele
                 self.back = KKCBackgroundLightMode
                 self.text = KKCTextLightMode
             }
-            self.zdravas_number = desatek.desatek
+            self.zdravas_number = current_day!
             show_texts(by: true)
         }
         if synthesizer.isPaused {
@@ -266,7 +274,7 @@ class OtecPioZacatekViewController: UIViewController, UINavigationControllerDele
     }
     
     func show_texts(by direction: Bool) {
-        debugPrint("OtecPioZacatekViewController: show_texts: \(direction) \(self.image_count)")
+        // debugPrint("OtecPioZacatekViewController: show_texts: \(direction) \(self.image_count)")
         show_image(by: direction)
         if count < 8 {
             show_ruzenec_zacatek(by: direction)
@@ -347,8 +355,10 @@ class OtecPioZacatekViewController: UIViewController, UINavigationControllerDele
 
             }
             setRuzenecCounter()
+            // debugPrint("TypeDesatek: \(self.type_desatek)")
             if self.zdravas_number == 8 {
                 let rosary = self.getRuzenec()
+                // debugPrint("Ruzenec is \(rosary)")
                 let secret = rosary.decades[self.type_desatek]
                 ruzenec_text_contain.attributedText = get_html_text(text: secret, kindForGeneration: 1)
             }
@@ -395,49 +405,49 @@ class OtecPioZacatekViewController: UIViewController, UINavigationControllerDele
 
     @objc func playAction(sender: UIButton) {
         Global.vibrate()
-        if !self.synthesizer.isSpeaking {
+        print("Playaction")
+        if !playlistPlayer.isPlaying {
             let play_img = UIImage(named: "ic_stop")
             play_button.setImage(play_img, for: .normal)
-            guard let rosarySpeak = rosarySpeakStructure else { return }
-            guard let rosary = rosaryStructure else { return }
-            let rosary_begin = "\(rosarySpeak.VeJmenuOtce) \(rosarySpeak.otPioUvod) \(rosarySpeak.VyznaniViry) \(rosarySpeak.Otcenas) \(rosarySpeak.ZdravasMaria)v kterého věříme\(rosarySpeak.ZdravasMariaEnd)\(rosarySpeak.ZdravasMaria)v kterého doufáme\(rosarySpeak.ZdravasMariaEnd)\(rosarySpeak.ZdravasMaria)kterého nade všechno milujeme\(rosarySpeak.ZdravasMariaEnd) \(rosarySpeak.SlavaOtci)"
-            var text_to_speak: String = ""
-            switch desatek?.desatek {
-            // Ruzenec Radostny, Bolestny, Svetla, Slavny
-            case 1, 2, 3, 4:
-                text_to_speak += rosary_begin
-                for n in 0..<5 {
-                    print(rosary.Ruzence[desatek!.desatek - 1].decades[n])
-                    text_to_speak += rosarySpeak.Otcenas + String.init(repeating: "\(rosarySpeak.Otcenas) \(rosarySpeak.ZdravasMaria)\(rosary.Ruzence[desatek!.desatek - 1].decades[n])\(rosarySpeak.ZdravasMariaEnd)", count: 10) + rosarySpeak.SlavaOtci + rosarySpeak.MojeVina + rosarySpeak.otPioPoZrnkuZaver + rosarySpeak.otPioPoDesatku
-                }
-                text_to_speak += rosarySpeak.ZdravasKralovno + rosarySpeak.otPioZaver
-            default:
-                text_to_speak = ""
+            var prefix = "man_"
+            if userDefaults.bool(forKey: keys.womanVoice) {
+                prefix = "woman_"
             }
-            speakText(text: text_to_speak)
+            if playlistPlayer.isPaused {
+                playlistPlayer.resume()
+            }
+            else {
+                playVoiceMp3(prefix_voice: prefix)
+            }
+
         }
         else {
             // TODO Pozastavit nebo stopnou. Dialog
             let play_img = UIImage(named: "ic_play")
             play_button.setImage(play_img, for: .normal)
-            self.synthesizer.pauseSpeaking(at: .immediate)
-            if !self.synthesizer.isPaused {
+            playlistPlayer.pause()
+            if !self.playlistPlayer.isPlaying {
                 let pauseDialog = UIAlertController()
                 let stopPlay = UIAlertAction(title: "Zastavit přehrávání", style: UIAlertActionStyle.default, handler: { (alert: UIAlertAction!) in
-                    self.synthesizer.stopSpeaking(at: .immediate)
+                    //self.synthesizer.stopSpeaking(at: .immediate)
                     print("playing stopped")
+                    self.playlistPlayer.isPaused = false
+                    self.playlistPlayer.stop()
                 })
                 let pausePlay = UIAlertAction(title: "Pozastavit přehrávání", style: UIAlertActionStyle.default, handler: { (alert: UIAlertAction!) in
-                    self.synthesizer.pauseSpeaking(at: .immediate)
+                    //self.synthesizer.pauseSpeaking(at: .immediate)
                     print("playing paused")
                     let play_img = UIImage(named: "ic_pause")
                     self.play_button.setImage(play_img, for: .normal)
+                    self.playlistPlayer.isPaused = true
+                    self.playlistPlayer.pause()
                 })
                 let cancel = UIAlertAction(title: "Zrušit", style: UIAlertActionStyle.cancel, handler: { (alert: UIAlertAction!) in
-                    self.synthesizer.continueSpeaking()
+                    //self.synthesizer.continueSpeaking()
                     let play_img = UIImage(named: "ic_stop")
                     self.play_button.setImage(play_img, for: .normal)
                     print("continue playing")
+                    self.playlistPlayer.resume()
                 })
                 pauseDialog.addAction(stopPlay)
                 pauseDialog.addAction(pausePlay)
@@ -447,12 +457,54 @@ class OtecPioZacatekViewController: UIViewController, UINavigationControllerDele
             else {
                 let play_img = UIImage(named: "ic_stop")
                 play_button.setImage(play_img, for: .normal)
-                self.synthesizer.continueSpeaking()
+                self.playlistPlayer.play()
             }
         }
         enabledDarkMode()
-
     }
+
+    func playVoiceMp3(prefix_voice: String) {
+
+        var playList: [String] = []
+        let druh = desatek?.desatek
+        print("OtecPioZacatekRuzenecViewController(playVoiceMp3): \(druh)")
+                playList.append(prefix_voice + MP3Files.VeJmenuOtce)
+        playList.append(prefix_voice + MP3Files.OtecPioZacatek)
+        playList.append(prefix_voice + MP3Files.VyznaniViry)
+        playList.append(prefix_voice + MP3Files.Pozdraveni_andelske)
+        playList.append(prefix_voice + MP3Files.Slava_otci)
+        var typeRuzenec = "Radostny"
+        if druh == 2 {
+            typeRuzenec = "Bolestny"
+        }
+        if druh == 3 {
+            typeRuzenec = "Slavny"
+        }
+        if druh == 4 {
+            typeRuzenec = "Svetla"
+        }
+        for k in 1...5 {
+            playList.append(prefix_voice + MP3Files.Otce_nas)
+            for _ in 1...10 {
+                playList.append(prefix_voice + MP3Files.Otce_nas)
+                let index = String(format: "%02d", k)
+                playList.append(prefix_voice + "\(typeRuzenec)-\(index)")
+                playList.append(prefix_voice + MP3Files.Slava_otci)
+                playList.append(prefix_voice + MP3Files.OtecPioPoKazdemZrnku)
+            }
+            playList.append(prefix_voice + MP3Files.OtecPioPoDesatku)
+        }
+        playList.append(prefix_voice + MP3Files.OtecPioZaver)
+        playlistPlayer.onPlaybackFinished = { [weak self] in
+            DispatchQueue.main.async {
+                let play_img = UIImage(named: "ic_play")
+                self?.play_button.setImage(play_img, for: .normal)
+            }
+        }
+        playlistPlayer.setupPlaylist(fileNames: playList)
+        playlistPlayer.play()
+    }
+
     @objc func nextAction(sender: UIButton) {
         Global.vibrate()
         enabledDarkMode()
@@ -502,7 +554,7 @@ class OtecPioZacatekViewController: UIViewController, UINavigationControllerDele
         return generateContent(text: main_text, font_name: self.font_name, size: get_cgfloat(size: self.font_size), color: self.text)
     }
 }
-private extension OtecPioZacatekViewController {
+private extension OtecPioRuzenecViewController {
     func setupUI() {
         ruzenec_text_contain.textAlignment = .center
         let tap = UITapGestureRecognizer(target: self, action: #selector(didTapOnScreen))
@@ -512,7 +564,7 @@ private extension OtecPioZacatekViewController {
     
 }
 
-extension OtecPioZacatekViewController: CXCallObserverDelegate {
+extension OtecPioRuzenecViewController: CXCallObserverDelegate {
     
     func callObserver(_ callObserver: CXCallObserver, callChanged call: CXCall) {
         var synCallStarted: Bool = false

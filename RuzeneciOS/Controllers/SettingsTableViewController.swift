@@ -25,6 +25,7 @@ class SettingsTableViewController: UITableViewController {
     let settingsDelegate = SettingsDelegateManager()
     let keys = SettingsBundleHelper.SettingsBundleKeys.self
     let userDefaults = UserDefaults.standard
+    var switchArray = [UISwitch]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -91,24 +92,32 @@ class SettingsTableViewController: UITableViewController {
             print(set.prefsString)
             let cell = UITableViewCell(style: UITableViewCellStyle.default, reuseIdentifier: "cell")
             
-            let sw = UISwitch()
-            sw.isOn = userDefaults.bool(forKey: set.prefsString)
+            
+            var sw = UISwitch()
             if set.prefsString == keys.night {
+                sw.isOn = userDefaults.bool(forKey: set.prefsString)
                 sw.addTarget(self, action: #selector(nightTarget(_:)), for: .valueChanged)
             }
             else if set.prefsString == keys.idleTimer {
+                sw.isOn = userDefaults.bool(forKey: set.prefsString)
                 sw.addTarget(self, action: #selector(idleTarget(_:)), for: .valueChanged)
             }
             else if set.prefsString == keys.serifEnabled {
+                sw.isOn = userDefaults.bool(forKey: set.prefsString)
                 sw.addTarget(self, action: #selector(serifTarget(_:)), for: .valueChanged)
             }
             else if set.prefsString == keys.vibrationEnabled {
+                sw.isOn = userDefaults.bool(forKey: set.prefsString)
                 sw.addTarget(self, action: #selector(vibrateTarget(_:)), for: .valueChanged)
             }
             else if set.prefsString == keys.manVoice {
+                sw = createSwitch(tag: 0)
+                sw.isOn = userDefaults.bool(forKey: set.prefsString)
                 sw.addTarget(self, action: #selector(manVoice(_:)), for: .valueChanged)
             }
             else if set.prefsString == keys.womanVoice {
+                sw = createSwitch(tag: 1)
+                sw.isOn = userDefaults.bool(forKey: set.prefsString)
                 sw.addTarget(self, action: #selector(womanVoice(_:)), for: .valueChanged)
             }
             cell.textLabel?.text = settings[indexPath.row].title
@@ -126,6 +135,13 @@ class SettingsTableViewController: UITableViewController {
         }
     }
     
+    func createSwitch(tag: Int) -> UISwitch {
+        let sw = UISwitch()
+        sw.tag = tag
+        switchArray.append(sw)
+        return sw
+        
+    }
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if settings[indexPath.row].type == SettingsItemType.slider {
             return 150
@@ -269,11 +285,22 @@ class SettingsTableViewController: UITableViewController {
         print("manVoice Target \(sender.isOn)")
         userDefaults.set(sender.isOn, forKey: keys.manVoice)
         userDefaults.set(!sender.isOn, forKey: keys.womanVoice)
+        for sw in switchArray {
+            if sw.tag == 1 {
+                sw.isOn = !sender.isOn
+            }
+        }
+
     }
     @objc func womanVoice(_ sender: UISwitch!) {
         print("womanVoice Target \(sender.isOn)")
         userDefaults.set(!sender.isOn, forKey: keys.manVoice)
         userDefaults.set(sender.isOn, forKey: keys.womanVoice)
+        for sw in switchArray {
+            if sw.tag == 0 {
+                sw.isOn = !sender.isOn
+            }
+        }
     }
 
     func setupUI() {

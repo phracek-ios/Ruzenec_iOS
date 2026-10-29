@@ -480,7 +480,6 @@ class FrantiskanskyRuzenecViewController: UIViewController, UINavigationControll
     }
     
     func playVoiceMp3(prefix_voice: String) {
-        let josef_prefix = "Josef"
 
         var playList: [String] = []
         let druh = desatek?.desatek

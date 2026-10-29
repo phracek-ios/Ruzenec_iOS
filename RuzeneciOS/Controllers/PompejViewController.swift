@@ -97,6 +97,7 @@ class PompejViewController: UIViewController, UINavigationControllerDelegate, UI
         else {
             UIApplication.shared.isIdleTimerDisabled = false
         }
+        title = "Pompejská novéna"
         let novenaCounter = userDefaults.integer(forKey: keys.pompejCounter)
         novenaLabelCounter.text = "\(novenaCounter). den novény"
         novenaLabelCounter.textAlignment = .center
