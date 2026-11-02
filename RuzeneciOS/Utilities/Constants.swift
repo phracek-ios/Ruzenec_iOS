@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 enum RosaryConstants: Int {
-    case dnes = 0, radostny, bolestny, svetla, slavny, korunka, sedmibolestne, sedmiradostne, frantiseksedmibolestne, frantiseksedmiradostne, sv_Josef, pompej, otecPio
+    case dnes = 0, radostny, bolestny, svetla, slavny, korunka, sedmibolestne, sedmiradostne, frantiseksedmibolestne, frantiseksedmiradostne, sv_Josef, pompej, otecPio, prazskeJezulatko
 }
 
 struct RosaryNumbers {
@@ -60,6 +60,38 @@ struct RosaryNumbers {
     }
 }
 
+struct RosaryJezulatko {
+    let counter: Int = 11
+    let credo: Int = 1
+    let lord: Int = 2
+    let salveReginaFirst = 3
+    let salveReginaSecond = 4
+    let salveReginaThird = 5
+    let meaCulpa = 6
+    let lordFirst: Int = 7
+    let lordSecond: Int
+    let lordThird: Int
+    let lordFourth: Int
+    let lordFifth: Int
+    let rosaryFirst: Int
+    let rosarySecond: Int
+    let rosaryThird: Int
+    let rosaryFourth: Int
+    let rosaryFifth: Int
+    let pray: Int
+    init() {
+        self.lordSecond = lordFirst + counter
+        self.lordThird = lordSecond + counter
+        self.lordFourth = lordThird + counter
+        self.lordFifth = lordFourth + counter
+        self.rosaryFirst = lordFirst + 1
+        self.rosarySecond = lordSecond + 1
+        self.rosaryThird = lordThird + 1
+        self.rosaryFourth = lordFourth + 1
+        self.rosaryFifth = lordFifth + 1
+        self.pray = lordFifth + counter
+    }
+}
 struct OtecPioRosaryNumbers {
     let counter: Int = 13
     let intro: Int = 1

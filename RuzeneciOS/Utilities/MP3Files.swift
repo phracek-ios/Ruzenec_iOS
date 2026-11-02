@@ -29,4 +29,5 @@ class MP3Files {
     static let OtecPioPoKazdemZrnku = "OtecPioPoKazdemZrnku"
     static let OtecPioZacatek = "OtecPioZacatek"
     static let OtecPioZaver = "OtecPioZaver"
+    static let PrazskeJezulatko = "PrazskeJezulatko"
 }
