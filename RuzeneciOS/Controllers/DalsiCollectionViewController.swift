@@ -135,6 +135,14 @@ class JineCollectionViewController: UICollectionViewController, UICollectionView
             navigationController?.pushViewController(ruzenecViewController, animated: true)
 
         }
+        else if desatek_type == RosaryConstants.prazskeJezulatko.rawValue {
+            let ruzenecViewController = BasicRuzenecViewController()
+            if let selectedDesatek = data.desatek {
+                ruzenecViewController.desatek = selectedDesatek
+                ruzenecViewController.navigationItem.title = selectedDesatek.name
+            }
+            navigationController?.pushViewController(ruzenecViewController, animated: true)
+        }
         else {
             let ruzenecViewController = FrantiskanskyRuzenecViewController()
             if let selectedDesatek = data.desatek {
@@ -152,6 +160,7 @@ class JineCollectionViewController: UICollectionViewController, UICollectionView
         let photoSedmiradostna = "icon_mary"
         let photoOtecPio = "icon_otecPio"
         let photoPompej = "icon_pompej"
+        let photoPrazskeJezulatko = "icon_prazske_jezulatko"
         
         guard let pompejska_novena = Desatek(name: "Pompejská novéna", photo: photoPompej, desatek: RosaryConstants.pompej.rawValue) else {
             fatalError("Unable to instanciate pompej novena")
@@ -181,8 +190,12 @@ class JineCollectionViewController: UICollectionViewController, UICollectionView
             fatalError("Unable to instanciate pompej novena")
         }
     
+        guard let prazske_jezulatko = Desatek(name: "Růženec k Děťátku Ježíš", photo: photoPrazskeJezulatko, desatek: RosaryConstants.prazskeJezulatko.rawValue) else {
+            fatalError("Unable to instanciate detatku Jezis")
+        }
+    
         desatky = [sedmibolestne,
-                    sedmiradostne, frantiskanskysedmibolestny, frantiskanskysedmiradostny, sv_josef, pompejska_novena, otec_pio]
+                    sedmiradostne, frantiskanskysedmibolestny, frantiskanskysedmiradostny, sv_josef, pompejska_novena, otec_pio, prazske_jezulatko]
     }
     
     private func loadRowData() {

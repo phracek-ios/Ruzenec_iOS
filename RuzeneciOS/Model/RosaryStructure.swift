@@ -36,6 +36,7 @@ struct RosaryStructure: Decodable {
     var otPioPoDesatku: String
     var otPioZaver: String
     var otPioPrisliby: String
+    var PrazskeJezulatko: String
     var Ruzence: [Rosary]
 }
 
